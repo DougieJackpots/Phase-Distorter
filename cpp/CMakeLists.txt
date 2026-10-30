@@ -338,6 +338,7 @@ if(EB_BUILD_VITA)
     endif()
     add_executable(eb_vita ../vita/src/main.cpp src/audio_output.cpp)
     target_include_directories(eb_vita PRIVATE include)
+    target_compile_definitions(eb_vita PRIVATE SDL_MAIN_HANDLED)
     target_link_libraries(eb_vita PRIVATE
         eb_session eb_assets eb_native_asset_profiles SDL2::SDL2
         SceAppMgr_stub SceAppUtil_stub SceAudio_stub SceAudioIn_stub
