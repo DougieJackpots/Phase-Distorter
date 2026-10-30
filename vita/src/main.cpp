@@ -79,6 +79,8 @@ void show_error(const std::string& message) {
 
 int main(int, char**) {
     try {
+        if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_EVENTS) != 0)
+            throw std::runtime_error(std::string("SDL initialization failed: ") + SDL_GetError());
         std::filesystem::create_directories(data_dir);
         if (!std::filesystem::exists(asset_file))
             throw std::runtime_error(
@@ -87,8 +89,6 @@ int main(int, char**) {
                 "game.ebpak file to ux0:data/PhaseDistorter/ on your Vita.");
 
         auto assets = eb::load_game_assets(asset_file, eb::asset_profiles());
-        if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_EVENTS) != 0)
-            throw std::runtime_error(std::string("SDL initialization failed: ") + SDL_GetError());
         sceCtrlSetSamplingMode(SCE_CTRL_MODE_ANALOG);
 
         SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "0");
