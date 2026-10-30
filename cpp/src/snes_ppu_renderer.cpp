@@ -326,10 +326,11 @@ uint8_t SceneReadView::sample_sprite_pixels(unsigned y, std::span<PpuPixel> resu
 // Resolve main/subscreen winners first, then apply window clipping, color
 // arithmetic, and brightness. Presentation policy can choose which scenery
 // to sample, but it never changes these PPU registers or native composition.
-template <bool IncludeReference>
+template <bool IncludeReference, bool Margin>
 GameSceneRenderer::CompositePixel GameSceneRenderer::compose_pixel(
-    const SceneReadView &view, int x, unsigned y, const Pixel &object, bool margin) {
+    const SceneReadView &view, int x, unsigned y, const Pixel &object) {
     constexpr bool include_reference = IncludeReference;
+    constexpr bool margin = Margin;
     const bool outside_native = x < 0 || x >= 256;
     const bool outside_world =
         margin && presentation_world_map_ && (x < presentation_clip_left_ || x >= presentation_clip_right_);
@@ -507,9 +508,25 @@ GameSceneRenderer::CompositePixel GameSceneRenderer::compose_pixel(
 
 uint32_t GameSceneRenderer::compose_presentation_pixel(const SceneReadView &view, int x, unsigned y,
                                                        const Pixel &object, bool margin) {
-    const auto pixel = presentation_effects_enabled_ ? compose_pixel<true>(view, x, y, object, margin)
-                                                     : compose_pixel<false>(view, x, y, object, margin);
-    return pixel.actual;
+    if (margin)
+        return presentation_effects_enabled_ ? compose_pixel<true, true>(view, x, y, object).actual
+                                             : compose_pixel<false, true>(view, x, y, object).actual;
+    return presentation_effects_enabled_ ? compose_pixel<true, false>(view, x, y, object).actual
+                                         : compose_pixel<false, false>(view, x, y, object).actual;
+}
+
+// Resolve feature switches once per row. Margin=false lets the compiler remove
+// widescreen sampling, camera shifts and moved-window branches from native pixels.
+void GameSceneRenderer::compose_native_scanline(const SceneReadView& view, unsigned y,
+                                               std::span<const PpuPixel, 256> objects,
+                                               std::span<std::uint32_t, 256> output) {
+    if (presentation_effects_enabled_) {
+        for (unsigned x = 0; x < 256; ++x)
+            output[x] = compose_pixel<true, false>(view, x, y, objects[x]).actual;
+    } else {
+        for (unsigned x = 0; x < 256; ++x)
+            output[x] = compose_pixel<false, false>(view, x, y, objects[x]).actual;
+    }
 }
 
 // Always produce the canonical 256-pixel scanline first. Only this native
@@ -525,9 +542,8 @@ void SnesBus::render_scanline(unsigned y) {
         std::array<PpuPixel, 256> objects{};
         if ((ppu_registers_[0x2c] | ppu_registers_[0x2d]) & 16)
             sprite_status_ |= view.sample_sprite_pixels(y, objects, 0);
-        for (unsigned x = 0; x < 256; ++x)
-            native_framebuffer[y * 256 + x] =
-                scene_renderer_.compose_presentation_pixel(view, x, y, objects[x], false);
+        scene_renderer_.compose_native_scanline(view, y, objects,
+            std::span<std::uint32_t, 256>(native_framebuffer.data() + y * 256, 256));
     }
     scene_renderer_.render_presentation_margins(view, y);
     // Source capture changes sampling policy temporarily; it has its own tile cache.

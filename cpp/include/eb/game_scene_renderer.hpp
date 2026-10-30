@@ -120,6 +120,9 @@ class GameSceneRenderer {
     std::vector<std::uint64_t> host_sprite_generations() const;
     uint32_t compose_presentation_pixel(const SceneReadView &view, int x, unsigned y, const PpuPixel &object,
                                         bool margin);
+    void compose_native_scanline(const SceneReadView& view, unsigned y,
+                                 std::span<const PpuPixel, 256> objects,
+                                 std::span<std::uint32_t, 256> output);
     void render_presentation_margins(const SceneReadView &view, unsigned y);
     void enable_direct_rendering(bool enabled) { direct_capture_.enable(enabled); }
     void capture_direct_scanline(const SceneReadView& view, unsigned y) { direct_capture_.scanline(view, *this, y); }
@@ -271,9 +274,8 @@ class GameSceneRenderer {
         uint32_t actual, reference;
     };
     static_assert(sizeof(CompositePixel) == 8 && std::is_trivial_v<CompositePixel>);
-    template <bool IncludeReference>
-    CompositePixel compose_pixel(const SceneReadView &view, int x, unsigned y, const Pixel &object,
-                                 bool margin);
+    template <bool IncludeReference, bool Margin>
+    CompositePixel compose_pixel(const SceneReadView &view, int x, unsigned y, const Pixel &object);
     void prepare_presentation_effects(const SceneReadView &view);
     void resize_presentation_width(const SceneReadView &view, unsigned width);
     void prepare_presentation_scene(const SceneReadView &view);
