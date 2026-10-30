@@ -1,110 +1,72 @@
 # PlayStation Vita port
 
-This directory tracks the native PS Vita platform work for Phase Distorter.
-The desktop targets remain the reference implementation and must continue to
-build unchanged.
+The `vita-port` branch contains an initial native Vita frontend. The existing
+desktop targets remain the reference implementation and are kept separate.
 
-## Current status
+## Current implementation
 
-**Port scaffold only — no Vita executable or VPK has been built yet.**
+- Shared C++20 game/session, CPU, native sprite runtime, asset validation and
+  DSP libraries.
+- SDL2 2D renderer uploads the native 256x224 ARGB framebuffer. The image is
+  scaled with aspect preservation to the Vita's 960x544 display.
+- Vita `SceCtrl` input is translated to the existing SNES JOY1 bit layout.
+- Existing SDL audio queue plays the 32 kHz stereo DSP output.
+- User asset packs and SRAM live in
+  `ux0:data/PhaseDistorter/`, outside the VPK.
+- VitaSDK CMake packaging produces a SELF and VPK.
 
-The current application entry point is `cpp/src/desktop_application.cpp`.
-The desktop frontend is assembled in `cpp/CMakeLists.txt` from:
-
-- `eb_video`: SDL2 plus desktop OpenGL presentation
-- `eb_imgui` and `eb_debug_panel`: SDL2/OpenGL2 settings and debug UI
-- `eb_desktop_support`, `eb_desktop`: audio, storage, input and display
-- `eb_cpp`: the desktop application entry point
-
-The CPU, SNES bus/PPU, DSP, game session, asset importer and most game logic
-are separate libraries. This is the part to preserve and reuse.
-
-## Target architecture
-
-The first Vita build should reuse the existing SDL2 frontend where the Vita
-SDL2 port supports the required APIs, and use **vitaGL** as the OpenGL ES /
-fixed-function compatibility layer. This is preferable to rewriting the
-software framebuffer presenter before establishing a working baseline.
-
-| Area | Initial Vita implementation |
-| --- | --- |
-| CPU, SNES bus, game session | Existing C++ libraries |
-| Video | Existing 256x224 framebuffer and presenter through SDL2 + vitaGL |
-| Display | Fixed 960x544 Vita screen; preserve 8:7 game aspect ratio |
-| Input | SDL game-controller events backed by Vita controls; map to SNES JOY1 |
-| Audio | Existing 32 kHz stereo DSP through SDL audio, validate device format |
-| Asset import | Existing ROM validation/importer; user supplies their own ROM |
-| Saves/config/assets | Vita user storage under `ux0:data/PhaseDistorter/` |
-| Package | Vita ELF -> SELF -> VPK, installed with VitaShell |
-
-The Vita display is 960x544. The game framebuffer remains 256x224; do not
-stretch it to fill the screen. Letterbox/pillarbox or offer a deliberate
-integer-scaled presentation.
+This first frontend intentionally avoids desktop OpenGL, vitaGL, and ImGui.
+Desktop menus, debug UI, screenshots, save-state snapshots, and desktop
+preferences are not part of this first Vita baseline.
 
 ## Build environment
 
-Install VitaSDK and its SDL2 and vitaGL ports. The official toolchain file is
-normally available at:
+Install VitaSDK, its SDL2 port, CMake, Python 3, and cc65 (the `ca65` and
+`ld65` tools). Set `VITASDK` to the SDK installation root and run:
 
 ```sh
-$VITASDK/share/vita.toolchain.cmake
+bash vita/build.sh
 ```
 
-The initial cross-configuration should use the VitaSDK toolchain and disable
-host-only tests:
+The script configures `vita/CMakeLists.txt` with the Vita toolchain, disables
+the desktop frontend and test suite, regenerates the translated C++ sources
+from the assembly checkout, builds the Vita executable, and packages
+`PhaseDistorter.vpk`.
 
-```sh
-cmake -S cpp -B build-vita \
-  -DCMAKE_TOOLCHAIN_FILE="$VITASDK/share/vita.toolchain.cmake" \
-  -DCMAKE_BUILD_TYPE=Release \
-  -DEB_BUILD_TESTS=OFF \
-  -DEB_BUILD_FRONTEND=ON
-```
+The SDL2 lookup expects the SDK's standard
+`arm-vita-eabi/include/SDL2` and `arm-vita-eabi/lib` locations when no
+SDL2 CMake package is found.
 
-This is a target configuration goal, **not a claim that the current tree
-already configures successfully for Vita**. The desktop frontend currently
-requests desktop OpenGL and builds desktop-specific display/input code.
-Those dependencies must be made conditional and replaced or adapted before
-the command above can produce a Vita executable.
+## Game data and saves
 
-## Porting sequence
+The VPK does not contain a ROM or extracted game data.
 
-1. **Cross-build the core.** Compile the existing CPU, PPU, DSP, asset and
-   session libraries with the VitaSDK C++ toolchain. Fix unsupported library
-   or compiler assumptions without changing game behavior.
-2. **Bring up SDL2 + vitaGL.** Create a Vita SDL window and GL context, upload
-   the existing 256x224 frame, and present it at 960x544.
-3. **Input.** Map Vita buttons and analog stick to the project's existing
-   SNES JOY1 bit mask. Confirm Start/Select and shoulder-button behavior.
-4. **Audio.** Validate SDL audio output, sample format, buffering and timing
-   on real hardware; avoid allowing audio callbacks to drive emulation time.
-5. **Storage.** Use Vita-safe paths and create the application data directory.
-   Keep imported asset packs and SRAM outside the VPK.
-6. **Package.** Add Vita metadata, icon, SELF and VPK packaging; install and
-   launch through VitaShell.
-7. **Hardware verification.** Test both regional asset packs, save/load,
-   controller input, audio, suspend/resume and sustained gameplay on a physical
-   Vita. Vita3K is useful for smoke tests but does not replace hardware testing.
+1. On a desktop build, use the asset importer with your own supported
+   EarthBound or Mother 2 ROM.
+2. Copy the resulting user-created asset pack to
+   `ux0:data/PhaseDistorter/game.ebpak` on the Vita.
+3. Launch the installed bubble. SRAM is written to
+   `ux0:data/PhaseDistorter/game.srm` periodically and on clean exit.
 
-## Constraints
+The original ROM is not packaged or modified.
 
-- Do not commit ROMs, extracted asset packs, save files, or proprietary game
-  data. Users import their own supported retail ROM.
-- Keep the existing desktop build path and its dependencies intact.
-- Do not claim a working VPK, 60 FPS, or hardware compatibility until those
-  results have been measured and recorded.
-- Prefer small platform-specific changes over broad changes to the game core.
+## Controls
 
+| Vita control | In-game input |
+| --- | --- |
+| D-pad | Direction |
+| Cross | A |
+| Square | X |
+| Circle | B |
+| Triangle | Y |
+| L / R | L / R |
+| Start / Select | Start / Select |
 
-## Implemented first frontend baseline
+## Validation still required
 
-The first SDL2 Vita frontend is now present in `vita/src/main.cpp`. It loads
-the shared validated `.ebpak` format, starts the existing `GameSession`,
-maps Vita face buttons and triggers to the SNES controller bits, displays the
-native framebuffer through an SDL streaming texture, queues the existing DSP
-audio output, and periodically persists SRAM. The dedicated CMake project
-builds a SELF and VPK without enabling the desktop OpenGL/ImGui frontend.
-
-Build using `bash vita/build.sh` from the repository checkout. This has not
-been run in a VitaSDK environment yet; therefore the target and package are
-implementation work in progress, not a tested Vita release.
+This is a porting baseline, not a verified release. The VitaSDK build script
+has not yet been run in a VitaSDK environment; no ELF, SELF, or VPK has been
+produced or tested. SDL2 renderer/audio behavior, compiler/linker compatibility,
+filesystem durability, performance, audio underruns, suspend/resume, and actual
+hardware input all need testing on a physical Vita. Do not treat the current
+source as a proven 60 FPS build.
