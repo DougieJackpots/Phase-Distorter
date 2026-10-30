@@ -1,4 +1,5 @@
 #include "eb/snes_audio_dsp.hpp"
+#include "eb/runtime_timing.hpp"
 #include "SPC_DSP.h"
 #include "eb/spc700_audio_cpu.hpp"
 #include "eb/snapshot_archive.hpp"
@@ -100,6 +101,7 @@ void SnesAudioDsp::write_register(std::uint8_t address, std::uint8_t value) {
 // buffer. sample_count counts individual interleaved samples, whereas the
 // public counter counts stereo frames; neither depends on frontend playback.
 void SnesAudioDsp::advance_audio_clocks(unsigned audio_clocks) {
+    runtime_timing::Scope timing(runtime_timing::Phase::Dsp);
     while (audio_clocks) {
         // At most 64 samples plus a pending sample pair fit in the 128-entry buffer.
         const auto chunk_clocks = std::min(audio_clocks, 1024u);

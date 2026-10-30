@@ -124,3 +124,31 @@ DSP and audio playback tests pass. 100,000 host actor-order fixtures match the
 previous stable sort, including ties, empty lists and 30 actors. Changed renderer,
 session and Vita frontend pass host syntax checks (Vita APIs are declaration
 stubs). These checks do not measure physical Vita FPS or full-game parity.
+
+## Sampled CPU/PPU/DSP diagnostics (v3)
+
+The log now includes `cpu_hardware_sample_avg_ms`, `ppu_sample_avg_ms`,
+`dsp_sample_avg_ms`, their maxima, `core_samples`, `ppu_calls`, and `dsp_calls`.
+Only one complete session update in 61 is sampled; the other updates do not
+read the clock inside DSP/PPU timing scopes. Categories are exclusive even when
+scopes nest. CPU/hardware includes the main CPU, SPC sound CPU, scheduling,
+sprite preparation outside scanline drawing, and other unclassified work.
+PPU measures visible `render_scanline` calls; DSP measures synthesis and its
+sample-queue insertion. Samples are host observations, not emulated clocks.
+
+These sampled timings include profiling overhead and are averages per sampled
+session update, not per DSP call or scanline. Use several five-second log lines
+from representative overworld and battle play. The sampled averages need not
+sum to the all-update `simulation_avg_ms`, because they use different subsets.
+If a line has `core_samples=0`, it has no component measurements.
+
+The feature defaults on in Vita builds. To compare without detailed counters:
+`cmake -S vita -B build-vita -DEB_VITA_RUNTIME_TIMING=OFF`, then run the normal
+build script. Re-enable with `-DEB_VITA_RUNTIME_TIMING=ON`. Desktop builds do not
+include these core timing probes by default. Neither setting changes game-clock
+policy, instruction execution, audio samples, or frame rendering decisions.
+
+Host validation covers enabled/disabled probes, nested phases, resets and
+exception cleanup. DSP regression fixtures also pass with profiling active,
+including sample equality and zero allocations in recycled audio handoff.
+Vita cross-build and device timings still need checking on your SDK/hardware.

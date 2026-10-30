@@ -22,6 +22,9 @@ struct GameSession::State {
     GameDebug game_debug;
     std::uint64_t steps = 0;
     FrameObserver frame_observer;
+    bool runtime_timing_enabled = false;
+    unsigned timing_updates = 0;
+    RuntimeTiming runtime_timing;
 
     State(std::span<const std::uint8_t> cartridge, GameVersion version, bool enhanced_timing)
         : hardware(cartridge, version, true), audio_cpu(hardware), audio_dsp(audio_cpu), main_cpu(hardware),
@@ -45,8 +48,13 @@ GameSession::~GameSession() = default;
 
 std::uint64_t GameSession::advance_frame(std::uint16_t buttons, std::uint64_t step_limit) {
     auto &state = *state_;
+    state.runtime_timing = {};
     if (step_limit && state.steps >= step_limit)
         return 0;
+    // Rotate the sampling phase with a 61-update interval rather than locking
+    // every sample to the same phase of a 60-frame game animation.
+    const bool sample = state.runtime_timing_enabled && state.timing_updates++ % 61 == 0;
+    runtime_timing::Frame timing_frame(state.runtime_timing, sample);
     state.hardware.set_buttons(buttons);
     const auto previous_frame = state.hardware.completed_frames;
     // Keep this hot-loop counter local, as in the original desktop loop. A
@@ -70,6 +78,12 @@ std::uint64_t GameSession::advance_frame(std::uint16_t buttons, std::uint64_t st
     state.steps = completed_steps;
     return state.hardware.completed_frames - previous_frame;
 }
+
+void GameSession::enable_runtime_timing(bool enabled) {
+    state_->runtime_timing_enabled = enabled;
+    state_->timing_updates = 0;
+}
+RuntimeTiming GameSession::last_runtime_timing() const { return state_->runtime_timing; }
 
 std::uint64_t GameSession::frames() const {
     return state_->hardware.completed_frames;

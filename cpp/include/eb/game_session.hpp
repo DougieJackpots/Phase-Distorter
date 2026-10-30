@@ -1,6 +1,7 @@
 #pragma once
 
 #include "eb/game_version.hpp"
+#include "eb/runtime_timing.hpp"
 #include "eb/session_diagnostics.hpp"
 #include "eb/logical_clock_policy.hpp"
 #include "eb/presentation_frame.hpp"
@@ -15,7 +16,7 @@ namespace eb {
 class GameDebug;
 
 // Owns one game's hardware, translated processors, audio synthesis and debug
-// commands. Simulation receives explicit controller input and has no host clock,
+// commands. Simulation receives explicit controller input and is not driven by a host clock,
 // SDL window, physical input polling, file access, or presentation-rate policy.
 class GameSession {
   public:
@@ -53,6 +54,9 @@ class GameSession {
     LogicalClockPolicy logical_clock_policy() const;
     void observe_completed_frames(FrameObserver observer);
 
+    // Optional sampled host timings, excluded from snapshots and game clocks.
+    void enable_runtime_timing(bool enabled);
+    RuntimeTiming last_runtime_timing() const;
     std::vector<std::int16_t> take_audio_samples();
     // Recycle the caller's previous sample buffer instead of allocating per frame.
     void take_audio_samples(std::vector<std::int16_t>& destination);

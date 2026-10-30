@@ -43,6 +43,17 @@ struct Performance {
     Clock::time_point epoch = Clock::now();
     std::uint64_t updates = 0, frames = 0, late = 0, saves = 0;
     Timing simulation, audio, upload, present, sleep, save;
+    Timing cpu_hardware, ppu, dsp;
+    std::uint64_t core_samples = 0, ppu_calls = 0, dsp_calls = 0;
+    void add_core(const eb::RuntimeTiming& timing) {
+        if (!timing.sampled) return;
+        ++core_samples;
+        cpu_hardware.add(timing.cpu_hardware_ns / 1e6);
+        ppu.add(timing.ppu_ns / 1e6);
+        dsp.add(timing.dsp_ns / 1e6);
+        ppu_calls += timing.ppu_calls;
+        dsp_calls += timing.dsp_calls;
+    }
     void report(Clock::time_point now, bool force = false) {
         const double seconds = std::chrono::duration<double>(now - epoch).count();
         if (!updates || (!force && seconds < 5)) return;
@@ -56,10 +67,16 @@ struct Performance {
         write("simulation", simulation, updates); write("audio_submit", audio, updates);
         write("upload", upload, updates); write("present", present, updates);
         write("sleep", sleep, updates); write("save", save, saves);
+        write("cpu_hardware_sample", cpu_hardware, core_samples);
+        write("ppu_sample", ppu, core_samples); write("dsp_sample", dsp, core_samples);
+        output << " core_samples=" << core_samples << " ppu_calls=" << ppu_calls
+               << " dsp_calls=" << dsp_calls;
         output << " saves=" << saves << '\n';
         output.flush();
         updates = frames = late = saves = 0;
         simulation = audio = upload = present = sleep = save = {};
+        cpu_hardware = ppu = dsp = {};
+        core_samples = ppu_calls = dsp_calls = 0;
         epoch = Clock::now();
     }
 };
@@ -143,7 +160,7 @@ int main(int, char**) {
         Performance performance;
         if (!performance.output)
             std::cerr << "Could not open performance.log; gameplay will continue.\n";
-        performance.output << "Vita performance diagnostics v2; simulation includes CPU, PPU and DSP\n";
+        performance.output << "Vita performance diagnostics v3; sampled core timings include instrumentation overhead\n";
 #ifdef __OPTIMIZE__
         performance.output << "compiler_optimisation=enabled\n";
 #else
@@ -172,6 +189,11 @@ int main(int, char**) {
             performance.output << "renderer=" << (renderer_info.name ? renderer_info.name : "unknown")
                 << " flags=" << renderer_info.flags
                 << " software=" << bool(renderer_info.flags & SDL_RENDERER_SOFTWARE) << '\n';
+#ifdef EB_RUNTIME_TIMING
+        performance.output << "core_timing=enabled interval_updates=61 cpu_hardware_includes_spc_cpu=1\n";
+#else
+        performance.output << "core_timing=disabled\n";
+#endif
         performance.output.flush();
 
         std::unique_ptr<SDL_Texture, decltype(&SDL_DestroyTexture)> texture(
@@ -187,6 +209,7 @@ int main(int, char**) {
         session.enable_native_sprite_runtime();
         session.configure_presentation(game_width, false, false);
         load_save(session);
+        session.enable_runtime_timing(true);
 
         std::unique_ptr<eb::DeviceAudioQueue> audio;
         try {
@@ -216,6 +239,7 @@ int main(int, char**) {
             const auto frames = session.advance_frame(read_buttons());
             const auto audio_start = Clock::now();
             performance.simulation.add(milliseconds(simulation_start, audio_start));
+            performance.add_core(session.last_runtime_timing());
             session.take_audio_samples(audio_samples);
             if (audio)
                 audio->append(audio_samples);

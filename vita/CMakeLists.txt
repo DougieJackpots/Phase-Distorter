@@ -16,6 +16,11 @@ set(EB_BUILD_TESTS OFF CACHE BOOL "Disable desktop verification targets" FORCE)
 set(EB_PREGENERATED_DIR "${CMAKE_CURRENT_LIST_DIR}/../generated" CACHE PATH "Use checked-in generated sources for Vita builds" FORCE)
 set(EB_BUILD_VITA ON CACHE BOOL "Build the Vita SDL frontend" FORCE)
 
+option(EB_VITA_RUNTIME_TIMING "Sample core CPU/PPU/DSP timings every 61 updates" ON)
+if(EB_VITA_RUNTIME_TIMING)
+    add_compile_definitions(EB_RUNTIME_TIMING)
+endif()
+
 # Apply IPO to the shared core as well as the frontend. Fall back cleanly for
 # SDK/compiler versions whose linker cannot perform LTO.
 option(EB_VITA_LTO "Enable Release link-time optimisation across game libraries" ON)

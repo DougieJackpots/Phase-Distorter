@@ -1,4 +1,5 @@
 #include "eb/snes_bus.hpp"
+#include "eb/runtime_timing.hpp"
 #include "eb/photosensitivity_filter.hpp"
 #include "eb/threed_npc_restoration.hpp"
 #include "eb/snapshot_archive.hpp"
@@ -756,8 +757,10 @@ void SnesBus::advance_clocks(unsigned clocks, bool pause_for_refresh) {
         // Render from the register state for this line before HDMA prepares
         // the following line's effects. Visible output rows start at line 1.
         if (old < 1112 && scanline_master_clock_ >= 1112 && scanline_index_ <= 224) {
-            if (scanline_index_ >= 1)
+            if (scanline_index_ >= 1) {
+                runtime_timing::Scope timing(runtime_timing::Phase::Ppu);
                 render_scanline(scanline_index_ - 1);
+            }
             hdma_line();
         }
         if (scanline_master_clock_ == line_clocks) {
