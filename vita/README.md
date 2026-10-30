@@ -71,3 +71,23 @@ produced or tested. SDL2 renderer/audio behavior, compiler/linker compatibility,
 filesystem durability, performance, audio underruns, suspend/resume, and actual
 hardware input all need testing on a physical Vita. Do not treat the current
 source as a proven 60 FPS build.
+
+## Performance and LiveArea update
+
+The Vita frontend requests a 444 MHz ARM clock and uses the shared persistent
+NTSC frame pacer without SDL present-vsync. This avoids combining two pacing
+sources and prevents per-frame sleep jitter from permanently slowing the game.
+When behind, only framebuffer upload/presentation is omitted; simulation, input,
+and audio continue for every frame. Sustained core execution over 16.64 ms still
+requires profiling on hardware; this is not a measured 60 FPS guarantee.
+
+The supplied VitaBound artwork is packaged from `vita/sce_sys`: a 128x128 bubble
+icon, an 840x500 checkerboard LiveArea background, and a 280x158 startup gate
+containing the icon at its original aspect ratio. The LiveArea template references
+both images. The title ID and save directory are unchanged.
+
+Validation for this update: existing host frame-pacer tests pass, including
+late-frame recovery and preservation of simulation/audio work. The update has
+not been cross-built here because VitaSDK is unavailable. Rebuild with
+`bash vita/build.sh`, then test overworld movement, battles, sound, and SRAM on
+a physical Vita.

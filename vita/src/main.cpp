@@ -7,6 +7,7 @@
 
 #include <SDL.h>
 #include <psp2/ctrl.h>
+#include <psp2/power.h>
 
 #include <algorithm>
 #include <chrono>
@@ -82,6 +83,8 @@ void show_error(const std::string& message) {
 
 int main(int, char**) {
     try {
+        // Give the CPU-heavy game core the standard Vita performance clock.
+        scePowerSetArmClockFrequency(444);
         SDL_SetMainReady();
         if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_EVENTS) != 0)
             throw std::runtime_error(std::string("SDL initialization failed: ") + SDL_GetError());
@@ -134,6 +137,9 @@ int main(int, char**) {
             std::cerr << "Audio disabled: " << error.what() << '\n';
         }
 
+        // Use one clock for simulation and presentation. Combining a blocking
+        // vsync present with a per-iteration sleep can miss alternate refreshes.
+        eb::FramePacer pacer(eb::FramePacer::Clock::now());
         bool running = true;
         // Keep the frame clock phase stable even with variable per-frame work.
         eb::FramePacer pacer(std::chrono::steady_clock::now(), 60.0);
@@ -147,7 +153,7 @@ int main(int, char**) {
             if (!running)
                 break;
 
-            session.advance_frame(read_buttons());
+            const auto frames = session.advance_frame(read_buttons());
             if (audio) {
                 const auto samples = session.take_audio_samples();
                 audio->append(samples);
