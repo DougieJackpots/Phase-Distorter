@@ -135,9 +135,10 @@ int main(int, char**) {
         }
 
         bool running = true;
+        // Keep the frame clock phase stable even with variable per-frame work.
+        eb::FramePacer pacer(std::chrono::steady_clock::now(), 60.0);
         auto last_save = std::chrono::steady_clock::now();
         while (running) {
-            const auto frame_start = std::chrono::steady_clock::now();
             SDL_Event event{};
             while (SDL_PollEvent(&event))
                 if (event.type == SDL_QUIT ||
@@ -161,8 +162,9 @@ int main(int, char**) {
             SDL_RenderClear(renderer.get());
             SDL_RenderCopy(renderer.get(), texture.get(), nullptr, nullptr);
             SDL_RenderPresent(renderer.get());
-            // SDL presentation must not impose a second VSync deadline on top of our frame pacing.
-            const auto deadline = frame_start + eb::FramePacer::period();
+            // A stable 60 Hz deadline prevents drift from per-frame jitter.
+            pacer.advance(std::chrono::steady_clock::now());
+            const auto deadline = pacer.deadline();
             if (std::chrono::steady_clock::now() < deadline)
                 std::this_thread::sleep_until(deadline);
 
