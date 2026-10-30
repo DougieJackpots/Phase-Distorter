@@ -1,5 +1,6 @@
 #include "eb/asset_store.hpp"
 #include "eb/game_session.hpp"
+#include "eb/frame_pacer.hpp"
 #include "eb/audio_output.hpp"
 #include "eb/logical_clock_policy.hpp"
 #include "generated_assets.hpp"
@@ -128,7 +129,7 @@ int main(int, char**) {
 
         std::unique_ptr<eb::DeviceAudioQueue> audio;
         try {
-            audio = std::make_unique<eb::DeviceAudioQueue>(60.0);
+            audio = std::make_unique<eb::DeviceAudioQueue>(eb::FramePacer::frame_rate);
         } catch (const std::exception& error) {
             std::cerr << "Audio disabled: " << error.what() << '\n';
         }
