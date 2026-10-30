@@ -351,9 +351,10 @@ if(EB_BUILD_VITA)
     vita_create_self(eboot.bin eb_vita)
     vita_create_vpk(PhaseDistorter.vpk DPDJ00001 eboot.bin
         VERSION "01.00" NAME "Phase Distorter"
-        FILE "${CMAKE_CURRENT_SOURCE_DIR}/../vita/assets/icon0.png" sce_sys/icon0.png
-        FILE "${CMAKE_CURRENT_SOURCE_DIR}/../vita/assets/bg.png" sce_sys/livearea/contents/bg.png
-        FILE "${CMAKE_CURRENT_SOURCE_DIR}/../vita/assets/template.xml" sce_sys/livearea/contents/template.xml)
+        FILE "${CMAKE_CURRENT_SOURCE_DIR}/../vita/sce_sys/icon0.png" sce_sys/icon0.png
+        FILE "${CMAKE_CURRENT_SOURCE_DIR}/../vita/sce_sys/livearea/contents/bg.png" sce_sys/livearea/contents/bg.png
+        FILE "${CMAKE_CURRENT_SOURCE_DIR}/../vita/sce_sys/livearea/contents/startup.png" sce_sys/livearea/contents/startup.png
+        FILE "${CMAKE_CURRENT_SOURCE_DIR}/../vita/sce_sys/livearea/contents/template.xml" sce_sys/livearea/contents/template.xml)
 endif()
 
 # Register only synthetic, asset-free checks in default CTest. Optional route
