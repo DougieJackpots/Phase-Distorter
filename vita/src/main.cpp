@@ -161,8 +161,7 @@ int main(int, char**) {
             SDL_RenderClear(renderer.get());
             SDL_RenderCopy(renderer.get(), texture.get(), nullptr, nullptr);
             SDL_RenderPresent(renderer.get());
-            std::this_thread::sleep_until(frame_start + std::chrono::duration_cast<
-                std::chrono::steady_clock::duration>(std::chrono::duration<double>(1.0 / 60.0)));
+            std::this_thread::sleep_until(frame_start + eb::FramePacer::period());
 
             const auto now = std::chrono::steady_clock::now();
             if (now - last_save >= std::chrono::seconds(10)) {
