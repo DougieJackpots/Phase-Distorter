@@ -265,3 +265,49 @@ not invalidate cache hits within one scanline. Persistent multi-line caching
 would need correct VRAM/register invalidation. RGB565 would change the current
 32-bit presentation contract, and DSP batching must preserve shared RAM/echo and
 register ordering. Those structural changes are deliberately excluded here.
+
+## Compact SPC dispatch architecture experiment
+
+Branch: `vita-compact-spc-experiment`, based on the isolated timing/stride branch.
+This changes SPC source-site dispatch, not the SPC/DSP clock schedule or opcode
+semantics. The original path does a global PC switch and a source-routine PC
+switch. The compact path indexes a four-byte entry by source PC, rejects gaps,
+validates all loaded instruction bytes in the same order, and invokes the same
+`execute_opcode_semantics` implementation. It never decodes replacement RAM
+instructions or accepts an unowned PC. Generated source label/file/line evidence
+is retained in `generated/compact_spc_sites.inc`.
+
+The generator emits both alternatives. Vita selects compact dispatch by default
+on this branch; the general host CMake option defaults off. To compare the same
+hardware route with switches instead:
+
+```sh
+cmake -S vita -B build-vita -DEB_VITA_COMPACT_SPC_DISPATCH=OFF
+bash vita/build.sh
+```
+
+Re-enable with `-DEB_VITA_COMPACT_SPC_DISPATCH=ON`. Keep detailed runtime timing
+off (`-DEB_VITA_RUNTIME_TIMING=OFF`) for the first A/B test, with identical input,
+enhanced-timing, stride, build configuration, SRAM policy and device. The log
+prints `compact_spc_dispatch=0|1`. Measure both overworld and battle routes.
+This is not a claim that the game will reach a particular FPS.
+
+Host checks compare all 65,536 possible PCs and 1,173,000 single-byte code
+mutations against the independent original generated switches, including read
+order, accept/reject decisions and semantic arguments. A second fixture executes
+all 2,163 source instruction sites through the real SPC/DSP implementations and
+compares complete SPC/DSP snapshots, RAM/registers/timers/clocks, ordered writes,
+ports and 18,414 emitted interleaved PCM samples. These are synthetic single-step
+fixtures, not a full game route or a physical-Vita test.
+
+With host g++ -O2, `size` reports about 44 KB combined code/read-only-data for the
+compact dispatcher object versus 200 KB for the switch object. Host dispatch-only
+microbenchmarks also improve, but omit real opcode execution and hardware work.
+They do not establish Vita instruction-cache behavior or end-to-end speed. This
+layout trades constant-site specialization opportunities for a smaller dispatch
+working set; LTO and Cortex-A9 behavior must be measured on the device.
+
+Host test targets: `compact_spc_dispatch_tests` and
+`compact_spc_execution_tests`. Original source-map and instruction-stream hashes
+are unchanged. No scheduling batching, DSP deferral, threading, ISA/ABI changes,
+or revised CPU timing budgets are included in this change.

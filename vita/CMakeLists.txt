@@ -16,6 +16,9 @@ set(EB_BUILD_TESTS OFF CACHE BOOL "Disable desktop verification targets" FORCE)
 set(EB_PREGENERATED_DIR "${CMAKE_CURRENT_LIST_DIR}/../generated" CACHE PATH "Use checked-in generated sources for Vita builds" FORCE)
 set(EB_BUILD_VITA ON CACHE BOOL "Build the Vita SDL frontend" FORCE)
 
+option(EB_VITA_COMPACT_SPC_DISPATCH "Use compact SPC source-site dispatch on this experimental branch" ON)
+set(EB_COMPACT_SPC_DISPATCH ${EB_VITA_COMPACT_SPC_DISPATCH} CACHE BOOL "Vita SPC dispatch selection" FORCE)
+
 option(EB_VITA_RUNTIME_TIMING "Sample core CPU/PPU/DSP timings every 61 updates" ON)
 if(EB_VITA_RUNTIME_TIMING)
     add_compile_definitions(EB_RUNTIME_TIMING)

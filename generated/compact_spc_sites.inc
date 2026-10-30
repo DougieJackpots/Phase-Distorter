@@ -1,0 +1,4327 @@
+// Generated source-owned SPC sites: address, opcode, operand, length.
+// src/spc700/main.spc700.s:5 start
+EB_SPC_SITE(0x0500, 0x20, 0x0000, 1)
+// src/spc700/main.spc700.s:6 start
+EB_SPC_SITE(0x0501, 0xCD, 0x00CF, 2)
+// src/spc700/main.spc700.s:7 start
+EB_SPC_SITE(0x0503, 0xBD, 0x0000, 1)
+// src/spc700/main.spc700.s:8 start
+EB_SPC_SITE(0x0504, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:9 start
+EB_SPC_SITE(0x0506, 0x5D, 0x0000, 1)
+// src/spc700/main.spc700.s:11 UNK0507
+EB_SPC_SITE(0x0507, 0xAF, 0x0000, 1)
+// src/spc700/main.spc700.s:12 UNK0507
+EB_SPC_SITE(0x0508, 0xC8, 0x00E0, 2)
+// src/spc700/main.spc700.s:13 UNK0507
+EB_SPC_SITE(0x050A, 0xD0, 0x00FB, 2)
+// src/spc700/main.spc700.s:14 UNK0507
+EB_SPC_SITE(0x050C, 0x3F, 0x16A5, 3)
+// src/spc700/main.spc700.s:15 UNK0507
+EB_SPC_SITE(0x050F, 0xE8, 0x0055, 2)
+// src/spc700/main.spc700.s:16 UNK0507
+EB_SPC_SITE(0x0511, 0xC4, 0x0018, 2)
+// src/spc700/main.spc700.s:17 UNK0507
+EB_SPC_SITE(0x0513, 0xC4, 0x0019, 2)
+// src/spc700/main.spc700.s:18 UNK0507
+EB_SPC_SITE(0x0515, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:19 UNK0507
+EB_SPC_SITE(0x0517, 0xBC, 0x0000, 1)
+// src/spc700/main.spc700.s:20 UNK0507
+EB_SPC_SITE(0x0518, 0x3F, 0x0B2C, 3)
+// src/spc700/main.spc700.s:21 UNK0507
+EB_SPC_SITE(0x051B, 0xA2, 0x0048, 2)
+// src/spc700/main.spc700.s:22 UNK0507
+EB_SPC_SITE(0x051D, 0xE8, 0x0070, 2)
+// src/spc700/main.spc700.s:23 UNK0507
+EB_SPC_SITE(0x051F, 0x8D, 0x000C, 2)
+// src/spc700/main.spc700.s:24 UNK0507
+EB_SPC_SITE(0x0521, 0x3F, 0x0749, 3)
+// src/spc700/main.spc700.s:25 UNK0507
+EB_SPC_SITE(0x0524, 0x8D, 0x001C, 2)
+// src/spc700/main.spc700.s:26 UNK0507
+EB_SPC_SITE(0x0526, 0x3F, 0x0749, 3)
+// src/spc700/main.spc700.s:27 UNK0507
+EB_SPC_SITE(0x0529, 0xE8, 0x006C, 2)
+// src/spc700/main.spc700.s:28 UNK0507
+EB_SPC_SITE(0x052B, 0x8D, 0x005D, 2)
+// src/spc700/main.spc700.s:29 UNK0507
+EB_SPC_SITE(0x052D, 0x3F, 0x0749, 3)
+// src/spc700/main.spc700.s:30 UNK0507
+EB_SPC_SITE(0x0530, 0xE8, 0x00F0, 2)
+// src/spc700/main.spc700.s:31 UNK0507
+EB_SPC_SITE(0x0532, 0xC5, 0x00F1, 3)
+// src/spc700/main.spc700.s:32 UNK0507
+EB_SPC_SITE(0x0535, 0xE8, 0x0010, 2)
+// src/spc700/main.spc700.s:33 UNK0507
+EB_SPC_SITE(0x0537, 0xC5, 0x00FA, 3)
+// src/spc700/main.spc700.s:34 UNK0507
+EB_SPC_SITE(0x053A, 0xC4, 0x0053, 2)
+// src/spc700/main.spc700.s:35 UNK0507
+EB_SPC_SITE(0x053C, 0xE8, 0x0001, 2)
+// src/spc700/main.spc700.s:36 UNK0507
+EB_SPC_SITE(0x053E, 0xC5, 0x00F1, 3)
+// src/spc700/main.spc700.s:37 UNK0507
+EB_SPC_SITE(0x0541, 0xD0, 0x0003, 2)
+// src/spc700/main.spc700.s:39 UNK0543
+EB_SPC_SITE(0x0543, 0x5F, 0x05D8, 3)
+// src/spc700/main.spc700.s:42 MAIN_LOOP
+EB_SPC_SITE(0x0546, 0xE4, 0x001B, 2)
+// src/spc700/main.spc700.s:43 MAIN_LOOP
+EB_SPC_SITE(0x0548, 0xD0, 0x00F9, 2)
+// src/spc700/main.spc700.s:44 MAIN_LOOP
+EB_SPC_SITE(0x054A, 0x8D, 0x000A, 2)
+// src/spc700/main.spc700.s:46 UNK054C
+EB_SPC_SITE(0x054C, 0xAD, 0x0005, 2)
+// src/spc700/main.spc700.s:47 UNK054C
+EB_SPC_SITE(0x054E, 0xF0, 0x0007, 2)
+// src/spc700/main.spc700.s:48 UNK054C
+EB_SPC_SITE(0x0550, 0xB0, 0x0008, 2)
+// src/spc700/main.spc700.s:49 UNK054C
+EB_SPC_SITE(0x0552, 0x69, 0x4C4D, 3)
+// src/spc700/main.spc700.s:50 UNK054C
+EB_SPC_SITE(0x0555, 0xD0, 0x0011, 2)
+// src/spc700/main.spc700.s:52 UNK0557
+EB_SPC_SITE(0x0557, 0xE3, 0x0E4C, 3)
+// src/spc700/main.spc700.s:54 UNK055A
+EB_SPC_SITE(0x055A, 0xF6, 0x0EA7, 3)
+// src/spc700/main.spc700.s:55 UNK055A
+EB_SPC_SITE(0x055D, 0xC5, 0x00F2, 3)
+// src/spc700/main.spc700.s:56 UNK055A
+EB_SPC_SITE(0x0560, 0xF6, 0x0EB1, 3)
+// src/spc700/main.spc700.s:57 UNK055A
+EB_SPC_SITE(0x0563, 0x5D, 0x0000, 1)
+// src/spc700/main.spc700.s:58 UNK055A
+EB_SPC_SITE(0x0564, 0xE6, 0x0000, 1)
+// src/spc700/main.spc700.s:59 UNK055A
+EB_SPC_SITE(0x0565, 0xC5, 0x00F3, 3)
+// src/spc700/main.spc700.s:61 UNK0568
+EB_SPC_SITE(0x0568, 0xFE, 0x00E2, 2)
+// src/spc700/main.spc700.s:62 UNK0568
+EB_SPC_SITE(0x056A, 0xCB, 0x0045, 2)
+// src/spc700/main.spc700.s:63 UNK0568
+EB_SPC_SITE(0x056C, 0xCB, 0x0046, 2)
+// src/spc700/main.spc700.s:64 UNK0568
+EB_SPC_SITE(0x056E, 0xE4, 0x0018, 2)
+// src/spc700/main.spc700.s:65 UNK0568
+EB_SPC_SITE(0x0570, 0x44, 0x0019, 2)
+// src/spc700/main.spc700.s:66 UNK0568
+EB_SPC_SITE(0x0572, 0x5C, 0x0000, 1)
+// src/spc700/main.spc700.s:67 UNK0568
+EB_SPC_SITE(0x0573, 0x5C, 0x0000, 1)
+// src/spc700/main.spc700.s:68 UNK0568
+EB_SPC_SITE(0x0574, 0xED, 0x0000, 1)
+// src/spc700/main.spc700.s:69 UNK0568
+EB_SPC_SITE(0x0575, 0x6B, 0x0018, 2)
+// src/spc700/main.spc700.s:70 UNK0568
+EB_SPC_SITE(0x0577, 0x6B, 0x0019, 2)
+// src/spc700/main.spc700.s:72 UNK0579
+EB_SPC_SITE(0x0579, 0xEC, 0x00FD, 3)
+// src/spc700/main.spc700.s:73 UNK0579
+EB_SPC_SITE(0x057C, 0xF0, 0x00FB, 2)
+// src/spc700/main.spc700.s:74 UNK0579
+EB_SPC_SITE(0x057E, 0x6D, 0x0000, 1)
+// src/spc700/main.spc700.s:75 UNK0579
+EB_SPC_SITE(0x057F, 0xE8, 0x0020, 2)
+// src/spc700/main.spc700.s:76 UNK0579
+EB_SPC_SITE(0x0581, 0xCF, 0x0000, 1)
+// src/spc700/main.spc700.s:77 UNK0579
+EB_SPC_SITE(0x0582, 0x60, 0x0000, 1)
+// src/spc700/main.spc700.s:78 UNK0579
+EB_SPC_SITE(0x0583, 0x84, 0x0043, 2)
+// src/spc700/main.spc700.s:79 UNK0579
+EB_SPC_SITE(0x0585, 0xC4, 0x0043, 2)
+// src/spc700/main.spc700.s:80 UNK0579
+EB_SPC_SITE(0x0587, 0x90, 0x0044, 2)
+// src/spc700/main.spc700.s:81 UNK0579
+EB_SPC_SITE(0x0589, 0x5F, 0x0596, 3)
+// src/spc700/main.spc700.s:84 UNK058C
+EB_SPC_SITE(0x058C, 0xE5, 0x04B1, 3)
+// src/spc700/main.spc700.s:85 UNK058C
+EB_SPC_SITE(0x058F, 0x68, 0x00AA, 2)
+// src/spc700/main.spc700.s:86 UNK058C
+EB_SPC_SITE(0x0591, 0xD0, 0x0003, 2)
+// src/spc700/main.spc700.s:87 UNK058C
+EB_SPC_SITE(0x0593, 0x3F, 0x05FC, 3)
+// src/spc700/main.spc700.s:89 UNK0596
+EB_SPC_SITE(0x0596, 0x3F, 0x1609, 3)
+// src/spc700/main.spc700.s:90 UNK0596
+EB_SPC_SITE(0x0599, 0x3F, 0x2DAB, 3)
+// src/spc700/main.spc700.s:91 UNK0596
+EB_SPC_SITE(0x059C, 0x3F, 0x2DF3, 3)
+// src/spc700/main.spc700.s:92 UNK0596
+EB_SPC_SITE(0x059F, 0x3F, 0x2DD5, 3)
+// src/spc700/main.spc700.s:93 UNK0596
+EB_SPC_SITE(0x05A2, 0x3F, 0x11DC, 3)
+// src/spc700/main.spc700.s:94 UNK0596
+EB_SPC_SITE(0x05A5, 0xCD, 0x0003, 2)
+// src/spc700/main.spc700.s:95 UNK0596
+EB_SPC_SITE(0x05A7, 0x3F, 0x0635, 3)
+// src/spc700/main.spc700.s:96 UNK0596
+EB_SPC_SITE(0x05AA, 0xC5, 0x04B3, 3)
+// src/spc700/main.spc700.s:97 UNK0596
+EB_SPC_SITE(0x05AD, 0x3F, 0x2E1D, 3)
+// src/spc700/main.spc700.s:98 UNK0596
+EB_SPC_SITE(0x05B0, 0x3F, 0x11BA, 3)
+// src/spc700/main.spc700.s:99 UNK0596
+EB_SPC_SITE(0x05B3, 0xCD, 0x0002, 2)
+// src/spc700/main.spc700.s:100 UNK0596
+EB_SPC_SITE(0x05B5, 0x3F, 0x0635, 3)
+// src/spc700/main.spc700.s:101 UNK0596
+EB_SPC_SITE(0x05B8, 0xC5, 0x04B2, 3)
+// src/spc700/main.spc700.s:102 UNK0596
+EB_SPC_SITE(0x05BB, 0x3F, 0x1198, 3)
+// src/spc700/main.spc700.s:103 UNK0596
+EB_SPC_SITE(0x05BE, 0xCD, 0x0001, 2)
+// src/spc700/main.spc700.s:104 UNK0596
+EB_SPC_SITE(0x05C0, 0x3F, 0x0635, 3)
+// src/spc700/main.spc700.s:105 UNK0596
+EB_SPC_SITE(0x05C3, 0xC5, 0x04B1, 3)
+// src/spc700/main.spc700.s:106 UNK0596
+EB_SPC_SITE(0x05C6, 0x69, 0x4C4D, 3)
+// src/spc700/main.spc700.s:107 UNK0596
+EB_SPC_SITE(0x05C9, 0xF0, 0x0002, 2)
+// src/spc700/main.spc700.s:108 UNK0596
+EB_SPC_SITE(0x05CB, 0xAB, 0x004C, 2)
+// src/spc700/main.spc700.s:110 UNK05CD
+EB_SPC_SITE(0x05CD, 0xE4, 0x0053, 2)
+// src/spc700/main.spc700.s:111 UNK05CD
+EB_SPC_SITE(0x05CF, 0xEE, 0x0000, 1)
+// src/spc700/main.spc700.s:112 UNK05CD
+EB_SPC_SITE(0x05D0, 0xCF, 0x0000, 1)
+// src/spc700/main.spc700.s:113 UNK05CD
+EB_SPC_SITE(0x05D1, 0x60, 0x0000, 1)
+// src/spc700/main.spc700.s:114 UNK05CD
+EB_SPC_SITE(0x05D2, 0x84, 0x0051, 2)
+// src/spc700/main.spc700.s:115 UNK05CD
+EB_SPC_SITE(0x05D4, 0xC4, 0x0051, 2)
+// src/spc700/main.spc700.s:116 UNK05CD
+EB_SPC_SITE(0x05D6, 0x90, 0x0008, 2)
+// src/spc700/main.spc700.s:118 UNK05D8
+EB_SPC_SITE(0x05D8, 0x3F, 0x07F9, 3)
+// src/spc700/main.spc700.s:119 UNK05D8
+EB_SPC_SITE(0x05DB, 0x3F, 0x0625, 3)
+// src/spc700/main.spc700.s:120 UNK05D8
+EB_SPC_SITE(0x05DE, 0x2F, 0x0019, 2)
+// src/spc700/main.spc700.s:122 UNK05E0
+EB_SPC_SITE(0x05E0, 0xE4, 0x0004, 2)
+// src/spc700/main.spc700.s:123 UNK05E0
+EB_SPC_SITE(0x05E2, 0xF0, 0x0012, 2)
+// src/spc700/main.spc700.s:124 UNK05E0
+EB_SPC_SITE(0x05E4, 0xCD, 0x0000, 2)
+// src/spc700/main.spc700.s:125 UNK05E0
+EB_SPC_SITE(0x05E6, 0x8F, 0x4701, 3)
+// src/spc700/main.spc700.s:127 UNK05E9
+EB_SPC_SITE(0x05E9, 0xF4, 0x0031, 2)
+// src/spc700/main.spc700.s:128 UNK05E9
+EB_SPC_SITE(0x05EB, 0xF0, 0x0003, 2)
+// src/spc700/main.spc700.s:129 UNK05E9
+EB_SPC_SITE(0x05ED, 0x3F, 0x0DD0, 3)
+// src/spc700/main.spc700.s:131 UNK05F0
+EB_SPC_SITE(0x05F0, 0x3D, 0x0000, 1)
+// src/spc700/main.spc700.s:132 UNK05F0
+EB_SPC_SITE(0x05F1, 0x3D, 0x0000, 1)
+// src/spc700/main.spc700.s:133 UNK05F0
+EB_SPC_SITE(0x05F2, 0x0B, 0x0047, 2)
+// src/spc700/main.spc700.s:134 UNK05F0
+EB_SPC_SITE(0x05F4, 0xD0, 0x00F3, 2)
+// src/spc700/main.spc700.s:136 UNK05F6
+EB_SPC_SITE(0x05F6, 0x5F, 0x0546, 3)
+// src/spc700/main.spc700.s:139 UNK05F9
+EB_SPC_SITE(0x05F9, 0x5F, 0x0546, 3)
+// src/spc700/main.spc700.s:142 UNK05FC
+EB_SPC_SITE(0x05FC, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:143 UNK05FC
+EB_SPC_SITE(0x05FE, 0x8D, 0x002C, 2)
+// src/spc700/main.spc700.s:144 UNK05FC
+EB_SPC_SITE(0x0600, 0x3F, 0x0749, 3)
+// src/spc700/main.spc700.s:145 UNK05FC
+EB_SPC_SITE(0x0603, 0x8D, 0x003C, 2)
+// src/spc700/main.spc700.s:146 UNK05FC
+EB_SPC_SITE(0x0605, 0x3F, 0x0749, 3)
+// src/spc700/main.spc700.s:147 UNK05FC
+EB_SPC_SITE(0x0608, 0xE8, 0x00FF, 2)
+// src/spc700/main.spc700.s:148 UNK05FC
+EB_SPC_SITE(0x060A, 0x8D, 0x005C, 2)
+// src/spc700/main.spc700.s:149 UNK05FC
+EB_SPC_SITE(0x060C, 0x3F, 0x0749, 3)
+// src/spc700/main.spc700.s:150 UNK05FC
+EB_SPC_SITE(0x060F, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:151 UNK05FC
+EB_SPC_SITE(0x0611, 0x8D, 0x004D, 2)
+// src/spc700/main.spc700.s:152 UNK05FC
+EB_SPC_SITE(0x0613, 0x3F, 0x0749, 3)
+// src/spc700/main.spc700.s:153 UNK05FC
+EB_SPC_SITE(0x0616, 0xE8, 0x0020, 2)
+// src/spc700/main.spc700.s:154 UNK05FC
+EB_SPC_SITE(0x0618, 0x8D, 0x006C, 2)
+// src/spc700/main.spc700.s:155 UNK05FC
+EB_SPC_SITE(0x061A, 0x3F, 0x0749, 3)
+// src/spc700/main.spc700.s:156 UNK05FC
+EB_SPC_SITE(0x061D, 0xE8, 0x0080, 2)
+// src/spc700/main.spc700.s:157 UNK05FC
+EB_SPC_SITE(0x061F, 0xC5, 0x00F1, 3)
+// src/spc700/main.spc700.s:158 UNK05FC
+EB_SPC_SITE(0x0622, 0x5F, 0xFFC0, 3)
+// src/spc700/main.spc700.s:161 READ_PORT_0
+EB_SPC_SITE(0x0625, 0xE4, 0x0004, 2)
+// src/spc700/main.spc700.s:162 READ_PORT_0
+EB_SPC_SITE(0x0627, 0xC5, 0x00F4, 3)
+// src/spc700/main.spc700.s:164 UNK062A
+EB_SPC_SITE(0x062A, 0xE5, 0x00F4, 3)
+// src/spc700/main.spc700.s:165 UNK062A
+EB_SPC_SITE(0x062D, 0x65, 0x00F4, 3)
+// src/spc700/main.spc700.s:166 UNK062A
+EB_SPC_SITE(0x0630, 0xD0, 0x00F8, 2)
+// src/spc700/main.spc700.s:167 UNK062A
+EB_SPC_SITE(0x0632, 0xC4, 0x0000, 2)
+// src/spc700/main.spc700.s:168 UNK062A
+EB_SPC_SITE(0x0634, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:171 READ_PORT
+EB_SPC_SITE(0x0635, 0xF5, 0x04A4, 3)
+// src/spc700/main.spc700.s:172 READ_PORT
+EB_SPC_SITE(0x0638, 0xC4, 0x0020, 2)
+// src/spc700/main.spc700.s:174 UNK063A
+EB_SPC_SITE(0x063A, 0xF5, 0x00F4, 3)
+// src/spc700/main.spc700.s:175 UNK063A
+EB_SPC_SITE(0x063D, 0x75, 0x00F4, 3)
+// src/spc700/main.spc700.s:176 UNK063A
+EB_SPC_SITE(0x0640, 0xD0, 0x00F8, 2)
+// src/spc700/main.spc700.s:177 UNK063A
+EB_SPC_SITE(0x0642, 0xD4, 0x0000, 2)
+// src/spc700/main.spc700.s:178 UNK063A
+EB_SPC_SITE(0x0644, 0xD5, 0x00F4, 3)
+// src/spc700/main.spc700.s:179 UNK063A
+EB_SPC_SITE(0x0647, 0xD5, 0x04A4, 3)
+// src/spc700/main.spc700.s:180 UNK063A
+EB_SPC_SITE(0x064A, 0x64, 0x0020, 2)
+// src/spc700/main.spc700.s:181 UNK063A
+EB_SPC_SITE(0x064C, 0xD0, 0x0002, 2)
+// src/spc700/main.spc700.s:182 UNK063A
+EB_SPC_SITE(0x064E, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:184 UNK0650
+EB_SPC_SITE(0x0650, 0xD5, 0x04A0, 3)
+// src/spc700/main.spc700.s:186 UNK0653
+EB_SPC_SITE(0x0653, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:189 PLAY_NOTE
+EB_SPC_SITE(0x0654, 0xAD, 0x00CA, 2)
+// src/spc700/main.spc700.s:190 PLAY_NOTE
+EB_SPC_SITE(0x0656, 0x90, 0x0005, 2)
+// src/spc700/main.spc700.s:191 PLAY_NOTE
+EB_SPC_SITE(0x0658, 0x3F, 0x095F, 3)
+// src/spc700/main.spc700.s:192 PLAY_NOTE
+EB_SPC_SITE(0x065B, 0x8D, 0x00A4, 2)
+// src/spc700/main.spc700.s:194 UNK065D
+EB_SPC_SITE(0x065D, 0xAD, 0x00C8, 2)
+// src/spc700/main.spc700.s:195 UNK065D
+EB_SPC_SITE(0x065F, 0xB0, 0x00F2, 2)
+// src/spc700/main.spc700.s:196 UNK065D
+EB_SPC_SITE(0x0661, 0xE4, 0x001A, 2)
+// src/spc700/main.spc700.s:197 UNK065D
+EB_SPC_SITE(0x0663, 0x24, 0x0047, 2)
+// src/spc700/main.spc700.s:198 UNK065D
+EB_SPC_SITE(0x0665, 0xD0, 0x00EC, 2)
+// src/spc700/main.spc700.s:199 UNK065D
+EB_SPC_SITE(0x0667, 0xDD, 0x0000, 1)
+// src/spc700/main.spc700.s:200 UNK065D
+EB_SPC_SITE(0x0668, 0x28, 0x007F, 2)
+// src/spc700/main.spc700.s:201 UNK065D
+EB_SPC_SITE(0x066A, 0x60, 0x0000, 1)
+// src/spc700/main.spc700.s:202 UNK065D
+EB_SPC_SITE(0x066B, 0x84, 0x0050, 2)
+// src/spc700/main.spc700.s:203 UNK065D
+EB_SPC_SITE(0x066D, 0x60, 0x0000, 1)
+// src/spc700/main.spc700.s:204 UNK065D
+EB_SPC_SITE(0x066E, 0x95, 0x02F0, 3)
+// src/spc700/main.spc700.s:205 UNK065D
+EB_SPC_SITE(0x0671, 0xD5, 0x0361, 3)
+// src/spc700/main.spc700.s:206 UNK065D
+EB_SPC_SITE(0x0674, 0xF5, 0x0381, 3)
+// src/spc700/main.spc700.s:207 UNK065D
+EB_SPC_SITE(0x0677, 0xD5, 0x0360, 3)
+// src/spc700/main.spc700.s:208 UNK065D
+EB_SPC_SITE(0x067A, 0xF5, 0x02B1, 3)
+// src/spc700/main.spc700.s:209 UNK065D
+EB_SPC_SITE(0x067D, 0x5C, 0x0000, 1)
+// src/spc700/main.spc700.s:210 UNK065D
+EB_SPC_SITE(0x067E, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:211 UNK065D
+EB_SPC_SITE(0x0680, 0x7C, 0x0000, 1)
+// src/spc700/main.spc700.s:212 UNK065D
+EB_SPC_SITE(0x0681, 0xD5, 0x02A0, 3)
+// src/spc700/main.spc700.s:213 UNK065D
+EB_SPC_SITE(0x0684, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:214 UNK065D
+EB_SPC_SITE(0x0686, 0xD4, 0x00B0, 2)
+// src/spc700/main.spc700.s:215 UNK065D
+EB_SPC_SITE(0x0688, 0xD5, 0x0100, 3)
+// src/spc700/main.spc700.s:216 UNK065D
+EB_SPC_SITE(0x068B, 0xD5, 0x02D0, 3)
+// src/spc700/main.spc700.s:217 UNK065D
+EB_SPC_SITE(0x068E, 0xD4, 0x00C0, 2)
+// src/spc700/main.spc700.s:218 UNK065D
+EB_SPC_SITE(0x0690, 0x09, 0x5E47, 3)
+// src/spc700/main.spc700.s:219 UNK065D
+EB_SPC_SITE(0x0693, 0x09, 0x4547, 3)
+// src/spc700/main.spc700.s:220 UNK065D
+EB_SPC_SITE(0x0696, 0xF5, 0x0280, 3)
+// src/spc700/main.spc700.s:221 UNK065D
+EB_SPC_SITE(0x0699, 0xD4, 0x00A0, 2)
+// src/spc700/main.spc700.s:222 UNK065D
+EB_SPC_SITE(0x069B, 0xF0, 0x001E, 2)
+// src/spc700/main.spc700.s:223 UNK065D
+EB_SPC_SITE(0x069D, 0xF5, 0x0281, 3)
+// src/spc700/main.spc700.s:224 UNK065D
+EB_SPC_SITE(0x06A0, 0xD4, 0x00A1, 2)
+// src/spc700/main.spc700.s:225 UNK065D
+EB_SPC_SITE(0x06A2, 0xF5, 0x0290, 3)
+// src/spc700/main.spc700.s:226 UNK065D
+EB_SPC_SITE(0x06A5, 0xD0, 0x000A, 2)
+// src/spc700/main.spc700.s:227 UNK065D
+EB_SPC_SITE(0x06A7, 0xF5, 0x0361, 3)
+// src/spc700/main.spc700.s:228 UNK065D
+EB_SPC_SITE(0x06AA, 0x80, 0x0000, 1)
+// src/spc700/main.spc700.s:229 UNK065D
+EB_SPC_SITE(0x06AB, 0xB5, 0x0291, 3)
+// src/spc700/main.spc700.s:230 UNK065D
+EB_SPC_SITE(0x06AE, 0xD5, 0x0361, 3)
+// src/spc700/main.spc700.s:232 UNK06B1
+EB_SPC_SITE(0x06B1, 0xF5, 0x0291, 3)
+// src/spc700/main.spc700.s:233 UNK06B1
+EB_SPC_SITE(0x06B4, 0x60, 0x0000, 1)
+// src/spc700/main.spc700.s:234 UNK06B1
+EB_SPC_SITE(0x06B5, 0x95, 0x0361, 3)
+// src/spc700/main.spc700.s:235 UNK06B1
+EB_SPC_SITE(0x06B8, 0x3F, 0x0BA4, 3)
+// src/spc700/main.spc700.s:237 UNK06BB
+EB_SPC_SITE(0x06BB, 0x3F, 0x0BBC, 3)
+// src/spc700/main.spc700.s:239 UNK06BE
+EB_SPC_SITE(0x06BE, 0x8D, 0x0000, 2)
+// src/spc700/main.spc700.s:240 UNK06BE
+EB_SPC_SITE(0x06C0, 0xE4, 0x0011, 2)
+// src/spc700/main.spc700.s:241 UNK06BE
+EB_SPC_SITE(0x06C2, 0x80, 0x0000, 1)
+// src/spc700/main.spc700.s:242 UNK06BE
+EB_SPC_SITE(0x06C3, 0xA8, 0x0034, 2)
+// src/spc700/main.spc700.s:243 UNK06BE
+EB_SPC_SITE(0x06C5, 0xB0, 0x0009, 2)
+// src/spc700/main.spc700.s:244 UNK06BE
+EB_SPC_SITE(0x06C7, 0xE4, 0x0011, 2)
+// src/spc700/main.spc700.s:245 UNK06BE
+EB_SPC_SITE(0x06C9, 0x80, 0x0000, 1)
+// src/spc700/main.spc700.s:246 UNK06BE
+EB_SPC_SITE(0x06CA, 0xA8, 0x0013, 2)
+// src/spc700/main.spc700.s:247 UNK06BE
+EB_SPC_SITE(0x06CC, 0xB0, 0x0006, 2)
+// src/spc700/main.spc700.s:248 UNK06BE
+EB_SPC_SITE(0x06CE, 0xDC, 0x0000, 1)
+// src/spc700/main.spc700.s:249 UNK06BE
+EB_SPC_SITE(0x06CF, 0x1C, 0x0000, 1)
+// src/spc700/main.spc700.s:251 UNK06D0
+EB_SPC_SITE(0x06D0, 0x7A, 0x0010, 2)
+// src/spc700/main.spc700.s:252 UNK06D0
+EB_SPC_SITE(0x06D2, 0xDA, 0x0010, 2)
+// src/spc700/main.spc700.s:254 UNK06D4
+EB_SPC_SITE(0x06D4, 0x4D, 0x0000, 1)
+// src/spc700/main.spc700.s:255 UNK06D4
+EB_SPC_SITE(0x06D5, 0xE4, 0x0011, 2)
+// src/spc700/main.spc700.s:256 UNK06D4
+EB_SPC_SITE(0x06D7, 0x1C, 0x0000, 1)
+// src/spc700/main.spc700.s:257 UNK06D4
+EB_SPC_SITE(0x06D8, 0x8D, 0x0000, 2)
+// src/spc700/main.spc700.s:258 UNK06D4
+EB_SPC_SITE(0x06DA, 0xCD, 0x0018, 2)
+// src/spc700/main.spc700.s:259 UNK06D4
+EB_SPC_SITE(0x06DC, 0x9E, 0x0000, 1)
+// src/spc700/main.spc700.s:260 UNK06D4
+EB_SPC_SITE(0x06DD, 0x5D, 0x0000, 1)
+// src/spc700/main.spc700.s:261 UNK06D4
+EB_SPC_SITE(0x06DE, 0xF6, 0x0EBD, 3)
+// src/spc700/main.spc700.s:262 UNK06D4
+EB_SPC_SITE(0x06E1, 0xC4, 0x0015, 2)
+// src/spc700/main.spc700.s:263 UNK06D4
+EB_SPC_SITE(0x06E3, 0xF6, 0x0EBC, 3)
+// src/spc700/main.spc700.s:264 UNK06D4
+EB_SPC_SITE(0x06E6, 0xC4, 0x0014, 2)
+// src/spc700/main.spc700.s:265 UNK06D4
+EB_SPC_SITE(0x06E8, 0xF6, 0x0EBF, 3)
+// src/spc700/main.spc700.s:266 UNK06D4
+EB_SPC_SITE(0x06EB, 0x2D, 0x0000, 1)
+// src/spc700/main.spc700.s:267 UNK06D4
+EB_SPC_SITE(0x06EC, 0xF6, 0x0EBE, 3)
+// src/spc700/main.spc700.s:268 UNK06D4
+EB_SPC_SITE(0x06EF, 0xEE, 0x0000, 1)
+// src/spc700/main.spc700.s:269 UNK06D4
+EB_SPC_SITE(0x06F0, 0x9A, 0x0014, 2)
+// src/spc700/main.spc700.s:270 UNK06D4
+EB_SPC_SITE(0x06F2, 0xEB, 0x0010, 2)
+// src/spc700/main.spc700.s:271 UNK06D4
+EB_SPC_SITE(0x06F4, 0xCF, 0x0000, 1)
+// src/spc700/main.spc700.s:272 UNK06D4
+EB_SPC_SITE(0x06F5, 0xDD, 0x0000, 1)
+// src/spc700/main.spc700.s:273 UNK06D4
+EB_SPC_SITE(0x06F6, 0x8D, 0x0000, 2)
+// src/spc700/main.spc700.s:274 UNK06D4
+EB_SPC_SITE(0x06F8, 0x7A, 0x0014, 2)
+// src/spc700/main.spc700.s:275 UNK06D4
+EB_SPC_SITE(0x06FA, 0xCB, 0x0015, 2)
+// src/spc700/main.spc700.s:276 UNK06D4
+EB_SPC_SITE(0x06FC, 0x1C, 0x0000, 1)
+// src/spc700/main.spc700.s:277 UNK06D4
+EB_SPC_SITE(0x06FD, 0x2B, 0x0015, 2)
+// src/spc700/main.spc700.s:278 UNK06D4
+EB_SPC_SITE(0x06FF, 0xC4, 0x0014, 2)
+// src/spc700/main.spc700.s:279 UNK06D4
+EB_SPC_SITE(0x0701, 0x2F, 0x0004, 2)
+// src/spc700/main.spc700.s:281 UNK0703
+EB_SPC_SITE(0x0703, 0x4B, 0x0015, 2)
+// src/spc700/main.spc700.s:282 UNK0703
+EB_SPC_SITE(0x0705, 0x7C, 0x0000, 1)
+// src/spc700/main.spc700.s:283 UNK0703
+EB_SPC_SITE(0x0706, 0x3D, 0x0000, 1)
+// src/spc700/main.spc700.s:285 UNK0707
+EB_SPC_SITE(0x0707, 0xC8, 0x0006, 2)
+// src/spc700/main.spc700.s:286 UNK0707
+EB_SPC_SITE(0x0709, 0xD0, 0x00F8, 2)
+// src/spc700/main.spc700.s:287 UNK0707
+EB_SPC_SITE(0x070B, 0xC4, 0x0014, 2)
+// src/spc700/main.spc700.s:288 UNK0707
+EB_SPC_SITE(0x070D, 0xCE, 0x0000, 1)
+// src/spc700/main.spc700.s:289 UNK0707
+EB_SPC_SITE(0x070E, 0xF5, 0x0220, 3)
+// src/spc700/main.spc700.s:290 UNK0707
+EB_SPC_SITE(0x0711, 0xEB, 0x0015, 2)
+// src/spc700/main.spc700.s:291 UNK0707
+EB_SPC_SITE(0x0713, 0xCF, 0x0000, 1)
+// src/spc700/main.spc700.s:292 UNK0707
+EB_SPC_SITE(0x0714, 0xDA, 0x0016, 2)
+// src/spc700/main.spc700.s:293 UNK0707
+EB_SPC_SITE(0x0716, 0xF5, 0x0220, 3)
+// src/spc700/main.spc700.s:294 UNK0707
+EB_SPC_SITE(0x0719, 0xEB, 0x0014, 2)
+// src/spc700/main.spc700.s:295 UNK0707
+EB_SPC_SITE(0x071B, 0xCF, 0x0000, 1)
+// src/spc700/main.spc700.s:296 UNK0707
+EB_SPC_SITE(0x071C, 0x6D, 0x0000, 1)
+// src/spc700/main.spc700.s:297 UNK0707
+EB_SPC_SITE(0x071D, 0xF5, 0x0221, 3)
+// src/spc700/main.spc700.s:298 UNK0707
+EB_SPC_SITE(0x0720, 0xEB, 0x0014, 2)
+// src/spc700/main.spc700.s:299 UNK0707
+EB_SPC_SITE(0x0722, 0xCF, 0x0000, 1)
+// src/spc700/main.spc700.s:300 UNK0707
+EB_SPC_SITE(0x0723, 0x7A, 0x0016, 2)
+// src/spc700/main.spc700.s:301 UNK0707
+EB_SPC_SITE(0x0725, 0xDA, 0x0016, 2)
+// src/spc700/main.spc700.s:302 UNK0707
+EB_SPC_SITE(0x0727, 0xF5, 0x0221, 3)
+// src/spc700/main.spc700.s:303 UNK0707
+EB_SPC_SITE(0x072A, 0xEB, 0x0015, 2)
+// src/spc700/main.spc700.s:304 UNK0707
+EB_SPC_SITE(0x072C, 0xCF, 0x0000, 1)
+// src/spc700/main.spc700.s:305 UNK0707
+EB_SPC_SITE(0x072D, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:306 UNK0707
+EB_SPC_SITE(0x072E, 0xAE, 0x0000, 1)
+// src/spc700/main.spc700.s:307 UNK0707
+EB_SPC_SITE(0x072F, 0x7A, 0x0016, 2)
+// src/spc700/main.spc700.s:308 UNK0707
+EB_SPC_SITE(0x0731, 0xDA, 0x0016, 2)
+// src/spc700/main.spc700.s:309 UNK0707
+EB_SPC_SITE(0x0733, 0x7D, 0x0000, 1)
+// src/spc700/main.spc700.s:310 UNK0707
+EB_SPC_SITE(0x0734, 0x9F, 0x0000, 1)
+// src/spc700/main.spc700.s:311 UNK0707
+EB_SPC_SITE(0x0735, 0x5C, 0x0000, 1)
+// src/spc700/main.spc700.s:312 UNK0707
+EB_SPC_SITE(0x0736, 0x08, 0x0002, 2)
+// src/spc700/main.spc700.s:313 UNK0707
+EB_SPC_SITE(0x0738, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:314 UNK0707
+EB_SPC_SITE(0x0739, 0xE4, 0x0016, 2)
+// src/spc700/main.spc700.s:315 UNK0707
+EB_SPC_SITE(0x073B, 0x3F, 0x0741, 3)
+// src/spc700/main.spc700.s:316 UNK0707
+EB_SPC_SITE(0x073E, 0xFC, 0x0000, 1)
+// src/spc700/main.spc700.s:317 UNK0707
+EB_SPC_SITE(0x073F, 0xE4, 0x0017, 2)
+// src/spc700/main.spc700.s:320 UNK0741
+EB_SPC_SITE(0x0741, 0x2D, 0x0000, 1)
+// src/spc700/main.spc700.s:321 UNK0741
+EB_SPC_SITE(0x0742, 0xE4, 0x0047, 2)
+// src/spc700/main.spc700.s:322 UNK0741
+EB_SPC_SITE(0x0744, 0x24, 0x001A, 2)
+// src/spc700/main.spc700.s:323 UNK0741
+EB_SPC_SITE(0x0746, 0xAE, 0x0000, 1)
+// src/spc700/main.spc700.s:324 UNK0741
+EB_SPC_SITE(0x0747, 0xD0, 0x0006, 2)
+// src/spc700/main.spc700.s:326 WRITE_DSP
+EB_SPC_SITE(0x0749, 0xCC, 0x00F2, 3)
+// src/spc700/main.spc700.s:327 WRITE_DSP
+EB_SPC_SITE(0x074C, 0xC5, 0x00F3, 3)
+// src/spc700/main.spc700.s:329 UNK074F
+EB_SPC_SITE(0x074F, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:332 UNK0750
+EB_SPC_SITE(0x0750, 0x8D, 0x0000, 2)
+// src/spc700/main.spc700.s:333 UNK0750
+EB_SPC_SITE(0x0752, 0xF7, 0x0040, 2)
+// src/spc700/main.spc700.s:334 UNK0750
+EB_SPC_SITE(0x0754, 0x3A, 0x0040, 2)
+// src/spc700/main.spc700.s:335 UNK0750
+EB_SPC_SITE(0x0756, 0x2D, 0x0000, 1)
+// src/spc700/main.spc700.s:336 UNK0750
+EB_SPC_SITE(0x0757, 0xF7, 0x0040, 2)
+// src/spc700/main.spc700.s:337 UNK0750
+EB_SPC_SITE(0x0759, 0x3A, 0x0040, 2)
+// src/spc700/main.spc700.s:338 UNK0750
+EB_SPC_SITE(0x075B, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:339 UNK0750
+EB_SPC_SITE(0x075C, 0xAE, 0x0000, 1)
+// src/spc700/main.spc700.s:340 UNK0750
+EB_SPC_SITE(0x075D, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:343 UNK075E
+EB_SPC_SITE(0x075E, 0xE8, 0x00FF, 2)
+// src/spc700/main.spc700.s:344 UNK075E
+EB_SPC_SITE(0x0760, 0x8D, 0x005C, 2)
+// src/spc700/main.spc700.s:345 UNK075E
+EB_SPC_SITE(0x0762, 0x3F, 0x0749, 3)
+// src/spc700/main.spc700.s:346 UNK075E
+EB_SPC_SITE(0x0765, 0x3F, 0x141A, 3)
+// src/spc700/main.spc700.s:347 UNK075E
+EB_SPC_SITE(0x0768, 0x3F, 0x1453, 3)
+// src/spc700/main.spc700.s:348 UNK075E
+EB_SPC_SITE(0x076B, 0x3F, 0x0EE1, 3)
+// src/spc700/main.spc700.s:349 UNK075E
+EB_SPC_SITE(0x076E, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:350 UNK075E
+EB_SPC_SITE(0x0770, 0xC4, 0x0008, 2)
+// src/spc700/main.spc700.s:352 UNK0772
+EB_SPC_SITE(0x0772, 0xC4, 0x0004, 2)
+// src/spc700/main.spc700.s:353 UNK0772
+EB_SPC_SITE(0x0774, 0x60, 0x0000, 1)
+// src/spc700/main.spc700.s:354 UNK0772
+EB_SPC_SITE(0x0775, 0x88, 0x0000, 2)
+// src/spc700/main.spc700.s:355 UNK0772
+EB_SPC_SITE(0x0777, 0x30, 0x0021, 2)
+// src/spc700/main.spc700.s:356 UNK0772
+EB_SPC_SITE(0x0779, 0x1C, 0x0000, 1)
+// src/spc700/main.spc700.s:357 UNK0772
+EB_SPC_SITE(0x077A, 0x5D, 0x0000, 1)
+// src/spc700/main.spc700.s:358 UNK0772
+EB_SPC_SITE(0x077B, 0xF5, 0x2E49, 3)
+// src/spc700/main.spc700.s:359 UNK0772
+EB_SPC_SITE(0x077E, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:360 UNK0772
+EB_SPC_SITE(0x077F, 0xF5, 0x2E48, 3)
+// src/spc700/main.spc700.s:362 UNK0782
+EB_SPC_SITE(0x0782, 0xDA, 0x0040, 2)
+// src/spc700/main.spc700.s:363 UNK0782
+EB_SPC_SITE(0x0784, 0x8F, 0x0C02, 3)
+// src/spc700/main.spc700.s:365 UNK0787
+EB_SPC_SITE(0x0787, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:366 UNK0787
+EB_SPC_SITE(0x0789, 0xC5, 0x0491, 3)
+// src/spc700/main.spc700.s:367 UNK0787
+EB_SPC_SITE(0x078C, 0xC5, 0x04B1, 3)
+// src/spc700/main.spc700.s:368 UNK0787
+EB_SPC_SITE(0x078F, 0xC5, 0x04B5, 3)
+// src/spc700/main.spc700.s:369 UNK0787
+EB_SPC_SITE(0x0792, 0xE4, 0x001A, 2)
+// src/spc700/main.spc700.s:370 UNK0787
+EB_SPC_SITE(0x0794, 0x48, 0x00FF, 2)
+// src/spc700/main.spc700.s:371 UNK0787
+EB_SPC_SITE(0x0796, 0x0E, 0x0046, 3)
+// src/spc700/main.spc700.s:372 UNK0787
+EB_SPC_SITE(0x0799, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:375 UNK079A
+EB_SPC_SITE(0x079A, 0x28, 0x007F, 2)
+// src/spc700/main.spc700.s:376 UNK079A
+EB_SPC_SITE(0x079C, 0xBC, 0x0000, 1)
+// src/spc700/main.spc700.s:377 UNK079A
+EB_SPC_SITE(0x079D, 0x1C, 0x0000, 1)
+// src/spc700/main.spc700.s:378 UNK079A
+EB_SPC_SITE(0x079E, 0x5D, 0x0000, 1)
+// src/spc700/main.spc700.s:379 UNK079A
+EB_SPC_SITE(0x079F, 0xF5, 0x2F47, 3)
+// src/spc700/main.spc700.s:380 UNK079A
+EB_SPC_SITE(0x07A2, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:381 UNK079A
+EB_SPC_SITE(0x07A3, 0xF5, 0x2F46, 3)
+// src/spc700/main.spc700.s:382 UNK079A
+EB_SPC_SITE(0x07A6, 0x5F, 0x0782, 3)
+// src/spc700/main.spc700.s:384 UNK07A9
+EB_SPC_SITE(0x07A9, 0xCD, 0x000E, 2)
+// src/spc700/main.spc700.s:385 UNK07A9
+EB_SPC_SITE(0x07AB, 0x8F, 0x4780, 3)
+// src/spc700/main.spc700.s:387 UNK07AE
+EB_SPC_SITE(0x07AE, 0xE8, 0x00FF, 2)
+// src/spc700/main.spc700.s:388 UNK07AE
+EB_SPC_SITE(0x07B0, 0xD5, 0x0301, 3)
+// src/spc700/main.spc700.s:389 UNK07AE
+EB_SPC_SITE(0x07B3, 0xE8, 0x000A, 2)
+// src/spc700/main.spc700.s:390 UNK07AE
+EB_SPC_SITE(0x07B5, 0x3F, 0x09B8, 3)
+// src/spc700/main.spc700.s:391 UNK07AE
+EB_SPC_SITE(0x07B8, 0xD5, 0x0211, 3)
+// src/spc700/main.spc700.s:392 UNK07AE
+EB_SPC_SITE(0x07BB, 0xD5, 0x0381, 3)
+// src/spc700/main.spc700.s:393 UNK07AE
+EB_SPC_SITE(0x07BE, 0xD5, 0x02F0, 3)
+// src/spc700/main.spc700.s:394 UNK07AE
+EB_SPC_SITE(0x07C1, 0xD5, 0x0280, 3)
+// src/spc700/main.spc700.s:395 UNK07AE
+EB_SPC_SITE(0x07C4, 0xD5, 0x0400, 3)
+// src/spc700/main.spc700.s:396 UNK07AE
+EB_SPC_SITE(0x07C7, 0xD4, 0x00B1, 2)
+// src/spc700/main.spc700.s:397 UNK07AE
+EB_SPC_SITE(0x07C9, 0xD4, 0x00C1, 2)
+// src/spc700/main.spc700.s:398 UNK07AE
+EB_SPC_SITE(0x07CB, 0x1D, 0x0000, 1)
+// src/spc700/main.spc700.s:399 UNK07AE
+EB_SPC_SITE(0x07CC, 0x1D, 0x0000, 1)
+// src/spc700/main.spc700.s:400 UNK07AE
+EB_SPC_SITE(0x07CD, 0x4B, 0x0047, 2)
+// src/spc700/main.spc700.s:401 UNK07AE
+EB_SPC_SITE(0x07CF, 0xD0, 0x00DD, 2)
+// src/spc700/main.spc700.s:402 UNK07AE
+EB_SPC_SITE(0x07D1, 0xC4, 0x005A, 2)
+// src/spc700/main.spc700.s:403 UNK07AE
+EB_SPC_SITE(0x07D3, 0xC4, 0x0068, 2)
+// src/spc700/main.spc700.s:404 UNK07AE
+EB_SPC_SITE(0x07D5, 0xC4, 0x0054, 2)
+// src/spc700/main.spc700.s:405 UNK07AE
+EB_SPC_SITE(0x07D7, 0xC4, 0x0050, 2)
+// src/spc700/main.spc700.s:406 UNK07AE
+EB_SPC_SITE(0x07D9, 0xC4, 0x0042, 2)
+// src/spc700/main.spc700.s:407 UNK07AE
+EB_SPC_SITE(0x07DB, 0xC4, 0x005F, 2)
+// src/spc700/main.spc700.s:408 UNK07AE
+EB_SPC_SITE(0x07DD, 0x8F, 0x59C0, 3)
+// src/spc700/main.spc700.s:409 UNK07AE
+EB_SPC_SITE(0x07E0, 0x8F, 0x5320, 3)
+// src/spc700/main.spc700.s:411 UNK07E3
+EB_SPC_SITE(0x07E3, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:414 UNK07E4
+EB_SPC_SITE(0x07E4, 0x5F, 0x075E, 3)
+// src/spc700/main.spc700.s:416 UNK07E7
+EB_SPC_SITE(0x07E7, 0x5F, 0x0772, 3)
+// src/spc700/main.spc700.s:419 UNK07EA
+EB_SPC_SITE(0x07EA, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:420 UNK07EA
+EB_SPC_SITE(0x07EC, 0xC5, 0x00F4, 3)
+// src/spc700/main.spc700.s:421 UNK07EA
+EB_SPC_SITE(0x07EF, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:422 UNK07EA
+EB_SPC_SITE(0x07F1, 0x5F, 0x0772, 3)
+// src/spc700/main.spc700.s:423 UNK07EA
+EB_SPC_SITE(0x07F4, 0xE4, 0x0008, 2)
+// src/spc700/main.spc700.s:424 UNK07EA
+EB_SPC_SITE(0x07F6, 0x30, 0x0007, 2)
+// src/spc700/main.spc700.s:425 UNK07EA
+EB_SPC_SITE(0x07F8, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:428 UNK07F9
+EB_SPC_SITE(0x07F9, 0xEB, 0x0008, 2)
+// src/spc700/main.spc700.s:429 UNK07F9
+EB_SPC_SITE(0x07FB, 0xE4, 0x0000, 2)
+// src/spc700/main.spc700.s:430 UNK07F9
+EB_SPC_SITE(0x07FD, 0xC4, 0x0008, 2)
+// src/spc700/main.spc700.s:432 UNK07FF
+EB_SPC_SITE(0x07FF, 0x68, 0x00F0, 2)
+// src/spc700/main.spc700.s:433 UNK07FF
+EB_SPC_SITE(0x0801, 0xF0, 0x0084, 2)
+// src/spc700/main.spc700.s:434 UNK07FF
+EB_SPC_SITE(0x0803, 0x68, 0x00F1, 2)
+// src/spc700/main.spc700.s:435 UNK07FF
+EB_SPC_SITE(0x0805, 0xF0, 0x0008, 2)
+// src/spc700/main.spc700.s:436 UNK07FF
+EB_SPC_SITE(0x0807, 0x68, 0x00FF, 2)
+// src/spc700/main.spc700.s:437 UNK07FF
+EB_SPC_SITE(0x0809, 0xF0, 0x00D9, 2)
+// src/spc700/main.spc700.s:438 UNK07FF
+EB_SPC_SITE(0x080B, 0x7E, 0x0000, 2)
+// src/spc700/main.spc700.s:439 UNK07FF
+EB_SPC_SITE(0x080D, 0xD0, 0x00D8, 2)
+// src/spc700/main.spc700.s:441 UNK080F
+EB_SPC_SITE(0x080F, 0xE4, 0x0004, 2)
+// src/spc700/main.spc700.s:442 UNK080F
+EB_SPC_SITE(0x0811, 0xF0, 0x00D0, 2)
+// src/spc700/main.spc700.s:443 UNK080F
+EB_SPC_SITE(0x0813, 0xE4, 0x000C, 2)
+// src/spc700/main.spc700.s:444 UNK080F
+EB_SPC_SITE(0x0815, 0xF0, 0x005A, 2)
+// src/spc700/main.spc700.s:446 UNK080F
+EB_SPC_SITE(0x0817, 0x6E, 0x8F0C, 3)
+// src/spc700/main.spc700.s:448 UNK081A
+EB_SPC_SITE(0x081A, 0x3F, 0x0750, 3)
+// src/spc700/main.spc700.s:449 UNK081A
+EB_SPC_SITE(0x081D, 0xD0, 0x0022, 2)
+// src/spc700/main.spc700.s:450 UNK081A
+EB_SPC_SITE(0x081F, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:451 UNK081A
+EB_SPC_SITE(0x0820, 0xF0, 0x00C8, 2)
+// src/spc700/main.spc700.s:452 UNK081A
+EB_SPC_SITE(0x0822, 0x68, 0x0080, 2)
+// src/spc700/main.spc700.s:453 UNK081A
+EB_SPC_SITE(0x0824, 0xF0, 0x0006, 2)
+// src/spc700/main.spc700.s:454 UNK081A
+EB_SPC_SITE(0x0826, 0x68, 0x0081, 2)
+// src/spc700/main.spc700.s:455 UNK081A
+EB_SPC_SITE(0x0828, 0xD0, 0x0006, 2)
+// src/spc700/main.spc700.s:456 UNK081A
+EB_SPC_SITE(0x082A, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:458 UNK082C
+EB_SPC_SITE(0x082C, 0xC4, 0x001B, 2)
+// src/spc700/main.spc700.s:459 UNK082C
+EB_SPC_SITE(0x082E, 0x2F, 0x00EA, 2)
+// src/spc700/main.spc700.s:461 UNK0830
+EB_SPC_SITE(0x0830, 0x8B, 0x0042, 2)
+// src/spc700/main.spc700.s:462 UNK0830
+EB_SPC_SITE(0x0832, 0x10, 0x0002, 2)
+// src/spc700/main.spc700.s:463 UNK0830
+EB_SPC_SITE(0x0834, 0xC4, 0x0042, 2)
+// src/spc700/main.spc700.s:465 UNK0836
+EB_SPC_SITE(0x0836, 0x3F, 0x0750, 3)
+// src/spc700/main.spc700.s:466 UNK0836
+EB_SPC_SITE(0x0839, 0xF8, 0x0042, 2)
+// src/spc700/main.spc700.s:467 UNK0836
+EB_SPC_SITE(0x083B, 0xF0, 0x00DD, 2)
+// src/spc700/main.spc700.s:468 UNK0836
+EB_SPC_SITE(0x083D, 0xDA, 0x0040, 2)
+// src/spc700/main.spc700.s:469 UNK0836
+EB_SPC_SITE(0x083F, 0x2F, 0x00D9, 2)
+// src/spc700/main.spc700.s:472 UNK0841
+EB_SPC_SITE(0x0841, 0xDA, 0x0016, 2)
+// src/spc700/main.spc700.s:473 UNK0841
+EB_SPC_SITE(0x0843, 0x8D, 0x000F, 2)
+// src/spc700/main.spc700.s:475 UNK0845
+EB_SPC_SITE(0x0845, 0xF7, 0x0016, 2)
+// src/spc700/main.spc700.s:476 UNK0845
+EB_SPC_SITE(0x0847, 0xD6, 0x0030, 3)
+// src/spc700/main.spc700.s:477 UNK0845
+EB_SPC_SITE(0x084A, 0xDC, 0x0000, 1)
+// src/spc700/main.spc700.s:478 UNK0845
+EB_SPC_SITE(0x084B, 0x10, 0x00F8, 2)
+// src/spc700/main.spc700.s:479 UNK0845
+EB_SPC_SITE(0x084D, 0xCD, 0x0000, 2)
+// src/spc700/main.spc700.s:480 UNK0845
+EB_SPC_SITE(0x084F, 0x8F, 0x4701, 3)
+// src/spc700/main.spc700.s:482 UNK0852
+EB_SPC_SITE(0x0852, 0xF4, 0x0031, 2)
+// src/spc700/main.spc700.s:483 UNK0852
+EB_SPC_SITE(0x0854, 0xF0, 0x000A, 2)
+// src/spc700/main.spc700.s:484 UNK0852
+EB_SPC_SITE(0x0856, 0xF5, 0x0211, 3)
+// src/spc700/main.spc700.s:485 UNK0852
+EB_SPC_SITE(0x0859, 0xD0, 0x0005, 2)
+// src/spc700/main.spc700.s:486 UNK0852
+EB_SPC_SITE(0x085B, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:487 UNK0852
+EB_SPC_SITE(0x085D, 0x3F, 0x095F, 3)
+// src/spc700/main.spc700.s:489 UNK0860
+EB_SPC_SITE(0x0860, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:490 UNK0860
+EB_SPC_SITE(0x0862, 0xD4, 0x0080, 2)
+// src/spc700/main.spc700.s:491 UNK0860
+EB_SPC_SITE(0x0864, 0xD4, 0x0090, 2)
+// src/spc700/main.spc700.s:492 UNK0860
+EB_SPC_SITE(0x0866, 0xD4, 0x0091, 2)
+// src/spc700/main.spc700.s:493 UNK0860
+EB_SPC_SITE(0x0868, 0xBC, 0x0000, 1)
+// src/spc700/main.spc700.s:494 UNK0860
+EB_SPC_SITE(0x0869, 0xD4, 0x0070, 2)
+// src/spc700/main.spc700.s:495 UNK0860
+EB_SPC_SITE(0x086B, 0x3D, 0x0000, 1)
+// src/spc700/main.spc700.s:496 UNK0860
+EB_SPC_SITE(0x086C, 0x3D, 0x0000, 1)
+// src/spc700/main.spc700.s:497 UNK0860
+EB_SPC_SITE(0x086D, 0x0B, 0x0047, 2)
+// src/spc700/main.spc700.s:498 UNK0860
+EB_SPC_SITE(0x086F, 0xD0, 0x00E1, 2)
+// src/spc700/main.spc700.s:500 UNK0871
+EB_SPC_SITE(0x0871, 0xCD, 0x0000, 2)
+// src/spc700/main.spc700.s:501 UNK0871
+EB_SPC_SITE(0x0873, 0xD8, 0x005E, 2)
+// src/spc700/main.spc700.s:502 UNK0871
+EB_SPC_SITE(0x0875, 0x8F, 0x4701, 3)
+// src/spc700/main.spc700.s:504 UNK0878
+EB_SPC_SITE(0x0878, 0xD8, 0x0044, 2)
+// src/spc700/main.spc700.s:505 UNK0878
+EB_SPC_SITE(0x087A, 0xF4, 0x0031, 2)
+// src/spc700/main.spc700.s:506 UNK0878
+EB_SPC_SITE(0x087C, 0xF0, 0x0072, 2)
+// src/spc700/main.spc700.s:507 UNK0878
+EB_SPC_SITE(0x087E, 0x9B, 0x0070, 2)
+// src/spc700/main.spc700.s:508 UNK0878
+EB_SPC_SITE(0x0880, 0xD0, 0x0064, 2)
+// src/spc700/main.spc700.s:510 UNK0882
+EB_SPC_SITE(0x0882, 0x3F, 0x0955, 3)
+// src/spc700/main.spc700.s:511 UNK0882
+EB_SPC_SITE(0x0885, 0xD0, 0x0017, 2)
+// src/spc700/main.spc700.s:512 UNK0882
+EB_SPC_SITE(0x0887, 0xF4, 0x0080, 2)
+// src/spc700/main.spc700.s:513 UNK0882
+EB_SPC_SITE(0x0889, 0xF0, 0x008F, 2)
+// src/spc700/main.spc700.s:514 UNK0882
+EB_SPC_SITE(0x088B, 0x3F, 0x0AC4, 3)
+// src/spc700/main.spc700.s:515 UNK0882
+EB_SPC_SITE(0x088E, 0x9B, 0x0080, 2)
+// src/spc700/main.spc700.s:516 UNK0882
+EB_SPC_SITE(0x0890, 0xD0, 0x00F0, 2)
+// src/spc700/main.spc700.s:517 UNK0882
+EB_SPC_SITE(0x0892, 0xF5, 0x0230, 3)
+// src/spc700/main.spc700.s:518 UNK0882
+EB_SPC_SITE(0x0895, 0xD4, 0x0030, 2)
+// src/spc700/main.spc700.s:519 UNK0882
+EB_SPC_SITE(0x0897, 0xF5, 0x0231, 3)
+// src/spc700/main.spc700.s:520 UNK0882
+EB_SPC_SITE(0x089A, 0xD4, 0x0031, 2)
+// src/spc700/main.spc700.s:521 UNK0882
+EB_SPC_SITE(0x089C, 0x2F, 0x00E4, 2)
+// src/spc700/main.spc700.s:524 UNK089E
+EB_SPC_SITE(0x089E, 0x30, 0x0020, 2)
+// src/spc700/main.spc700.s:525 UNK089E
+EB_SPC_SITE(0x08A0, 0xD5, 0x0200, 3)
+// src/spc700/main.spc700.s:526 UNK089E
+EB_SPC_SITE(0x08A3, 0x3F, 0x0955, 3)
+// src/spc700/main.spc700.s:527 UNK089E
+EB_SPC_SITE(0x08A6, 0x30, 0x0018, 2)
+// src/spc700/main.spc700.s:528 UNK089E
+EB_SPC_SITE(0x08A8, 0x2D, 0x0000, 1)
+// src/spc700/main.spc700.s:529 UNK089E
+EB_SPC_SITE(0x08A9, 0x9F, 0x0000, 1)
+// src/spc700/main.spc700.s:530 UNK089E
+EB_SPC_SITE(0x08AA, 0x28, 0x0007, 2)
+// src/spc700/main.spc700.s:531 UNK089E
+EB_SPC_SITE(0x08AC, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:532 UNK089E
+EB_SPC_SITE(0x08AD, 0xF6, 0x6F80, 3)
+// src/spc700/main.spc700.s:533 UNK089E
+EB_SPC_SITE(0x08B0, 0xD5, 0x0201, 3)
+// src/spc700/main.spc700.s:534 UNK089E
+EB_SPC_SITE(0x08B3, 0xAE, 0x0000, 1)
+// src/spc700/main.spc700.s:535 UNK089E
+EB_SPC_SITE(0x08B4, 0x28, 0x000F, 2)
+// src/spc700/main.spc700.s:536 UNK089E
+EB_SPC_SITE(0x08B6, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:537 UNK089E
+EB_SPC_SITE(0x08B7, 0xF6, 0x6F88, 3)
+// src/spc700/main.spc700.s:538 UNK089E
+EB_SPC_SITE(0x08BA, 0xD5, 0x0210, 3)
+// src/spc700/main.spc700.s:539 UNK089E
+EB_SPC_SITE(0x08BD, 0x3F, 0x0955, 3)
+// src/spc700/main.spc700.s:541 UNK08C0
+EB_SPC_SITE(0x08C0, 0x68, 0x00E0, 2)
+// src/spc700/main.spc700.s:542 UNK08C0
+EB_SPC_SITE(0x08C2, 0x90, 0x0005, 2)
+// src/spc700/main.spc700.s:543 UNK08C0
+EB_SPC_SITE(0x08C4, 0x3F, 0x0943, 3)
+// src/spc700/main.spc700.s:544 UNK08C0
+EB_SPC_SITE(0x08C7, 0x2F, 0x00B9, 2)
+// src/spc700/main.spc700.s:547 UNK08C9
+EB_SPC_SITE(0x08C9, 0xF5, 0x0400, 3)
+// src/spc700/main.spc700.s:548 UNK08C9
+EB_SPC_SITE(0x08CC, 0x04, 0x001B, 2)
+// src/spc700/main.spc700.s:549 UNK08C9
+EB_SPC_SITE(0x08CE, 0xD0, 0x0004, 2)
+// src/spc700/main.spc700.s:550 UNK08C9
+EB_SPC_SITE(0x08D0, 0xDD, 0x0000, 1)
+// src/spc700/main.spc700.s:551 UNK08C9
+EB_SPC_SITE(0x08D1, 0x3F, 0x0654, 3)
+// src/spc700/main.spc700.s:553 UNK08D4
+EB_SPC_SITE(0x08D4, 0xF5, 0x0200, 3)
+// src/spc700/main.spc700.s:554 UNK08D4
+EB_SPC_SITE(0x08D7, 0xD4, 0x0070, 2)
+// src/spc700/main.spc700.s:555 UNK08D4
+EB_SPC_SITE(0x08D9, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:556 UNK08D4
+EB_SPC_SITE(0x08DA, 0xF5, 0x0201, 3)
+// src/spc700/main.spc700.s:557 UNK08D4
+EB_SPC_SITE(0x08DD, 0xCF, 0x0000, 1)
+// src/spc700/main.spc700.s:559 UNK08DE
+EB_SPC_SITE(0x08DE, 0xDD, 0x0000, 1)
+// src/spc700/main.spc700.s:560 UNK08DE
+EB_SPC_SITE(0x08DF, 0xD0, 0x0001, 2)
+// src/spc700/main.spc700.s:561 UNK08DE
+EB_SPC_SITE(0x08E1, 0xBC, 0x0000, 1)
+// src/spc700/main.spc700.s:563 UNK08E2
+EB_SPC_SITE(0x08E2, 0xD4, 0x0071, 2)
+// src/spc700/main.spc700.s:564 UNK08E2
+EB_SPC_SITE(0x08E4, 0x2F, 0x0007, 2)
+// src/spc700/main.spc700.s:567 UNK08E6
+EB_SPC_SITE(0x08E6, 0xE4, 0x001B, 2)
+// src/spc700/main.spc700.s:568 UNK08E6
+EB_SPC_SITE(0x08E8, 0xD0, 0x0006, 2)
+// src/spc700/main.spc700.s:569 UNK08E6
+EB_SPC_SITE(0x08EA, 0x3F, 0x0CF7, 3)
+// src/spc700/main.spc700.s:571 UNK08ED
+EB_SPC_SITE(0x08ED, 0x3F, 0x0B84, 3)
+// src/spc700/main.spc700.s:573 UNK08F0
+EB_SPC_SITE(0x08F0, 0x3D, 0x0000, 1)
+// src/spc700/main.spc700.s:574 UNK08F0
+EB_SPC_SITE(0x08F1, 0x3D, 0x0000, 1)
+// src/spc700/main.spc700.s:575 UNK08F0
+EB_SPC_SITE(0x08F2, 0x0B, 0x0047, 2)
+// src/spc700/main.spc700.s:576 UNK08F0
+EB_SPC_SITE(0x08F4, 0xD0, 0x0082, 2)
+// src/spc700/main.spc700.s:577 UNK08F0
+EB_SPC_SITE(0x08F6, 0xE4, 0x0054, 2)
+// src/spc700/main.spc700.s:578 UNK08F0
+EB_SPC_SITE(0x08F8, 0xF0, 0x000B, 2)
+// src/spc700/main.spc700.s:579 UNK08F0
+EB_SPC_SITE(0x08FA, 0xBA, 0x0056, 2)
+// src/spc700/main.spc700.s:580 UNK08F0
+EB_SPC_SITE(0x08FC, 0x7A, 0x0052, 2)
+// src/spc700/main.spc700.s:581 UNK08F0
+EB_SPC_SITE(0x08FE, 0x6E, 0x0254, 3)
+// src/spc700/main.spc700.s:582 UNK08F0
+EB_SPC_SITE(0x0901, 0xBA, 0x0054, 2)
+// src/spc700/main.spc700.s:584 UNK0903
+EB_SPC_SITE(0x0903, 0xDA, 0x0052, 2)
+// src/spc700/main.spc700.s:586 UNK0905
+EB_SPC_SITE(0x0905, 0xE4, 0x0068, 2)
+// src/spc700/main.spc700.s:587 UNK0905
+EB_SPC_SITE(0x0907, 0xF0, 0x0015, 2)
+// src/spc700/main.spc700.s:588 UNK0905
+EB_SPC_SITE(0x0909, 0xBA, 0x0064, 2)
+// src/spc700/main.spc700.s:589 UNK0905
+EB_SPC_SITE(0x090B, 0x7A, 0x0060, 2)
+// src/spc700/main.spc700.s:590 UNK0905
+EB_SPC_SITE(0x090D, 0xDA, 0x0060, 2)
+// src/spc700/main.spc700.s:591 UNK0905
+EB_SPC_SITE(0x090F, 0xBA, 0x0066, 2)
+// src/spc700/main.spc700.s:592 UNK0905
+EB_SPC_SITE(0x0911, 0x7A, 0x0062, 2)
+// src/spc700/main.spc700.s:593 UNK0905
+EB_SPC_SITE(0x0913, 0x6E, 0x0668, 3)
+// src/spc700/main.spc700.s:594 UNK0905
+EB_SPC_SITE(0x0916, 0xBA, 0x0068, 2)
+// src/spc700/main.spc700.s:595 UNK0905
+EB_SPC_SITE(0x0918, 0xDA, 0x0060, 2)
+// src/spc700/main.spc700.s:596 UNK0905
+EB_SPC_SITE(0x091A, 0xEB, 0x006A, 2)
+// src/spc700/main.spc700.s:598 UNK091C
+EB_SPC_SITE(0x091C, 0xDA, 0x0062, 2)
+// src/spc700/main.spc700.s:600 UNK091E
+EB_SPC_SITE(0x091E, 0xE4, 0x005A, 2)
+// src/spc700/main.spc700.s:601 UNK091E
+EB_SPC_SITE(0x0920, 0xF0, 0x000E, 2)
+// src/spc700/main.spc700.s:602 UNK091E
+EB_SPC_SITE(0x0922, 0xBA, 0x005C, 2)
+// src/spc700/main.spc700.s:603 UNK091E
+EB_SPC_SITE(0x0924, 0x7A, 0x0058, 2)
+// src/spc700/main.spc700.s:604 UNK091E
+EB_SPC_SITE(0x0926, 0x6E, 0x025A, 3)
+// src/spc700/main.spc700.s:605 UNK091E
+EB_SPC_SITE(0x0929, 0xBA, 0x005A, 2)
+// src/spc700/main.spc700.s:607 UNK092B
+EB_SPC_SITE(0x092B, 0xDA, 0x0058, 2)
+// src/spc700/main.spc700.s:608 UNK092B
+EB_SPC_SITE(0x092D, 0x8F, 0x5EFF, 3)
+// src/spc700/main.spc700.s:610 UNK0930
+EB_SPC_SITE(0x0930, 0xCD, 0x0000, 2)
+// src/spc700/main.spc700.s:611 UNK0930
+EB_SPC_SITE(0x0932, 0x8F, 0x4701, 3)
+// src/spc700/main.spc700.s:613 UNK0935
+EB_SPC_SITE(0x0935, 0xF4, 0x0031, 2)
+// src/spc700/main.spc700.s:614 UNK0935
+EB_SPC_SITE(0x0937, 0xF0, 0x0003, 2)
+// src/spc700/main.spc700.s:615 UNK0935
+EB_SPC_SITE(0x0939, 0x3F, 0x0C40, 3)
+// src/spc700/main.spc700.s:617 UNK093C
+EB_SPC_SITE(0x093C, 0x3D, 0x0000, 1)
+// src/spc700/main.spc700.s:618 UNK093C
+EB_SPC_SITE(0x093D, 0x3D, 0x0000, 1)
+// src/spc700/main.spc700.s:619 UNK093C
+EB_SPC_SITE(0x093E, 0x0B, 0x0047, 2)
+// src/spc700/main.spc700.s:620 UNK093C
+EB_SPC_SITE(0x0940, 0xD0, 0x00F3, 2)
+// src/spc700/main.spc700.s:621 UNK093C
+EB_SPC_SITE(0x0942, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:624 UNK0943
+EB_SPC_SITE(0x0943, 0x1C, 0x0000, 1)
+// src/spc700/main.spc700.s:625 UNK0943
+EB_SPC_SITE(0x0944, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:626 UNK0943
+EB_SPC_SITE(0x0945, 0xF6, 0x0B24, 3)
+// src/spc700/main.spc700.s:627 UNK0943
+EB_SPC_SITE(0x0948, 0x2D, 0x0000, 1)
+// src/spc700/main.spc700.s:628 UNK0943
+EB_SPC_SITE(0x0949, 0xF6, 0x0B23, 3)
+// src/spc700/main.spc700.s:629 UNK0943
+EB_SPC_SITE(0x094C, 0x2D, 0x0000, 1)
+// src/spc700/main.spc700.s:630 UNK0943
+EB_SPC_SITE(0x094D, 0xDD, 0x0000, 1)
+// src/spc700/main.spc700.s:631 UNK0943
+EB_SPC_SITE(0x094E, 0x5C, 0x0000, 1)
+// src/spc700/main.spc700.s:632 UNK0943
+EB_SPC_SITE(0x094F, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:633 UNK0943
+EB_SPC_SITE(0x0950, 0xF6, 0x0BC1, 3)
+// src/spc700/main.spc700.s:634 UNK0943
+EB_SPC_SITE(0x0953, 0xF0, 0x0008, 2)
+// src/spc700/main.spc700.s:636 UNK0955
+EB_SPC_SITE(0x0955, 0xE7, 0x0030, 2)
+// src/spc700/main.spc700.s:638 UNK0957
+EB_SPC_SITE(0x0957, 0xBB, 0x0030, 2)
+// src/spc700/main.spc700.s:639 UNK0957
+EB_SPC_SITE(0x0959, 0xD0, 0x0002, 2)
+// src/spc700/main.spc700.s:640 UNK0957
+EB_SPC_SITE(0x095B, 0xBB, 0x0031, 2)
+// src/spc700/main.spc700.s:642 UNK095D
+EB_SPC_SITE(0x095D, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:643 UNK095D
+EB_SPC_SITE(0x095E, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:646 UNK095F
+EB_SPC_SITE(0x095F, 0xD5, 0x0211, 3)
+// src/spc700/main.spc700.s:648 UNK0962
+EB_SPC_SITE(0x0962, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:649 UNK0962
+EB_SPC_SITE(0x0963, 0x10, 0x0006, 2)
+// src/spc700/main.spc700.s:650 UNK0962
+EB_SPC_SITE(0x0965, 0x80, 0x0000, 1)
+// src/spc700/main.spc700.s:651 UNK0962
+EB_SPC_SITE(0x0966, 0xA8, 0x00CA, 2)
+// src/spc700/main.spc700.s:652 UNK0962
+EB_SPC_SITE(0x0968, 0x60, 0x0000, 1)
+// src/spc700/main.spc700.s:653 UNK0962
+EB_SPC_SITE(0x0969, 0x84, 0x005F, 2)
+// src/spc700/main.spc700.s:655 UNK096B
+EB_SPC_SITE(0x096B, 0x8D, 0x0006, 2)
+// src/spc700/main.spc700.s:656 UNK096B
+EB_SPC_SITE(0x096D, 0xCF, 0x0000, 1)
+// src/spc700/main.spc700.s:657 UNK096B
+EB_SPC_SITE(0x096E, 0xDA, 0x0014, 2)
+// src/spc700/main.spc700.s:658 UNK096B
+EB_SPC_SITE(0x0970, 0x60, 0x0000, 1)
+// src/spc700/main.spc700.s:659 UNK096B
+EB_SPC_SITE(0x0971, 0x98, 0x1400, 3)
+// src/spc700/main.spc700.s:660 UNK096B
+EB_SPC_SITE(0x0974, 0x98, 0x156E, 3)
+// src/spc700/main.spc700.s:661 UNK096B
+EB_SPC_SITE(0x0977, 0xE4, 0x001A, 2)
+// src/spc700/main.spc700.s:662 UNK096B
+EB_SPC_SITE(0x0979, 0x24, 0x0047, 2)
+// src/spc700/main.spc700.s:663 UNK096B
+EB_SPC_SITE(0x097B, 0xD0, 0x003A, 2)
+// src/spc700/main.spc700.s:664 UNK096B
+EB_SPC_SITE(0x097D, 0x4D, 0x0000, 1)
+// src/spc700/main.spc700.s:665 UNK096B
+EB_SPC_SITE(0x097E, 0x7D, 0x0000, 1)
+// src/spc700/main.spc700.s:666 UNK096B
+EB_SPC_SITE(0x097F, 0x9F, 0x0000, 1)
+// src/spc700/main.spc700.s:667 UNK096B
+EB_SPC_SITE(0x0980, 0x5C, 0x0000, 1)
+// src/spc700/main.spc700.s:668 UNK096B
+EB_SPC_SITE(0x0981, 0x08, 0x0004, 2)
+// src/spc700/main.spc700.s:669 UNK096B
+EB_SPC_SITE(0x0983, 0x5D, 0x0000, 1)
+// src/spc700/main.spc700.s:670 UNK096B
+EB_SPC_SITE(0x0984, 0x8D, 0x0000, 2)
+// src/spc700/main.spc700.s:671 UNK096B
+EB_SPC_SITE(0x0986, 0xF7, 0x0014, 2)
+// src/spc700/main.spc700.s:672 UNK096B
+EB_SPC_SITE(0x0988, 0x10, 0x000E, 2)
+// src/spc700/main.spc700.s:673 UNK096B
+EB_SPC_SITE(0x098A, 0x28, 0x001F, 2)
+// src/spc700/main.spc700.s:674 UNK096B
+EB_SPC_SITE(0x098C, 0x38, 0x4820, 3)
+// src/spc700/main.spc700.s:675 UNK096B
+EB_SPC_SITE(0x098F, 0x0E, 0x0048, 3)
+// src/spc700/main.spc700.s:676 UNK096B
+EB_SPC_SITE(0x0992, 0x09, 0x4947, 3)
+// src/spc700/main.spc700.s:677 UNK096B
+EB_SPC_SITE(0x0995, 0xDD, 0x0000, 1)
+// src/spc700/main.spc700.s:678 UNK096B
+EB_SPC_SITE(0x0996, 0x2F, 0x0007, 2)
+// src/spc700/main.spc700.s:680 UNK0998
+EB_SPC_SITE(0x0998, 0xE4, 0x0047, 2)
+// src/spc700/main.spc700.s:681 UNK0998
+EB_SPC_SITE(0x099A, 0x4E, 0x0049, 3)
+// src/spc700/main.spc700.s:683 UNK099D
+EB_SPC_SITE(0x099D, 0xF7, 0x0014, 2)
+// src/spc700/main.spc700.s:685 UNK099F
+EB_SPC_SITE(0x099F, 0xC9, 0x00F2, 3)
+// src/spc700/main.spc700.s:686 UNK099F
+EB_SPC_SITE(0x09A2, 0xC5, 0x00F3, 3)
+// src/spc700/main.spc700.s:687 UNK099F
+EB_SPC_SITE(0x09A5, 0x3D, 0x0000, 1)
+// src/spc700/main.spc700.s:688 UNK099F
+EB_SPC_SITE(0x09A6, 0xFC, 0x0000, 1)
+// src/spc700/main.spc700.s:689 UNK099F
+EB_SPC_SITE(0x09A7, 0xAD, 0x0004, 2)
+// src/spc700/main.spc700.s:690 UNK099F
+EB_SPC_SITE(0x09A9, 0xD0, 0x00F2, 2)
+// src/spc700/main.spc700.s:691 UNK099F
+EB_SPC_SITE(0x09AB, 0xCE, 0x0000, 1)
+// src/spc700/main.spc700.s:692 UNK099F
+EB_SPC_SITE(0x09AC, 0xF7, 0x0014, 2)
+// src/spc700/main.spc700.s:693 UNK099F
+EB_SPC_SITE(0x09AE, 0xD5, 0x0221, 3)
+// src/spc700/main.spc700.s:694 UNK099F
+EB_SPC_SITE(0x09B1, 0xFC, 0x0000, 1)
+// src/spc700/main.spc700.s:695 UNK099F
+EB_SPC_SITE(0x09B2, 0xF7, 0x0014, 2)
+// src/spc700/main.spc700.s:696 UNK099F
+EB_SPC_SITE(0x09B4, 0xD5, 0x0220, 3)
+// src/spc700/main.spc700.s:698 UNK09B7
+EB_SPC_SITE(0x09B7, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:701 UNK09B8
+EB_SPC_SITE(0x09B8, 0xC4, 0x0020, 2)
+// src/spc700/main.spc700.s:702 UNK09B8
+EB_SPC_SITE(0x09BA, 0xE5, 0x0431, 3)
+// src/spc700/main.spc700.s:703 UNK09B8
+EB_SPC_SITE(0x09BD, 0x68, 0x0000, 2)
+// src/spc700/main.spc700.s:704 UNK09B8
+EB_SPC_SITE(0x09BF, 0xF0, 0x0005, 2)
+// src/spc700/main.spc700.s:705 UNK09B8
+EB_SPC_SITE(0x09C1, 0xE8, 0x000A, 2)
+// src/spc700/main.spc700.s:706 UNK09B8
+EB_SPC_SITE(0x09C3, 0x5F, 0x09C8, 3)
+// src/spc700/main.spc700.s:708 UNK09C6
+EB_SPC_SITE(0x09C6, 0xE4, 0x0020, 2)
+// src/spc700/main.spc700.s:710 UNK09C8
+EB_SPC_SITE(0x09C8, 0xD5, 0x0351, 3)
+// src/spc700/main.spc700.s:711 UNK09C8
+EB_SPC_SITE(0x09CB, 0x28, 0x001F, 2)
+// src/spc700/main.spc700.s:712 UNK09C8
+EB_SPC_SITE(0x09CD, 0xD5, 0x0331, 3)
+// src/spc700/main.spc700.s:713 UNK09C8
+EB_SPC_SITE(0x09D0, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:714 UNK09C8
+EB_SPC_SITE(0x09D2, 0xD5, 0x0330, 3)
+// src/spc700/main.spc700.s:715 UNK09C8
+EB_SPC_SITE(0x09D5, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:718 UNK09D6
+EB_SPC_SITE(0x09D6, 0xD4, 0x0091, 2)
+// src/spc700/main.spc700.s:719 UNK09D6
+EB_SPC_SITE(0x09D8, 0x2D, 0x0000, 1)
+// src/spc700/main.spc700.s:720 UNK09D6
+EB_SPC_SITE(0x09D9, 0x3F, 0x0955, 3)
+// src/spc700/main.spc700.s:722 UNK09DC
+EB_SPC_SITE(0x09DC, 0xC4, 0x0020, 2)
+// src/spc700/main.spc700.s:723 UNK09DC
+EB_SPC_SITE(0x09DE, 0xE5, 0x0431, 3)
+// src/spc700/main.spc700.s:724 UNK09DC
+EB_SPC_SITE(0x09E1, 0x68, 0x0000, 2)
+// src/spc700/main.spc700.s:725 UNK09DC
+EB_SPC_SITE(0x09E3, 0xF0, 0x0003, 2)
+// src/spc700/main.spc700.s:726 UNK09DC
+EB_SPC_SITE(0x09E5, 0x8F, 0x200A, 3)
+// src/spc700/main.spc700.s:728 UNK09E8
+EB_SPC_SITE(0x09E8, 0xE4, 0x0020, 2)
+// src/spc700/main.spc700.s:729 UNK09E8
+EB_SPC_SITE(0x09EA, 0xD5, 0x0350, 3)
+// src/spc700/main.spc700.s:730 UNK09E8
+EB_SPC_SITE(0x09ED, 0x80, 0x0000, 1)
+// src/spc700/main.spc700.s:731 UNK09E8
+EB_SPC_SITE(0x09EE, 0xB5, 0x0331, 3)
+// src/spc700/main.spc700.s:732 UNK09E8
+EB_SPC_SITE(0x09F1, 0xCE, 0x0000, 1)
+// src/spc700/main.spc700.s:733 UNK09E8
+EB_SPC_SITE(0x09F2, 0x3F, 0x0BC7, 3)
+// src/spc700/main.spc700.s:734 UNK09E8
+EB_SPC_SITE(0x09F5, 0xD5, 0x0340, 3)
+// src/spc700/main.spc700.s:735 UNK09E8
+EB_SPC_SITE(0x09F8, 0xDD, 0x0000, 1)
+// src/spc700/main.spc700.s:736 UNK09E8
+EB_SPC_SITE(0x09F9, 0xD5, 0x0341, 3)
+// src/spc700/main.spc700.s:737 UNK09E8
+EB_SPC_SITE(0x09FC, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:740 UNK09FD
+EB_SPC_SITE(0x09FD, 0xD5, 0x02B0, 3)
+// src/spc700/main.spc700.s:741 UNK09FD
+EB_SPC_SITE(0x0A00, 0x3F, 0x0955, 3)
+// src/spc700/main.spc700.s:742 UNK09FD
+EB_SPC_SITE(0x0A03, 0xD5, 0x02A1, 3)
+// src/spc700/main.spc700.s:743 UNK09FD
+EB_SPC_SITE(0x0A06, 0x3F, 0x0955, 3)
+// src/spc700/main.spc700.s:745 UNK0A09
+EB_SPC_SITE(0x0A09, 0xD4, 0x00B1, 2)
+// src/spc700/main.spc700.s:746 UNK0A09
+EB_SPC_SITE(0x0A0B, 0xD5, 0x02C1, 3)
+// src/spc700/main.spc700.s:747 UNK0A09
+EB_SPC_SITE(0x0A0E, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:748 UNK0A09
+EB_SPC_SITE(0x0A10, 0xD5, 0x02B1, 3)
+// src/spc700/main.spc700.s:749 UNK0A09
+EB_SPC_SITE(0x0A13, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:752 UNK0A14
+EB_SPC_SITE(0x0A14, 0xD5, 0x02B1, 3)
+// src/spc700/main.spc700.s:753 UNK0A14
+EB_SPC_SITE(0x0A17, 0x2D, 0x0000, 1)
+// src/spc700/main.spc700.s:754 UNK0A14
+EB_SPC_SITE(0x0A18, 0x8D, 0x0000, 2)
+// src/spc700/main.spc700.s:755 UNK0A14
+EB_SPC_SITE(0x0A1A, 0xF4, 0x00B1, 2)
+// src/spc700/main.spc700.s:756 UNK0A14
+EB_SPC_SITE(0x0A1C, 0xCE, 0x0000, 1)
+// src/spc700/main.spc700.s:757 UNK0A14
+EB_SPC_SITE(0x0A1D, 0x9E, 0x0000, 1)
+// src/spc700/main.spc700.s:758 UNK0A14
+EB_SPC_SITE(0x0A1E, 0xF8, 0x0044, 2)
+// src/spc700/main.spc700.s:759 UNK0A14
+EB_SPC_SITE(0x0A20, 0xD5, 0x02C0, 3)
+// src/spc700/main.spc700.s:760 UNK0A14
+EB_SPC_SITE(0x0A23, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:763 UNK0A24
+EB_SPC_SITE(0x0A24, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:764 UNK0A24
+EB_SPC_SITE(0x0A26, 0xDA, 0x0058, 2)
+// src/spc700/main.spc700.s:765 UNK0A24
+EB_SPC_SITE(0x0A28, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:768 UNK0A29
+EB_SPC_SITE(0x0A29, 0xC4, 0x005A, 2)
+// src/spc700/main.spc700.s:769 UNK0A29
+EB_SPC_SITE(0x0A2B, 0x3F, 0x0955, 3)
+// src/spc700/main.spc700.s:770 UNK0A29
+EB_SPC_SITE(0x0A2E, 0xC4, 0x005B, 2)
+// src/spc700/main.spc700.s:772 UNK0A30
+EB_SPC_SITE(0x0A30, 0x80, 0x0000, 1)
+// src/spc700/main.spc700.s:773 UNK0A30
+EB_SPC_SITE(0x0A31, 0xA4, 0x0059, 2)
+// src/spc700/main.spc700.s:774 UNK0A30
+EB_SPC_SITE(0x0A33, 0xF8, 0x005A, 2)
+// src/spc700/main.spc700.s:775 UNK0A30
+EB_SPC_SITE(0x0A35, 0x3F, 0x0BC7, 3)
+// src/spc700/main.spc700.s:776 UNK0A30
+EB_SPC_SITE(0x0A38, 0xDA, 0x005C, 2)
+// src/spc700/main.spc700.s:777 UNK0A30
+EB_SPC_SITE(0x0A3A, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:780 UNK0A3B
+EB_SPC_SITE(0x0A3B, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:781 UNK0A3B
+EB_SPC_SITE(0x0A3D, 0xDA, 0x0052, 2)
+// src/spc700/main.spc700.s:782 UNK0A3B
+EB_SPC_SITE(0x0A3F, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:785 UNK0A40
+EB_SPC_SITE(0x0A40, 0xC4, 0x0054, 2)
+// src/spc700/main.spc700.s:786 UNK0A40
+EB_SPC_SITE(0x0A42, 0x3F, 0x0955, 3)
+// src/spc700/main.spc700.s:787 UNK0A40
+EB_SPC_SITE(0x0A45, 0xC4, 0x0055, 2)
+// src/spc700/main.spc700.s:789 UNK0A47
+EB_SPC_SITE(0x0A47, 0x80, 0x0000, 1)
+// src/spc700/main.spc700.s:790 UNK0A47
+EB_SPC_SITE(0x0A48, 0xA4, 0x0053, 2)
+// src/spc700/main.spc700.s:791 UNK0A47
+EB_SPC_SITE(0x0A4A, 0xF8, 0x0054, 2)
+// src/spc700/main.spc700.s:792 UNK0A47
+EB_SPC_SITE(0x0A4C, 0x3F, 0x0BC7, 3)
+// src/spc700/main.spc700.s:793 UNK0A47
+EB_SPC_SITE(0x0A4F, 0xDA, 0x0056, 2)
+// src/spc700/main.spc700.s:794 UNK0A47
+EB_SPC_SITE(0x0A51, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:797 UNK0A52
+EB_SPC_SITE(0x0A52, 0xC4, 0x0050, 2)
+// src/spc700/main.spc700.s:798 UNK0A52
+EB_SPC_SITE(0x0A54, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:801 UNK0A55
+EB_SPC_SITE(0x0A55, 0xD5, 0x02F0, 3)
+// src/spc700/main.spc700.s:802 UNK0A55
+EB_SPC_SITE(0x0A58, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:805 UNK0A59
+EB_SPC_SITE(0x0A59, 0xD5, 0x02E0, 3)
+// src/spc700/main.spc700.s:806 UNK0A59
+EB_SPC_SITE(0x0A5C, 0x3F, 0x0955, 3)
+// src/spc700/main.spc700.s:807 UNK0A59
+EB_SPC_SITE(0x0A5F, 0xD5, 0x02D1, 3)
+// src/spc700/main.spc700.s:808 UNK0A59
+EB_SPC_SITE(0x0A62, 0x3F, 0x0955, 3)
+// src/spc700/main.spc700.s:810 UNK0A65
+EB_SPC_SITE(0x0A65, 0xD4, 0x00C1, 2)
+// src/spc700/main.spc700.s:811 UNK0A65
+EB_SPC_SITE(0x0A67, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:814 UNK0A68
+EB_SPC_SITE(0x0A68, 0xE8, 0x0001, 2)
+// src/spc700/main.spc700.s:815 UNK0A68
+EB_SPC_SITE(0x0A6A, 0x2F, 0x0002, 2)
+// src/spc700/main.spc700.s:818 UNK0A6C
+EB_SPC_SITE(0x0A6C, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:820 UNK0A6E
+EB_SPC_SITE(0x0A6E, 0xD5, 0x0290, 3)
+// src/spc700/main.spc700.s:821 UNK0A6E
+EB_SPC_SITE(0x0A71, 0xDD, 0x0000, 1)
+// src/spc700/main.spc700.s:822 UNK0A6E
+EB_SPC_SITE(0x0A72, 0xD5, 0x0281, 3)
+// src/spc700/main.spc700.s:823 UNK0A6E
+EB_SPC_SITE(0x0A75, 0x3F, 0x0955, 3)
+// src/spc700/main.spc700.s:824 UNK0A6E
+EB_SPC_SITE(0x0A78, 0xD5, 0x0280, 3)
+// src/spc700/main.spc700.s:825 UNK0A6E
+EB_SPC_SITE(0x0A7B, 0x3F, 0x0955, 3)
+// src/spc700/main.spc700.s:826 UNK0A6E
+EB_SPC_SITE(0x0A7E, 0xD5, 0x0291, 3)
+// src/spc700/main.spc700.s:827 UNK0A6E
+EB_SPC_SITE(0x0A81, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:830 UNK0A82
+EB_SPC_SITE(0x0A82, 0xD5, 0x0280, 3)
+// src/spc700/main.spc700.s:831 UNK0A82
+EB_SPC_SITE(0x0A85, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:834 UNK0A86
+EB_SPC_SITE(0x0A86, 0xD5, 0x0301, 3)
+// src/spc700/main.spc700.s:835 UNK0A86
+EB_SPC_SITE(0x0A89, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:836 UNK0A86
+EB_SPC_SITE(0x0A8B, 0xD5, 0x0300, 3)
+// src/spc700/main.spc700.s:837 UNK0A86
+EB_SPC_SITE(0x0A8E, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:840 UNK0A8F
+EB_SPC_SITE(0x0A8F, 0xD4, 0x0090, 2)
+// src/spc700/main.spc700.s:841 UNK0A8F
+EB_SPC_SITE(0x0A91, 0x2D, 0x0000, 1)
+// src/spc700/main.spc700.s:842 UNK0A8F
+EB_SPC_SITE(0x0A92, 0x3F, 0x0955, 3)
+// src/spc700/main.spc700.s:844 UNK0A95
+EB_SPC_SITE(0x0A95, 0xD5, 0x0320, 3)
+// src/spc700/main.spc700.s:845 UNK0A95
+EB_SPC_SITE(0x0A98, 0x80, 0x0000, 1)
+// src/spc700/main.spc700.s:846 UNK0A95
+EB_SPC_SITE(0x0A99, 0xB5, 0x0301, 3)
+// src/spc700/main.spc700.s:847 UNK0A95
+EB_SPC_SITE(0x0A9C, 0xCE, 0x0000, 1)
+// src/spc700/main.spc700.s:848 UNK0A95
+EB_SPC_SITE(0x0A9D, 0x3F, 0x0BC7, 3)
+// src/spc700/main.spc700.s:849 UNK0A95
+EB_SPC_SITE(0x0AA0, 0xD5, 0x0310, 3)
+// src/spc700/main.spc700.s:850 UNK0A95
+EB_SPC_SITE(0x0AA3, 0xDD, 0x0000, 1)
+// src/spc700/main.spc700.s:851 UNK0A95
+EB_SPC_SITE(0x0AA4, 0xD5, 0x0311, 3)
+// src/spc700/main.spc700.s:852 UNK0A95
+EB_SPC_SITE(0x0AA7, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:855 UNK0AA8
+EB_SPC_SITE(0x0AA8, 0xD5, 0x0381, 3)
+// src/spc700/main.spc700.s:856 UNK0AA8
+EB_SPC_SITE(0x0AAB, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:859 UNK0AAC
+EB_SPC_SITE(0x0AAC, 0xD5, 0x0240, 3)
+// src/spc700/main.spc700.s:860 UNK0AAC
+EB_SPC_SITE(0x0AAF, 0x3F, 0x0955, 3)
+// src/spc700/main.spc700.s:861 UNK0AAC
+EB_SPC_SITE(0x0AB2, 0xD5, 0x0241, 3)
+// src/spc700/main.spc700.s:862 UNK0AAC
+EB_SPC_SITE(0x0AB5, 0x3F, 0x0955, 3)
+// src/spc700/main.spc700.s:863 UNK0AAC
+EB_SPC_SITE(0x0AB8, 0xD4, 0x0080, 2)
+// src/spc700/main.spc700.s:864 UNK0AAC
+EB_SPC_SITE(0x0ABA, 0xF4, 0x0030, 2)
+// src/spc700/main.spc700.s:865 UNK0AAC
+EB_SPC_SITE(0x0ABC, 0xD5, 0x0230, 3)
+// src/spc700/main.spc700.s:866 UNK0AAC
+EB_SPC_SITE(0x0ABF, 0xF4, 0x0031, 2)
+// src/spc700/main.spc700.s:867 UNK0AAC
+EB_SPC_SITE(0x0AC1, 0xD5, 0x0231, 3)
+// src/spc700/main.spc700.s:869 UNK0AC4
+EB_SPC_SITE(0x0AC4, 0xF5, 0x0240, 3)
+// src/spc700/main.spc700.s:870 UNK0AC4
+EB_SPC_SITE(0x0AC7, 0xD4, 0x0030, 2)
+// src/spc700/main.spc700.s:871 UNK0AC4
+EB_SPC_SITE(0x0AC9, 0xF5, 0x0241, 3)
+// src/spc700/main.spc700.s:872 UNK0AC4
+EB_SPC_SITE(0x0ACC, 0xD4, 0x0031, 2)
+// src/spc700/main.spc700.s:873 UNK0AC4
+EB_SPC_SITE(0x0ACE, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:876 UNK0ACF
+EB_SPC_SITE(0x0ACF, 0xC4, 0x004A, 2)
+// src/spc700/main.spc700.s:877 UNK0ACF
+EB_SPC_SITE(0x0AD1, 0x3F, 0x0955, 3)
+// src/spc700/main.spc700.s:878 UNK0ACF
+EB_SPC_SITE(0x0AD4, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:879 UNK0ACF
+EB_SPC_SITE(0x0AD6, 0xDA, 0x0060, 2)
+// src/spc700/main.spc700.s:880 UNK0ACF
+EB_SPC_SITE(0x0AD8, 0x3F, 0x0955, 3)
+// src/spc700/main.spc700.s:881 UNK0ACF
+EB_SPC_SITE(0x0ADB, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:882 UNK0ACF
+EB_SPC_SITE(0x0ADD, 0xDA, 0x0062, 2)
+// src/spc700/main.spc700.s:883 UNK0ACF
+EB_SPC_SITE(0x0ADF, 0xB2, 0x0048, 2)
+// src/spc700/main.spc700.s:884 UNK0ACF
+EB_SPC_SITE(0x0AE1, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:887 UNK0AE2
+EB_SPC_SITE(0x0AE2, 0xC4, 0x0068, 2)
+// src/spc700/main.spc700.s:888 UNK0AE2
+EB_SPC_SITE(0x0AE4, 0x3F, 0x0955, 3)
+// src/spc700/main.spc700.s:889 UNK0AE2
+EB_SPC_SITE(0x0AE7, 0xC4, 0x0069, 2)
+// src/spc700/main.spc700.s:890 UNK0AE2
+EB_SPC_SITE(0x0AE9, 0x80, 0x0000, 1)
+// src/spc700/main.spc700.s:891 UNK0AE2
+EB_SPC_SITE(0x0AEA, 0xA4, 0x0061, 2)
+// src/spc700/main.spc700.s:892 UNK0AE2
+EB_SPC_SITE(0x0AEC, 0xF8, 0x0068, 2)
+// src/spc700/main.spc700.s:893 UNK0AE2
+EB_SPC_SITE(0x0AEE, 0x3F, 0x0BC7, 3)
+// src/spc700/main.spc700.s:894 UNK0AE2
+EB_SPC_SITE(0x0AF1, 0xDA, 0x0064, 2)
+// src/spc700/main.spc700.s:895 UNK0AE2
+EB_SPC_SITE(0x0AF3, 0x3F, 0x0955, 3)
+// src/spc700/main.spc700.s:896 UNK0AE2
+EB_SPC_SITE(0x0AF6, 0xC4, 0x006A, 2)
+// src/spc700/main.spc700.s:897 UNK0AE2
+EB_SPC_SITE(0x0AF8, 0x80, 0x0000, 1)
+// src/spc700/main.spc700.s:898 UNK0AE2
+EB_SPC_SITE(0x0AF9, 0xA4, 0x0063, 2)
+// src/spc700/main.spc700.s:899 UNK0AE2
+EB_SPC_SITE(0x0AFB, 0xF8, 0x0068, 2)
+// src/spc700/main.spc700.s:900 UNK0AE2
+EB_SPC_SITE(0x0AFD, 0x3F, 0x0BC7, 3)
+// src/spc700/main.spc700.s:901 UNK0AE2
+EB_SPC_SITE(0x0B00, 0xDA, 0x0066, 2)
+// src/spc700/main.spc700.s:902 UNK0AE2
+EB_SPC_SITE(0x0B02, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:905 UNK0B03
+EB_SPC_SITE(0x0B03, 0xDA, 0x0060, 2)
+// src/spc700/main.spc700.s:906 UNK0B03
+EB_SPC_SITE(0x0B05, 0xDA, 0x0062, 2)
+// src/spc700/main.spc700.s:907 UNK0B03
+EB_SPC_SITE(0x0B07, 0xA2, 0x0048, 2)
+// src/spc700/main.spc700.s:908 UNK0B03
+EB_SPC_SITE(0x0B09, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:911 UNK0B0A
+EB_SPC_SITE(0x0B0A, 0x3F, 0x0B2C, 3)
+// src/spc700/main.spc700.s:912 UNK0B0A
+EB_SPC_SITE(0x0B0D, 0x3F, 0x0955, 3)
+// src/spc700/main.spc700.s:913 UNK0B0A
+EB_SPC_SITE(0x0B10, 0xC4, 0x004E, 2)
+// src/spc700/main.spc700.s:914 UNK0B0A
+EB_SPC_SITE(0x0B12, 0x3F, 0x0955, 3)
+// src/spc700/main.spc700.s:915 UNK0B0A
+EB_SPC_SITE(0x0B15, 0x8D, 0x0008, 2)
+// src/spc700/main.spc700.s:916 UNK0B0A
+EB_SPC_SITE(0x0B17, 0xCF, 0x0000, 1)
+// src/spc700/main.spc700.s:917 UNK0B0A
+EB_SPC_SITE(0x0B18, 0x5D, 0x0000, 1)
+// src/spc700/main.spc700.s:918 UNK0B0A
+EB_SPC_SITE(0x0B19, 0x8D, 0x000F, 2)
+// src/spc700/main.spc700.s:920 UNK0B1B
+EB_SPC_SITE(0x0B1B, 0xF5, 0x0E88, 3)
+// src/spc700/main.spc700.s:921 UNK0B1B
+EB_SPC_SITE(0x0B1E, 0x3F, 0x0749, 3)
+// src/spc700/main.spc700.s:922 UNK0B1B
+EB_SPC_SITE(0x0B21, 0x3D, 0x0000, 1)
+// src/spc700/main.spc700.s:923 UNK0B1B
+EB_SPC_SITE(0x0B22, 0xDD, 0x0000, 1)
+// src/spc700/main.spc700.s:924 UNK0B1B
+EB_SPC_SITE(0x0B23, 0x60, 0x0000, 1)
+// src/spc700/main.spc700.s:925 UNK0B1B
+EB_SPC_SITE(0x0B24, 0x88, 0x0010, 2)
+// src/spc700/main.spc700.s:926 UNK0B1B
+EB_SPC_SITE(0x0B26, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:927 UNK0B1B
+EB_SPC_SITE(0x0B27, 0x10, 0x00F2, 2)
+// src/spc700/main.spc700.s:928 UNK0B1B
+EB_SPC_SITE(0x0B29, 0xF8, 0x0044, 2)
+// src/spc700/main.spc700.s:929 UNK0B1B
+EB_SPC_SITE(0x0B2B, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:932 SET_ECHO_DELAY
+EB_SPC_SITE(0x0B2C, 0xC4, 0x004D, 2)
+// src/spc700/main.spc700.s:933 SET_ECHO_DELAY
+EB_SPC_SITE(0x0B2E, 0x8D, 0x007D, 2)
+// src/spc700/main.spc700.s:934 SET_ECHO_DELAY
+EB_SPC_SITE(0x0B30, 0xCC, 0x00F2, 3)
+// src/spc700/main.spc700.s:935 SET_ECHO_DELAY
+EB_SPC_SITE(0x0B33, 0xE5, 0x00F3, 3)
+// src/spc700/main.spc700.s:936 SET_ECHO_DELAY
+EB_SPC_SITE(0x0B36, 0x64, 0x004D, 2)
+// src/spc700/main.spc700.s:937 SET_ECHO_DELAY
+EB_SPC_SITE(0x0B38, 0xF0, 0x002B, 2)
+// src/spc700/main.spc700.s:938 SET_ECHO_DELAY
+EB_SPC_SITE(0x0B3A, 0x28, 0x000F, 2)
+// src/spc700/main.spc700.s:939 SET_ECHO_DELAY
+EB_SPC_SITE(0x0B3C, 0x48, 0x00FF, 2)
+// src/spc700/main.spc700.s:940 SET_ECHO_DELAY
+EB_SPC_SITE(0x0B3E, 0xF3, 0x034C, 3)
+// src/spc700/main.spc700.s:942 UNK0B41
+EB_SPC_SITE(0x0B41, 0x60, 0x0000, 1)
+// src/spc700/main.spc700.s:943 UNK0B41
+EB_SPC_SITE(0x0B42, 0x84, 0x004C, 2)
+// src/spc700/main.spc700.s:945 UNK0B44
+EB_SPC_SITE(0x0B44, 0xC4, 0x004C, 2)
+// src/spc700/main.spc700.s:946 UNK0B44
+EB_SPC_SITE(0x0B46, 0x8D, 0x0004, 2)
+// src/spc700/main.spc700.s:948 UNK0B48
+EB_SPC_SITE(0x0B48, 0xF6, 0x0EA7, 3)
+// src/spc700/main.spc700.s:949 UNK0B48
+EB_SPC_SITE(0x0B4B, 0xC5, 0x00F2, 3)
+// src/spc700/main.spc700.s:950 UNK0B48
+EB_SPC_SITE(0x0B4E, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:951 UNK0B48
+EB_SPC_SITE(0x0B50, 0xC5, 0x00F3, 3)
+// src/spc700/main.spc700.s:952 UNK0B48
+EB_SPC_SITE(0x0B53, 0xFE, 0x00F3, 2)
+// src/spc700/main.spc700.s:953 UNK0B48
+EB_SPC_SITE(0x0B55, 0xE4, 0x0048, 2)
+// src/spc700/main.spc700.s:954 UNK0B48
+EB_SPC_SITE(0x0B57, 0x08, 0x0020, 2)
+// src/spc700/main.spc700.s:955 UNK0B48
+EB_SPC_SITE(0x0B59, 0x8D, 0x006C, 2)
+// src/spc700/main.spc700.s:956 UNK0B48
+EB_SPC_SITE(0x0B5B, 0x3F, 0x0749, 3)
+// src/spc700/main.spc700.s:957 UNK0B48
+EB_SPC_SITE(0x0B5E, 0xE4, 0x004D, 2)
+// src/spc700/main.spc700.s:958 UNK0B48
+EB_SPC_SITE(0x0B60, 0x8D, 0x007D, 2)
+// src/spc700/main.spc700.s:959 UNK0B48
+EB_SPC_SITE(0x0B62, 0x3F, 0x0749, 3)
+// src/spc700/main.spc700.s:961 UNK0B65
+EB_SPC_SITE(0x0B65, 0x1C, 0x0000, 1)
+// src/spc700/main.spc700.s:962 UNK0B65
+EB_SPC_SITE(0x0B66, 0x1C, 0x0000, 1)
+// src/spc700/main.spc700.s:963 UNK0B65
+EB_SPC_SITE(0x0B67, 0x1C, 0x0000, 1)
+// src/spc700/main.spc700.s:964 UNK0B65
+EB_SPC_SITE(0x0B68, 0x48, 0x00FF, 2)
+// src/spc700/main.spc700.s:965 UNK0B65
+EB_SPC_SITE(0x0B6A, 0x80, 0x0000, 1)
+// src/spc700/main.spc700.s:966 UNK0B65
+EB_SPC_SITE(0x0B6B, 0x88, 0x00FF, 2)
+// src/spc700/main.spc700.s:967 UNK0B65
+EB_SPC_SITE(0x0B6D, 0x8D, 0x006D, 2)
+// src/spc700/main.spc700.s:968 UNK0B65
+EB_SPC_SITE(0x0B6F, 0x5F, 0x0749, 3)
+// src/spc700/main.spc700.s:971 UNK0B72
+EB_SPC_SITE(0x0B72, 0xC4, 0x005F, 2)
+// src/spc700/main.spc700.s:972 UNK0B72
+EB_SPC_SITE(0x0B74, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:975 UNK0B75
+EB_SPC_SITE(0x0B75, 0x3F, 0x0957, 3)
+// src/spc700/main.spc700.s:976 UNK0B75
+EB_SPC_SITE(0x0B78, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:979 UNK0B79
+EB_SPC_SITE(0x0B79, 0xBC, 0x0000, 1)
+// src/spc700/main.spc700.s:980 UNK0B79
+EB_SPC_SITE(0x0B7A, 0xD5, 0x0400, 3)
+// src/spc700/main.spc700.s:981 UNK0B79
+EB_SPC_SITE(0x0B7D, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:984 UNK0B7E
+EB_SPC_SITE(0x0B7E, 0xBC, 0x0000, 1)
+// src/spc700/main.spc700.s:986 UNK0B7F
+EB_SPC_SITE(0x0B7F, 0xC4, 0x001B, 2)
+// src/spc700/main.spc700.s:987 UNK0B7F
+EB_SPC_SITE(0x0B81, 0x5F, 0x0787, 3)
+// src/spc700/main.spc700.s:989 UNK0B84
+EB_SPC_SITE(0x0B84, 0xF4, 0x00A0, 2)
+// src/spc700/main.spc700.s:990 UNK0B84
+EB_SPC_SITE(0x0B86, 0xD0, 0x0033, 2)
+// src/spc700/main.spc700.s:991 UNK0B84
+EB_SPC_SITE(0x0B88, 0xE7, 0x0030, 2)
+// src/spc700/main.spc700.s:992 UNK0B84
+EB_SPC_SITE(0x0B8A, 0x68, 0x00F9, 2)
+// src/spc700/main.spc700.s:993 UNK0B84
+EB_SPC_SITE(0x0B8C, 0xD0, 0x002D, 2)
+// src/spc700/main.spc700.s:994 UNK0B84
+EB_SPC_SITE(0x0B8E, 0x3F, 0x0957, 3)
+// src/spc700/main.spc700.s:995 UNK0B84
+EB_SPC_SITE(0x0B91, 0x3F, 0x0955, 3)
+// src/spc700/main.spc700.s:997 UNK0B94
+EB_SPC_SITE(0x0B94, 0xD4, 0x00A1, 2)
+// src/spc700/main.spc700.s:998 UNK0B94
+EB_SPC_SITE(0x0B96, 0x3F, 0x0955, 3)
+// src/spc700/main.spc700.s:999 UNK0B94
+EB_SPC_SITE(0x0B99, 0xD4, 0x00A0, 2)
+// src/spc700/main.spc700.s:1000 UNK0B94
+EB_SPC_SITE(0x0B9B, 0x3F, 0x0955, 3)
+// src/spc700/main.spc700.s:1001 UNK0B94
+EB_SPC_SITE(0x0B9E, 0x60, 0x0000, 1)
+// src/spc700/main.spc700.s:1002 UNK0B94
+EB_SPC_SITE(0x0B9F, 0x84, 0x0050, 2)
+// src/spc700/main.spc700.s:1003 UNK0B94
+EB_SPC_SITE(0x0BA1, 0x95, 0x02F0, 3)
+// src/spc700/main.spc700.s:1005 UNK0BA4
+EB_SPC_SITE(0x0BA4, 0x28, 0x007F, 2)
+// src/spc700/main.spc700.s:1006 UNK0BA4
+EB_SPC_SITE(0x0BA6, 0xD5, 0x0380, 3)
+// src/spc700/main.spc700.s:1007 UNK0BA4
+EB_SPC_SITE(0x0BA9, 0x80, 0x0000, 1)
+// src/spc700/main.spc700.s:1008 UNK0BA4
+EB_SPC_SITE(0x0BAA, 0xB5, 0x0361, 3)
+// src/spc700/main.spc700.s:1009 UNK0BA4
+EB_SPC_SITE(0x0BAD, 0xFB, 0x00A0, 2)
+// src/spc700/main.spc700.s:1010 UNK0BA4
+EB_SPC_SITE(0x0BAF, 0x6D, 0x0000, 1)
+// src/spc700/main.spc700.s:1011 UNK0BA4
+EB_SPC_SITE(0x0BB0, 0xCE, 0x0000, 1)
+// src/spc700/main.spc700.s:1012 UNK0BA4
+EB_SPC_SITE(0x0BB1, 0x3F, 0x0BC7, 3)
+// src/spc700/main.spc700.s:1013 UNK0BA4
+EB_SPC_SITE(0x0BB4, 0xD5, 0x0370, 3)
+// src/spc700/main.spc700.s:1014 UNK0BA4
+EB_SPC_SITE(0x0BB7, 0xDD, 0x0000, 1)
+// src/spc700/main.spc700.s:1015 UNK0BA4
+EB_SPC_SITE(0x0BB8, 0xD5, 0x0371, 3)
+// src/spc700/main.spc700.s:1017 UNK0BBB
+EB_SPC_SITE(0x0BBB, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:1020 UNK0BBC
+EB_SPC_SITE(0x0BBC, 0xF5, 0x0361, 3)
+// src/spc700/main.spc700.s:1021 UNK0BBC
+EB_SPC_SITE(0x0BBF, 0xC4, 0x0011, 2)
+// src/spc700/main.spc700.s:1023 UNK0BC1
+EB_SPC_SITE(0x0BC1, 0xF5, 0x0360, 3)
+// src/spc700/main.spc700.s:1024 UNK0BC1
+EB_SPC_SITE(0x0BC4, 0xC4, 0x0010, 2)
+// src/spc700/main.spc700.s:1025 UNK0BC1
+EB_SPC_SITE(0x0BC6, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:1028 UNK0BC7
+EB_SPC_SITE(0x0BC7, 0xED, 0x0000, 1)
+// src/spc700/main.spc700.s:1029 UNK0BC7
+EB_SPC_SITE(0x0BC8, 0x6B, 0x0012, 2)
+// src/spc700/main.spc700.s:1030 UNK0BC7
+EB_SPC_SITE(0x0BCA, 0x10, 0x0003, 2)
+// src/spc700/main.spc700.s:1031 UNK0BC7
+EB_SPC_SITE(0x0BCC, 0x48, 0x00FF, 2)
+// src/spc700/main.spc700.s:1032 UNK0BC7
+EB_SPC_SITE(0x0BCE, 0xBC, 0x0000, 1)
+// src/spc700/main.spc700.s:1034 UNK0BCF
+EB_SPC_SITE(0x0BCF, 0x8D, 0x0000, 2)
+// src/spc700/main.spc700.s:1035 UNK0BCF
+EB_SPC_SITE(0x0BD1, 0x9E, 0x0000, 1)
+// src/spc700/main.spc700.s:1036 UNK0BCF
+EB_SPC_SITE(0x0BD2, 0x2D, 0x0000, 1)
+// src/spc700/main.spc700.s:1037 UNK0BCF
+EB_SPC_SITE(0x0BD3, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:1038 UNK0BCF
+EB_SPC_SITE(0x0BD5, 0x9E, 0x0000, 1)
+// src/spc700/main.spc700.s:1039 UNK0BCF
+EB_SPC_SITE(0x0BD6, 0xEE, 0x0000, 1)
+// src/spc700/main.spc700.s:1040 UNK0BCF
+EB_SPC_SITE(0x0BD7, 0xF8, 0x0044, 2)
+// src/spc700/main.spc700.s:1042 UNK0BD9
+EB_SPC_SITE(0x0BD9, 0xF3, 0x0612, 3)
+// src/spc700/main.spc700.s:1043 UNK0BD9
+EB_SPC_SITE(0x0BDC, 0xDA, 0x0014, 2)
+// src/spc700/main.spc700.s:1044 UNK0BD9
+EB_SPC_SITE(0x0BDE, 0xBA, 0x000E, 2)
+// src/spc700/main.spc700.s:1045 UNK0BD9
+EB_SPC_SITE(0x0BE0, 0x9A, 0x0014, 2)
+// src/spc700/main.spc700.s:1047 UNK0BE2
+EB_SPC_SITE(0x0BE2, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:1092 UNK0C40
+EB_SPC_SITE(0x0C40, 0xF4, 0x0090, 2)
+// src/spc700/main.spc700.s:1093 UNK0C40
+EB_SPC_SITE(0x0C42, 0xF0, 0x0009, 2)
+// src/spc700/main.spc700.s:1094 UNK0C40
+EB_SPC_SITE(0x0C44, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:1095 UNK0C40
+EB_SPC_SITE(0x0C46, 0x8D, 0x0003, 2)
+// src/spc700/main.spc700.s:1096 UNK0C40
+EB_SPC_SITE(0x0C48, 0x9B, 0x0090, 2)
+// src/spc700/main.spc700.s:1097 UNK0C40
+EB_SPC_SITE(0x0C4A, 0x3F, 0x0CD3, 3)
+// src/spc700/main.spc700.s:1099 UNK0C4D
+EB_SPC_SITE(0x0C4D, 0xFB, 0x00C1, 2)
+// src/spc700/main.spc700.s:1100 UNK0C4D
+EB_SPC_SITE(0x0C4F, 0xF0, 0x0023, 2)
+// src/spc700/main.spc700.s:1101 UNK0C4D
+EB_SPC_SITE(0x0C51, 0xF5, 0x02E0, 3)
+// src/spc700/main.spc700.s:1102 UNK0C4D
+EB_SPC_SITE(0x0C54, 0xDE, 0x1BC0, 3)
+// src/spc700/main.spc700.s:1103 UNK0C4D
+EB_SPC_SITE(0x0C57, 0x09, 0x5E47, 3)
+// src/spc700/main.spc700.s:1104 UNK0C4D
+EB_SPC_SITE(0x0C5A, 0xF5, 0x02D0, 3)
+// src/spc700/main.spc700.s:1105 UNK0C4D
+EB_SPC_SITE(0x0C5D, 0x10, 0x0007, 2)
+// src/spc700/main.spc700.s:1106 UNK0C4D
+EB_SPC_SITE(0x0C5F, 0xFC, 0x0000, 1)
+// src/spc700/main.spc700.s:1107 UNK0C4D
+EB_SPC_SITE(0x0C60, 0xD0, 0x0004, 2)
+// src/spc700/main.spc700.s:1108 UNK0C4D
+EB_SPC_SITE(0x0C62, 0xE8, 0x0080, 2)
+// src/spc700/main.spc700.s:1109 UNK0C4D
+EB_SPC_SITE(0x0C64, 0x2F, 0x0004, 2)
+// src/spc700/main.spc700.s:1111 UNK0C66
+EB_SPC_SITE(0x0C66, 0x60, 0x0000, 1)
+// src/spc700/main.spc700.s:1112 UNK0C66
+EB_SPC_SITE(0x0C67, 0x95, 0x02D1, 3)
+// src/spc700/main.spc700.s:1114 UNK0C6A
+EB_SPC_SITE(0x0C6A, 0xD5, 0x02D0, 3)
+// src/spc700/main.spc700.s:1115 UNK0C6A
+EB_SPC_SITE(0x0C6D, 0x3F, 0x0E56, 3)
+// src/spc700/main.spc700.s:1116 UNK0C6A
+EB_SPC_SITE(0x0C70, 0x2F, 0x0007, 2)
+// src/spc700/main.spc700.s:1118 UNK0C72
+EB_SPC_SITE(0x0C72, 0xBB, 0x00C0, 2)
+// src/spc700/main.spc700.s:1120 UNK0C74
+EB_SPC_SITE(0x0C74, 0xE8, 0x00FF, 2)
+// src/spc700/main.spc700.s:1121 UNK0C74
+EB_SPC_SITE(0x0C76, 0x3F, 0x0E61, 3)
+// src/spc700/main.spc700.s:1123 UNK0C79
+EB_SPC_SITE(0x0C79, 0xF4, 0x0091, 2)
+// src/spc700/main.spc700.s:1124 UNK0C79
+EB_SPC_SITE(0x0C7B, 0xF0, 0x0009, 2)
+// src/spc700/main.spc700.s:1125 UNK0C79
+EB_SPC_SITE(0x0C7D, 0xE8, 0x0030, 2)
+// src/spc700/main.spc700.s:1126 UNK0C79
+EB_SPC_SITE(0x0C7F, 0x8D, 0x0003, 2)
+// src/spc700/main.spc700.s:1127 UNK0C79
+EB_SPC_SITE(0x0C81, 0x9B, 0x0091, 2)
+// src/spc700/main.spc700.s:1128 UNK0C79
+EB_SPC_SITE(0x0C83, 0x3F, 0x0CD3, 3)
+// src/spc700/main.spc700.s:1130 UNK0C86
+EB_SPC_SITE(0x0C86, 0xE4, 0x0047, 2)
+// src/spc700/main.spc700.s:1131 UNK0C86
+EB_SPC_SITE(0x0C88, 0x24, 0x005E, 2)
+// src/spc700/main.spc700.s:1132 UNK0C86
+EB_SPC_SITE(0x0C8A, 0xF0, 0x0046, 2)
+// src/spc700/main.spc700.s:1133 UNK0C86
+EB_SPC_SITE(0x0C8C, 0xF5, 0x0331, 3)
+// src/spc700/main.spc700.s:1134 UNK0C86
+EB_SPC_SITE(0x0C8F, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:1135 UNK0C86
+EB_SPC_SITE(0x0C90, 0xF5, 0x0330, 3)
+// src/spc700/main.spc700.s:1136 UNK0C86
+EB_SPC_SITE(0x0C93, 0xDA, 0x0010, 2)
+// src/spc700/main.spc700.s:1138 UNK0C95
+EB_SPC_SITE(0x0C95, 0x7D, 0x0000, 1)
+// src/spc700/main.spc700.s:1139 UNK0C95
+EB_SPC_SITE(0x0C96, 0x9F, 0x0000, 1)
+// src/spc700/main.spc700.s:1140 UNK0C95
+EB_SPC_SITE(0x0C97, 0x5C, 0x0000, 1)
+// src/spc700/main.spc700.s:1141 UNK0C95
+EB_SPC_SITE(0x0C98, 0xC4, 0x0012, 2)
+// src/spc700/main.spc700.s:1143 UNK0C9A
+EB_SPC_SITE(0x0C9A, 0xEB, 0x0011, 2)
+// src/spc700/main.spc700.s:1144 UNK0C9A
+EB_SPC_SITE(0x0C9C, 0xF6, 0x0E74, 3)
+// src/spc700/main.spc700.s:1145 UNK0C9A
+EB_SPC_SITE(0x0C9F, 0x80, 0x0000, 1)
+// src/spc700/main.spc700.s:1146 UNK0C9A
+EB_SPC_SITE(0x0CA0, 0xB6, 0x0E73, 3)
+// src/spc700/main.spc700.s:1147 UNK0C9A
+EB_SPC_SITE(0x0CA3, 0xEB, 0x0010, 2)
+// src/spc700/main.spc700.s:1148 UNK0C9A
+EB_SPC_SITE(0x0CA5, 0xCF, 0x0000, 1)
+// src/spc700/main.spc700.s:1149 UNK0C9A
+EB_SPC_SITE(0x0CA6, 0xDD, 0x0000, 1)
+// src/spc700/main.spc700.s:1150 UNK0C9A
+EB_SPC_SITE(0x0CA7, 0xEB, 0x0011, 2)
+// src/spc700/main.spc700.s:1151 UNK0C9A
+EB_SPC_SITE(0x0CA9, 0x60, 0x0000, 1)
+// src/spc700/main.spc700.s:1152 UNK0C9A
+EB_SPC_SITE(0x0CAA, 0x96, 0x0E73, 3)
+// src/spc700/main.spc700.s:1153 UNK0C9A
+EB_SPC_SITE(0x0CAD, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:1154 UNK0C9A
+EB_SPC_SITE(0x0CAE, 0xF5, 0x0321, 3)
+// src/spc700/main.spc700.s:1155 UNK0C9A
+EB_SPC_SITE(0x0CB1, 0xCF, 0x0000, 1)
+// src/spc700/main.spc700.s:1156 UNK0C9A
+EB_SPC_SITE(0x0CB2, 0xF5, 0x0351, 3)
+// src/spc700/main.spc700.s:1157 UNK0C9A
+EB_SPC_SITE(0x0CB5, 0x1C, 0x0000, 1)
+// src/spc700/main.spc700.s:1158 UNK0C9A
+EB_SPC_SITE(0x0CB6, 0x13, 0x0112, 3)
+// src/spc700/main.spc700.s:1159 UNK0C9A
+EB_SPC_SITE(0x0CB9, 0x1C, 0x0000, 1)
+// src/spc700/main.spc700.s:1161 UNK0CBA
+EB_SPC_SITE(0x0CBA, 0xDD, 0x0000, 1)
+// src/spc700/main.spc700.s:1162 UNK0CBA
+EB_SPC_SITE(0x0CBB, 0x90, 0x0003, 2)
+// src/spc700/main.spc700.s:1163 UNK0CBA
+EB_SPC_SITE(0x0CBD, 0x48, 0x00FF, 2)
+// src/spc700/main.spc700.s:1164 UNK0CBA
+EB_SPC_SITE(0x0CBF, 0xBC, 0x0000, 1)
+// src/spc700/main.spc700.s:1166 UNK0CC0
+EB_SPC_SITE(0x0CC0, 0xEB, 0x0012, 2)
+// src/spc700/main.spc700.s:1167 UNK0CC0
+EB_SPC_SITE(0x0CC2, 0x3F, 0x0741, 3)
+// src/spc700/main.spc700.s:1168 UNK0CC0
+EB_SPC_SITE(0x0CC5, 0x8D, 0x0014, 2)
+// src/spc700/main.spc700.s:1169 UNK0CC0
+EB_SPC_SITE(0x0CC7, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:1170 UNK0CC0
+EB_SPC_SITE(0x0CC9, 0x9A, 0x0010, 2)
+// src/spc700/main.spc700.s:1171 UNK0CC0
+EB_SPC_SITE(0x0CCB, 0xDA, 0x0010, 2)
+// src/spc700/main.spc700.s:1172 UNK0CC0
+EB_SPC_SITE(0x0CCD, 0xAB, 0x0012, 2)
+// src/spc700/main.spc700.s:1173 UNK0CC0
+EB_SPC_SITE(0x0CCF, 0x33, 0xC812, 3)
+// src/spc700/main.spc700.s:1175 UNK0CD2
+EB_SPC_SITE(0x0CD2, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:1178 UNK0CD3
+EB_SPC_SITE(0x0CD3, 0x09, 0x5E47, 3)
+// src/spc700/main.spc700.s:1180 UNK0CD6
+EB_SPC_SITE(0x0CD6, 0xDA, 0x0014, 2)
+// src/spc700/main.spc700.s:1181 UNK0CD6
+EB_SPC_SITE(0x0CD8, 0xDA, 0x0016, 2)
+// src/spc700/main.spc700.s:1182 UNK0CD6
+EB_SPC_SITE(0x0CDA, 0x4D, 0x0000, 1)
+// src/spc700/main.spc700.s:1183 UNK0CD6
+EB_SPC_SITE(0x0CDB, 0xEE, 0x0000, 1)
+// src/spc700/main.spc700.s:1184 UNK0CD6
+EB_SPC_SITE(0x0CDC, 0x60, 0x0000, 1)
+// src/spc700/main.spc700.s:1185 UNK0CD6
+EB_SPC_SITE(0x0CDD, 0xD0, 0x000A, 2)
+// src/spc700/main.spc700.s:1186 UNK0CD6
+EB_SPC_SITE(0x0CDF, 0x98, 0x161F, 3)
+// src/spc700/main.spc700.s:1187 UNK0CD6
+EB_SPC_SITE(0x0CE2, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:1188 UNK0CD6
+EB_SPC_SITE(0x0CE4, 0xD7, 0x0014, 2)
+// src/spc700/main.spc700.s:1189 UNK0CD6
+EB_SPC_SITE(0x0CE6, 0xFC, 0x0000, 1)
+// src/spc700/main.spc700.s:1190 UNK0CD6
+EB_SPC_SITE(0x0CE7, 0x2F, 0x0009, 2)
+// src/spc700/main.spc700.s:1192 UNK0CE9
+EB_SPC_SITE(0x0CE9, 0x98, 0x1610, 3)
+// src/spc700/main.spc700.s:1193 UNK0CE9
+EB_SPC_SITE(0x0CEC, 0x3F, 0x0CF0, 3)
+// src/spc700/main.spc700.s:1194 UNK0CE9
+EB_SPC_SITE(0x0CEF, 0xFC, 0x0000, 1)
+// src/spc700/main.spc700.s:1196 UNK0CF0
+EB_SPC_SITE(0x0CF0, 0xF7, 0x0014, 2)
+// src/spc700/main.spc700.s:1198 UNK0CF2
+EB_SPC_SITE(0x0CF2, 0x97, 0x0016, 2)
+// src/spc700/main.spc700.s:1199 UNK0CF2
+EB_SPC_SITE(0x0CF4, 0xD7, 0x0014, 2)
+// src/spc700/main.spc700.s:1200 UNK0CF2
+EB_SPC_SITE(0x0CF6, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:1203 UNK0CF7
+EB_SPC_SITE(0x0CF7, 0xF4, 0x0071, 2)
+// src/spc700/main.spc700.s:1204 UNK0CF7
+EB_SPC_SITE(0x0CF9, 0xF0, 0x0065, 2)
+// src/spc700/main.spc700.s:1205 UNK0CF7
+EB_SPC_SITE(0x0CFB, 0x9B, 0x0071, 2)
+// src/spc700/main.spc700.s:1206 UNK0CF7
+EB_SPC_SITE(0x0CFD, 0xF0, 0x0005, 2)
+// src/spc700/main.spc700.s:1207 UNK0CF7
+EB_SPC_SITE(0x0CFF, 0xE8, 0x0002, 2)
+// src/spc700/main.spc700.s:1208 UNK0CF7
+EB_SPC_SITE(0x0D01, 0xDE, 0x5C70, 3)
+// src/spc700/main.spc700.s:1210 UNK0D04
+EB_SPC_SITE(0x0D04, 0xF4, 0x0080, 2)
+// src/spc700/main.spc700.s:1211 UNK0D04
+EB_SPC_SITE(0x0D06, 0xC4, 0x0017, 2)
+// src/spc700/main.spc700.s:1212 UNK0D04
+EB_SPC_SITE(0x0D08, 0xF4, 0x0030, 2)
+// src/spc700/main.spc700.s:1213 UNK0D04
+EB_SPC_SITE(0x0D0A, 0xFB, 0x0031, 2)
+// src/spc700/main.spc700.s:1215 UNK0D0C
+EB_SPC_SITE(0x0D0C, 0xDA, 0x0014, 2)
+// src/spc700/main.spc700.s:1216 UNK0D0C
+EB_SPC_SITE(0x0D0E, 0x8D, 0x0000, 2)
+// src/spc700/main.spc700.s:1218 UNK0D10
+EB_SPC_SITE(0x0D10, 0xF7, 0x0014, 2)
+// src/spc700/main.spc700.s:1219 UNK0D10
+EB_SPC_SITE(0x0D12, 0xF0, 0x001E, 2)
+// src/spc700/main.spc700.s:1220 UNK0D10
+EB_SPC_SITE(0x0D14, 0x30, 0x0007, 2)
+// src/spc700/main.spc700.s:1222 UNK0D16
+EB_SPC_SITE(0x0D16, 0xFC, 0x0000, 1)
+// src/spc700/main.spc700.s:1223 UNK0D16
+EB_SPC_SITE(0x0D17, 0x30, 0x0040, 2)
+// src/spc700/main.spc700.s:1224 UNK0D16
+EB_SPC_SITE(0x0D19, 0xF7, 0x0014, 2)
+// src/spc700/main.spc700.s:1225 UNK0D16
+EB_SPC_SITE(0x0D1B, 0x10, 0x00F9, 2)
+// src/spc700/main.spc700.s:1227 UNK0D1D
+EB_SPC_SITE(0x0D1D, 0x68, 0x00C8, 2)
+// src/spc700/main.spc700.s:1228 UNK0D1D
+EB_SPC_SITE(0x0D1F, 0xF0, 0x003F, 2)
+// src/spc700/main.spc700.s:1229 UNK0D1D
+EB_SPC_SITE(0x0D21, 0x68, 0x00EF, 2)
+// src/spc700/main.spc700.s:1230 UNK0D1D
+EB_SPC_SITE(0x0D23, 0xF0, 0x0029, 2)
+// src/spc700/main.spc700.s:1231 UNK0D1D
+EB_SPC_SITE(0x0D25, 0x68, 0x00E0, 2)
+// src/spc700/main.spc700.s:1232 UNK0D1D
+EB_SPC_SITE(0x0D27, 0x90, 0x0030, 2)
+// src/spc700/main.spc700.s:1233 UNK0D1D
+EB_SPC_SITE(0x0D29, 0x6D, 0x0000, 1)
+// src/spc700/main.spc700.s:1234 UNK0D1D
+EB_SPC_SITE(0x0D2A, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:1235 UNK0D1D
+EB_SPC_SITE(0x0D2B, 0xAE, 0x0000, 1)
+// src/spc700/main.spc700.s:1236 UNK0D1D
+EB_SPC_SITE(0x0D2C, 0x96, 0x0B41, 3)
+// src/spc700/main.spc700.s:1237 UNK0D1D
+EB_SPC_SITE(0x0D2F, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:1238 UNK0D1D
+EB_SPC_SITE(0x0D30, 0x2F, 0x00DE, 2)
+// src/spc700/main.spc700.s:1240 UNK0D32
+EB_SPC_SITE(0x0D32, 0xE4, 0x0017, 2)
+// src/spc700/main.spc700.s:1241 UNK0D32
+EB_SPC_SITE(0x0D34, 0xF0, 0x0023, 2)
+// src/spc700/main.spc700.s:1242 UNK0D32
+EB_SPC_SITE(0x0D36, 0x8B, 0x0017, 2)
+// src/spc700/main.spc700.s:1243 UNK0D32
+EB_SPC_SITE(0x0D38, 0xD0, 0x000A, 2)
+// src/spc700/main.spc700.s:1244 UNK0D32
+EB_SPC_SITE(0x0D3A, 0xF5, 0x0231, 3)
+// src/spc700/main.spc700.s:1245 UNK0D32
+EB_SPC_SITE(0x0D3D, 0x2D, 0x0000, 1)
+// src/spc700/main.spc700.s:1246 UNK0D32
+EB_SPC_SITE(0x0D3E, 0xF5, 0x0230, 3)
+// src/spc700/main.spc700.s:1247 UNK0D32
+EB_SPC_SITE(0x0D41, 0xEE, 0x0000, 1)
+// src/spc700/main.spc700.s:1248 UNK0D32
+EB_SPC_SITE(0x0D42, 0x2F, 0x00C8, 2)
+// src/spc700/main.spc700.s:1250 UNK0D44
+EB_SPC_SITE(0x0D44, 0xF5, 0x0241, 3)
+// src/spc700/main.spc700.s:1251 UNK0D44
+EB_SPC_SITE(0x0D47, 0x2D, 0x0000, 1)
+// src/spc700/main.spc700.s:1252 UNK0D44
+EB_SPC_SITE(0x0D48, 0xF5, 0x0240, 3)
+// src/spc700/main.spc700.s:1253 UNK0D44
+EB_SPC_SITE(0x0D4B, 0xEE, 0x0000, 1)
+// src/spc700/main.spc700.s:1254 UNK0D44
+EB_SPC_SITE(0x0D4C, 0x2F, 0x00BE, 2)
+// src/spc700/main.spc700.s:1256 UNK0D4E
+EB_SPC_SITE(0x0D4E, 0xFC, 0x0000, 1)
+// src/spc700/main.spc700.s:1257 UNK0D4E
+EB_SPC_SITE(0x0D4F, 0xF7, 0x0014, 2)
+// src/spc700/main.spc700.s:1258 UNK0D4E
+EB_SPC_SITE(0x0D51, 0x2D, 0x0000, 1)
+// src/spc700/main.spc700.s:1259 UNK0D4E
+EB_SPC_SITE(0x0D52, 0xFC, 0x0000, 1)
+// src/spc700/main.spc700.s:1260 UNK0D4E
+EB_SPC_SITE(0x0D53, 0xF7, 0x0014, 2)
+// src/spc700/main.spc700.s:1261 UNK0D4E
+EB_SPC_SITE(0x0D55, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:1262 UNK0D4E
+EB_SPC_SITE(0x0D56, 0xAE, 0x0000, 1)
+// src/spc700/main.spc700.s:1263 UNK0D4E
+EB_SPC_SITE(0x0D57, 0x2F, 0x00B3, 2)
+// src/spc700/main.spc700.s:1265 UNK0D59
+EB_SPC_SITE(0x0D59, 0xE4, 0x0047, 2)
+// src/spc700/main.spc700.s:1266 UNK0D59
+EB_SPC_SITE(0x0D5B, 0x8D, 0x005C, 2)
+// src/spc700/main.spc700.s:1267 UNK0D59
+EB_SPC_SITE(0x0D5D, 0x3F, 0x0741, 3)
+// src/spc700/main.spc700.s:1269 UNK0D60
+EB_SPC_SITE(0x0D60, 0xF2, 0x0013, 2)
+// src/spc700/main.spc700.s:1270 UNK0D60
+EB_SPC_SITE(0x0D62, 0xF4, 0x00A0, 2)
+// src/spc700/main.spc700.s:1271 UNK0D60
+EB_SPC_SITE(0x0D64, 0xF0, 0x0013, 2)
+// src/spc700/main.spc700.s:1272 UNK0D60
+EB_SPC_SITE(0x0D66, 0xF4, 0x00A1, 2)
+// src/spc700/main.spc700.s:1273 UNK0D60
+EB_SPC_SITE(0x0D68, 0xF0, 0x0004, 2)
+// src/spc700/main.spc700.s:1274 UNK0D60
+EB_SPC_SITE(0x0D6A, 0x9B, 0x00A1, 2)
+// src/spc700/main.spc700.s:1275 UNK0D60
+EB_SPC_SITE(0x0D6C, 0x2F, 0x000B, 2)
+// src/spc700/main.spc700.s:1277 UNK0D6E
+EB_SPC_SITE(0x0D6E, 0xE2, 0x0013, 2)
+// src/spc700/main.spc700.s:1278 UNK0D6E
+EB_SPC_SITE(0x0D70, 0xE8, 0x0060, 2)
+// src/spc700/main.spc700.s:1279 UNK0D6E
+EB_SPC_SITE(0x0D72, 0x8D, 0x0003, 2)
+// src/spc700/main.spc700.s:1280 UNK0D6E
+EB_SPC_SITE(0x0D74, 0x9B, 0x00A0, 2)
+// src/spc700/main.spc700.s:1281 UNK0D6E
+EB_SPC_SITE(0x0D76, 0x3F, 0x0CD6, 3)
+// src/spc700/main.spc700.s:1283 UNK0D79
+EB_SPC_SITE(0x0D79, 0x3F, 0x0BBC, 3)
+// src/spc700/main.spc700.s:1284 UNK0D79
+EB_SPC_SITE(0x0D7C, 0xF4, 0x00B1, 2)
+// src/spc700/main.spc700.s:1285 UNK0D79
+EB_SPC_SITE(0x0D7E, 0xF0, 0x004C, 2)
+// src/spc700/main.spc700.s:1286 UNK0D79
+EB_SPC_SITE(0x0D80, 0xF5, 0x02B0, 3)
+// src/spc700/main.spc700.s:1287 UNK0D79
+EB_SPC_SITE(0x0D83, 0xDE, 0x44B0, 3)
+// src/spc700/main.spc700.s:1288 UNK0D79
+EB_SPC_SITE(0x0D86, 0xF5, 0x0100, 3)
+// src/spc700/main.spc700.s:1289 UNK0D79
+EB_SPC_SITE(0x0D89, 0x75, 0x02B1, 3)
+// src/spc700/main.spc700.s:1290 UNK0D79
+EB_SPC_SITE(0x0D8C, 0xD0, 0x0005, 2)
+// src/spc700/main.spc700.s:1291 UNK0D79
+EB_SPC_SITE(0x0D8E, 0xF5, 0x02C1, 3)
+// src/spc700/main.spc700.s:1292 UNK0D79
+EB_SPC_SITE(0x0D91, 0x2F, 0x000D, 2)
+// src/spc700/main.spc700.s:1294 UNK0D93
+EB_SPC_SITE(0x0D93, 0x40, 0x0000, 1)
+// src/spc700/main.spc700.s:1295 UNK0D93
+EB_SPC_SITE(0x0D94, 0xBB, 0x0000, 2)
+// src/spc700/main.spc700.s:1296 UNK0D93
+EB_SPC_SITE(0x0D96, 0x20, 0x0000, 1)
+// src/spc700/main.spc700.s:1297 UNK0D93
+EB_SPC_SITE(0x0D97, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:1298 UNK0D93
+EB_SPC_SITE(0x0D98, 0xF0, 0x0002, 2)
+// src/spc700/main.spc700.s:1299 UNK0D93
+EB_SPC_SITE(0x0D9A, 0xF4, 0x00B1, 2)
+// src/spc700/main.spc700.s:1301 UNK0D9C
+EB_SPC_SITE(0x0D9C, 0x60, 0x0000, 1)
+// src/spc700/main.spc700.s:1302 UNK0D9C
+EB_SPC_SITE(0x0D9D, 0x95, 0x02C0, 3)
+// src/spc700/main.spc700.s:1304 UNK0DA0
+EB_SPC_SITE(0x0DA0, 0xD4, 0x00B1, 2)
+// src/spc700/main.spc700.s:1305 UNK0DA0
+EB_SPC_SITE(0x0DA2, 0xF5, 0x02A0, 3)
+// src/spc700/main.spc700.s:1306 UNK0DA0
+EB_SPC_SITE(0x0DA5, 0x60, 0x0000, 1)
+// src/spc700/main.spc700.s:1307 UNK0DA0
+EB_SPC_SITE(0x0DA6, 0x95, 0x02A1, 3)
+// src/spc700/main.spc700.s:1308 UNK0DA0
+EB_SPC_SITE(0x0DA9, 0xD5, 0x02A0, 3)
+// src/spc700/main.spc700.s:1310 UNK0DAC
+EB_SPC_SITE(0x0DAC, 0xC4, 0x0012, 2)
+// src/spc700/main.spc700.s:1311 UNK0DAC
+EB_SPC_SITE(0x0DAE, 0x1C, 0x0000, 1)
+// src/spc700/main.spc700.s:1312 UNK0DAC
+EB_SPC_SITE(0x0DAF, 0x1C, 0x0000, 1)
+// src/spc700/main.spc700.s:1313 UNK0DAC
+EB_SPC_SITE(0x0DB0, 0x90, 0x0002, 2)
+// src/spc700/main.spc700.s:1314 UNK0DAC
+EB_SPC_SITE(0x0DB2, 0x48, 0x00FF, 2)
+// src/spc700/main.spc700.s:1316 UNK0DB4
+EB_SPC_SITE(0x0DB4, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:1317 UNK0DB4
+EB_SPC_SITE(0x0DB5, 0xF4, 0x00B1, 2)
+// src/spc700/main.spc700.s:1318 UNK0DB4
+EB_SPC_SITE(0x0DB7, 0x68, 0x00F1, 2)
+// src/spc700/main.spc700.s:1319 UNK0DB4
+EB_SPC_SITE(0x0DB9, 0x90, 0x0005, 2)
+// src/spc700/main.spc700.s:1320 UNK0DB4
+EB_SPC_SITE(0x0DBB, 0x28, 0x000F, 2)
+// src/spc700/main.spc700.s:1321 UNK0DB4
+EB_SPC_SITE(0x0DBD, 0xCF, 0x0000, 1)
+// src/spc700/main.spc700.s:1322 UNK0DB4
+EB_SPC_SITE(0x0DBE, 0x2F, 0x0004, 2)
+// src/spc700/main.spc700.s:1325 UNK0DC0
+EB_SPC_SITE(0x0DC0, 0xCF, 0x0000, 1)
+// src/spc700/main.spc700.s:1326 UNK0DC0
+EB_SPC_SITE(0x0DC1, 0xDD, 0x0000, 1)
+// src/spc700/main.spc700.s:1327 UNK0DC0
+EB_SPC_SITE(0x0DC2, 0x8D, 0x0000, 2)
+// src/spc700/main.spc700.s:1329 UNK0DC4
+EB_SPC_SITE(0x0DC4, 0x3F, 0x0E41, 3)
+// src/spc700/main.spc700.s:1331 UNK0DC7
+EB_SPC_SITE(0x0DC7, 0x5F, 0x06BE, 3)
+// src/spc700/main.spc700.s:1334 UNK0DCA
+EB_SPC_SITE(0x0DCA, 0xBB, 0x00B0, 2)
+// src/spc700/main.spc700.s:1336 UNK0DCC
+EB_SPC_SITE(0x0DCC, 0xE3, 0xF813, 3)
+// src/spc700/main.spc700.s:1337 UNK0DCC
+EB_SPC_SITE(0x0DCF, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:1340 UNK0DD0
+EB_SPC_SITE(0x0DD0, 0xF2, 0x0013, 2)
+// src/spc700/main.spc700.s:1341 UNK0DD0
+EB_SPC_SITE(0x0DD2, 0xF4, 0x00C1, 2)
+// src/spc700/main.spc700.s:1342 UNK0DD0
+EB_SPC_SITE(0x0DD4, 0xF0, 0x0009, 2)
+// src/spc700/main.spc700.s:1343 UNK0DD0
+EB_SPC_SITE(0x0DD6, 0xF5, 0x02E0, 3)
+// src/spc700/main.spc700.s:1344 UNK0DD0
+EB_SPC_SITE(0x0DD9, 0xDE, 0x03C0, 3)
+// src/spc700/main.spc700.s:1345 UNK0DD0
+EB_SPC_SITE(0x0DDC, 0x3F, 0x0E49, 3)
+// src/spc700/main.spc700.s:1347 UNK0DDF
+EB_SPC_SITE(0x0DDF, 0xF5, 0x0331, 3)
+// src/spc700/main.spc700.s:1348 UNK0DDF
+EB_SPC_SITE(0x0DE2, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:1349 UNK0DDF
+EB_SPC_SITE(0x0DE3, 0xF5, 0x0330, 3)
+// src/spc700/main.spc700.s:1350 UNK0DDF
+EB_SPC_SITE(0x0DE6, 0xDA, 0x0010, 2)
+// src/spc700/main.spc700.s:1351 UNK0DDF
+EB_SPC_SITE(0x0DE8, 0xF4, 0x0091, 2)
+// src/spc700/main.spc700.s:1352 UNK0DDF
+EB_SPC_SITE(0x0DEA, 0xF0, 0x000A, 2)
+// src/spc700/main.spc700.s:1353 UNK0DDF
+EB_SPC_SITE(0x0DEC, 0xF5, 0x0341, 3)
+// src/spc700/main.spc700.s:1354 UNK0DDF
+EB_SPC_SITE(0x0DEF, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:1355 UNK0DDF
+EB_SPC_SITE(0x0DF0, 0xF5, 0x0340, 3)
+// src/spc700/main.spc700.s:1356 UNK0DDF
+EB_SPC_SITE(0x0DF3, 0x3F, 0x0E2B, 3)
+// src/spc700/main.spc700.s:1358 UNK0DF6
+EB_SPC_SITE(0x0DF6, 0xF3, 0x0313, 3)
+// src/spc700/main.spc700.s:1359 UNK0DF6
+EB_SPC_SITE(0x0DF9, 0x3F, 0x0C95, 3)
+// src/spc700/main.spc700.s:1361 UNK0DFC
+EB_SPC_SITE(0x0DFC, 0xF2, 0x0013, 2)
+// src/spc700/main.spc700.s:1362 UNK0DFC
+EB_SPC_SITE(0x0DFE, 0x3F, 0x0BBC, 3)
+// src/spc700/main.spc700.s:1363 UNK0DFC
+EB_SPC_SITE(0x0E01, 0xF4, 0x00A0, 2)
+// src/spc700/main.spc700.s:1364 UNK0DFC
+EB_SPC_SITE(0x0E03, 0xF0, 0x000E, 2)
+// src/spc700/main.spc700.s:1365 UNK0DFC
+EB_SPC_SITE(0x0E05, 0xF4, 0x00A1, 2)
+// src/spc700/main.spc700.s:1366 UNK0DFC
+EB_SPC_SITE(0x0E07, 0xD0, 0x000A, 2)
+// src/spc700/main.spc700.s:1367 UNK0DFC
+EB_SPC_SITE(0x0E09, 0xF5, 0x0371, 3)
+// src/spc700/main.spc700.s:1368 UNK0DFC
+EB_SPC_SITE(0x0E0C, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:1369 UNK0DFC
+EB_SPC_SITE(0x0E0D, 0xF5, 0x0370, 3)
+// src/spc700/main.spc700.s:1370 UNK0DFC
+EB_SPC_SITE(0x0E10, 0x3F, 0x0E2B, 3)
+// src/spc700/main.spc700.s:1372 UNK0E13
+EB_SPC_SITE(0x0E13, 0xF4, 0x00B1, 2)
+// src/spc700/main.spc700.s:1373 UNK0E13
+EB_SPC_SITE(0x0E15, 0xF0, 0x00B5, 2)
+// src/spc700/main.spc700.s:1374 UNK0E13
+EB_SPC_SITE(0x0E17, 0xF5, 0x02B0, 3)
+// src/spc700/main.spc700.s:1375 UNK0E13
+EB_SPC_SITE(0x0E1A, 0xDE, 0xAFB0, 3)
+// src/spc700/main.spc700.s:1376 UNK0E13
+EB_SPC_SITE(0x0E1D, 0xEB, 0x0051, 2)
+// src/spc700/main.spc700.s:1377 UNK0E13
+EB_SPC_SITE(0x0E1F, 0xF5, 0x02A1, 3)
+// src/spc700/main.spc700.s:1378 UNK0E13
+EB_SPC_SITE(0x0E22, 0xCF, 0x0000, 1)
+// src/spc700/main.spc700.s:1379 UNK0E13
+EB_SPC_SITE(0x0E23, 0xDD, 0x0000, 1)
+// src/spc700/main.spc700.s:1380 UNK0E13
+EB_SPC_SITE(0x0E24, 0x60, 0x0000, 1)
+// src/spc700/main.spc700.s:1381 UNK0E13
+EB_SPC_SITE(0x0E25, 0x95, 0x02A0, 3)
+// src/spc700/main.spc700.s:1382 UNK0E13
+EB_SPC_SITE(0x0E28, 0x5F, 0x0DAC, 3)
+// src/spc700/main.spc700.s:1385 UNK0E2B
+EB_SPC_SITE(0x0E2B, 0xE2, 0x0013, 2)
+// src/spc700/main.spc700.s:1386 UNK0E2B
+EB_SPC_SITE(0x0E2D, 0xCB, 0x0012, 2)
+// src/spc700/main.spc700.s:1387 UNK0E2B
+EB_SPC_SITE(0x0E2F, 0x3F, 0x0BD9, 3)
+// src/spc700/main.spc700.s:1388 UNK0E2B
+EB_SPC_SITE(0x0E32, 0x6D, 0x0000, 1)
+// src/spc700/main.spc700.s:1389 UNK0E2B
+EB_SPC_SITE(0x0E33, 0xEB, 0x0051, 2)
+// src/spc700/main.spc700.s:1390 UNK0E2B
+EB_SPC_SITE(0x0E35, 0xCF, 0x0000, 1)
+// src/spc700/main.spc700.s:1391 UNK0E2B
+EB_SPC_SITE(0x0E36, 0xCB, 0x0014, 2)
+// src/spc700/main.spc700.s:1392 UNK0E2B
+EB_SPC_SITE(0x0E38, 0x8F, 0x1500, 3)
+// src/spc700/main.spc700.s:1393 UNK0E2B
+EB_SPC_SITE(0x0E3B, 0xEB, 0x0051, 2)
+// src/spc700/main.spc700.s:1394 UNK0E2B
+EB_SPC_SITE(0x0E3D, 0xAE, 0x0000, 1)
+// src/spc700/main.spc700.s:1395 UNK0E2B
+EB_SPC_SITE(0x0E3E, 0xCF, 0x0000, 1)
+// src/spc700/main.spc700.s:1396 UNK0E2B
+EB_SPC_SITE(0x0E3F, 0x7A, 0x0014, 2)
+// src/spc700/main.spc700.s:1398 UNK0E41
+EB_SPC_SITE(0x0E41, 0x3F, 0x0BD9, 3)
+// src/spc700/main.spc700.s:1399 UNK0E41
+EB_SPC_SITE(0x0E44, 0x7A, 0x0010, 2)
+// src/spc700/main.spc700.s:1400 UNK0E41
+EB_SPC_SITE(0x0E46, 0xDA, 0x0010, 2)
+// src/spc700/main.spc700.s:1401 UNK0E41
+EB_SPC_SITE(0x0E48, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:1404 UNK0E49
+EB_SPC_SITE(0x0E49, 0xE2, 0x0013, 2)
+// src/spc700/main.spc700.s:1405 UNK0E49
+EB_SPC_SITE(0x0E4B, 0xEB, 0x0051, 2)
+// src/spc700/main.spc700.s:1406 UNK0E49
+EB_SPC_SITE(0x0E4D, 0xF5, 0x02D1, 3)
+// src/spc700/main.spc700.s:1407 UNK0E49
+EB_SPC_SITE(0x0E50, 0xCF, 0x0000, 1)
+// src/spc700/main.spc700.s:1408 UNK0E49
+EB_SPC_SITE(0x0E51, 0xDD, 0x0000, 1)
+// src/spc700/main.spc700.s:1409 UNK0E49
+EB_SPC_SITE(0x0E52, 0x60, 0x0000, 1)
+// src/spc700/main.spc700.s:1410 UNK0E49
+EB_SPC_SITE(0x0E53, 0x95, 0x02D0, 3)
+// src/spc700/main.spc700.s:1412 UNK0E56
+EB_SPC_SITE(0x0E56, 0x1C, 0x0000, 1)
+// src/spc700/main.spc700.s:1413 UNK0E56
+EB_SPC_SITE(0x0E57, 0x90, 0x0002, 2)
+// src/spc700/main.spc700.s:1414 UNK0E56
+EB_SPC_SITE(0x0E59, 0x48, 0x00FF, 2)
+// src/spc700/main.spc700.s:1416 UNK0E5B
+EB_SPC_SITE(0x0E5B, 0xFB, 0x00C1, 2)
+// src/spc700/main.spc700.s:1417 UNK0E5B
+EB_SPC_SITE(0x0E5D, 0xCF, 0x0000, 1)
+// src/spc700/main.spc700.s:1418 UNK0E5B
+EB_SPC_SITE(0x0E5E, 0xDD, 0x0000, 1)
+// src/spc700/main.spc700.s:1419 UNK0E5B
+EB_SPC_SITE(0x0E5F, 0x48, 0x00FF, 2)
+// src/spc700/main.spc700.s:1421 UNK0E61
+EB_SPC_SITE(0x0E61, 0xEB, 0x0059, 2)
+// src/spc700/main.spc700.s:1422 UNK0E61
+EB_SPC_SITE(0x0E63, 0xCF, 0x0000, 1)
+// src/spc700/main.spc700.s:1423 UNK0E61
+EB_SPC_SITE(0x0E64, 0xF5, 0x0210, 3)
+// src/spc700/main.spc700.s:1424 UNK0E61
+EB_SPC_SITE(0x0E67, 0xCF, 0x0000, 1)
+// src/spc700/main.spc700.s:1425 UNK0E61
+EB_SPC_SITE(0x0E68, 0xF5, 0x0301, 3)
+// src/spc700/main.spc700.s:1426 UNK0E61
+EB_SPC_SITE(0x0E6B, 0xCF, 0x0000, 1)
+// src/spc700/main.spc700.s:1427 UNK0E61
+EB_SPC_SITE(0x0E6C, 0xDD, 0x0000, 1)
+// src/spc700/main.spc700.s:1428 UNK0E61
+EB_SPC_SITE(0x0E6D, 0xCF, 0x0000, 1)
+// src/spc700/main.spc700.s:1429 UNK0E61
+EB_SPC_SITE(0x0E6E, 0xDD, 0x0000, 1)
+// src/spc700/main.spc700.s:1430 UNK0E61
+EB_SPC_SITE(0x0E6F, 0xD5, 0x0321, 3)
+// src/spc700/main.spc700.s:1431 UNK0E61
+EB_SPC_SITE(0x0E72, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:1482 UNK0EE1
+EB_SPC_SITE(0x0EE1, 0xE8, 0x00AA, 2)
+// src/spc700/main.spc700.s:1483 UNK0EE1
+EB_SPC_SITE(0x0EE3, 0xC5, 0x00F4, 3)
+// src/spc700/main.spc700.s:1484 UNK0EE1
+EB_SPC_SITE(0x0EE6, 0xE8, 0x00BB, 2)
+// src/spc700/main.spc700.s:1485 UNK0EE1
+EB_SPC_SITE(0x0EE8, 0xC5, 0x00F5, 3)
+// src/spc700/main.spc700.s:1487 UNK0EEB
+EB_SPC_SITE(0x0EEB, 0xE5, 0x00F4, 3)
+// src/spc700/main.spc700.s:1488 UNK0EEB
+EB_SPC_SITE(0x0EEE, 0x68, 0x00CC, 2)
+// src/spc700/main.spc700.s:1489 UNK0EEB
+EB_SPC_SITE(0x0EF0, 0xD0, 0x00F9, 2)
+// src/spc700/main.spc700.s:1490 UNK0EEB
+EB_SPC_SITE(0x0EF2, 0x2F, 0x0020, 2)
+// src/spc700/main.spc700.s:1492 UNK0EF4
+EB_SPC_SITE(0x0EF4, 0xEC, 0x00F4, 3)
+// src/spc700/main.spc700.s:1493 UNK0EF4
+EB_SPC_SITE(0x0EF7, 0xD0, 0x00FB, 2)
+// src/spc700/main.spc700.s:1495 UNK0EF9
+EB_SPC_SITE(0x0EF9, 0x5E, 0x00F4, 3)
+// src/spc700/main.spc700.s:1496 UNK0EF9
+EB_SPC_SITE(0x0EFC, 0xD0, 0x000F, 2)
+// src/spc700/main.spc700.s:1497 UNK0EF9
+EB_SPC_SITE(0x0EFE, 0xE5, 0x00F5, 3)
+// src/spc700/main.spc700.s:1498 UNK0EF9
+EB_SPC_SITE(0x0F01, 0xCC, 0x00F4, 3)
+// src/spc700/main.spc700.s:1499 UNK0EF9
+EB_SPC_SITE(0x0F04, 0xD7, 0x0014, 2)
+// src/spc700/main.spc700.s:1500 UNK0EF9
+EB_SPC_SITE(0x0F06, 0xFC, 0x0000, 1)
+// src/spc700/main.spc700.s:1501 UNK0EF9
+EB_SPC_SITE(0x0F07, 0xD0, 0x00F0, 2)
+// src/spc700/main.spc700.s:1502 UNK0EF9
+EB_SPC_SITE(0x0F09, 0xAB, 0x0015, 2)
+// src/spc700/main.spc700.s:1503 UNK0EF9
+EB_SPC_SITE(0x0F0B, 0x2F, 0x00EC, 2)
+// src/spc700/main.spc700.s:1505 UNK0F0D
+EB_SPC_SITE(0x0F0D, 0x10, 0x00EA, 2)
+// src/spc700/main.spc700.s:1506 UNK0F0D
+EB_SPC_SITE(0x0F0F, 0x5E, 0x00F4, 3)
+// src/spc700/main.spc700.s:1507 UNK0F0D
+EB_SPC_SITE(0x0F12, 0x10, 0x00E5, 2)
+// src/spc700/main.spc700.s:1509 UNK0F14
+EB_SPC_SITE(0x0F14, 0xE5, 0x00F6, 3)
+// src/spc700/main.spc700.s:1510 UNK0F14
+EB_SPC_SITE(0x0F17, 0xEC, 0x00F7, 3)
+// src/spc700/main.spc700.s:1511 UNK0F14
+EB_SPC_SITE(0x0F1A, 0xDA, 0x0014, 2)
+// src/spc700/main.spc700.s:1512 UNK0F14
+EB_SPC_SITE(0x0F1C, 0xEC, 0x00F4, 3)
+// src/spc700/main.spc700.s:1513 UNK0F14
+EB_SPC_SITE(0x0F1F, 0xE5, 0x00F5, 3)
+// src/spc700/main.spc700.s:1514 UNK0F14
+EB_SPC_SITE(0x0F22, 0xCC, 0x00F4, 3)
+// src/spc700/main.spc700.s:1515 UNK0F14
+EB_SPC_SITE(0x0F25, 0xD0, 0x00CD, 2)
+// src/spc700/main.spc700.s:1516 UNK0F14
+EB_SPC_SITE(0x0F27, 0xCD, 0x0031, 2)
+// src/spc700/main.spc700.s:1517 UNK0F14
+EB_SPC_SITE(0x0F29, 0xC9, 0x00F1, 3)
+// src/spc700/main.spc700.s:1518 UNK0F14
+EB_SPC_SITE(0x0F2C, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:1520 UNK0F14
+EB_SPC_SITE(0x0F2D, 0xDA, 0x0020, 2)
+// src/spc700/main.spc700.s:1521 UNK0F14
+EB_SPC_SITE(0x0F2F, 0x8D, 0x0000, 2)
+// src/spc700/main.spc700.s:1523 UNK0F31
+EB_SPC_SITE(0x0F31, 0xF7, 0x0020, 2)
+// src/spc700/main.spc700.s:1524 UNK0F31
+EB_SPC_SITE(0x0F33, 0xD6, 0x04D8, 3)
+// src/spc700/main.spc700.s:1525 UNK0F31
+EB_SPC_SITE(0x0F36, 0xFC, 0x0000, 1)
+// src/spc700/main.spc700.s:1526 UNK0F31
+EB_SPC_SITE(0x0F37, 0xAD, 0x0007, 2)
+// src/spc700/main.spc700.s:1527 UNK0F31
+EB_SPC_SITE(0x0F39, 0xD0, 0x00F6, 2)
+// src/spc700/main.spc700.s:1528 UNK0F31
+EB_SPC_SITE(0x0F3B, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:1531 UNK0F3C
+EB_SPC_SITE(0x0F3C, 0xDA, 0x0020, 2)
+// src/spc700/main.spc700.s:1532 UNK0F3C
+EB_SPC_SITE(0x0F3E, 0x8D, 0x0000, 2)
+// src/spc700/main.spc700.s:1534 UNK0F40
+EB_SPC_SITE(0x0F40, 0xF7, 0x0020, 2)
+// src/spc700/main.spc700.s:1535 UNK0F40
+EB_SPC_SITE(0x0F42, 0xD6, 0x04DA, 3)
+// src/spc700/main.spc700.s:1536 UNK0F40
+EB_SPC_SITE(0x0F45, 0xFC, 0x0000, 1)
+// src/spc700/main.spc700.s:1537 UNK0F40
+EB_SPC_SITE(0x0F46, 0xAD, 0x0003, 2)
+// src/spc700/main.spc700.s:1538 UNK0F40
+EB_SPC_SITE(0x0F48, 0xD0, 0x00F6, 2)
+// src/spc700/main.spc700.s:1539 UNK0F40
+EB_SPC_SITE(0x0F4A, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:1542 UNK0F4B
+EB_SPC_SITE(0x0F4B, 0x3F, 0x0F56, 3)
+// src/spc700/main.spc700.s:1543 UNK0F4B
+EB_SPC_SITE(0x0F4E, 0xF8, 0x002E, 2)
+// src/spc700/main.spc700.s:1544 UNK0F4B
+EB_SPC_SITE(0x0F50, 0xE8, 0x0001, 2)
+// src/spc700/main.spc700.s:1545 UNK0F4B
+EB_SPC_SITE(0x0F52, 0x3F, 0x1394, 3)
+// src/spc700/main.spc700.s:1546 UNK0F4B
+EB_SPC_SITE(0x0F55, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:1549 UNK0F56
+EB_SPC_SITE(0x0F56, 0x3F, 0x0F3C, 3)
+// src/spc700/main.spc700.s:1550 UNK0F56
+EB_SPC_SITE(0x0F59, 0xF7, 0x0020, 2)
+// src/spc700/main.spc700.s:1551 UNK0F56
+EB_SPC_SITE(0x0F5B, 0xC5, 0x04DE, 3)
+// src/spc700/main.spc700.s:1552 UNK0F56
+EB_SPC_SITE(0x0F5E, 0xF8, 0x002F, 2)
+// src/spc700/main.spc700.s:1553 UNK0F56
+EB_SPC_SITE(0x0F60, 0xE4, 0x0020, 2)
+// src/spc700/main.spc700.s:1554 UNK0F56
+EB_SPC_SITE(0x0F62, 0xD5, 0x0480, 3)
+// src/spc700/main.spc700.s:1555 UNK0F56
+EB_SPC_SITE(0x0F65, 0xE4, 0x0021, 2)
+// src/spc700/main.spc700.s:1556 UNK0F56
+EB_SPC_SITE(0x0F67, 0x3D, 0x0000, 1)
+// src/spc700/main.spc700.s:1557 UNK0F56
+EB_SPC_SITE(0x0F68, 0xD5, 0x0480, 3)
+// src/spc700/main.spc700.s:1558 UNK0F56
+EB_SPC_SITE(0x0F6B, 0xF8, 0x002E, 2)
+// src/spc700/main.spc700.s:1559 UNK0F56
+EB_SPC_SITE(0x0F6D, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:1560 UNK0F56
+EB_SPC_SITE(0x0F6F, 0xD5, 0x04C8, 3)
+// src/spc700/main.spc700.s:1561 UNK0F56
+EB_SPC_SITE(0x0F72, 0x8D, 0x0004, 2)
+// src/spc700/main.spc700.s:1562 UNK0F56
+EB_SPC_SITE(0x0F74, 0xF7, 0x0020, 2)
+// src/spc700/main.spc700.s:1563 UNK0F56
+EB_SPC_SITE(0x0F76, 0xC4, 0x0022, 2)
+// src/spc700/main.spc700.s:1564 UNK0F56
+EB_SPC_SITE(0x0F78, 0xFC, 0x0000, 1)
+// src/spc700/main.spc700.s:1565 UNK0F56
+EB_SPC_SITE(0x0F79, 0xF7, 0x0020, 2)
+// src/spc700/main.spc700.s:1566 UNK0F56
+EB_SPC_SITE(0x0F7B, 0xC5, 0x04DD, 3)
+// src/spc700/main.spc700.s:1567 UNK0F56
+EB_SPC_SITE(0x0F7E, 0x68, 0x00C9, 2)
+// src/spc700/main.spc700.s:1568 UNK0F56
+EB_SPC_SITE(0x0F80, 0xD0, 0x0003, 2)
+// src/spc700/main.spc700.s:1569 UNK0F56
+EB_SPC_SITE(0x0F82, 0xD5, 0x04C8, 3)
+// src/spc700/main.spc700.s:1571 UNK0F85
+EB_SPC_SITE(0x0F85, 0x3F, 0x0FA1, 3)
+// src/spc700/main.spc700.s:1572 UNK0F85
+EB_SPC_SITE(0x0F88, 0xE8, 0x00D8, 2)
+// src/spc700/main.spc700.s:1573 UNK0F85
+EB_SPC_SITE(0x0F8A, 0x8D, 0x0004, 2)
+// src/spc700/main.spc700.s:1574 UNK0F85
+EB_SPC_SITE(0x0F8C, 0x5F, 0x14FC, 3)
+// src/spc700/main.spc700.s:1577 UNK0F8F
+EB_SPC_SITE(0x0F8F, 0xE4, 0x0046, 2)
+// src/spc700/main.spc700.s:1578 UNK0F8F
+EB_SPC_SITE(0x0F91, 0x05, 0x04D7, 3)
+// src/spc700/main.spc700.s:1579 UNK0F8F
+EB_SPC_SITE(0x0F94, 0xC4, 0x0046, 2)
+// src/spc700/main.spc700.s:1580 UNK0F8F
+EB_SPC_SITE(0x0F96, 0xE8, 0x0004, 2)
+// src/spc700/main.spc700.s:1581 UNK0F8F
+EB_SPC_SITE(0x0F98, 0xC5, 0x04D8, 3)
+// src/spc700/main.spc700.s:1582 UNK0F8F
+EB_SPC_SITE(0x0F9B, 0xE8, 0x0002, 2)
+// src/spc700/main.spc700.s:1583 UNK0F8F
+EB_SPC_SITE(0x0F9D, 0xC5, 0x04D9, 3)
+// src/spc700/main.spc700.s:1584 UNK0F8F
+EB_SPC_SITE(0x0FA0, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:1587 UNK0FA1
+EB_SPC_SITE(0x0FA1, 0xE4, 0x0022, 2)
+// src/spc700/main.spc700.s:1588 UNK0FA1
+EB_SPC_SITE(0x0FA3, 0x68, 0x007F, 2)
+// src/spc700/main.spc700.s:1589 UNK0FA1
+EB_SPC_SITE(0x0FA5, 0xF0, 0x00E8, 2)
+// src/spc700/main.spc700.s:1590 UNK0FA1
+EB_SPC_SITE(0x0FA7, 0x9C, 0x0000, 1)
+// src/spc700/main.spc700.s:1591 UNK0FA1
+EB_SPC_SITE(0x0FA8, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:1592 UNK0FA1
+EB_SPC_SITE(0x0FA9, 0xF6, 0x1068, 3)
+// src/spc700/main.spc700.s:1593 UNK0FA1
+EB_SPC_SITE(0x0FAC, 0xC5, 0x04D8, 3)
+// src/spc700/main.spc700.s:1594 UNK0FA1
+EB_SPC_SITE(0x0FAF, 0xFC, 0x0000, 1)
+// src/spc700/main.spc700.s:1595 UNK0FA1
+EB_SPC_SITE(0x0FB0, 0xF6, 0x1068, 3)
+// src/spc700/main.spc700.s:1596 UNK0FA1
+EB_SPC_SITE(0x0FB3, 0xC5, 0x04D9, 3)
+// src/spc700/main.spc700.s:1598 UNK0FB6
+EB_SPC_SITE(0x0FB6, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:1601 UNK0FB7
+EB_SPC_SITE(0x0FB7, 0x3F, 0x13A0, 3)
+// src/spc700/main.spc700.s:1602 UNK0FB7
+EB_SPC_SITE(0x0FBA, 0xD0, 0x00FA, 2)
+// src/spc700/main.spc700.s:1603 UNK0FB7
+EB_SPC_SITE(0x0FBC, 0xE4, 0x002A, 2)
+// src/spc700/main.spc700.s:1604 UNK0FB7
+EB_SPC_SITE(0x0FBE, 0xBC, 0x0000, 1)
+// src/spc700/main.spc700.s:1605 UNK0FB7
+EB_SPC_SITE(0x0FBF, 0xBC, 0x0000, 1)
+// src/spc700/main.spc700.s:1606 UNK0FB7
+EB_SPC_SITE(0x0FC0, 0xEB, 0x002B, 2)
+// src/spc700/main.spc700.s:1607 UNK0FB7
+EB_SPC_SITE(0x0FC2, 0x3F, 0x0F3C, 3)
+// src/spc700/main.spc700.s:1608 UNK0FB7
+EB_SPC_SITE(0x0FC5, 0xFC, 0x0000, 1)
+// src/spc700/main.spc700.s:1609 UNK0FB7
+EB_SPC_SITE(0x0FC6, 0xF7, 0x0020, 2)
+// src/spc700/main.spc700.s:1610 UNK0FB7
+EB_SPC_SITE(0x0FC8, 0xC5, 0x04DE, 3)
+// src/spc700/main.spc700.s:1612 UNK0FCB
+EB_SPC_SITE(0x0FCB, 0xF4, 0x00D0, 2)
+// src/spc700/main.spc700.s:1613 UNK0FCB
+EB_SPC_SITE(0x0FCD, 0x60, 0x0000, 1)
+// src/spc700/main.spc700.s:1614 UNK0FCB
+EB_SPC_SITE(0x0FCE, 0x88, 0x0006, 2)
+// src/spc700/main.spc700.s:1615 UNK0FCB
+EB_SPC_SITE(0x0FD0, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:1616 UNK0FCB
+EB_SPC_SITE(0x0FD1, 0xBB, 0x00D0, 2)
+// src/spc700/main.spc700.s:1617 UNK0FCB
+EB_SPC_SITE(0x0FD3, 0xF8, 0x002F, 2)
+// src/spc700/main.spc700.s:1618 UNK0FCB
+EB_SPC_SITE(0x0FD5, 0xF5, 0x0480, 3)
+// src/spc700/main.spc700.s:1619 UNK0FCB
+EB_SPC_SITE(0x0FD8, 0xC4, 0x0020, 2)
+// src/spc700/main.spc700.s:1620 UNK0FCB
+EB_SPC_SITE(0x0FDA, 0x3D, 0x0000, 1)
+// src/spc700/main.spc700.s:1621 UNK0FCB
+EB_SPC_SITE(0x0FDB, 0xF5, 0x0480, 3)
+// src/spc700/main.spc700.s:1622 UNK0FCB
+EB_SPC_SITE(0x0FDE, 0xC4, 0x0021, 2)
+// src/spc700/main.spc700.s:1623 UNK0FCB
+EB_SPC_SITE(0x0FE0, 0xF7, 0x0020, 2)
+// src/spc700/main.spc700.s:1624 UNK0FCB
+EB_SPC_SITE(0x0FE2, 0xC4, 0x0022, 2)
+// src/spc700/main.spc700.s:1625 UNK0FCB
+EB_SPC_SITE(0x0FE4, 0xF0, 0x0025, 2)
+// src/spc700/main.spc700.s:1626 UNK0FCB
+EB_SPC_SITE(0x0FE6, 0xF8, 0x002E, 2)
+// src/spc700/main.spc700.s:1627 UNK0FCB
+EB_SPC_SITE(0x0FE8, 0x28, 0x0080, 2)
+// src/spc700/main.spc700.s:1628 UNK0FCB
+EB_SPC_SITE(0x0FEA, 0xF0, 0x0022, 2)
+// src/spc700/main.spc700.s:1629 UNK0FCB
+EB_SPC_SITE(0x0FEC, 0xE4, 0x0022, 2)
+// src/spc700/main.spc700.s:1630 UNK0FCB
+EB_SPC_SITE(0x0FEE, 0x68, 0x00E0, 2)
+// src/spc700/main.spc700.s:1631 UNK0FCB
+EB_SPC_SITE(0x0FF0, 0xF0, 0x002E, 2)
+// src/spc700/main.spc700.s:1632 UNK0FCB
+EB_SPC_SITE(0x0FF2, 0x68, 0x00C9, 2)
+// src/spc700/main.spc700.s:1633 UNK0FCB
+EB_SPC_SITE(0x0FF4, 0xF0, 0x006E, 2)
+// src/spc700/main.spc700.s:1634 UNK0FCB
+EB_SPC_SITE(0x0FF6, 0x68, 0x00E1, 2)
+// src/spc700/main.spc700.s:1635 UNK0FCB
+EB_SPC_SITE(0x0FF8, 0xF0, 0x0032, 2)
+// src/spc700/main.spc700.s:1636 UNK0FCB
+EB_SPC_SITE(0x0FFA, 0x68, 0x00ED, 2)
+// src/spc700/main.spc700.s:1637 UNK0FCB
+EB_SPC_SITE(0x0FFC, 0xF0, 0x005A, 2)
+// src/spc700/main.spc700.s:1638 UNK0FCB
+EB_SPC_SITE(0x0FFE, 0xEB, 0x0022, 2)
+// src/spc700/main.spc700.s:1639 UNK0FCB
+EB_SPC_SITE(0x1000, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:1640 UNK0FCB
+EB_SPC_SITE(0x1002, 0xD5, 0x04C8, 3)
+// src/spc700/main.spc700.s:1641 UNK0FCB
+EB_SPC_SITE(0x1005, 0xE5, 0x04DE, 3)
+// src/spc700/main.spc700.s:1642 UNK0FCB
+EB_SPC_SITE(0x1008, 0x5F, 0x10E7, 3)
+// src/spc700/main.spc700.s:1645 UNK100B
+EB_SPC_SITE(0x100B, 0x5F, 0x1491, 3)
+// src/spc700/main.spc700.s:1648 UNK100E
+EB_SPC_SITE(0x100E, 0x3F, 0x0FA1, 3)
+// src/spc700/main.spc700.s:1649 UNK100E
+EB_SPC_SITE(0x1011, 0xE5, 0x04D8, 3)
+// src/spc700/main.spc700.s:1650 UNK100E
+EB_SPC_SITE(0x1014, 0xD5, 0x04BC, 3)
+// src/spc700/main.spc700.s:1651 UNK100E
+EB_SPC_SITE(0x1017, 0xE5, 0x04D9, 3)
+// src/spc700/main.spc700.s:1652 UNK100E
+EB_SPC_SITE(0x101A, 0xD5, 0x04C0, 3)
+// src/spc700/main.spc700.s:1653 UNK100E
+EB_SPC_SITE(0x101D, 0x5F, 0x0FCB, 3)
+// src/spc700/main.spc700.s:1656 UNK1020
+EB_SPC_SITE(0x1020, 0xFC, 0x0000, 1)
+// src/spc700/main.spc700.s:1657 UNK1020
+EB_SPC_SITE(0x1021, 0xF7, 0x0020, 2)
+// src/spc700/main.spc700.s:1658 UNK1020
+EB_SPC_SITE(0x1023, 0x3F, 0x1130, 3)
+// src/spc700/main.spc700.s:1659 UNK1020
+EB_SPC_SITE(0x1026, 0xF8, 0x002E, 2)
+// src/spc700/main.spc700.s:1661 UNK1028
+EB_SPC_SITE(0x1028, 0xBB, 0x00D0, 2)
+// src/spc700/main.spc700.s:1662 UNK1028
+EB_SPC_SITE(0x102A, 0xD0, 0x009F, 2)
+// src/spc700/main.spc700.s:1664 UNK102C
+EB_SPC_SITE(0x102C, 0xFC, 0x0000, 1)
+// src/spc700/main.spc700.s:1665 UNK102C
+EB_SPC_SITE(0x102D, 0xF7, 0x0020, 2)
+// src/spc700/main.spc700.s:1666 UNK102C
+EB_SPC_SITE(0x102F, 0xC4, 0x0023, 2)
+// src/spc700/main.spc700.s:1667 UNK102C
+EB_SPC_SITE(0x1031, 0xE5, 0x04DB, 3)
+// src/spc700/main.spc700.s:1668 UNK102C
+EB_SPC_SITE(0x1034, 0xC4, 0x0022, 2)
+// src/spc700/main.spc700.s:1670 UNK1036
+EB_SPC_SITE(0x1036, 0xE5, 0x04DF, 3)
+// src/spc700/main.spc700.s:1671 UNK1036
+EB_SPC_SITE(0x1039, 0x5D, 0x0000, 1)
+// src/spc700/main.spc700.s:1672 UNK1036
+EB_SPC_SITE(0x103A, 0x3F, 0x10B6, 3)
+// src/spc700/main.spc700.s:1673 UNK1036
+EB_SPC_SITE(0x103D, 0xEB, 0x002E, 2)
+// src/spc700/main.spc700.s:1674 UNK1036
+EB_SPC_SITE(0x103F, 0xE8, 0x0008, 2)
+// src/spc700/main.spc700.s:1675 UNK1036
+EB_SPC_SITE(0x1041, 0xCF, 0x0000, 1)
+// src/spc700/main.spc700.s:1676 UNK1036
+EB_SPC_SITE(0x1042, 0x5D, 0x0000, 1)
+// src/spc700/main.spc700.s:1677 UNK1036
+EB_SPC_SITE(0x1043, 0xE4, 0x0023, 2)
+// src/spc700/main.spc700.s:1678 UNK1036
+EB_SPC_SITE(0x1045, 0xD5, 0x0464, 3)
+// src/spc700/main.spc700.s:1679 UNK1036
+EB_SPC_SITE(0x1048, 0xC5, 0x04DC, 3)
+// src/spc700/main.spc700.s:1680 UNK1036
+EB_SPC_SITE(0x104B, 0xE4, 0x0022, 2)
+// src/spc700/main.spc700.s:1681 UNK1036
+EB_SPC_SITE(0x104D, 0xD5, 0x0463, 3)
+// src/spc700/main.spc700.s:1682 UNK1036
+EB_SPC_SITE(0x1050, 0xC5, 0x04DB, 3)
+// src/spc700/main.spc700.s:1683 UNK1036
+EB_SPC_SITE(0x1053, 0xF8, 0x002E, 2)
+// src/spc700/main.spc700.s:1684 UNK1036
+EB_SPC_SITE(0x1055, 0x5F, 0x1028, 3)
+// src/spc700/main.spc700.s:1687 UNK1058
+EB_SPC_SITE(0x1058, 0xFC, 0x0000, 1)
+// src/spc700/main.spc700.s:1688 UNK1058
+EB_SPC_SITE(0x1059, 0xF7, 0x0020, 2)
+// src/spc700/main.spc700.s:1689 UNK1058
+EB_SPC_SITE(0x105B, 0xC4, 0x0022, 2)
+// src/spc700/main.spc700.s:1690 UNK1058
+EB_SPC_SITE(0x105D, 0xE5, 0x04DC, 3)
+// src/spc700/main.spc700.s:1691 UNK1058
+EB_SPC_SITE(0x1060, 0xC4, 0x0023, 2)
+// src/spc700/main.spc700.s:1692 UNK1058
+EB_SPC_SITE(0x1062, 0xD0, 0x00D2, 2)
+// src/spc700/main.spc700.s:1694 UNK1064
+EB_SPC_SITE(0x1064, 0xD5, 0x04C8, 3)
+// src/spc700/main.spc700.s:1695 UNK1064
+EB_SPC_SITE(0x1067, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:1710 UNK10B6
+EB_SPC_SITE(0x10B6, 0xE4, 0x0022, 2)
+// src/spc700/main.spc700.s:1711 UNK10B6
+EB_SPC_SITE(0x10B8, 0xD5, 0x0321, 3)
+// src/spc700/main.spc700.s:1712 UNK10B6
+EB_SPC_SITE(0x10BB, 0xE4, 0x0023, 2)
+// src/spc700/main.spc700.s:1713 UNK10B6
+EB_SPC_SITE(0x10BD, 0x28, 0x00C0, 2)
+// src/spc700/main.spc700.s:1714 UNK10B6
+EB_SPC_SITE(0x10BF, 0xD5, 0x0351, 3)
+// src/spc700/main.spc700.s:1715 UNK10B6
+EB_SPC_SITE(0x10C2, 0xE4, 0x0023, 2)
+// src/spc700/main.spc700.s:1716 UNK10B6
+EB_SPC_SITE(0x10C4, 0x28, 0x003F, 2)
+// src/spc700/main.spc700.s:1717 UNK10B6
+EB_SPC_SITE(0x10C6, 0xC5, 0x0433, 3)
+// src/spc700/main.spc700.s:1718 UNK10B6
+EB_SPC_SITE(0x10C9, 0xE5, 0x0431, 3)
+// src/spc700/main.spc700.s:1719 UNK10B6
+EB_SPC_SITE(0x10CC, 0x68, 0x0000, 2)
+// src/spc700/main.spc700.s:1720 UNK10B6
+EB_SPC_SITE(0x10CE, 0xF0, 0x0005, 2)
+// src/spc700/main.spc700.s:1721 UNK10B6
+EB_SPC_SITE(0x10D0, 0xE8, 0x000A, 2)
+// src/spc700/main.spc700.s:1722 UNK10B6
+EB_SPC_SITE(0x10D2, 0xC5, 0x0433, 3)
+// src/spc700/main.spc700.s:1724 UNK10D5
+EB_SPC_SITE(0x10D5, 0xE5, 0x0433, 3)
+// src/spc700/main.spc700.s:1725 UNK10D5
+EB_SPC_SITE(0x10D8, 0xC4, 0x0011, 2)
+// src/spc700/main.spc700.s:1726 UNK10D5
+EB_SPC_SITE(0x10DA, 0x8F, 0x1000, 3)
+// src/spc700/main.spc700.s:1727 UNK10D5
+EB_SPC_SITE(0x10DD, 0xE4, 0x0047, 2)
+// src/spc700/main.spc700.s:1728 UNK10D5
+EB_SPC_SITE(0x10DF, 0x25, 0x04D6, 3)
+// src/spc700/main.spc700.s:1729 UNK10D5
+EB_SPC_SITE(0x10E2, 0xC4, 0x0047, 2)
+// src/spc700/main.spc700.s:1730 UNK10D5
+EB_SPC_SITE(0x10E4, 0x5F, 0x0C95, 3)
+// src/spc700/main.spc700.s:1733 UNK10E7
+EB_SPC_SITE(0x10E7, 0x4D, 0x0000, 1)
+// src/spc700/main.spc700.s:1734 UNK10E7
+EB_SPC_SITE(0x10E8, 0x2D, 0x0000, 1)
+// src/spc700/main.spc700.s:1735 UNK10E7
+EB_SPC_SITE(0x10E9, 0xE4, 0x0047, 2)
+// src/spc700/main.spc700.s:1736 UNK10E7
+EB_SPC_SITE(0x10EB, 0x25, 0x04D6, 3)
+// src/spc700/main.spc700.s:1737 UNK10E7
+EB_SPC_SITE(0x10EE, 0xC4, 0x0047, 2)
+// src/spc700/main.spc700.s:1738 UNK10E7
+EB_SPC_SITE(0x10F0, 0xE5, 0x04DF, 3)
+// src/spc700/main.spc700.s:1739 UNK10E7
+EB_SPC_SITE(0x10F3, 0x5D, 0x0000, 1)
+// src/spc700/main.spc700.s:1740 UNK10E7
+EB_SPC_SITE(0x10F4, 0xAE, 0x0000, 1)
+// src/spc700/main.spc700.s:1741 UNK10E7
+EB_SPC_SITE(0x10F5, 0xDA, 0x0010, 2)
+// src/spc700/main.spc700.s:1742 UNK10E7
+EB_SPC_SITE(0x10F7, 0x3F, 0x06D4, 3)
+// src/spc700/main.spc700.s:1743 UNK10E7
+EB_SPC_SITE(0x10FA, 0xCE, 0x0000, 1)
+// src/spc700/main.spc700.s:1744 UNK10E7
+EB_SPC_SITE(0x10FB, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:1747 UNK10FC
+EB_SPC_SITE(0x10FC, 0xF8, 0x002F, 2)
+// src/spc700/main.spc700.s:1748 UNK10FC
+EB_SPC_SITE(0x10FE, 0xD5, 0x0458, 3)
+// src/spc700/main.spc700.s:1749 UNK10FC
+EB_SPC_SITE(0x1101, 0xDD, 0x0000, 1)
+// src/spc700/main.spc700.s:1750 UNK10FC
+EB_SPC_SITE(0x1102, 0xD5, 0x0459, 3)
+// src/spc700/main.spc700.s:1751 UNK10FC
+EB_SPC_SITE(0x1105, 0xF8, 0x002E, 2)
+// src/spc700/main.spc700.s:1752 UNK10FC
+EB_SPC_SITE(0x1107, 0xE8, 0x0001, 2)
+// src/spc700/main.spc700.s:1753 UNK10FC
+EB_SPC_SITE(0x1109, 0xD5, 0x0454, 3)
+// src/spc700/main.spc700.s:1754 UNK10FC
+EB_SPC_SITE(0x110C, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:1757 UNK110D
+EB_SPC_SITE(0x110D, 0x6D, 0x0000, 1)
+// src/spc700/main.spc700.s:1758 UNK110D
+EB_SPC_SITE(0x110E, 0x2D, 0x0000, 1)
+// src/spc700/main.spc700.s:1759 UNK110D
+EB_SPC_SITE(0x110F, 0xE5, 0x04D5, 3)
+// src/spc700/main.spc700.s:1760 UNK110D
+EB_SPC_SITE(0x1112, 0x60, 0x0000, 1)
+// src/spc700/main.spc700.s:1761 UNK110D
+EB_SPC_SITE(0x1113, 0x88, 0x0005, 2)
+// src/spc700/main.spc700.s:1762 UNK110D
+EB_SPC_SITE(0x1115, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:1763 UNK110D
+EB_SPC_SITE(0x1116, 0xC4, 0x0020, 2)
+// src/spc700/main.spc700.s:1764 UNK110D
+EB_SPC_SITE(0x1118, 0xAE, 0x0000, 1)
+// src/spc700/main.spc700.s:1765 UNK110D
+EB_SPC_SITE(0x1119, 0x3F, 0x0749, 3)
+// src/spc700/main.spc700.s:1766 UNK110D
+EB_SPC_SITE(0x111C, 0xEE, 0x0000, 1)
+// src/spc700/main.spc700.s:1767 UNK110D
+EB_SPC_SITE(0x111D, 0xDD, 0x0000, 1)
+// src/spc700/main.spc700.s:1768 UNK110D
+EB_SPC_SITE(0x111E, 0xEB, 0x0020, 2)
+// src/spc700/main.spc700.s:1769 UNK110D
+EB_SPC_SITE(0x1120, 0xFC, 0x0000, 1)
+// src/spc700/main.spc700.s:1770 UNK110D
+EB_SPC_SITE(0x1121, 0x5F, 0x0749, 3)
+// src/spc700/main.spc700.s:1773 UNK1124
+EB_SPC_SITE(0x1124, 0x2D, 0x0000, 1)
+// src/spc700/main.spc700.s:1774 UNK1124
+EB_SPC_SITE(0x1125, 0xE5, 0x04D5, 3)
+// src/spc700/main.spc700.s:1775 UNK1124
+EB_SPC_SITE(0x1128, 0x60, 0x0000, 1)
+// src/spc700/main.spc700.s:1776 UNK1124
+EB_SPC_SITE(0x1129, 0x88, 0x0007, 2)
+// src/spc700/main.spc700.s:1777 UNK1124
+EB_SPC_SITE(0x112B, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:1778 UNK1124
+EB_SPC_SITE(0x112C, 0xAE, 0x0000, 1)
+// src/spc700/main.spc700.s:1779 UNK1124
+EB_SPC_SITE(0x112D, 0x5F, 0x0749, 3)
+// src/spc700/main.spc700.s:1782 UNK1130
+EB_SPC_SITE(0x1130, 0x2D, 0x0000, 1)
+// src/spc700/main.spc700.s:1783 UNK1130
+EB_SPC_SITE(0x1131, 0xE4, 0x0049, 2)
+// src/spc700/main.spc700.s:1784 UNK1130
+EB_SPC_SITE(0x1133, 0x25, 0x04D6, 3)
+// src/spc700/main.spc700.s:1785 UNK1130
+EB_SPC_SITE(0x1136, 0xC4, 0x0049, 2)
+// src/spc700/main.spc700.s:1786 UNK1130
+EB_SPC_SITE(0x1138, 0xE5, 0x04DF, 3)
+// src/spc700/main.spc700.s:1787 UNK1130
+EB_SPC_SITE(0x113B, 0x5D, 0x0000, 1)
+// src/spc700/main.spc700.s:1788 UNK1130
+EB_SPC_SITE(0x113C, 0xAE, 0x0000, 1)
+// src/spc700/main.spc700.s:1789 UNK1130
+EB_SPC_SITE(0x113D, 0x8F, 0x4700, 3)
+// src/spc700/main.spc700.s:1790 UNK1130
+EB_SPC_SITE(0x1140, 0x3F, 0x0962, 3)
+// src/spc700/main.spc700.s:1791 UNK1130
+EB_SPC_SITE(0x1143, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:1794 UNK1144
+EB_SPC_SITE(0x1144, 0x2D, 0x0000, 1)
+// src/spc700/main.spc700.s:1795 UNK1144
+EB_SPC_SITE(0x1145, 0xE5, 0x04D5, 3)
+// src/spc700/main.spc700.s:1796 UNK1144
+EB_SPC_SITE(0x1148, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:1797 UNK1144
+EB_SPC_SITE(0x1149, 0xAE, 0x0000, 1)
+// src/spc700/main.spc700.s:1798 UNK1144
+EB_SPC_SITE(0x114A, 0x3F, 0x0749, 3)
+// src/spc700/main.spc700.s:1799 UNK1144
+EB_SPC_SITE(0x114D, 0xFC, 0x0000, 1)
+// src/spc700/main.spc700.s:1800 UNK1144
+EB_SPC_SITE(0x114E, 0x3F, 0x0749, 3)
+// src/spc700/main.spc700.s:1801 UNK1144
+EB_SPC_SITE(0x1151, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:1804 UNK1152
+EB_SPC_SITE(0x1152, 0xCD, 0x0000, 2)
+// src/spc700/main.spc700.s:1805 UNK1152
+EB_SPC_SITE(0x1154, 0x1A, 0x0020, 2)
+// src/spc700/main.spc700.s:1806 UNK1152
+EB_SPC_SITE(0x1156, 0x1A, 0x0020, 2)
+// src/spc700/main.spc700.s:1807 UNK1152
+EB_SPC_SITE(0x1158, 0xE7, 0x0020, 2)
+// src/spc700/main.spc700.s:1808 UNK1152
+EB_SPC_SITE(0x115A, 0xC5, 0x17C6, 3)
+// src/spc700/main.spc700.s:1809 UNK1152
+EB_SPC_SITE(0x115D, 0x1A, 0x0020, 2)
+// src/spc700/main.spc700.s:1810 UNK1152
+EB_SPC_SITE(0x115F, 0xE7, 0x0020, 2)
+// src/spc700/main.spc700.s:1811 UNK1152
+EB_SPC_SITE(0x1161, 0xC5, 0x17C5, 3)
+// src/spc700/main.spc700.s:1812 UNK1152
+EB_SPC_SITE(0x1164, 0xE8, 0x0001, 2)
+// src/spc700/main.spc700.s:1813 UNK1152
+EB_SPC_SITE(0x1166, 0xC5, 0x04B2, 3)
+// src/spc700/main.spc700.s:1814 UNK1152
+EB_SPC_SITE(0x1169, 0x3A, 0x0020, 2)
+// src/spc700/main.spc700.s:1815 UNK1152
+EB_SPC_SITE(0x116B, 0x3A, 0x0020, 2)
+// src/spc700/main.spc700.s:1816 UNK1152
+EB_SPC_SITE(0x116D, 0x3A, 0x0020, 2)
+// src/spc700/main.spc700.s:1817 UNK1152
+EB_SPC_SITE(0x116F, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:1820 UNK1170
+EB_SPC_SITE(0x1170, 0x3F, 0x1152, 3)
+// src/spc700/main.spc700.s:1821 UNK1170
+EB_SPC_SITE(0x1173, 0x5F, 0x1278, 3)
+// src/spc700/main.spc700.s:1824 UNK1176
+EB_SPC_SITE(0x1176, 0x3F, 0x1152, 3)
+// src/spc700/main.spc700.s:1825 UNK1176
+EB_SPC_SITE(0x1179, 0x5F, 0x1270, 3)
+// src/spc700/main.spc700.s:1831 UNK1184
+EB_SPC_SITE(0x1184, 0x8F, 0x2A60, 3)
+// src/spc700/main.spc700.s:1832 UNK1184
+EB_SPC_SITE(0x1187, 0x8F, 0x2B04, 3)
+// src/spc700/main.spc700.s:1833 UNK1184
+EB_SPC_SITE(0x118A, 0xCD, 0x0000, 2)
+// src/spc700/main.spc700.s:1834 UNK1184
+EB_SPC_SITE(0x118C, 0xE8, 0x00EF, 2)
+// src/spc700/main.spc700.s:1835 UNK1184
+EB_SPC_SITE(0x118E, 0x8D, 0x0010, 2)
+// src/spc700/main.spc700.s:1836 UNK1184
+EB_SPC_SITE(0x1190, 0x8F, 0x2008, 3)
+// src/spc700/main.spc700.s:1837 UNK1184
+EB_SPC_SITE(0x1193, 0x8F, 0x2140, 3)
+// src/spc700/main.spc700.s:1838 UNK1184
+EB_SPC_SITE(0x1196, 0xD0, 0x006F, 2)
+// src/spc700/main.spc700.s:1840 UNK1198
+EB_SPC_SITE(0x1198, 0xE5, 0x04B1, 3)
+// src/spc700/main.spc700.s:1841 UNK1198
+EB_SPC_SITE(0x119B, 0x28, 0x007F, 2)
+// src/spc700/main.spc700.s:1842 UNK1198
+EB_SPC_SITE(0x119D, 0xC5, 0x04B1, 3)
+// src/spc700/main.spc700.s:1843 UNK1198
+EB_SPC_SITE(0x11A0, 0x8F, 0x24D5, 3)
+// src/spc700/main.spc700.s:1844 UNK1198
+EB_SPC_SITE(0x11A3, 0x8F, 0x2517, 3)
+// src/spc700/main.spc700.s:1845 UNK1198
+EB_SPC_SITE(0x11A6, 0x8F, 0x2A68, 3)
+// src/spc700/main.spc700.s:1846 UNK1198
+EB_SPC_SITE(0x11A9, 0x8F, 0x2B04, 3)
+// src/spc700/main.spc700.s:1847 UNK1198
+EB_SPC_SITE(0x11AC, 0xCD, 0x0001, 2)
+// src/spc700/main.spc700.s:1848 UNK1198
+EB_SPC_SITE(0x11AE, 0xE8, 0x00DF, 2)
+// src/spc700/main.spc700.s:1849 UNK1198
+EB_SPC_SITE(0x11B0, 0x8D, 0x0020, 2)
+// src/spc700/main.spc700.s:1850 UNK1198
+EB_SPC_SITE(0x11B2, 0x8F, 0x200A, 3)
+// src/spc700/main.spc700.s:1851 UNK1198
+EB_SPC_SITE(0x11B5, 0x8F, 0x2150, 3)
+// src/spc700/main.spc700.s:1852 UNK1198
+EB_SPC_SITE(0x11B8, 0xD0, 0x004D, 2)
+// src/spc700/main.spc700.s:1854 UNK11BA
+EB_SPC_SITE(0x11BA, 0xE5, 0x04B2, 3)
+// src/spc700/main.spc700.s:1855 UNK11BA
+EB_SPC_SITE(0x11BD, 0x28, 0x007F, 2)
+// src/spc700/main.spc700.s:1856 UNK11BA
+EB_SPC_SITE(0x11BF, 0xC5, 0x04B2, 3)
+// src/spc700/main.spc700.s:1857 UNK11BA
+EB_SPC_SITE(0x11C2, 0x8F, 0x24C5, 3)
+// src/spc700/main.spc700.s:1858 UNK11BA
+EB_SPC_SITE(0x11C5, 0x8F, 0x2517, 3)
+// src/spc700/main.spc700.s:1859 UNK11BA
+EB_SPC_SITE(0x11C8, 0x8F, 0x2A70, 3)
+// src/spc700/main.spc700.s:1860 UNK11BA
+EB_SPC_SITE(0x11CB, 0x8F, 0x2B04, 3)
+// src/spc700/main.spc700.s:1861 UNK11BA
+EB_SPC_SITE(0x11CE, 0xCD, 0x0002, 2)
+// src/spc700/main.spc700.s:1862 UNK11BA
+EB_SPC_SITE(0x11D0, 0xE8, 0x00BF, 2)
+// src/spc700/main.spc700.s:1863 UNK11BA
+EB_SPC_SITE(0x11D2, 0x8D, 0x0040, 2)
+// src/spc700/main.spc700.s:1864 UNK11BA
+EB_SPC_SITE(0x11D4, 0x8F, 0x200C, 3)
+// src/spc700/main.spc700.s:1865 UNK11BA
+EB_SPC_SITE(0x11D7, 0x8F, 0x2160, 3)
+// src/spc700/main.spc700.s:1866 UNK11BA
+EB_SPC_SITE(0x11DA, 0xD0, 0x002B, 2)
+// src/spc700/main.spc700.s:1868 UNK11DC
+EB_SPC_SITE(0x11DC, 0xE5, 0x04B3, 3)
+// src/spc700/main.spc700.s:1869 UNK11DC
+EB_SPC_SITE(0x11DF, 0x28, 0x007F, 2)
+// src/spc700/main.spc700.s:1870 UNK11DC
+EB_SPC_SITE(0x11E1, 0xC5, 0x04B3, 3)
+// src/spc700/main.spc700.s:1871 UNK11DC
+EB_SPC_SITE(0x11E4, 0x8F, 0x24C7, 3)
+// src/spc700/main.spc700.s:1872 UNK11DC
+EB_SPC_SITE(0x11E7, 0x8F, 0x2516, 3)
+// src/spc700/main.spc700.s:1873 UNK11DC
+EB_SPC_SITE(0x11EA, 0xE4, 0x0019, 2)
+// src/spc700/main.spc700.s:1874 UNK11DC
+EB_SPC_SITE(0x11EC, 0xC5, 0x18EF, 3)
+// src/spc700/main.spc700.s:1875 UNK11DC
+EB_SPC_SITE(0x11EF, 0xC5, 0x18F7, 3)
+// src/spc700/main.spc700.s:1876 UNK11DC
+EB_SPC_SITE(0x11F2, 0xC5, 0x18FF, 3)
+// src/spc700/main.spc700.s:1877 UNK11DC
+EB_SPC_SITE(0x11F5, 0x8F, 0x2A78, 3)
+// src/spc700/main.spc700.s:1878 UNK11DC
+EB_SPC_SITE(0x11F8, 0x8F, 0x2B04, 3)
+// src/spc700/main.spc700.s:1879 UNK11DC
+EB_SPC_SITE(0x11FB, 0xCD, 0x0003, 2)
+// src/spc700/main.spc700.s:1880 UNK11DC
+EB_SPC_SITE(0x11FD, 0xE8, 0x007F, 2)
+// src/spc700/main.spc700.s:1881 UNK11DC
+EB_SPC_SITE(0x11FF, 0x8D, 0x0080, 2)
+// src/spc700/main.spc700.s:1882 UNK11DC
+EB_SPC_SITE(0x1201, 0x8F, 0x200E, 3)
+// src/spc700/main.spc700.s:1883 UNK11DC
+EB_SPC_SITE(0x1204, 0x8F, 0x2170, 3)
+// src/spc700/main.spc700.s:1885 UNK1207
+EB_SPC_SITE(0x1207, 0xC5, 0x04D6, 3)
+// src/spc700/main.spc700.s:1886 UNK1207
+EB_SPC_SITE(0x120A, 0xCC, 0x04D7, 3)
+// src/spc700/main.spc700.s:1887 UNK1207
+EB_SPC_SITE(0x120D, 0xE4, 0x0020, 2)
+// src/spc700/main.spc700.s:1888 UNK1207
+EB_SPC_SITE(0x120F, 0xC5, 0x04DF, 3)
+// src/spc700/main.spc700.s:1889 UNK1207
+EB_SPC_SITE(0x1212, 0xE4, 0x0021, 2)
+// src/spc700/main.spc700.s:1890 UNK1207
+EB_SPC_SITE(0x1214, 0xC5, 0x04D5, 3)
+// src/spc700/main.spc700.s:1891 UNK1207
+EB_SPC_SITE(0x1217, 0x7D, 0x0000, 1)
+// src/spc700/main.spc700.s:1892 UNK1207
+EB_SPC_SITE(0x1218, 0xC4, 0x002E, 2)
+// src/spc700/main.spc700.s:1893 UNK1207
+EB_SPC_SITE(0x121A, 0x1C, 0x0000, 1)
+// src/spc700/main.spc700.s:1894 UNK1207
+EB_SPC_SITE(0x121B, 0xC4, 0x002F, 2)
+// src/spc700/main.spc700.s:1895 UNK1207
+EB_SPC_SITE(0x121D, 0xF5, 0x04B0, 3)
+// src/spc700/main.spc700.s:1896 UNK1207
+EB_SPC_SITE(0x1220, 0xC4, 0x0020, 2)
+// src/spc700/main.spc700.s:1897 UNK1207
+EB_SPC_SITE(0x1222, 0xC4, 0x002D, 2)
+// src/spc700/main.spc700.s:1898 UNK1207
+EB_SPC_SITE(0x1224, 0xF0, 0x0047, 2)
+// src/spc700/main.spc700.s:1899 UNK1207
+EB_SPC_SITE(0x1226, 0x75, 0x04D0, 3)
+// src/spc700/main.spc700.s:1900 UNK1207
+EB_SPC_SITE(0x1229, 0xB0, 0x0042, 2)
+// src/spc700/main.spc700.s:1901 UNK1207
+EB_SPC_SITE(0x122B, 0x28, 0x0007, 2)
+// src/spc700/main.spc700.s:1902 UNK1207
+EB_SPC_SITE(0x122D, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:1903 UNK1207
+EB_SPC_SITE(0x122E, 0xF6, 0x117C, 3)
+// src/spc700/main.spc700.s:1904 UNK1207
+EB_SPC_SITE(0x1231, 0x8B, 0x0020, 2)
+// src/spc700/main.spc700.s:1905 UNK1207
+EB_SPC_SITE(0x1233, 0x38, 0x20F8, 3)
+// src/spc700/main.spc700.s:1906 UNK1207
+EB_SPC_SITE(0x1236, 0x0B, 0x0020, 2)
+// src/spc700/main.spc700.s:1907 UNK1207
+EB_SPC_SITE(0x1238, 0x04, 0x0020, 2)
+// src/spc700/main.spc700.s:1908 UNK1207
+EB_SPC_SITE(0x123A, 0x5D, 0x0000, 1)
+// src/spc700/main.spc700.s:1909 UNK1207
+EB_SPC_SITE(0x123B, 0xE4, 0x002E, 2)
+// src/spc700/main.spc700.s:1910 UNK1207
+EB_SPC_SITE(0x123D, 0x7D, 0x0000, 1)
+// src/spc700/main.spc700.s:1911 UNK1207
+EB_SPC_SITE(0x123E, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:1912 UNK1207
+EB_SPC_SITE(0x123F, 0xF7, 0x0024, 2)
+// src/spc700/main.spc700.s:1913 UNK1207
+EB_SPC_SITE(0x1241, 0xC4, 0x0020, 2)
+// src/spc700/main.spc700.s:1914 UNK1207
+EB_SPC_SITE(0x1243, 0x3A, 0x0024, 2)
+// src/spc700/main.spc700.s:1915 UNK1207
+EB_SPC_SITE(0x1245, 0xF7, 0x0024, 2)
+// src/spc700/main.spc700.s:1916 UNK1207
+EB_SPC_SITE(0x1247, 0xC4, 0x0021, 2)
+// src/spc700/main.spc700.s:1917 UNK1207
+EB_SPC_SITE(0x1249, 0x4D, 0x0000, 1)
+// src/spc700/main.spc700.s:1918 UNK1207
+EB_SPC_SITE(0x124A, 0x1A, 0x0020, 2)
+// src/spc700/main.spc700.s:1919 UNK1207
+EB_SPC_SITE(0x124C, 0xCD, 0x0000, 2)
+// src/spc700/main.spc700.s:1920 UNK1207
+EB_SPC_SITE(0x124E, 0xE7, 0x0020, 2)
+// src/spc700/main.spc700.s:1921 UNK1207
+EB_SPC_SITE(0x1250, 0xF8, 0x002E, 2)
+// src/spc700/main.spc700.s:1922 UNK1207
+EB_SPC_SITE(0x1252, 0xD5, 0x048C, 3)
+// src/spc700/main.spc700.s:1923 UNK1207
+EB_SPC_SITE(0x1255, 0x3A, 0x0020, 2)
+// src/spc700/main.spc700.s:1924 UNK1207
+EB_SPC_SITE(0x1257, 0x5D, 0x0000, 1)
+// src/spc700/main.spc700.s:1925 UNK1207
+EB_SPC_SITE(0x1258, 0x1F, 0x125B, 3)
+// src/spc700/main.spc700.s:1939 UNK126D
+EB_SPC_SITE(0x126D, 0x5F, 0x131A, 3)
+// src/spc700/main.spc700.s:1942 UNK1270
+EB_SPC_SITE(0x1270, 0xCE, 0x0000, 1)
+// src/spc700/main.spc700.s:1943 UNK1270
+EB_SPC_SITE(0x1271, 0xE4, 0x0020, 2)
+// src/spc700/main.spc700.s:1944 UNK1270
+EB_SPC_SITE(0x1273, 0xEB, 0x0021, 2)
+// src/spc700/main.spc700.s:1945 UNK1270
+EB_SPC_SITE(0x1275, 0x5F, 0x0F56, 3)
+// src/spc700/main.spc700.s:1948 UNK1278
+EB_SPC_SITE(0x1278, 0xCE, 0x0000, 1)
+// src/spc700/main.spc700.s:1949 UNK1278
+EB_SPC_SITE(0x1279, 0xE4, 0x0020, 2)
+// src/spc700/main.spc700.s:1950 UNK1278
+EB_SPC_SITE(0x127B, 0xEB, 0x0021, 2)
+// src/spc700/main.spc700.s:1951 UNK1278
+EB_SPC_SITE(0x127D, 0x5F, 0x0F4B, 3)
+// src/spc700/main.spc700.s:1954 UNK1280
+EB_SPC_SITE(0x1280, 0xCE, 0x0000, 1)
+// src/spc700/main.spc700.s:1955 UNK1280
+EB_SPC_SITE(0x1281, 0xE4, 0x0020, 2)
+// src/spc700/main.spc700.s:1956 UNK1280
+EB_SPC_SITE(0x1283, 0xEB, 0x0021, 2)
+// src/spc700/main.spc700.s:1957 UNK1280
+EB_SPC_SITE(0x1285, 0x5F, 0x14DF, 3)
+// src/spc700/main.spc700.s:1960 UNK1288
+EB_SPC_SITE(0x1288, 0xCE, 0x0000, 1)
+// src/spc700/main.spc700.s:1961 UNK1288
+EB_SPC_SITE(0x1289, 0xCD, 0x0000, 2)
+// src/spc700/main.spc700.s:1962 UNK1288
+EB_SPC_SITE(0x128B, 0x1A, 0x0020, 2)
+// src/spc700/main.spc700.s:1963 UNK1288
+EB_SPC_SITE(0x128D, 0x1A, 0x0020, 2)
+// src/spc700/main.spc700.s:1964 UNK1288
+EB_SPC_SITE(0x128F, 0xE7, 0x0020, 2)
+// src/spc700/main.spc700.s:1965 UNK1288
+EB_SPC_SITE(0x1291, 0xC4, 0x0027, 2)
+// src/spc700/main.spc700.s:1966 UNK1288
+EB_SPC_SITE(0x1293, 0x1A, 0x0020, 2)
+// src/spc700/main.spc700.s:1967 UNK1288
+EB_SPC_SITE(0x1295, 0xE7, 0x0020, 2)
+// src/spc700/main.spc700.s:1968 UNK1288
+EB_SPC_SITE(0x1297, 0xC4, 0x0026, 2)
+// src/spc700/main.spc700.s:1969 UNK1288
+EB_SPC_SITE(0x1299, 0x1A, 0x0020, 2)
+// src/spc700/main.spc700.s:1970 UNK1288
+EB_SPC_SITE(0x129B, 0xE7, 0x0020, 2)
+// src/spc700/main.spc700.s:1971 UNK1288
+EB_SPC_SITE(0x129D, 0xC4, 0x0029, 2)
+// src/spc700/main.spc700.s:1972 UNK1288
+EB_SPC_SITE(0x129F, 0x1A, 0x0020, 2)
+// src/spc700/main.spc700.s:1973 UNK1288
+EB_SPC_SITE(0x12A1, 0xE7, 0x0020, 2)
+// src/spc700/main.spc700.s:1974 UNK1288
+EB_SPC_SITE(0x12A3, 0xC4, 0x0028, 2)
+// src/spc700/main.spc700.s:1975 UNK1288
+EB_SPC_SITE(0x12A5, 0x3A, 0x0020, 2)
+// src/spc700/main.spc700.s:1976 UNK1288
+EB_SPC_SITE(0x12A7, 0x3A, 0x0020, 2)
+// src/spc700/main.spc700.s:1977 UNK1288
+EB_SPC_SITE(0x12A9, 0x3A, 0x0020, 2)
+// src/spc700/main.spc700.s:1978 UNK1288
+EB_SPC_SITE(0x12AB, 0x3A, 0x0020, 2)
+// src/spc700/main.spc700.s:1979 UNK1288
+EB_SPC_SITE(0x12AD, 0x3A, 0x0020, 2)
+// src/spc700/main.spc700.s:1980 UNK1288
+EB_SPC_SITE(0x12AF, 0x8D, 0x0005, 2)
+// src/spc700/main.spc700.s:1981 UNK1288
+EB_SPC_SITE(0x12B1, 0xF7, 0x0020, 2)
+// src/spc700/main.spc700.s:1982 UNK1288
+EB_SPC_SITE(0x12B3, 0x5D, 0x0000, 1)
+// src/spc700/main.spc700.s:1983 UNK1288
+EB_SPC_SITE(0x12B4, 0xFC, 0x0000, 1)
+// src/spc700/main.spc700.s:1984 UNK1288
+EB_SPC_SITE(0x12B5, 0xF7, 0x0020, 2)
+// src/spc700/main.spc700.s:1985 UNK1288
+EB_SPC_SITE(0x12B7, 0xC4, 0x002C, 2)
+// src/spc700/main.spc700.s:1986 UNK1288
+EB_SPC_SITE(0x12B9, 0xE4, 0x0020, 2)
+// src/spc700/main.spc700.s:1987 UNK1288
+EB_SPC_SITE(0x12BB, 0xEB, 0x0021, 2)
+// src/spc700/main.spc700.s:1988 UNK1288
+EB_SPC_SITE(0x12BD, 0x3F, 0x14EE, 3)
+// src/spc700/main.spc700.s:1989 UNK1288
+EB_SPC_SITE(0x12C0, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:1990 UNK1288
+EB_SPC_SITE(0x12C2, 0x8D, 0x0000, 2)
+// src/spc700/main.spc700.s:1991 UNK1288
+EB_SPC_SITE(0x12C4, 0x5F, 0x10FC, 3)
+// src/spc700/main.spc700.s:1994 UNK12C7
+EB_SPC_SITE(0x12C7, 0xCD, 0x0000, 2)
+// src/spc700/main.spc700.s:1995 UNK12C7
+EB_SPC_SITE(0x12C9, 0x1A, 0x0020, 2)
+// src/spc700/main.spc700.s:1996 UNK12C7
+EB_SPC_SITE(0x12CB, 0x1A, 0x0020, 2)
+// src/spc700/main.spc700.s:1997 UNK12C7
+EB_SPC_SITE(0x12CD, 0xE7, 0x0020, 2)
+// src/spc700/main.spc700.s:1998 UNK12C7
+EB_SPC_SITE(0x12CF, 0xC4, 0x0023, 2)
+// src/spc700/main.spc700.s:1999 UNK12C7
+EB_SPC_SITE(0x12D1, 0x1A, 0x0020, 2)
+// src/spc700/main.spc700.s:2000 UNK12C7
+EB_SPC_SITE(0x12D3, 0xE7, 0x0020, 2)
+// src/spc700/main.spc700.s:2001 UNK12C7
+EB_SPC_SITE(0x12D5, 0xC4, 0x0022, 2)
+// src/spc700/main.spc700.s:2002 UNK12C7
+EB_SPC_SITE(0x12D7, 0xCE, 0x0000, 1)
+// src/spc700/main.spc700.s:2003 UNK12C7
+EB_SPC_SITE(0x12D8, 0xE4, 0x002E, 2)
+// src/spc700/main.spc700.s:2004 UNK12C7
+EB_SPC_SITE(0x12DA, 0x68, 0x0003, 2)
+// src/spc700/main.spc700.s:2005 UNK12C7
+EB_SPC_SITE(0x12DC, 0xF0, 0x0015, 2)
+// src/spc700/main.spc700.s:2006 UNK12C7
+EB_SPC_SITE(0x12DE, 0x68, 0x0002, 2)
+// src/spc700/main.spc700.s:2007 UNK12C7
+EB_SPC_SITE(0x12E0, 0xF0, 0x001E, 2)
+// src/spc700/main.spc700.s:2008 UNK12C7
+EB_SPC_SITE(0x12E2, 0x68, 0x0001, 2)
+// src/spc700/main.spc700.s:2009 UNK12C7
+EB_SPC_SITE(0x12E4, 0xF0, 0x0027, 2)
+// src/spc700/main.spc700.s:2010 UNK12C7
+EB_SPC_SITE(0x12E6, 0xE4, 0x0022, 2)
+// src/spc700/main.spc700.s:2011 UNK12C7
+EB_SPC_SITE(0x12E8, 0xC5, 0x0440, 3)
+// src/spc700/main.spc700.s:2012 UNK12C7
+EB_SPC_SITE(0x12EB, 0xE4, 0x0023, 2)
+// src/spc700/main.spc700.s:2013 UNK12C7
+EB_SPC_SITE(0x12ED, 0xC5, 0x0441, 3)
+// src/spc700/main.spc700.s:2014 UNK12C7
+EB_SPC_SITE(0x12F0, 0x1F, 0x180D, 3)
+// src/spc700/main.spc700.s:2017 UNK12F3
+EB_SPC_SITE(0x12F3, 0xE4, 0x0022, 2)
+// src/spc700/main.spc700.s:2018 UNK12F3
+EB_SPC_SITE(0x12F5, 0xC5, 0x0446, 3)
+// src/spc700/main.spc700.s:2019 UNK12F3
+EB_SPC_SITE(0x12F8, 0xE4, 0x0023, 2)
+// src/spc700/main.spc700.s:2020 UNK12F3
+EB_SPC_SITE(0x12FA, 0xC5, 0x0447, 3)
+// src/spc700/main.spc700.s:2021 UNK12F3
+EB_SPC_SITE(0x12FD, 0x1F, 0x16C7, 3)
+// src/spc700/main.spc700.s:2024 UNK1300
+EB_SPC_SITE(0x1300, 0xE4, 0x0022, 2)
+// src/spc700/main.spc700.s:2025 UNK1300
+EB_SPC_SITE(0x1302, 0xC5, 0x0444, 3)
+// src/spc700/main.spc700.s:2026 UNK1300
+EB_SPC_SITE(0x1305, 0xE4, 0x0023, 2)
+// src/spc700/main.spc700.s:2027 UNK1300
+EB_SPC_SITE(0x1307, 0xC5, 0x0445, 3)
+// src/spc700/main.spc700.s:2028 UNK1300
+EB_SPC_SITE(0x130A, 0x1F, 0x17C5, 3)
+// src/spc700/main.spc700.s:2031 UNK130D
+EB_SPC_SITE(0x130D, 0xE4, 0x0022, 2)
+// src/spc700/main.spc700.s:2032 UNK130D
+EB_SPC_SITE(0x130F, 0xC5, 0x0442, 3)
+// src/spc700/main.spc700.s:2033 UNK130D
+EB_SPC_SITE(0x1312, 0xE4, 0x0023, 2)
+// src/spc700/main.spc700.s:2034 UNK130D
+EB_SPC_SITE(0x1314, 0xC5, 0x0443, 3)
+// src/spc700/main.spc700.s:2035 UNK130D
+EB_SPC_SITE(0x1317, 0x1F, 0x17D5, 3)
+// src/spc700/main.spc700.s:2038 UNK131A
+EB_SPC_SITE(0x131A, 0xF5, 0x04B4, 3)
+// src/spc700/main.spc700.s:2039 UNK131A
+EB_SPC_SITE(0x131D, 0xC4, 0x0020, 2)
+// src/spc700/main.spc700.s:2040 UNK131A
+EB_SPC_SITE(0x131F, 0xF0, 0x000C, 2)
+// src/spc700/main.spc700.s:2041 UNK131A
+EB_SPC_SITE(0x1321, 0x75, 0x04D0, 3)
+// src/spc700/main.spc700.s:2042 UNK131A
+EB_SPC_SITE(0x1324, 0xB0, 0x0007, 2)
+// src/spc700/main.spc700.s:2043 UNK131A
+EB_SPC_SITE(0x1326, 0xF5, 0x048C, 3)
+// src/spc700/main.spc700.s:2044 UNK131A
+EB_SPC_SITE(0x1329, 0x5D, 0x0000, 1)
+// src/spc700/main.spc700.s:2045 UNK131A
+EB_SPC_SITE(0x132A, 0x1F, 0x132E, 3)
+// src/spc700/main.spc700.s:2047 UNK132D
+EB_SPC_SITE(0x132D, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:2061 UNK1340
+EB_SPC_SITE(0x1340, 0x5F, 0x134E, 3)
+// src/spc700/main.spc700.s:2064 UNK1343
+EB_SPC_SITE(0x1343, 0xF8, 0x002F, 2)
+// src/spc700/main.spc700.s:2065 UNK1343
+EB_SPC_SITE(0x1345, 0x1F, 0x0440, 3)
+// src/spc700/main.spc700.s:2067 UNK1348
+EB_SPC_SITE(0x1348, 0x5F, 0x148B, 3)
+// src/spc700/main.spc700.s:2069 UNK134B
+EB_SPC_SITE(0x134B, 0x5F, 0x0FB7, 3)
+// src/spc700/main.spc700.s:2072 UNK134E
+EB_SPC_SITE(0x134E, 0x3F, 0x13A0, 3)
+// src/spc700/main.spc700.s:2073 UNK134E
+EB_SPC_SITE(0x1351, 0xF0, 0x003E, 2)
+// src/spc700/main.spc700.s:2074 UNK134E
+EB_SPC_SITE(0x1353, 0xBB, 0x00D4, 2)
+// src/spc700/main.spc700.s:2075 UNK134E
+EB_SPC_SITE(0x1355, 0xF4, 0x00D4, 2)
+// src/spc700/main.spc700.s:2076 UNK134E
+EB_SPC_SITE(0x1357, 0x64, 0x002C, 2)
+// src/spc700/main.spc700.s:2077 UNK134E
+EB_SPC_SITE(0x1359, 0xD0, 0x0029, 2)
+// src/spc700/main.spc700.s:2078 UNK134E
+EB_SPC_SITE(0x135B, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:2079 UNK134E
+EB_SPC_SITE(0x135D, 0xD4, 0x00D4, 2)
+// src/spc700/main.spc700.s:2080 UNK134E
+EB_SPC_SITE(0x135F, 0xF4, 0x00D0, 2)
+// src/spc700/main.spc700.s:2081 UNK134E
+EB_SPC_SITE(0x1361, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:2082 UNK134E
+EB_SPC_SITE(0x1362, 0xBB, 0x00D0, 2)
+// src/spc700/main.spc700.s:2083 UNK134E
+EB_SPC_SITE(0x1364, 0xF7, 0x0026, 2)
+// src/spc700/main.spc700.s:2084 UNK134E
+EB_SPC_SITE(0x1366, 0x68, 0x0000, 2)
+// src/spc700/main.spc700.s:2085 UNK134E
+EB_SPC_SITE(0x1368, 0xF0, 0x0027, 2)
+// src/spc700/main.spc700.s:2086 UNK134E
+EB_SPC_SITE(0x136A, 0x68, 0x007F, 2)
+// src/spc700/main.spc700.s:2087 UNK134E
+EB_SPC_SITE(0x136C, 0xF0, 0x0017, 2)
+// src/spc700/main.spc700.s:2088 UNK134E
+EB_SPC_SITE(0x136E, 0x6D, 0x0000, 1)
+// src/spc700/main.spc700.s:2089 UNK134E
+EB_SPC_SITE(0x136F, 0x3F, 0x1124, 3)
+// src/spc700/main.spc700.s:2090 UNK134E
+EB_SPC_SITE(0x1372, 0xEE, 0x0000, 1)
+// src/spc700/main.spc700.s:2091 UNK134E
+EB_SPC_SITE(0x1373, 0xE4, 0x0029, 2)
+// src/spc700/main.spc700.s:2092 UNK134E
+EB_SPC_SITE(0x1375, 0xF0, 0x000D, 2)
+// src/spc700/main.spc700.s:2093 UNK134E
+EB_SPC_SITE(0x1377, 0xF7, 0x0028, 2)
+// src/spc700/main.spc700.s:2094 UNK134E
+EB_SPC_SITE(0x1379, 0x28, 0x001F, 2)
+// src/spc700/main.spc700.s:2095 UNK134E
+EB_SPC_SITE(0x137B, 0xC4, 0x0048, 2)
+// src/spc700/main.spc700.s:2096 UNK134E
+EB_SPC_SITE(0x137D, 0xE4, 0x0049, 2)
+// src/spc700/main.spc700.s:2097 UNK134E
+EB_SPC_SITE(0x137F, 0x05, 0x04D7, 3)
+// src/spc700/main.spc700.s:2098 UNK134E
+EB_SPC_SITE(0x1382, 0xC4, 0x0049, 2)
+// src/spc700/main.spc700.s:2100 UNK1384
+EB_SPC_SITE(0x1384, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:2103 UNK1385
+EB_SPC_SITE(0x1385, 0xE4, 0x0046, 2)
+// src/spc700/main.spc700.s:2104 UNK1385
+EB_SPC_SITE(0x1387, 0x05, 0x04D7, 3)
+// src/spc700/main.spc700.s:2105 UNK1385
+EB_SPC_SITE(0x138A, 0xC4, 0x0046, 2)
+// src/spc700/main.spc700.s:2106 UNK1385
+EB_SPC_SITE(0x138C, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:2107 UNK1385
+EB_SPC_SITE(0x138E, 0x5F, 0x1144, 3)
+// src/spc700/main.spc700.s:2109 UNK1391
+EB_SPC_SITE(0x1391, 0x5F, 0x1491, 3)
+// src/spc700/main.spc700.s:2111 UNK1394
+EB_SPC_SITE(0x1394, 0xD5, 0x049C, 3)
+// src/spc700/main.spc700.s:2112 UNK1394
+EB_SPC_SITE(0x1397, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:2114 UNK1394
+EB_SPC_SITE(0x1398, 0xD5, 0x04BC, 3)
+// src/spc700/main.spc700.s:2115 UNK1394
+EB_SPC_SITE(0x139B, 0xDD, 0x0000, 1)
+// src/spc700/main.spc700.s:2116 UNK1394
+EB_SPC_SITE(0x139C, 0xD5, 0x04C0, 3)
+// src/spc700/main.spc700.s:2117 UNK1394
+EB_SPC_SITE(0x139F, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:2120 UNK13A0
+EB_SPC_SITE(0x13A0, 0xF8, 0x002E, 2)
+// src/spc700/main.spc700.s:2121 UNK13A0
+EB_SPC_SITE(0x13A2, 0xF5, 0x04B8, 3)
+// src/spc700/main.spc700.s:2122 UNK13A0
+EB_SPC_SITE(0x13A5, 0xBC, 0x0000, 1)
+// src/spc700/main.spc700.s:2123 UNK13A0
+EB_SPC_SITE(0x13A6, 0xD5, 0x04B8, 3)
+// src/spc700/main.spc700.s:2124 UNK13A0
+EB_SPC_SITE(0x13A9, 0x68, 0x0001, 2)
+// src/spc700/main.spc700.s:2125 UNK13A0
+EB_SPC_SITE(0x13AB, 0xF0, 0x0032, 2)
+// src/spc700/main.spc700.s:2126 UNK13A0
+EB_SPC_SITE(0x13AD, 0x75, 0x04BC, 3)
+// src/spc700/main.spc700.s:2127 UNK13A0
+EB_SPC_SITE(0x13B0, 0xF0, 0x0015, 2)
+// src/spc700/main.spc700.s:2128 UNK13A0
+EB_SPC_SITE(0x13B2, 0x75, 0x04C0, 3)
+// src/spc700/main.spc700.s:2129 UNK13A0
+EB_SPC_SITE(0x13B5, 0xD0, 0x001D, 2)
+// src/spc700/main.spc700.s:2130 UNK13A0
+EB_SPC_SITE(0x13B7, 0xF5, 0x049C, 3)
+// src/spc700/main.spc700.s:2131 UNK13A0
+EB_SPC_SITE(0x13BA, 0x28, 0x0001, 2)
+// src/spc700/main.spc700.s:2132 UNK13A0
+EB_SPC_SITE(0x13BC, 0xD0, 0x0016, 2)
+// src/spc700/main.spc700.s:2133 UNK13A0
+EB_SPC_SITE(0x13BE, 0xE4, 0x0046, 2)
+// src/spc700/main.spc700.s:2134 UNK13A0
+EB_SPC_SITE(0x13C0, 0x05, 0x04D7, 3)
+// src/spc700/main.spc700.s:2135 UNK13A0
+EB_SPC_SITE(0x13C3, 0xC4, 0x0046, 2)
+// src/spc700/main.spc700.s:2136 UNK13A0
+EB_SPC_SITE(0x13C5, 0xD0, 0x000D, 2)
+// src/spc700/main.spc700.s:2138 UNK13C7
+EB_SPC_SITE(0x13C7, 0x68, 0x00FF, 2)
+// src/spc700/main.spc700.s:2139 UNK13C7
+EB_SPC_SITE(0x13C9, 0xD0, 0x0004, 2)
+// src/spc700/main.spc700.s:2140 UNK13C7
+EB_SPC_SITE(0x13CB, 0xE8, 0x00FE, 2)
+// src/spc700/main.spc700.s:2141 UNK13C7
+EB_SPC_SITE(0x13CD, 0xD0, 0x0002, 2)
+// src/spc700/main.spc700.s:2143 UNK13CF
+EB_SPC_SITE(0x13CF, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:2145 UNK13D1
+EB_SPC_SITE(0x13D1, 0xD5, 0x04B8, 3)
+// src/spc700/main.spc700.s:2147 UNK13D4
+EB_SPC_SITE(0x13D4, 0xF5, 0x04B8, 3)
+// src/spc700/main.spc700.s:2148 UNK13D4
+EB_SPC_SITE(0x13D7, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:2151 UNK13D8
+EB_SPC_SITE(0x13D8, 0xE8, 0x0081, 2)
+// src/spc700/main.spc700.s:2152 UNK13D8
+EB_SPC_SITE(0x13DA, 0xD5, 0x049C, 3)
+// src/spc700/main.spc700.s:2153 UNK13D8
+EB_SPC_SITE(0x13DD, 0xD0, 0x000B, 2)
+// src/spc700/main.spc700.s:2155 UNK13DF
+EB_SPC_SITE(0x13DF, 0xF5, 0x049C, 3)
+// src/spc700/main.spc700.s:2156 UNK13DF
+EB_SPC_SITE(0x13E2, 0x68, 0x0001, 2)
+// src/spc700/main.spc700.s:2157 UNK13DF
+EB_SPC_SITE(0x13E4, 0xF0, 0x00F2, 2)
+// src/spc700/main.spc700.s:2158 UNK13DF
+EB_SPC_SITE(0x13E6, 0x68, 0x0081, 2)
+// src/spc700/main.spc700.s:2159 UNK13DF
+EB_SPC_SITE(0x13E8, 0xF0, 0x00EA, 2)
+// src/spc700/main.spc700.s:2161 UNK13EA
+EB_SPC_SITE(0x13EA, 0xF5, 0x0450, 3)
+// src/spc700/main.spc700.s:2162 UNK13EA
+EB_SPC_SITE(0x13ED, 0xD0, 0x001A, 2)
+// src/spc700/main.spc700.s:2163 UNK13EA
+EB_SPC_SITE(0x13EF, 0xBC, 0x0000, 1)
+// src/spc700/main.spc700.s:2164 UNK13EA
+EB_SPC_SITE(0x13F0, 0xD5, 0x0450, 3)
+// src/spc700/main.spc700.s:2165 UNK13EA
+EB_SPC_SITE(0x13F3, 0x3F, 0x1557, 3)
+// src/spc700/main.spc700.s:2166 UNK13EA
+EB_SPC_SITE(0x13F6, 0xF8, 0x002E, 2)
+// src/spc700/main.spc700.s:2167 UNK13EA
+EB_SPC_SITE(0x13F8, 0xF5, 0x0454, 3)
+// src/spc700/main.spc700.s:2168 UNK13EA
+EB_SPC_SITE(0x13FB, 0xF0, 0x000C, 2)
+// src/spc700/main.spc700.s:2169 UNK13EA
+EB_SPC_SITE(0x13FD, 0xF8, 0x002F, 2)
+// src/spc700/main.spc700.s:2170 UNK13EA
+EB_SPC_SITE(0x13FF, 0xF5, 0x0459, 3)
+// src/spc700/main.spc700.s:2171 UNK13EA
+EB_SPC_SITE(0x1402, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:2172 UNK13EA
+EB_SPC_SITE(0x1403, 0xF5, 0x0458, 3)
+// src/spc700/main.spc700.s:2173 UNK13EA
+EB_SPC_SITE(0x1406, 0x3F, 0x110D, 3)
+// src/spc700/main.spc700.s:2175 UNK1409
+EB_SPC_SITE(0x1409, 0xF8, 0x002E, 2)
+// src/spc700/main.spc700.s:2176 UNK1409
+EB_SPC_SITE(0x140B, 0xF5, 0x04C8, 3)
+// src/spc700/main.spc700.s:2177 UNK1409
+EB_SPC_SITE(0x140E, 0xD0, 0x00C4, 2)
+// src/spc700/main.spc700.s:2178 UNK1409
+EB_SPC_SITE(0x1410, 0xE4, 0x0045, 2)
+// src/spc700/main.spc700.s:2179 UNK1409
+EB_SPC_SITE(0x1412, 0x05, 0x04D7, 3)
+// src/spc700/main.spc700.s:2180 UNK1409
+EB_SPC_SITE(0x1415, 0xC4, 0x0045, 2)
+// src/spc700/main.spc700.s:2181 UNK1409
+EB_SPC_SITE(0x1417, 0x5F, 0x13D4, 3)
+// src/spc700/main.spc700.s:2184 UNK141A
+EB_SPC_SITE(0x141A, 0x3F, 0x1438, 3)
+// src/spc700/main.spc700.s:2185 UNK141A
+EB_SPC_SITE(0x141D, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:2186 UNK141A
+EB_SPC_SITE(0x141F, 0xC5, 0x0491, 3)
+// src/spc700/main.spc700.s:2187 UNK141A
+EB_SPC_SITE(0x1422, 0xC5, 0x0438, 3)
+// src/spc700/main.spc700.s:2188 UNK141A
+EB_SPC_SITE(0x1425, 0xC5, 0x0439, 3)
+// src/spc700/main.spc700.s:2189 UNK141A
+EB_SPC_SITE(0x1428, 0xC5, 0x043A, 3)
+// src/spc700/main.spc700.s:2190 UNK141A
+EB_SPC_SITE(0x142B, 0xC5, 0x04C8, 3)
+// src/spc700/main.spc700.s:2191 UNK141A
+EB_SPC_SITE(0x142E, 0xC5, 0x04C9, 3)
+// src/spc700/main.spc700.s:2192 UNK141A
+EB_SPC_SITE(0x1431, 0xC5, 0x04CA, 3)
+// src/spc700/main.spc700.s:2193 UNK141A
+EB_SPC_SITE(0x1434, 0xC5, 0x04CB, 3)
+// src/spc700/main.spc700.s:2194 UNK141A
+EB_SPC_SITE(0x1437, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:2197 UNK1438
+EB_SPC_SITE(0x1438, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:2198 UNK1438
+EB_SPC_SITE(0x143A, 0xC5, 0x04B4, 3)
+// src/spc700/main.spc700.s:2199 UNK1438
+EB_SPC_SITE(0x143D, 0xC5, 0x04B5, 3)
+// src/spc700/main.spc700.s:2200 UNK1438
+EB_SPC_SITE(0x1440, 0xC5, 0x04B6, 3)
+// src/spc700/main.spc700.s:2201 UNK1438
+EB_SPC_SITE(0x1443, 0xC5, 0x04B7, 3)
+// src/spc700/main.spc700.s:2202 UNK1438
+EB_SPC_SITE(0x1446, 0xC5, 0x04B0, 3)
+// src/spc700/main.spc700.s:2203 UNK1438
+EB_SPC_SITE(0x1449, 0xC5, 0x04B1, 3)
+// src/spc700/main.spc700.s:2204 UNK1438
+EB_SPC_SITE(0x144C, 0xC5, 0x04B2, 3)
+// src/spc700/main.spc700.s:2205 UNK1438
+EB_SPC_SITE(0x144F, 0xC5, 0x04B3, 3)
+// src/spc700/main.spc700.s:2206 UNK1438
+EB_SPC_SITE(0x1452, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:2209 UNK1453
+EB_SPC_SITE(0x1453, 0x3F, 0x145D, 3)
+// src/spc700/main.spc700.s:2210 UNK1453
+EB_SPC_SITE(0x1456, 0x3F, 0x146B, 3)
+// src/spc700/main.spc700.s:2211 UNK1453
+EB_SPC_SITE(0x1459, 0x3F, 0x1479, 3)
+// src/spc700/main.spc700.s:2212 UNK1453
+EB_SPC_SITE(0x145C, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:2215 UNK145D
+EB_SPC_SITE(0x145D, 0xB2, 0x001A, 2)
+// src/spc700/main.spc700.s:2216 UNK145D
+EB_SPC_SITE(0x145F, 0xA2, 0x0046, 2)
+// src/spc700/main.spc700.s:2217 UNK145D
+EB_SPC_SITE(0x1461, 0xA2, 0x0047, 2)
+// src/spc700/main.spc700.s:2218 UNK145D
+EB_SPC_SITE(0x1463, 0xA2, 0x005E, 2)
+// src/spc700/main.spc700.s:2219 UNK145D
+EB_SPC_SITE(0x1465, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:2220 UNK145D
+EB_SPC_SITE(0x1467, 0xC5, 0x04B5, 3)
+// src/spc700/main.spc700.s:2221 UNK145D
+EB_SPC_SITE(0x146A, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:2224 UNK146B
+EB_SPC_SITE(0x146B, 0xD2, 0x001A, 2)
+// src/spc700/main.spc700.s:2225 UNK146B
+EB_SPC_SITE(0x146D, 0xC2, 0x0046, 2)
+// src/spc700/main.spc700.s:2226 UNK146B
+EB_SPC_SITE(0x146F, 0xC2, 0x0047, 2)
+// src/spc700/main.spc700.s:2227 UNK146B
+EB_SPC_SITE(0x1471, 0xC2, 0x005E, 2)
+// src/spc700/main.spc700.s:2228 UNK146B
+EB_SPC_SITE(0x1473, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:2229 UNK146B
+EB_SPC_SITE(0x1475, 0xC5, 0x04B6, 3)
+// src/spc700/main.spc700.s:2230 UNK146B
+EB_SPC_SITE(0x1478, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:2233 UNK1479
+EB_SPC_SITE(0x1479, 0xF2, 0x001A, 2)
+// src/spc700/main.spc700.s:2234 UNK1479
+EB_SPC_SITE(0x147B, 0xE2, 0x0046, 2)
+// src/spc700/main.spc700.s:2235 UNK1479
+EB_SPC_SITE(0x147D, 0xE2, 0x0047, 2)
+// src/spc700/main.spc700.s:2236 UNK1479
+EB_SPC_SITE(0x147F, 0xE2, 0x005E, 2)
+// src/spc700/main.spc700.s:2237 UNK1479
+EB_SPC_SITE(0x1481, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:2238 UNK1479
+EB_SPC_SITE(0x1483, 0xC5, 0x04B7, 3)
+// src/spc700/main.spc700.s:2239 UNK1479
+EB_SPC_SITE(0x1486, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:2244 FX148A
+EB_SPC_SITE(0x148A, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:2247 UNK148B
+EB_SPC_SITE(0x148B, 0x3F, 0x13A0, 3)
+// src/spc700/main.spc700.s:2248 UNK148B
+EB_SPC_SITE(0x148E, 0xF0, 0x0001, 2)
+// src/spc700/main.spc700.s:2249 UNK148B
+EB_SPC_SITE(0x1490, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:2252 UNK1491
+EB_SPC_SITE(0x1491, 0xE5, 0x04DF, 3)
+// src/spc700/main.spc700.s:2253 UNK1491
+EB_SPC_SITE(0x1494, 0x5D, 0x0000, 1)
+// src/spc700/main.spc700.s:2254 UNK1491
+EB_SPC_SITE(0x1495, 0xE4, 0x001A, 2)
+// src/spc700/main.spc700.s:2255 UNK1491
+EB_SPC_SITE(0x1497, 0x25, 0x04D6, 3)
+// src/spc700/main.spc700.s:2256 UNK1491
+EB_SPC_SITE(0x149A, 0xC4, 0x001A, 2)
+// src/spc700/main.spc700.s:2257 UNK1491
+EB_SPC_SITE(0x149C, 0xE4, 0x0047, 2)
+// src/spc700/main.spc700.s:2258 UNK1491
+EB_SPC_SITE(0x149E, 0x05, 0x04D7, 3)
+// src/spc700/main.spc700.s:2259 UNK1491
+EB_SPC_SITE(0x14A1, 0xC4, 0x0047, 2)
+// src/spc700/main.spc700.s:2260 UNK1491
+EB_SPC_SITE(0x14A3, 0xE4, 0x005E, 2)
+// src/spc700/main.spc700.s:2261 UNK1491
+EB_SPC_SITE(0x14A5, 0x05, 0x04D7, 3)
+// src/spc700/main.spc700.s:2262 UNK1491
+EB_SPC_SITE(0x14A8, 0xC4, 0x005E, 2)
+// src/spc700/main.spc700.s:2263 UNK1491
+EB_SPC_SITE(0x14AA, 0xF5, 0x04E0, 3)
+// src/spc700/main.spc700.s:2264 UNK1491
+EB_SPC_SITE(0x14AD, 0xD5, 0x0321, 3)
+// src/spc700/main.spc700.s:2265 UNK1491
+EB_SPC_SITE(0x14B0, 0xF5, 0x04F0, 3)
+// src/spc700/main.spc700.s:2266 UNK1491
+EB_SPC_SITE(0x14B3, 0xD5, 0x0351, 3)
+// src/spc700/main.spc700.s:2267 UNK1491
+EB_SPC_SITE(0x14B6, 0x3F, 0x0C86, 3)
+// src/spc700/main.spc700.s:2268 UNK1491
+EB_SPC_SITE(0x14B9, 0xE5, 0x04DF, 3)
+// src/spc700/main.spc700.s:2269 UNK1491
+EB_SPC_SITE(0x14BC, 0x5D, 0x0000, 1)
+// src/spc700/main.spc700.s:2270 UNK1491
+EB_SPC_SITE(0x14BD, 0xE4, 0x001A, 2)
+// src/spc700/main.spc700.s:2271 UNK1491
+EB_SPC_SITE(0x14BF, 0x25, 0x04D6, 3)
+// src/spc700/main.spc700.s:2272 UNK1491
+EB_SPC_SITE(0x14C2, 0xC4, 0x001A, 2)
+// src/spc700/main.spc700.s:2273 UNK1491
+EB_SPC_SITE(0x14C4, 0xF5, 0x0211, 3)
+// src/spc700/main.spc700.s:2274 UNK1491
+EB_SPC_SITE(0x14C7, 0x3F, 0x0962, 3)
+// src/spc700/main.spc700.s:2275 UNK1491
+EB_SPC_SITE(0x14CA, 0xF8, 0x002E, 2)
+// src/spc700/main.spc700.s:2276 UNK1491
+EB_SPC_SITE(0x14CC, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:2277 UNK1491
+EB_SPC_SITE(0x14CE, 0xD5, 0x04B4, 3)
+// src/spc700/main.spc700.s:2278 UNK1491
+EB_SPC_SITE(0x14D1, 0xD5, 0x04C8, 3)
+// src/spc700/main.spc700.s:2279 UNK1491
+EB_SPC_SITE(0x14D4, 0xD5, 0x048C, 3)
+// src/spc700/main.spc700.s:2280 UNK1491
+EB_SPC_SITE(0x14D7, 0xE4, 0x0046, 2)
+// src/spc700/main.spc700.s:2281 UNK1491
+EB_SPC_SITE(0x14D9, 0x05, 0x04D7, 3)
+// src/spc700/main.spc700.s:2282 UNK1491
+EB_SPC_SITE(0x14DC, 0xC4, 0x0046, 2)
+// src/spc700/main.spc700.s:2283 UNK1491
+EB_SPC_SITE(0x14DE, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:2286 UNK14DF
+EB_SPC_SITE(0x14DF, 0xDA, 0x0022, 2)
+// src/spc700/main.spc700.s:2287 UNK14DF
+EB_SPC_SITE(0x14E1, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:2288 UNK14DF
+EB_SPC_SITE(0x14E3, 0xF8, 0x002E, 2)
+// src/spc700/main.spc700.s:2289 UNK14DF
+EB_SPC_SITE(0x14E5, 0xD5, 0x04CC, 3)
+// src/spc700/main.spc700.s:2290 UNK14DF
+EB_SPC_SITE(0x14E8, 0xD5, 0x04C8, 3)
+// src/spc700/main.spc700.s:2291 UNK14DF
+EB_SPC_SITE(0x14EB, 0x5F, 0x1505, 3)
+// src/spc700/main.spc700.s:2294 UNK14EE
+EB_SPC_SITE(0x14EE, 0xDA, 0x0022, 2)
+// src/spc700/main.spc700.s:2295 UNK14EE
+EB_SPC_SITE(0x14F0, 0xD8, 0x0024, 2)
+// src/spc700/main.spc700.s:2296 UNK14EE
+EB_SPC_SITE(0x14F2, 0xE4, 0x0048, 2)
+// src/spc700/main.spc700.s:2297 UNK14EE
+EB_SPC_SITE(0x14F4, 0x28, 0x00E0, 2)
+// src/spc700/main.spc700.s:2298 UNK14EE
+EB_SPC_SITE(0x14F6, 0x04, 0x0024, 2)
+// src/spc700/main.spc700.s:2299 UNK14EE
+EB_SPC_SITE(0x14F8, 0xC4, 0x0048, 2)
+// src/spc700/main.spc700.s:2300 UNK14EE
+EB_SPC_SITE(0x14FA, 0xD0, 0x0004, 2)
+// src/spc700/main.spc700.s:2302 UNK14FC
+EB_SPC_SITE(0x14FC, 0xDA, 0x0022, 2)
+// src/spc700/main.spc700.s:2303 UNK14FC
+EB_SPC_SITE(0x14FE, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:2305 UNK1500
+EB_SPC_SITE(0x1500, 0xF8, 0x002E, 2)
+// src/spc700/main.spc700.s:2306 UNK1500
+EB_SPC_SITE(0x1502, 0xD5, 0x04CC, 3)
+// src/spc700/main.spc700.s:2308 UNK1505
+EB_SPC_SITE(0x1505, 0x3F, 0x1547, 3)
+// src/spc700/main.spc700.s:2309 UNK1505
+EB_SPC_SITE(0x1508, 0xFA, 0x202A, 3)
+// src/spc700/main.spc700.s:2310 UNK1505
+EB_SPC_SITE(0x150B, 0xFA, 0x212B, 3)
+// src/spc700/main.spc700.s:2311 UNK1505
+EB_SPC_SITE(0x150E, 0x8D, 0x0000, 2)
+// src/spc700/main.spc700.s:2313 UNK1510
+EB_SPC_SITE(0x1510, 0xF7, 0x0022, 2)
+// src/spc700/main.spc700.s:2314 UNK1510
+EB_SPC_SITE(0x1512, 0xD7, 0x0020, 2)
+// src/spc700/main.spc700.s:2315 UNK1510
+EB_SPC_SITE(0x1514, 0xFC, 0x0000, 1)
+// src/spc700/main.spc700.s:2316 UNK1510
+EB_SPC_SITE(0x1515, 0xAD, 0x0007, 2)
+// src/spc700/main.spc700.s:2317 UNK1510
+EB_SPC_SITE(0x1517, 0xD0, 0x00F7, 2)
+// src/spc700/main.spc700.s:2318 UNK1510
+EB_SPC_SITE(0x1519, 0xE4, 0x001A, 2)
+// src/spc700/main.spc700.s:2319 UNK1510
+EB_SPC_SITE(0x151B, 0x05, 0x04D7, 3)
+// src/spc700/main.spc700.s:2320 UNK1510
+EB_SPC_SITE(0x151E, 0xC4, 0x001A, 2)
+// src/spc700/main.spc700.s:2321 UNK1510
+EB_SPC_SITE(0x1520, 0xE4, 0x0046, 2)
+// src/spc700/main.spc700.s:2322 UNK1510
+EB_SPC_SITE(0x1522, 0x05, 0x04D7, 3)
+// src/spc700/main.spc700.s:2323 UNK1510
+EB_SPC_SITE(0x1525, 0xC4, 0x0046, 2)
+// src/spc700/main.spc700.s:2324 UNK1510
+EB_SPC_SITE(0x1527, 0xE5, 0x04D7, 3)
+// src/spc700/main.spc700.s:2325 UNK1510
+EB_SPC_SITE(0x152A, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:2326 UNK1510
+EB_SPC_SITE(0x152C, 0xD5, 0x04B8, 3)
+// src/spc700/main.spc700.s:2327 UNK1510
+EB_SPC_SITE(0x152F, 0xD4, 0x00D0, 2)
+// src/spc700/main.spc700.s:2328 UNK1510
+EB_SPC_SITE(0x1531, 0xD4, 0x00D4, 2)
+// src/spc700/main.spc700.s:2329 UNK1510
+EB_SPC_SITE(0x1533, 0xD4, 0x00D8, 2)
+// src/spc700/main.spc700.s:2330 UNK1510
+EB_SPC_SITE(0x1535, 0xD5, 0x049C, 3)
+// src/spc700/main.spc700.s:2331 UNK1510
+EB_SPC_SITE(0x1538, 0xD5, 0x04B0, 3)
+// src/spc700/main.spc700.s:2332 UNK1510
+EB_SPC_SITE(0x153B, 0xD5, 0x0450, 3)
+// src/spc700/main.spc700.s:2333 UNK1510
+EB_SPC_SITE(0x153E, 0xD5, 0x0454, 3)
+// src/spc700/main.spc700.s:2334 UNK1510
+EB_SPC_SITE(0x1541, 0xE4, 0x002D, 2)
+// src/spc700/main.spc700.s:2335 UNK1510
+EB_SPC_SITE(0x1543, 0xD5, 0x04B4, 3)
+// src/spc700/main.spc700.s:2336 UNK1510
+EB_SPC_SITE(0x1546, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:2339 UNK1547
+EB_SPC_SITE(0x1547, 0x8D, 0x0000, 2)
+// src/spc700/main.spc700.s:2340 UNK1547
+EB_SPC_SITE(0x1549, 0xF7, 0x0022, 2)
+// src/spc700/main.spc700.s:2341 UNK1547
+EB_SPC_SITE(0x154B, 0xD5, 0x04BC, 3)
+// src/spc700/main.spc700.s:2342 UNK1547
+EB_SPC_SITE(0x154E, 0xFC, 0x0000, 1)
+// src/spc700/main.spc700.s:2343 UNK1547
+EB_SPC_SITE(0x154F, 0xF7, 0x0022, 2)
+// src/spc700/main.spc700.s:2344 UNK1547
+EB_SPC_SITE(0x1551, 0xC4, 0x0021, 2)
+// src/spc700/main.spc700.s:2345 UNK1547
+EB_SPC_SITE(0x1553, 0xD5, 0x04C0, 3)
+// src/spc700/main.spc700.s:2346 UNK1547
+EB_SPC_SITE(0x1556, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:2349 UNK1557
+EB_SPC_SITE(0x1557, 0xE4, 0x002A, 2)
+// src/spc700/main.spc700.s:2350 UNK1557
+EB_SPC_SITE(0x1559, 0xBC, 0x0000, 1)
+// src/spc700/main.spc700.s:2351 UNK1557
+EB_SPC_SITE(0x155A, 0xBC, 0x0000, 1)
+// src/spc700/main.spc700.s:2352 UNK1557
+EB_SPC_SITE(0x155B, 0xEB, 0x002B, 2)
+// src/spc700/main.spc700.s:2353 UNK1557
+EB_SPC_SITE(0x155D, 0xDA, 0x0022, 2)
+// src/spc700/main.spc700.s:2354 UNK1557
+EB_SPC_SITE(0x155F, 0x8D, 0x0000, 2)
+// src/spc700/main.spc700.s:2355 UNK1557
+EB_SPC_SITE(0x1561, 0xF5, 0x04CC, 3)
+// src/spc700/main.spc700.s:2356 UNK1557
+EB_SPC_SITE(0x1564, 0xF0, 0x0009, 2)
+// src/spc700/main.spc700.s:2357 UNK1557
+EB_SPC_SITE(0x1566, 0xE4, 0x0049, 2)
+// src/spc700/main.spc700.s:2358 UNK1557
+EB_SPC_SITE(0x1568, 0x05, 0x04D7, 3)
+// src/spc700/main.spc700.s:2359 UNK1557
+EB_SPC_SITE(0x156B, 0xC4, 0x0049, 2)
+// src/spc700/main.spc700.s:2360 UNK1557
+EB_SPC_SITE(0x156D, 0xD0, 0x0007, 2)
+// src/spc700/main.spc700.s:2362 UNK156F
+EB_SPC_SITE(0x156F, 0xE4, 0x0049, 2)
+// src/spc700/main.spc700.s:2363 UNK156F
+EB_SPC_SITE(0x1571, 0x25, 0x04D6, 3)
+// src/spc700/main.spc700.s:2364 UNK156F
+EB_SPC_SITE(0x1574, 0xC4, 0x0049, 2)
+// src/spc700/main.spc700.s:2366 UNK1576
+EB_SPC_SITE(0x1576, 0xE9, 0x04DF, 3)
+// src/spc700/main.spc700.s:2367 UNK1576
+EB_SPC_SITE(0x1579, 0xF5, 0x0321, 3)
+// src/spc700/main.spc700.s:2368 UNK1576
+EB_SPC_SITE(0x157C, 0xD5, 0x04E0, 3)
+// src/spc700/main.spc700.s:2369 UNK1576
+EB_SPC_SITE(0x157F, 0xF5, 0x0351, 3)
+// src/spc700/main.spc700.s:2370 UNK1576
+EB_SPC_SITE(0x1582, 0xD5, 0x04F0, 3)
+// src/spc700/main.spc700.s:2371 UNK1576
+EB_SPC_SITE(0x1585, 0x8F, 0x4700, 3)
+// src/spc700/main.spc700.s:2372 UNK1576
+EB_SPC_SITE(0x1588, 0xF7, 0x0022, 2)
+// src/spc700/main.spc700.s:2373 UNK1576
+EB_SPC_SITE(0x158A, 0x6D, 0x0000, 1)
+// src/spc700/main.spc700.s:2374 UNK1576
+EB_SPC_SITE(0x158B, 0x3F, 0x0962, 3)
+// src/spc700/main.spc700.s:2375 UNK1576
+EB_SPC_SITE(0x158E, 0xEE, 0x0000, 1)
+// src/spc700/main.spc700.s:2376 UNK1576
+EB_SPC_SITE(0x158F, 0xFC, 0x0000, 1)
+// src/spc700/main.spc700.s:2377 UNK1576
+EB_SPC_SITE(0x1590, 0xF7, 0x0022, 2)
+// src/spc700/main.spc700.s:2378 UNK1576
+EB_SPC_SITE(0x1592, 0xFC, 0x0000, 1)
+// src/spc700/main.spc700.s:2379 UNK1576
+EB_SPC_SITE(0x1593, 0xD5, 0x0321, 3)
+// src/spc700/main.spc700.s:2380 UNK1576
+EB_SPC_SITE(0x1596, 0xF7, 0x0022, 2)
+// src/spc700/main.spc700.s:2381 UNK1576
+EB_SPC_SITE(0x1598, 0x28, 0x00C0, 2)
+// src/spc700/main.spc700.s:2382 UNK1576
+EB_SPC_SITE(0x159A, 0xD5, 0x0351, 3)
+// src/spc700/main.spc700.s:2383 UNK1576
+EB_SPC_SITE(0x159D, 0xF7, 0x0022, 2)
+// src/spc700/main.spc700.s:2384 UNK1576
+EB_SPC_SITE(0x159F, 0xFC, 0x0000, 1)
+// src/spc700/main.spc700.s:2385 UNK1576
+EB_SPC_SITE(0x15A0, 0x28, 0x003F, 2)
+// src/spc700/main.spc700.s:2386 UNK1576
+EB_SPC_SITE(0x15A2, 0xC5, 0x0433, 3)
+// src/spc700/main.spc700.s:2387 UNK1576
+EB_SPC_SITE(0x15A5, 0xE5, 0x0431, 3)
+// src/spc700/main.spc700.s:2388 UNK1576
+EB_SPC_SITE(0x15A8, 0x68, 0x0000, 2)
+// src/spc700/main.spc700.s:2389 UNK1576
+EB_SPC_SITE(0x15AA, 0xF0, 0x0005, 2)
+// src/spc700/main.spc700.s:2390 UNK1576
+EB_SPC_SITE(0x15AC, 0xE8, 0x000A, 2)
+// src/spc700/main.spc700.s:2391 UNK1576
+EB_SPC_SITE(0x15AE, 0xC5, 0x0433, 3)
+// src/spc700/main.spc700.s:2393 UNK15B1
+EB_SPC_SITE(0x15B1, 0xE5, 0x0433, 3)
+// src/spc700/main.spc700.s:2394 UNK15B1
+EB_SPC_SITE(0x15B4, 0xC4, 0x0011, 2)
+// src/spc700/main.spc700.s:2395 UNK15B1
+EB_SPC_SITE(0x15B6, 0x8F, 0x1000, 3)
+// src/spc700/main.spc700.s:2396 UNK15B1
+EB_SPC_SITE(0x15B9, 0xE4, 0x0047, 2)
+// src/spc700/main.spc700.s:2397 UNK15B1
+EB_SPC_SITE(0x15BB, 0x25, 0x04D6, 3)
+// src/spc700/main.spc700.s:2398 UNK15B1
+EB_SPC_SITE(0x15BE, 0xC4, 0x0047, 2)
+// src/spc700/main.spc700.s:2399 UNK15B1
+EB_SPC_SITE(0x15C0, 0x6D, 0x0000, 1)
+// src/spc700/main.spc700.s:2400 UNK15B1
+EB_SPC_SITE(0x15C1, 0x3F, 0x0C95, 3)
+// src/spc700/main.spc700.s:2401 UNK15B1
+EB_SPC_SITE(0x15C4, 0xEE, 0x0000, 1)
+// src/spc700/main.spc700.s:2402 UNK15B1
+EB_SPC_SITE(0x15C5, 0xF7, 0x0022, 2)
+// src/spc700/main.spc700.s:2403 UNK15B1
+EB_SPC_SITE(0x15C7, 0xFC, 0x0000, 1)
+// src/spc700/main.spc700.s:2404 UNK15B1
+EB_SPC_SITE(0x15C8, 0xC4, 0x0011, 2)
+// src/spc700/main.spc700.s:2405 UNK15B1
+EB_SPC_SITE(0x15CA, 0xF7, 0x0022, 2)
+// src/spc700/main.spc700.s:2406 UNK15B1
+EB_SPC_SITE(0x15CC, 0xC4, 0x0010, 2)
+// src/spc700/main.spc700.s:2407 UNK15B1
+EB_SPC_SITE(0x15CE, 0xE4, 0x0047, 2)
+// src/spc700/main.spc700.s:2408 UNK15B1
+EB_SPC_SITE(0x15D0, 0x25, 0x04D6, 3)
+// src/spc700/main.spc700.s:2409 UNK15B1
+EB_SPC_SITE(0x15D3, 0xC4, 0x0047, 2)
+// src/spc700/main.spc700.s:2410 UNK15B1
+EB_SPC_SITE(0x15D5, 0x5F, 0x06D4, 3)
+// src/spc700/main.spc700.s:2415 FX15DB
+EB_SPC_SITE(0x15DB, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:2416 FX15DB
+EB_SPC_SITE(0x15DD, 0xC5, 0x04B5, 3)
+// src/spc700/main.spc700.s:2417 FX15DB
+EB_SPC_SITE(0x15E0, 0xC5, 0x0491, 3)
+// src/spc700/main.spc700.s:2418 FX15DB
+EB_SPC_SITE(0x15E3, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:2423 FX15E7
+EB_SPC_SITE(0x15E7, 0xE8, 0x0002, 2)
+// src/spc700/main.spc700.s:2424 FX15E7
+EB_SPC_SITE(0x15E9, 0xC5, 0x0492, 3)
+// src/spc700/main.spc700.s:2425 FX15E7
+EB_SPC_SITE(0x15EC, 0xE8, 0x0070, 2)
+// src/spc700/main.spc700.s:2426 FX15E7
+EB_SPC_SITE(0x15EE, 0xC5, 0x0491, 3)
+// src/spc700/main.spc700.s:2427 FX15E7
+EB_SPC_SITE(0x15F1, 0xD0, 0x000D, 2)
+// src/spc700/main.spc700.s:2432 FX15F6
+EB_SPC_SITE(0x15F6, 0xE8, 0x0001, 2)
+// src/spc700/main.spc700.s:2433 FX15F6
+EB_SPC_SITE(0x15F8, 0xC5, 0x0492, 3)
+// src/spc700/main.spc700.s:2434 FX15F6
+EB_SPC_SITE(0x15FB, 0xE8, 0x0018, 2)
+// src/spc700/main.spc700.s:2435 FX15F6
+EB_SPC_SITE(0x15FD, 0xC5, 0x0491, 3)
+// src/spc700/main.spc700.s:2437 UNK1600
+EB_SPC_SITE(0x1600, 0xC4, 0x005A, 2)
+// src/spc700/main.spc700.s:2438 UNK1600
+EB_SPC_SITE(0x1602, 0xE8, 0x0010, 2)
+// src/spc700/main.spc700.s:2439 UNK1600
+EB_SPC_SITE(0x1604, 0xC4, 0x005B, 2)
+// src/spc700/main.spc700.s:2440 UNK1600
+EB_SPC_SITE(0x1606, 0x5F, 0x0A30, 3)
+// src/spc700/main.spc700.s:2443 UNK1609
+EB_SPC_SITE(0x1609, 0xE5, 0x0491, 3)
+// src/spc700/main.spc700.s:2444 UNK1609
+EB_SPC_SITE(0x160C, 0x68, 0x0000, 2)
+// src/spc700/main.spc700.s:2445 UNK1609
+EB_SPC_SITE(0x160E, 0xF0, 0x0017, 2)
+// src/spc700/main.spc700.s:2446 UNK1609
+EB_SPC_SITE(0x1610, 0x68, 0x00FF, 2)
+// src/spc700/main.spc700.s:2447 UNK1609
+EB_SPC_SITE(0x1612, 0xF0, 0x0014, 2)
+// src/spc700/main.spc700.s:2448 UNK1609
+EB_SPC_SITE(0x1614, 0x9C, 0x0000, 1)
+// src/spc700/main.spc700.s:2449 UNK1609
+EB_SPC_SITE(0x1615, 0xC5, 0x0491, 3)
+// src/spc700/main.spc700.s:2450 UNK1609
+EB_SPC_SITE(0x1618, 0x68, 0x0000, 2)
+// src/spc700/main.spc700.s:2451 UNK1609
+EB_SPC_SITE(0x161A, 0xD0, 0x000B, 2)
+// src/spc700/main.spc700.s:2452 UNK1609
+EB_SPC_SITE(0x161C, 0xE8, 0x0031, 2)
+// src/spc700/main.spc700.s:2453 UNK1609
+EB_SPC_SITE(0x161E, 0xC5, 0x00F1, 3)
+// src/spc700/main.spc700.s:2454 UNK1609
+EB_SPC_SITE(0x1621, 0x3F, 0x1438, 3)
+// src/spc700/main.spc700.s:2455 UNK1609
+EB_SPC_SITE(0x1624, 0x3F, 0x1453, 3)
+// src/spc700/main.spc700.s:2457 UNK1627
+EB_SPC_SITE(0x1627, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:2460 UNK1628
+EB_SPC_SITE(0x1628, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:2461 UNK1628
+EB_SPC_SITE(0x162A, 0xC5, 0x0491, 3)
+// src/spc700/main.spc700.s:2462 UNK1628
+EB_SPC_SITE(0x162D, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:2465 UNK162E
+EB_SPC_SITE(0x162E, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:2466 UNK162E
+EB_SPC_SITE(0x162F, 0x5F, 0x0A24, 3)
+// src/spc700/main.spc700.s:2468 UNK1632
+EB_SPC_SITE(0x1632, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:2469 UNK1632
+EB_SPC_SITE(0x1633, 0xE4, 0x0053, 2)
+// src/spc700/main.spc700.s:2470 UNK1632
+EB_SPC_SITE(0x1635, 0xC5, 0x0493, 3)
+// src/spc700/main.spc700.s:2472 UNK1638
+EB_SPC_SITE(0x1638, 0x5F, 0x0A3B, 3)
+// src/spc700/main.spc700.s:2474 UNK163B
+EB_SPC_SITE(0x163B, 0xE5, 0x0493, 3)
+// src/spc700/main.spc700.s:2475 UNK163B
+EB_SPC_SITE(0x163E, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:2476 UNK163B
+EB_SPC_SITE(0x163F, 0xD0, 0x00F7, 2)
+// src/spc700/main.spc700.s:2477 UNK163B
+EB_SPC_SITE(0x1641, 0xC4, 0x0054, 2)
+// src/spc700/main.spc700.s:2478 UNK163B
+EB_SPC_SITE(0x1643, 0xE4, 0x0020, 2)
+// src/spc700/main.spc700.s:2479 UNK163B
+EB_SPC_SITE(0x1645, 0xC4, 0x0055, 2)
+// src/spc700/main.spc700.s:2480 UNK163B
+EB_SPC_SITE(0x1647, 0x5F, 0x0A47, 3)
+// src/spc700/main.spc700.s:2481 UNK163B
+EB_SPC_SITE(0x164A, 0xD5, 0x02B0, 3)
+// src/spc700/main.spc700.s:2482 UNK163B
+EB_SPC_SITE(0x164D, 0xE4, 0x0020, 2)
+// src/spc700/main.spc700.s:2483 UNK163B
+EB_SPC_SITE(0x164F, 0xD5, 0x02A1, 3)
+// src/spc700/main.spc700.s:2484 UNK163B
+EB_SPC_SITE(0x1652, 0xE4, 0x0021, 2)
+// src/spc700/main.spc700.s:2486 UNK1654
+EB_SPC_SITE(0x1654, 0xD4, 0x00B1, 2)
+// src/spc700/main.spc700.s:2487 UNK1654
+EB_SPC_SITE(0x1656, 0xD5, 0x02C1, 3)
+// src/spc700/main.spc700.s:2488 UNK1654
+EB_SPC_SITE(0x1659, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:2489 UNK1654
+EB_SPC_SITE(0x165B, 0xD5, 0x02B1, 3)
+// src/spc700/main.spc700.s:2490 UNK1654
+EB_SPC_SITE(0x165E, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:2492 UNK1654
+EB_SPC_SITE(0x165F, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:2493 UNK1654
+EB_SPC_SITE(0x1661, 0xF0, 0x00F1, 2)
+// src/spc700/main.spc700.s:2495 UNK1663
+EB_SPC_SITE(0x1663, 0xC4, 0x0050, 2)
+// src/spc700/main.spc700.s:2496 UNK1663
+EB_SPC_SITE(0x1665, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:2498 UNK1663
+EB_SPC_SITE(0x1666, 0xD5, 0x02F0, 3)
+// src/spc700/main.spc700.s:2499 UNK1663
+EB_SPC_SITE(0x1669, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:2502 UNK166A
+EB_SPC_SITE(0x166A, 0x3F, 0x0A86, 3)
+// src/spc700/main.spc700.s:2503 UNK166A
+EB_SPC_SITE(0x166D, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:2506 UNK166E
+EB_SPC_SITE(0x166E, 0xD8, 0x0044, 2)
+// src/spc700/main.spc700.s:2507 UNK166E
+EB_SPC_SITE(0x1670, 0xD4, 0x0090, 2)
+// src/spc700/main.spc700.s:2508 UNK166E
+EB_SPC_SITE(0x1672, 0x2D, 0x0000, 1)
+// src/spc700/main.spc700.s:2509 UNK166E
+EB_SPC_SITE(0x1673, 0xE4, 0x0020, 2)
+// src/spc700/main.spc700.s:2510 UNK166E
+EB_SPC_SITE(0x1675, 0x5F, 0x0A95, 3)
+// src/spc700/main.spc700.s:2511 UNK166E
+EB_SPC_SITE(0x1678, 0x2D, 0x0000, 1)
+// src/spc700/main.spc700.s:2512 UNK166E
+EB_SPC_SITE(0x1679, 0xE8, 0x0001, 2)
+// src/spc700/main.spc700.s:2513 UNK166E
+EB_SPC_SITE(0x167B, 0x2F, 0x0003, 2)
+// src/spc700/main.spc700.s:2514 UNK166E
+EB_SPC_SITE(0x167D, 0x2D, 0x0000, 1)
+// src/spc700/main.spc700.s:2515 UNK166E
+EB_SPC_SITE(0x167E, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:2517 UNK1680
+EB_SPC_SITE(0x1680, 0xD5, 0x0290, 3)
+// src/spc700/main.spc700.s:2518 UNK1680
+EB_SPC_SITE(0x1683, 0xAE, 0x0000, 1)
+// src/spc700/main.spc700.s:2519 UNK1680
+EB_SPC_SITE(0x1684, 0xD5, 0x0281, 3)
+// src/spc700/main.spc700.s:2520 UNK1680
+EB_SPC_SITE(0x1687, 0xE4, 0x0020, 2)
+// src/spc700/main.spc700.s:2521 UNK1680
+EB_SPC_SITE(0x1689, 0xD5, 0x0280, 3)
+// src/spc700/main.spc700.s:2522 UNK1680
+EB_SPC_SITE(0x168C, 0xE4, 0x0021, 2)
+// src/spc700/main.spc700.s:2523 UNK1680
+EB_SPC_SITE(0x168E, 0xD5, 0x0291, 3)
+// src/spc700/main.spc700.s:2524 UNK1680
+EB_SPC_SITE(0x1691, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:2526 UNK1680
+EB_SPC_SITE(0x1692, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:2527 UNK1680
+EB_SPC_SITE(0x1694, 0xD5, 0x0280, 3)
+// src/spc700/main.spc700.s:2528 UNK1680
+EB_SPC_SITE(0x1697, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:2530 UNK1680
+EB_SPC_SITE(0x1698, 0x5F, 0x09C8, 3)
+// src/spc700/main.spc700.s:2531 UNK1680
+EB_SPC_SITE(0x169B, 0xD8, 0x0044, 2)
+// src/spc700/main.spc700.s:2532 UNK1680
+EB_SPC_SITE(0x169D, 0xD4, 0x0091, 2)
+// src/spc700/main.spc700.s:2533 UNK1680
+EB_SPC_SITE(0x169F, 0x2D, 0x0000, 1)
+// src/spc700/main.spc700.s:2534 UNK1680
+EB_SPC_SITE(0x16A0, 0xE4, 0x0020, 2)
+// src/spc700/main.spc700.s:2535 UNK1680
+EB_SPC_SITE(0x16A2, 0x5F, 0x09DC, 3)
+// src/spc700/main.spc700.s:2538 UNK16A5
+EB_SPC_SITE(0x16A5, 0xCD, 0x0020, 2)
+// src/spc700/main.spc700.s:2540 UNK16A7
+EB_SPC_SITE(0x16A7, 0xD5, 0x0400, 3)
+// src/spc700/main.spc700.s:2541 UNK16A7
+EB_SPC_SITE(0x16AA, 0x3D, 0x0000, 1)
+// src/spc700/main.spc700.s:2542 UNK16A7
+EB_SPC_SITE(0x16AB, 0xC8, 0x0000, 2)
+// src/spc700/main.spc700.s:2543 UNK16A7
+EB_SPC_SITE(0x16AD, 0xD0, 0x00F8, 2)
+// src/spc700/main.spc700.s:2544 UNK16A7
+EB_SPC_SITE(0x16AF, 0xFD, 0x0000, 1)
+// src/spc700/main.spc700.s:2545 UNK16A7
+EB_SPC_SITE(0x16B0, 0x8F, 0x2400, 3)
+// src/spc700/main.spc700.s:2546 UNK16A7
+EB_SPC_SITE(0x16B3, 0x8F, 0x25E8, 3)
+// src/spc700/main.spc700.s:2548 UNK16B6
+EB_SPC_SITE(0x16B6, 0xD7, 0x0024, 2)
+// src/spc700/main.spc700.s:2549 UNK16B6
+EB_SPC_SITE(0x16B8, 0xFC, 0x0000, 1)
+// src/spc700/main.spc700.s:2550 UNK16B6
+EB_SPC_SITE(0x16B9, 0xAD, 0x0000, 2)
+// src/spc700/main.spc700.s:2551 UNK16B6
+EB_SPC_SITE(0x16BB, 0xD0, 0x00F9, 2)
+// src/spc700/main.spc700.s:2552 UNK16B6
+EB_SPC_SITE(0x16BD, 0xAB, 0x0025, 2)
+// src/spc700/main.spc700.s:2553 UNK16B6
+EB_SPC_SITE(0x16BF, 0x78, 0x25FF, 3)
+// src/spc700/main.spc700.s:2554 UNK16B6
+EB_SPC_SITE(0x16C2, 0xD0, 0x00F2, 2)
+// src/spc700/main.spc700.s:2555 UNK16B6
+EB_SPC_SITE(0x16C4, 0x5F, 0x2FC8, 3)
+// src/spc700/sfx.spc700.s:69 FX1810
+EB_SPC_SITE(0x1810, 0x5F, 0x1491, 3)
+// src/spc700/sfx.spc700.s:76 FX1814
+EB_SPC_SITE(0x181B, 0xE8, 0x00D8, 2)
+// src/spc700/sfx.spc700.s:77 FX1814
+EB_SPC_SITE(0x181D, 0x8D, 0x0004, 2)
+// src/spc700/sfx.spc700.s:78 FX1814
+EB_SPC_SITE(0x181F, 0x5F, 0x14DF, 3)
+// src/spc700/sfx.spc700.s:2733 FX2501
+EB_SPC_SITE(0x2501, 0xE8, 0x000A, 2)
+// src/spc700/sfx.spc700.s:2734 FX2501
+EB_SPC_SITE(0x2503, 0x8D, 0x0025, 2)
+// src/spc700/sfx.spc700.s:2735 FX2501
+EB_SPC_SITE(0x2505, 0xCD, 0x001F, 2)
+// src/spc700/sfx.spc700.s:2736 FX2501
+EB_SPC_SITE(0x2507, 0x5F, 0x14EE, 3)
+// src/spc700/sfx.spc700.s:4246 FX2C92
+EB_SPC_SITE(0x2C92, 0xE8, 0x0064, 2)
+// src/spc700/sfx.spc700.s:4247 FX2C92
+EB_SPC_SITE(0x2C94, 0x5F, 0x162E, 3)
+// src/spc700/sfx.spc700.s:4252 FX2C9A
+EB_SPC_SITE(0x2C9A, 0xE8, 0x00F0, 2)
+// src/spc700/sfx.spc700.s:4253 FX2C9A
+EB_SPC_SITE(0x2C9C, 0x5F, 0x162E, 3)
+// src/spc700/sfx.spc700.s:4258 FX2CA2
+EB_SPC_SITE(0x2CA2, 0xE8, 0x0010, 2)
+// src/spc700/sfx.spc700.s:4259 FX2CA2
+EB_SPC_SITE(0x2CA4, 0x5F, 0x1663, 3)
+// src/spc700/sfx.spc700.s:4264 FX2CAA
+EB_SPC_SITE(0x2CAA, 0xE8, 0x0000, 2)
+// src/spc700/sfx.spc700.s:4265 FX2CAA
+EB_SPC_SITE(0x2CAC, 0x5F, 0x1663, 3)
+// src/spc700/sfx.spc700.s:4272 FX2CDA
+EB_SPC_SITE(0x2CDA, 0x8F, 0x22AF, 3)
+// src/spc700/sfx.spc700.s:4273 FX2CDA
+EB_SPC_SITE(0x2CDD, 0x8F, 0x232C, 3)
+// src/spc700/sfx.spc700.s:4274 FX2CDA
+EB_SPC_SITE(0x2CE0, 0x5F, 0x2D37, 3)
+// src/spc700/sfx.spc700.s:4279 FX2CE6
+EB_SPC_SITE(0x2CE6, 0x8F, 0x22B4, 3)
+// src/spc700/sfx.spc700.s:4280 FX2CE6
+EB_SPC_SITE(0x2CE9, 0x8F, 0x232C, 3)
+// src/spc700/sfx.spc700.s:4281 FX2CE6
+EB_SPC_SITE(0x2CEC, 0x5F, 0x2D37, 3)
+// src/spc700/sfx.spc700.s:4286 FX2CF2
+EB_SPC_SITE(0x2CF2, 0x8F, 0x22B9, 3)
+// src/spc700/sfx.spc700.s:4287 FX2CF2
+EB_SPC_SITE(0x2CF5, 0x8F, 0x232C, 3)
+// src/spc700/sfx.spc700.s:4288 FX2CF2
+EB_SPC_SITE(0x2CF8, 0x5F, 0x2D37, 3)
+// src/spc700/sfx.spc700.s:4293 FX2CFE
+EB_SPC_SITE(0x2CFE, 0x8F, 0x22BE, 3)
+// src/spc700/sfx.spc700.s:4294 FX2CFE
+EB_SPC_SITE(0x2D01, 0x8F, 0x232C, 3)
+// src/spc700/sfx.spc700.s:4295 FX2CFE
+EB_SPC_SITE(0x2D04, 0x5F, 0x2D37, 3)
+// src/spc700/sfx.spc700.s:4300 FX2D0A
+EB_SPC_SITE(0x2D0A, 0x8F, 0x22C3, 3)
+// src/spc700/sfx.spc700.s:4301 FX2D0A
+EB_SPC_SITE(0x2D0D, 0x8F, 0x232C, 3)
+// src/spc700/sfx.spc700.s:4302 FX2D0A
+EB_SPC_SITE(0x2D10, 0x5F, 0x2D37, 3)
+// src/spc700/sfx.spc700.s:4307 FX2D16
+EB_SPC_SITE(0x2D16, 0x8F, 0x22C3, 3)
+// src/spc700/sfx.spc700.s:4308 FX2D16
+EB_SPC_SITE(0x2D19, 0x8F, 0x232C, 3)
+// src/spc700/sfx.spc700.s:4309 FX2D16
+EB_SPC_SITE(0x2D1C, 0x5F, 0x2D37, 3)
+// src/spc700/sfx.spc700.s:4314 FX2D22
+EB_SPC_SITE(0x2D22, 0x8F, 0x22CD, 3)
+// src/spc700/sfx.spc700.s:4315 FX2D22
+EB_SPC_SITE(0x2D25, 0x8F, 0x232C, 3)
+// src/spc700/sfx.spc700.s:4316 FX2D22
+EB_SPC_SITE(0x2D28, 0x5F, 0x2D37, 3)
+// src/spc700/sfx.spc700.s:4321 FX2D2E
+EB_SPC_SITE(0x2D2E, 0x8F, 0x22D2, 3)
+// src/spc700/sfx.spc700.s:4322 FX2D2E
+EB_SPC_SITE(0x2D31, 0x8F, 0x232C, 3)
+// src/spc700/sfx.spc700.s:4323 FX2D2E
+EB_SPC_SITE(0x2D34, 0x5F, 0x2D37, 3)
+// src/spc700/sfx.spc700.s:4326 UNK2D37
+EB_SPC_SITE(0x2D37, 0x8D, 0x0000, 2)
+// src/spc700/sfx.spc700.s:4327 UNK2D37
+EB_SPC_SITE(0x2D39, 0xCD, 0x0002, 2)
+// src/spc700/sfx.spc700.s:4328 UNK2D37
+EB_SPC_SITE(0x2D3B, 0xF7, 0x0022, 2)
+// src/spc700/sfx.spc700.s:4329 UNK2D37
+EB_SPC_SITE(0x2D3D, 0xC4, 0x0020, 2)
+// src/spc700/sfx.spc700.s:4330 UNK2D37
+EB_SPC_SITE(0x2D3F, 0xE8, 0x0014, 2)
+// src/spc700/sfx.spc700.s:4331 UNK2D37
+EB_SPC_SITE(0x2D41, 0x6D, 0x0000, 1)
+// src/spc700/sfx.spc700.s:4332 UNK2D37
+EB_SPC_SITE(0x2D42, 0x3F, 0x166E, 3)
+// src/spc700/sfx.spc700.s:4333 UNK2D37
+EB_SPC_SITE(0x2D45, 0xEE, 0x0000, 1)
+// src/spc700/sfx.spc700.s:4334 UNK2D37
+EB_SPC_SITE(0x2D46, 0xFC, 0x0000, 1)
+// src/spc700/sfx.spc700.s:4335 UNK2D37
+EB_SPC_SITE(0x2D47, 0xCD, 0x0004, 2)
+// src/spc700/sfx.spc700.s:4336 UNK2D37
+EB_SPC_SITE(0x2D49, 0xF7, 0x0022, 2)
+// src/spc700/sfx.spc700.s:4337 UNK2D37
+EB_SPC_SITE(0x2D4B, 0xC4, 0x0020, 2)
+// src/spc700/sfx.spc700.s:4338 UNK2D37
+EB_SPC_SITE(0x2D4D, 0xE8, 0x0014, 2)
+// src/spc700/sfx.spc700.s:4339 UNK2D37
+EB_SPC_SITE(0x2D4F, 0x6D, 0x0000, 1)
+// src/spc700/sfx.spc700.s:4340 UNK2D37
+EB_SPC_SITE(0x2D50, 0x3F, 0x166E, 3)
+// src/spc700/sfx.spc700.s:4341 UNK2D37
+EB_SPC_SITE(0x2D53, 0xEE, 0x0000, 1)
+// src/spc700/sfx.spc700.s:4342 UNK2D37
+EB_SPC_SITE(0x2D54, 0xFC, 0x0000, 1)
+// src/spc700/sfx.spc700.s:4343 UNK2D37
+EB_SPC_SITE(0x2D55, 0xCD, 0x0006, 2)
+// src/spc700/sfx.spc700.s:4344 UNK2D37
+EB_SPC_SITE(0x2D57, 0xF7, 0x0022, 2)
+// src/spc700/sfx.spc700.s:4345 UNK2D37
+EB_SPC_SITE(0x2D59, 0xC4, 0x0020, 2)
+// src/spc700/sfx.spc700.s:4346 UNK2D37
+EB_SPC_SITE(0x2D5B, 0xE8, 0x0014, 2)
+// src/spc700/sfx.spc700.s:4347 UNK2D37
+EB_SPC_SITE(0x2D5D, 0x6D, 0x0000, 1)
+// src/spc700/sfx.spc700.s:4348 UNK2D37
+EB_SPC_SITE(0x2D5E, 0x3F, 0x166E, 3)
+// src/spc700/sfx.spc700.s:4349 UNK2D37
+EB_SPC_SITE(0x2D61, 0xEE, 0x0000, 1)
+// src/spc700/sfx.spc700.s:4350 UNK2D37
+EB_SPC_SITE(0x2D62, 0xFC, 0x0000, 1)
+// src/spc700/sfx.spc700.s:4351 UNK2D37
+EB_SPC_SITE(0x2D63, 0xCD, 0x0008, 2)
+// src/spc700/sfx.spc700.s:4352 UNK2D37
+EB_SPC_SITE(0x2D65, 0xF7, 0x0022, 2)
+// src/spc700/sfx.spc700.s:4353 UNK2D37
+EB_SPC_SITE(0x2D67, 0xC4, 0x0020, 2)
+// src/spc700/sfx.spc700.s:4354 UNK2D37
+EB_SPC_SITE(0x2D69, 0xE8, 0x0014, 2)
+// src/spc700/sfx.spc700.s:4355 UNK2D37
+EB_SPC_SITE(0x2D6B, 0x6D, 0x0000, 1)
+// src/spc700/sfx.spc700.s:4356 UNK2D37
+EB_SPC_SITE(0x2D6C, 0x3F, 0x166E, 3)
+// src/spc700/sfx.spc700.s:4357 UNK2D37
+EB_SPC_SITE(0x2D6F, 0xEE, 0x0000, 1)
+// src/spc700/sfx.spc700.s:4358 UNK2D37
+EB_SPC_SITE(0x2D70, 0xFC, 0x0000, 1)
+// src/spc700/sfx.spc700.s:4359 UNK2D37
+EB_SPC_SITE(0x2D71, 0xCD, 0x000A, 2)
+// src/spc700/sfx.spc700.s:4360 UNK2D37
+EB_SPC_SITE(0x2D73, 0xF7, 0x0022, 2)
+// src/spc700/sfx.spc700.s:4361 UNK2D37
+EB_SPC_SITE(0x2D75, 0xC4, 0x0020, 2)
+// src/spc700/sfx.spc700.s:4362 UNK2D37
+EB_SPC_SITE(0x2D77, 0xE8, 0x0014, 2)
+// src/spc700/sfx.spc700.s:4363 UNK2D37
+EB_SPC_SITE(0x2D79, 0x6D, 0x0000, 1)
+// src/spc700/sfx.spc700.s:4364 UNK2D37
+EB_SPC_SITE(0x2D7A, 0x3F, 0x166E, 3)
+// src/spc700/sfx.spc700.s:4365 UNK2D37
+EB_SPC_SITE(0x2D7D, 0xEE, 0x0000, 1)
+// src/spc700/sfx.spc700.s:4366 UNK2D37
+EB_SPC_SITE(0x2D7E, 0x6F, 0x0000, 1)
+// src/spc700/sfx.spc700.s:4371 FX2D82
+EB_SPC_SITE(0x2D82, 0xCD, 0x000E, 2)
+// src/spc700/sfx.spc700.s:4372 FX2D82
+EB_SPC_SITE(0x2D84, 0xE8, 0x005A, 2)
+// src/spc700/sfx.spc700.s:4373 FX2D82
+EB_SPC_SITE(0x2D86, 0x3F, 0x166A, 3)
+// src/spc700/sfx.spc700.s:4374 FX2D82
+EB_SPC_SITE(0x2D89, 0x6F, 0x0000, 1)
+// src/spc700/sfx.spc700.s:4379 FX2D8D
+EB_SPC_SITE(0x2D8D, 0xCD, 0x000E, 2)
+// src/spc700/sfx.spc700.s:4380 FX2D8D
+EB_SPC_SITE(0x2D8F, 0xE8, 0x00FA, 2)
+// src/spc700/sfx.spc700.s:4381 FX2D8D
+EB_SPC_SITE(0x2D91, 0x3F, 0x166A, 3)
+// src/spc700/sfx.spc700.s:4382 FX2D8D
+EB_SPC_SITE(0x2D94, 0x6F, 0x0000, 1)
+// src/spc700/sfx.spc700.s:4387 FX2D98
+EB_SPC_SITE(0x2D98, 0xCD, 0x000E, 2)
+// src/spc700/sfx.spc700.s:4388 FX2D98
+EB_SPC_SITE(0x2D9A, 0xE8, 0x0028, 2)
+// src/spc700/sfx.spc700.s:4389 FX2D98
+EB_SPC_SITE(0x2D9C, 0x3F, 0x166A, 3)
+// src/spc700/sfx.spc700.s:4390 FX2D98
+EB_SPC_SITE(0x2D9F, 0x6F, 0x0000, 1)
+// src/spc700/sfx.spc700.s:4395 FX2DA3
+EB_SPC_SITE(0x2DA3, 0xCD, 0x000E, 2)
+// src/spc700/sfx.spc700.s:4396 FX2DA3
+EB_SPC_SITE(0x2DA5, 0xE8, 0x0000, 2)
+// src/spc700/sfx.spc700.s:4397 FX2DA3
+EB_SPC_SITE(0x2DA7, 0x3F, 0x166A, 3)
+// src/spc700/sfx.spc700.s:4398 FX2DA3
+EB_SPC_SITE(0x2DAA, 0x6F, 0x0000, 1)
+// src/spc700/sfx.spc700.s:4401 UNK2DAB
+EB_SPC_SITE(0x2DAB, 0xE5, 0x0438, 3)
+// src/spc700/sfx.spc700.s:4402 UNK2DAB
+EB_SPC_SITE(0x2DAE, 0x68, 0x0000, 2)
+// src/spc700/sfx.spc700.s:4403 UNK2DAB
+EB_SPC_SITE(0x2DB0, 0xD0, 0x0001, 2)
+// src/spc700/sfx.spc700.s:4405 UNK2DB2
+EB_SPC_SITE(0x2DB2, 0x6F, 0x0000, 1)
+// src/spc700/sfx.spc700.s:4407 UNK2DB3
+EB_SPC_SITE(0x2DB3, 0x9C, 0x0000, 1)
+// src/spc700/sfx.spc700.s:4408 UNK2DB3
+EB_SPC_SITE(0x2DB4, 0xC5, 0x0438, 3)
+// src/spc700/sfx.spc700.s:4409 UNK2DB3
+EB_SPC_SITE(0x2DB7, 0x68, 0x0000, 2)
+// src/spc700/sfx.spc700.s:4410 UNK2DB3
+EB_SPC_SITE(0x2DB9, 0xD0, 0x00F7, 2)
+// src/spc700/sfx.spc700.s:4411 UNK2DB3
+EB_SPC_SITE(0x2DBB, 0xE8, 0x0000, 2)
+// src/spc700/sfx.spc700.s:4412 UNK2DB3
+EB_SPC_SITE(0x2DBD, 0x3F, 0x1663, 3)
+// src/spc700/sfx.spc700.s:4413 UNK2DB3
+EB_SPC_SITE(0x2DC0, 0x5F, 0x163B, 3)
+// src/spc700/sfx.spc700.s:4418 FX2DC6
+EB_SPC_SITE(0x2DC6, 0xE8, 0x0070, 2)
+// src/spc700/sfx.spc700.s:4419 FX2DC6
+EB_SPC_SITE(0x2DC8, 0xC5, 0x0438, 3)
+// src/spc700/sfx.spc700.s:4420 FX2DC6
+EB_SPC_SITE(0x2DCB, 0xE8, 0x000E, 2)
+// src/spc700/sfx.spc700.s:4421 FX2DC6
+EB_SPC_SITE(0x2DCD, 0x3F, 0x1663, 3)
+// src/spc700/sfx.spc700.s:4422 FX2DC6
+EB_SPC_SITE(0x2DD0, 0xE8, 0x00C8, 2)
+// src/spc700/sfx.spc700.s:4423 FX2DC6
+EB_SPC_SITE(0x2DD2, 0x5F, 0x1632, 3)
+// src/spc700/sfx.spc700.s:4426 UNK2DD5
+EB_SPC_SITE(0x2DD5, 0xE5, 0x043A, 3)
+// src/spc700/sfx.spc700.s:4427 UNK2DD5
+EB_SPC_SITE(0x2DD8, 0x68, 0x0000, 2)
+// src/spc700/sfx.spc700.s:4428 UNK2DD5
+EB_SPC_SITE(0x2DDA, 0xD0, 0x0001, 2)
+// src/spc700/sfx.spc700.s:4430 UNK2DDC
+EB_SPC_SITE(0x2DDC, 0x6F, 0x0000, 1)
+// src/spc700/sfx.spc700.s:4432 UNK2DDD
+EB_SPC_SITE(0x2DDD, 0x9C, 0x0000, 1)
+// src/spc700/sfx.spc700.s:4433 UNK2DDD
+EB_SPC_SITE(0x2DDE, 0xC5, 0x043A, 3)
+// src/spc700/sfx.spc700.s:4434 UNK2DDD
+EB_SPC_SITE(0x2DE1, 0x68, 0x0000, 2)
+// src/spc700/sfx.spc700.s:4435 UNK2DDD
+EB_SPC_SITE(0x2DE3, 0xD0, 0x00F7, 2)
+// src/spc700/sfx.spc700.s:4436 UNK2DDD
+EB_SPC_SITE(0x2DE5, 0xE8, 0x00A0, 2)
+// src/spc700/sfx.spc700.s:4437 UNK2DDD
+EB_SPC_SITE(0x2DE7, 0x5F, 0x162E, 3)
+// src/spc700/sfx.spc700.s:4442 FX2DED
+EB_SPC_SITE(0x2DED, 0xE8, 0x0028, 2)
+// src/spc700/sfx.spc700.s:4443 FX2DED
+EB_SPC_SITE(0x2DEF, 0xC5, 0x043A, 3)
+// src/spc700/sfx.spc700.s:4444 FX2DED
+EB_SPC_SITE(0x2DF2, 0x6F, 0x0000, 1)
+// src/spc700/sfx.spc700.s:4447 UNK2DF3
+EB_SPC_SITE(0x2DF3, 0xE5, 0x0439, 3)
+// src/spc700/sfx.spc700.s:4448 UNK2DF3
+EB_SPC_SITE(0x2DF6, 0x68, 0x0000, 2)
+// src/spc700/sfx.spc700.s:4449 UNK2DF3
+EB_SPC_SITE(0x2DF8, 0xD0, 0x0001, 2)
+// src/spc700/sfx.spc700.s:4451 UNK2DF7
+EB_SPC_SITE(0x2DFA, 0x6F, 0x0000, 1)
+// src/spc700/sfx.spc700.s:4453 UNK2DF8
+EB_SPC_SITE(0x2DFB, 0x9C, 0x0000, 1)
+// src/spc700/sfx.spc700.s:4454 UNK2DF8
+EB_SPC_SITE(0x2DFC, 0xC5, 0x0439, 3)
+// src/spc700/sfx.spc700.s:4455 UNK2DF8
+EB_SPC_SITE(0x2DFF, 0x68, 0x0000, 2)
+// src/spc700/sfx.spc700.s:4456 UNK2DF8
+EB_SPC_SITE(0x2E01, 0xD0, 0x00F7, 2)
+// src/spc700/sfx.spc700.s:4457 UNK2DF8
+EB_SPC_SITE(0x2E03, 0xE8, 0x00F0, 2)
+// src/spc700/sfx.spc700.s:4458 UNK2DF8
+EB_SPC_SITE(0x2E05, 0x5F, 0x162E, 3)
+// src/spc700/sfx.spc700.s:4463 FX2E0B
+EB_SPC_SITE(0x2E0B, 0xE8, 0x0069, 2)
+// src/spc700/sfx.spc700.s:4464 FX2E0B
+EB_SPC_SITE(0x2E0D, 0xC5, 0x0439, 3)
+// src/spc700/sfx.spc700.s:4465 FX2E0B
+EB_SPC_SITE(0x2E10, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:2727 UNK180D
+EB_SPC_SITE(0x2E11, 0xE4, 0x0004, 2)
+// src/spc700/main.spc700.s:2727 UNK180D
+EB_SPC_SITE(0x2E13, 0x68, 0x001C, 2)
+// src/spc700/main.spc700.s:2727 UNK180D
+EB_SPC_SITE(0x2E15, 0xD0, 0x0005, 2)
+// src/spc700/main.spc700.s:2727 UNK180D
+EB_SPC_SITE(0x2E17, 0xE8, 0x0002, 2)
+// src/spc700/main.spc700.s:2727 UNK180D
+EB_SPC_SITE(0x2E19, 0x3F, 0x0772, 3)
+// src/spc700/main.spc700.s:2727 UNK180D
+EB_SPC_SITE(0x2E1C, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:2729 UNK2E1D
+EB_SPC_SITE(0x2E1D, 0x28, 0x007F, 2)
+// src/spc700/main.spc700.s:2730 UNK2E1D
+EB_SPC_SITE(0x2E1F, 0xC4, 0x0020, 2)
+// src/spc700/main.spc700.s:2731 UNK2E1D
+EB_SPC_SITE(0x2E21, 0x68, 0x0008, 2)
+// src/spc700/main.spc700.s:2732 UNK2E1D
+EB_SPC_SITE(0x2E23, 0x90, 0x0013, 2)
+// src/spc700/main.spc700.s:2734 UNK2E25
+EB_SPC_SITE(0x2E25, 0xE4, 0x0020, 2)
+// src/spc700/main.spc700.s:2735 UNK2E25
+EB_SPC_SITE(0x2E27, 0x68, 0x0007, 2)
+// src/spc700/main.spc700.s:2736 UNK2E25
+EB_SPC_SITE(0x2E29, 0xD0, 0x000C, 2)
+// src/spc700/main.spc700.s:2737 UNK2E25
+EB_SPC_SITE(0x2E2B, 0xE5, 0x04B7, 3)
+// src/spc700/main.spc700.s:2738 UNK2E25
+EB_SPC_SITE(0x2E2E, 0x68, 0x0007, 2)
+// src/spc700/main.spc700.s:2739 UNK2E25
+EB_SPC_SITE(0x2E30, 0xD0, 0x0005, 2)
+// src/spc700/main.spc700.s:2740 UNK2E25
+EB_SPC_SITE(0x2E32, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:2741 UNK2E25
+EB_SPC_SITE(0x2E34, 0xC5, 0x04B3, 3)
+// src/spc700/main.spc700.s:2743 UNK2E37
+EB_SPC_SITE(0x2E37, 0x6F, 0x0000, 1)
+// src/spc700/main.spc700.s:2745 UNK2E38
+EB_SPC_SITE(0x2E38, 0xE5, 0x04B7, 3)
+// src/spc700/main.spc700.s:2746 UNK2E38
+EB_SPC_SITE(0x2E3B, 0x68, 0x0000, 2)
+// src/spc700/main.spc700.s:2747 UNK2E38
+EB_SPC_SITE(0x2E3D, 0xF0, 0x00E6, 2)
+// src/spc700/main.spc700.s:2748 UNK2E38
+EB_SPC_SITE(0x2E3F, 0x68, 0x0008, 2)
+// src/spc700/main.spc700.s:2749 UNK2E38
+EB_SPC_SITE(0x2E41, 0x90, 0x00E2, 2)
+// src/spc700/main.spc700.s:2750 UNK2E38
+EB_SPC_SITE(0x2E43, 0xE8, 0x0000, 2)
+// src/spc700/main.spc700.s:2751 UNK2E38
+EB_SPC_SITE(0x2E45, 0xC5, 0x04B3, 3)
+// src/spc700/main.spc700.s:2752 UNK2E38
+EB_SPC_SITE(0x2E48, 0xF0, 0x00DB, 2)
+// src/spc700/main.spc700.s:2948 UNK2FC8
+EB_SPC_SITE(0x2FC8, 0xE8, 0x0080, 2)
+// src/spc700/main.spc700.s:2949 UNK2FC8
+EB_SPC_SITE(0x2FCA, 0xC5, 0x04D3, 3)
+// src/spc700/main.spc700.s:2950 UNK2FC8
+EB_SPC_SITE(0x2FCD, 0xE8, 0x0009, 2)
+// src/spc700/main.spc700.s:2951 UNK2FC8
+EB_SPC_SITE(0x2FCF, 0xC5, 0x04D2, 3)
+// src/spc700/main.spc700.s:2952 UNK2FC8
+EB_SPC_SITE(0x2FD2, 0xE8, 0x001D, 2)
+// src/spc700/main.spc700.s:2953 UNK2FC8
+EB_SPC_SITE(0x2FD4, 0xC5, 0x04D1, 3)
+// src/spc700/main.spc700.s:2954 UNK2FC8
+EB_SPC_SITE(0x2FD7, 0xE8, 0x00C0, 2)
+// src/spc700/main.spc700.s:2955 UNK2FC8
+EB_SPC_SITE(0x2FD9, 0xC5, 0x04D4, 3)
+// src/spc700/main.spc700.s:2956 UNK2FC8
+EB_SPC_SITE(0x2FDC, 0x6F, 0x0000, 1)

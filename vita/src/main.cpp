@@ -26,6 +26,9 @@
 #include <thread>
 #include <vector>
 
+#ifndef EB_VITA_COMPACT_SPC_DISPATCH
+#define EB_VITA_COMPACT_SPC_DISPATCH 0
+#endif
 #ifndef EB_VITA_BUILD_TYPE
 #define EB_VITA_BUILD_TYPE "unreported"
 #endif
@@ -258,7 +261,7 @@ int main(int argc, char** argv) {
         session.set_composition_stride(options.composition_stride);
         if (options.save_enabled) load_save(session);
         session.enable_runtime_timing(options.core_timing);
-        performance.output << "build_configuration=" << EB_VITA_BUILD_TYPE
+        performance.output << "compact_spc_dispatch=" << EB_VITA_COMPACT_SPC_DISPATCH << " build_configuration=" << EB_VITA_BUILD_TYPE
             << " session_unit_optimisation=" << session.session_unit_optimised()
             << " dsp_unit_optimisation=" << session.dsp_unit_optimised() << '\n';
         performance.output.flush();

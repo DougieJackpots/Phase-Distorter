@@ -302,6 +302,54 @@ def emit(output: Path, result: dict) -> None:
         lines.append(f'        return {names[label]}(cpu);\n')
     lines.append('    default: return false;\n    }\n}\n} // namespace eb\n')
     write("audio_driver_instructions.cpp", "".join(lines))
+    # Alternative source-owned dispatch: one bounded address lookup rather than
+    # two large switches. RAM is still checked byte-for-byte before execution.
+    # Runtime RAM bytes never select an opcode or operand.
+    instructions = result["instructions"]
+    if len({item["address"] for item in instructions}) != len(instructions):
+        raise ValueError("Duplicate compact SPC instruction address")
+    if any(item["length"] not in (1, 2, 3) for item in instructions):
+        raise ValueError("Invalid compact SPC instruction length")
+    first = min(item["address"] for item in instructions)
+    last = max(item["address"] for item in instructions)
+    sites = ["// Generated source-owned SPC sites: address, opcode, operand, length.\n"]
+    for item in instructions:
+        source = item["source"]
+        sites.append(f'// {source["file"]}:{source["line"]} {source.get("label", "unresolved_entry")}\n'
+                     f'EB_SPC_SITE(0x{item["address"]:04X}, 0x{item["opcode"]:02X}, '
+                     f'0x{item["operand"]:04X}, {item["length"]})\n')
+    write("compact_spc_sites.inc", "".join(sites))
+    compact = f'''// Generated from verified SPC source sites. Do not edit.
+#include "eb/spc700_audio_cpu.hpp"
+#include "generated_audio_program.hpp"
+#include <array>
+namespace eb {{
+namespace {{
+struct EncodedSite {{ std::uint16_t operand; std::uint8_t opcode, length; }};
+static_assert(sizeof(EncodedSite) == 4);
+constexpr unsigned first_site = 0x{first:04X}, last_site = 0x{last:04X};
+constexpr auto sites = [] {{
+    std::array<EncodedSite, last_site - first_site + 1> result{{}};
+#define EB_SPC_SITE(address, opcode, operand, length) result[address - first_site] = {{operand, opcode, length}};
+#include "compact_spc_sites.inc"
+#undef EB_SPC_SITE
+    return result;
+}}();
+}} // namespace
+bool execute_translated_audio_instruction(Spc700AudioCpu& cpu) {{
+    const unsigned pc = cpu.program_counter;
+    if (pc < first_site || pc > last_site) return false;
+    const auto site = sites[pc - first_site];
+    if (!site.length) return false;
+    if (cpu.read_byte(std::uint16_t(pc)) != site.opcode) return false;
+    if (site.length > 1 && cpu.read_byte(std::uint16_t(pc + 1)) != (site.operand & 255)) return false;
+    if (site.length > 2 && cpu.read_byte(std::uint16_t(pc + 2)) != (site.operand >> 8)) return false;
+    cpu.execute_opcode_semantics(site.opcode, site.operand, site.length);
+    return true;
+}}
+}} // namespace eb
+'''
+    write("compact_audio_dispatch.cpp", compact)
     write("generated_audio_program.hpp", "#pragma once\nnamespace eb {\nclass Spc700AudioCpu;\nbool execute_translated_audio_instruction(Spc700AudioCpu&);\n}\n")
     write("spc_source_map.json", json.dumps(result, separators=(",", ":")) + "\n")
     stream = [(item["address"], item["opcode"], item["operand"], item["length"]) for item in result["instructions"]]
