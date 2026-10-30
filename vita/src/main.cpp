@@ -16,6 +16,7 @@
 #include <memory>
 #include <span>
 #include <string>
+#include <thread>
 #include <vector>
 
 namespace {
@@ -131,6 +132,7 @@ int main(int, char**) {
         bool running = true;
         auto last_save = std::chrono::steady_clock::now();
         while (running) {
+            const auto frame_start = std::chrono::steady_clock::now();
             SDL_Event event{};
             while (SDL_PollEvent(&event))
                 if (event.type == SDL_QUIT ||
@@ -154,6 +156,8 @@ int main(int, char**) {
             SDL_RenderClear(renderer.get());
             SDL_RenderCopy(renderer.get(), texture.get(), nullptr, nullptr);
             SDL_RenderPresent(renderer.get());
+            std::this_thread::sleep_until(frame_start + std::chrono::duration_cast<
+                std::chrono::steady_clock::duration>(std::chrono::duration<double>(1.0 / 60.0)));
 
             const auto now = std::chrono::steady_clock::now();
             if (now - last_save >= std::chrono::seconds(10)) {
