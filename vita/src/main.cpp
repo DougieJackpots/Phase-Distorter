@@ -81,6 +81,7 @@ void show_error(const std::string& message) {
 
 int main(int, char**) {
     try {
+        SDL_SetMainReady();
         if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_EVENTS) != 0)
             throw std::runtime_error(std::string("SDL initialization failed: ") + SDL_GetError());
         std::filesystem::create_directories(data_dir);
