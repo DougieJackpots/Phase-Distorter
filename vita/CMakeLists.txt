@@ -13,6 +13,7 @@ include("$ENV{VITASDK}/share/vita.cmake" REQUIRED)
 
 set(EB_BUILD_FRONTEND OFF CACHE BOOL "Disable desktop SDL/OpenGL frontend" FORCE)
 set(EB_BUILD_TESTS OFF CACHE BOOL "Disable desktop verification targets" FORCE)
+set(EB_PREGENERATED_DIR "${CMAKE_CURRENT_LIST_DIR}/../generated" CACHE PATH "Use checked-in generated sources for Vita builds" FORCE)
 set(EB_BUILD_VITA ON CACHE BOOL "Build the Vita SDL frontend" FORCE)
 
 add_subdirectory("${CMAKE_CURRENT_LIST_DIR}/../cpp" "${CMAKE_CURRENT_BINARY_DIR}/phase-distorter-core")
