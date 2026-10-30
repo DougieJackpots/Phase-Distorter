@@ -7,6 +7,7 @@
 
 #include <SDL.h>
 #include <psp2/ctrl.h>
+#include <psp2/power.h>
 
 #include <algorithm>
 #include <chrono>
@@ -82,6 +83,8 @@ void show_error(const std::string& message) {
 
 int main(int, char**) {
     try {
+        // Give the CPU-heavy game core the standard Vita performance clock.
+        scePowerSetArmClockFrequency(444);
         SDL_SetMainReady();
         if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_EVENTS) != 0)
             throw std::runtime_error(std::string("SDL initialization failed: ") + SDL_GetError());
@@ -105,7 +108,7 @@ int main(int, char**) {
             throw std::runtime_error(std::string("Could not create Vita display: ") + SDL_GetError());
 
         SDL_Renderer* raw_renderer = SDL_CreateRenderer(window.get(), -1,
-            SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+            SDL_RENDERER_ACCELERATED);
         if (!raw_renderer)
             raw_renderer = SDL_CreateRenderer(window.get(), -1, SDL_RENDERER_SOFTWARE);
         std::unique_ptr<SDL_Renderer, decltype(&SDL_DestroyRenderer)> renderer(raw_renderer,
@@ -134,10 +137,12 @@ int main(int, char**) {
             std::cerr << "Audio disabled: " << error.what() << '\n';
         }
 
+        // Use one clock for simulation and presentation. Combining a blocking
+        // vsync present with a per-iteration sleep can miss alternate refreshes.
+        eb::FramePacer pacer(eb::FramePacer::Clock::now());
         bool running = true;
         auto last_save = std::chrono::steady_clock::now();
         while (running) {
-            const auto frame_start = std::chrono::steady_clock::now();
             SDL_Event event{};
             while (SDL_PollEvent(&event))
                 if (event.type == SDL_QUIT ||
@@ -146,7 +151,7 @@ int main(int, char**) {
             if (!running)
                 break;
 
-            session.advance_frame(read_buttons());
+            const auto frames = session.advance_frame(read_buttons());
             if (audio) {
                 const auto samples = session.take_audio_samples();
                 audio->append(samples);
@@ -154,14 +159,18 @@ int main(int, char**) {
                 (void)session.take_audio_samples();
             }
 
-            const auto pixels = session.native_pixels();
-            if (SDL_UpdateTexture(texture.get(), nullptr, pixels.data(), game_width * sizeof(std::uint32_t)) != 0)
-                throw std::runtime_error(std::string("Framebuffer upload failed: ") + SDL_GetError());
-            SDL_SetRenderDrawColor(renderer.get(), 0, 0, 0, 255);
-            SDL_RenderClear(renderer.get());
-            SDL_RenderCopy(renderer.get(), texture.get(), nullptr, nullptr);
-            SDL_RenderPresent(renderer.get());
-            std::this_thread::sleep_until(frame_start + eb::FramePacer::period());
+            // Catch up by omitting only presentation; input, CPU and audio
+            // still run for every game frame. Deadlines do not accumulate jitter.
+            if (pacer.advance(eb::FramePacer::Clock::now(), frames)) {
+                const auto pixels = session.native_pixels();
+                if (SDL_UpdateTexture(texture.get(), nullptr, pixels.data(), game_width * sizeof(std::uint32_t)) != 0)
+                    throw std::runtime_error(std::string("Framebuffer upload failed: ") + SDL_GetError());
+                SDL_SetRenderDrawColor(renderer.get(), 0, 0, 0, 255);
+                SDL_RenderClear(renderer.get());
+                SDL_RenderCopy(renderer.get(), texture.get(), nullptr, nullptr);
+                SDL_RenderPresent(renderer.get());
+            }
+            std::this_thread::sleep_until(pacer.deadline());
 
             const auto now = std::chrono::steady_clock::now();
             if (now - last_save >= std::chrono::seconds(10)) {
