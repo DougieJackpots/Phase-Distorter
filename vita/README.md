@@ -311,3 +311,94 @@ Host test targets: `compact_spc_dispatch_tests` and
 `compact_spc_execution_tests`. Original source-map and instruction-stream hashes
 are unchanged. No scheduling batching, DSP deferral, threading, ISA/ABI changes,
 or revised CPU timing budgets are included in this change.
+
+## Main-core memory and scheduling fast paths
+
+Branch: `vita-core-fastpaths`, based on `vita-compact-spc-experiment`.
+This adds three independently selectable core changes, preserving full composition
+and the existing timing policy unless the user explicitly configures otherwise.
+
+1. **ROM and instruction fetch:** in-image ROM reads return their direct offset
+   instead of running address folding and modulo. Mirrored reads retain the
+   original address-line algorithm. Discarded instruction fetches may be handled
+   together only when every byte is ordinary in-image ROM in one bank. The final
+   open-bus byte (including Threed restoration) and total wait clocks are retained.
+   Debug ROM hooks, ordered bus-audit observers, I/O, WRAM, mirrors and bank-wrap
+   cases use individual reads. Both ported and legacy instruction paths use the
+   same helper. This relies on this engine's existing instruction-boundary clock
+   model; it does not claim microcycle-accurate instruction fetches.
+2. **Scheduler:** a derived absolute deadline caches the next hardware event.
+   A shorter interval updates raster/master/joypad countdown state directly,
+   then calls the APU with the exact same original instruction clock slice.
+   Event-crossing intervals retain the original scheduler. PPU/I/O writes and
+   snapshot loads invalidate the cache; changes to the public frame epoch also
+   decline it. Refresh, IRQ, HDMA, raster composition, frame callbacks and autojoy
+   boundaries are never crossed by the fast path. No DSP or APU work is deferred.
+
+3. **Native PPU composition:** modes 0/1 with no main-screen window masking,
+   no colour-window policy, effects off and disabled/identity colour math use a
+   layer-major row compositor. It resolves BG priorities and OBJ winners into
+   small fixed arrays and expands brightness once for the winning colour. The
+   same background sampler handles VRAM, scrolling, mosaic and palettes. Other
+   configurations retain the canonical per-pixel compositor. No HDMA or sprite
+   overflow evaluation is omitted. This is CPU composition, not GPU offloading.
+
+Vita builds default these features on only on this experimental branch. General
+host builds default them off. Build controls are
+`EB_VITA_FAST_MEMORY_ACCESS=ON|OFF` and
+`EB_VITA_FAST_EVENT_SCHEDULER=ON|OFF`, and
+`EB_VITA_FAST_NATIVE_COMPOSITION=ON|OFF` (host counterparts omit `VITA_`).
+When compiled in, performance.cfg also supports `fast_memory=0|1` and
+`fast_scheduler=0|1`, and `fast_composition=0|1` to compare with the scalar paths without rebuilding. Logs
+show `fast_core_compiled_mask` (bit 0 memory, bit 1 scheduler, bit 2 native composition) and the requested
+runtime settings. A requested feature cannot enable code compiled out of a build.
+Use mask 7, detailed core timing off, stride 1 and identical enhanced-timing/input
+settings for the first comparisons. The scalar runtime selection shares helper
+entry points, so compare with the parent branch too if small timings matter.
+
+Validation includes 33,554,432 mirror mappings; over a million production fetch
+cases covering memory windows, wait clocks, open bus, US/JP Threed restoration,
+debug/audit rejection and bank wrapping; and 524,288 clock advances comparing the
+actual production scheduler kernel with the original kernel. Clock-model checks
+compare raster/IRQ/refresh/joypad/frame state and ordered PPU/HDMA/frame/APU events,
+including register writes, odd short lines, zero/large advances and cache resets.
+The kernel is extracted from production source during test generation rather
+than maintained as a duplicate implementation. The reference kernel is retained
+as an independent pre-change oracle. This event model does not replace a complete
+PPU/DMA/game replay test.
+
+The optional `core_fastpath_differential` target compares scalar and fast paths
+inside the actual core using one user asset pack. It checks complete machine
+snapshots, all composed frame pixels, PCM and, in audit builds, ordered bus
+accesses. Configure a host build with `EB_BUILD_FRONTEND=OFF`,
+`EB_PREGENERATED_DIR=/absolute/path/to/generated`, `EB_FAST_MEMORY_ACCESS=ON`,
+`EB_FAST_EVENT_SCHEDULER=ON`, `EB_FAST_NATIVE_COMPOSITION=ON` and tests on, then run:
+
+```sh
+cmake --build build-host --target core_fastpath_differential
+build-host/core_fastpath_differential --assets /path/game.ebpak \
+  --input-script /path/route.txt --replay-only --frames 3600 --stride 1 \
+  --enhanced-timing 1
+```
+
+Repeat for timing off, US/JP, native sprites off, and audit on/off. Audit forces
+individual instruction fetches (to preserve every observed read), so the ordinary
+non-audit comparison is also necessary to exercise aggregate fetches. Optional
+routes should cover overworld, battle swirls/PSI, DMA and scene changes.
+
+Host helper/kernel tests and syntax checks pass here. No game pack or VitaSDK is
+available, so the complete game differential, cross-build and device benchmarks
+remain unrun. No FPS or end-to-end speedup is claimed from the model tests.
+
+The native PPU fast-path check compares 1,048,576 output pixels with the canonical
+compositor across random background modes, priorities, palettes, windows, colour
+math, mosaic and scroll, with both cached and uncached views. It covers selected
+simple-mode fast paths and fallback cases. The lightweight check uses inactive
+scene-owner link stubs; the registered host target links the actual core and
+skips if native fast composition was not compiled. It is not a full-game visual
+regression test. `fast_composition=0` restores canonical composition at runtime.
+
+Logs also count `fast_ppu_rows`, `canonical_ppu_rows` and `fast_ppu_fraction`.
+These refer to composed native scanlines, excluding forced-blank/skipped rows;
+they show whether the guarded compositor actually applies in the measured scene.
+The counters do not read a host clock and are excluded from machine snapshots.

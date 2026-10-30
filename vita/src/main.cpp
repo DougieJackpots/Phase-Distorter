@@ -57,6 +57,7 @@ struct Performance {
     std::size_t sample_count = 0;
     std::uint64_t over_budget = 0, composed = 0, skipped = 0;
     std::uint64_t main_instructions = 0, spc_instructions = 0, master_clocks = 0, native_batches = 0;
+    std::uint64_t fast_ppu_rows=0,canonical_ppu_rows=0;
     void add_simulation(double ms) {
         simulation.add(ms);
         if (sample_count < simulation_samples.size()) simulation_samples[sample_count++] = ms;
@@ -100,6 +101,8 @@ struct Performance {
                << " over_budget_fraction=" << double(over_budget) / updates
                << " composed_frames=" << composed << " skipped_frames=" << skipped
                << " composed_fps=" << composed / seconds;
+        output << " fast_ppu_rows=" << fast_ppu_rows << " canonical_ppu_rows=" << canonical_ppu_rows
+               << " fast_ppu_fraction=" << double(fast_ppu_rows) / std::max<std::uint64_t>(fast_ppu_rows+canonical_ppu_rows,1);
         output << " main_instructions_per_game_frame=" << double(main_instructions) / std::max<std::uint64_t>(frames, 1)
                << " spc_instructions_per_game_frame=" << double(spc_instructions) / std::max<std::uint64_t>(frames, 1)
                << " master_clocks_per_game_frame=" << double(master_clocks) / std::max<std::uint64_t>(frames, 1)
@@ -115,6 +118,7 @@ struct Performance {
         sample_count = 0;
         over_budget = composed = skipped = 0;
         main_instructions = spc_instructions = master_clocks = native_batches = 0;
+        fast_ppu_rows=canonical_ppu_rows=0;
         core_samples = ppu_calls = dsp_calls = 0;
         epoch = Clock::now();
     }
@@ -258,10 +262,12 @@ int main(int argc, char** argv) {
         session.set_logical_clock_policy(eb::LogicalClockPolicy::ActorFrames);
         session.enable_native_sprite_runtime();
         session.configure_presentation(game_width, false, false);
+        session.set_core_fast_paths(options.fast_memory,options.fast_scheduler,options.fast_composition);
         session.set_composition_stride(options.composition_stride);
         if (options.save_enabled) load_save(session);
         session.enable_runtime_timing(options.core_timing);
-        performance.output << "compact_spc_dispatch=" << EB_VITA_COMPACT_SPC_DISPATCH << " build_configuration=" << EB_VITA_BUILD_TYPE
+        performance.output << "fast_core_compiled_mask=" << session.compiled_core_fast_paths()
+            << " fast_composition_requested=" << options.fast_composition << " fast_memory_requested=" << options.fast_memory << " fast_scheduler_requested=" << options.fast_scheduler << " compact_spc_dispatch=" << EB_VITA_COMPACT_SPC_DISPATCH << " build_configuration=" << EB_VITA_BUILD_TYPE
             << " session_unit_optimisation=" << session.session_unit_optimised()
             << " dsp_unit_optimisation=" << session.dsp_unit_optimised() << '\n';
         performance.output.flush();
@@ -283,6 +289,7 @@ int main(int argc, char** argv) {
         auto last_save = std::chrono::steady_clock::now();
         auto previous_composition = session.composition_stats();
         auto previous_diagnostics = session.diagnostics();
+        auto previous_native_rows=session.native_composition_counts();
         while (running) {
             SDL_Event event{};
             while (SDL_PollEvent(&event))
@@ -309,6 +316,10 @@ int main(int argc, char** argv) {
             performance.master_clocks += diagnostics.master_clocks - previous_diagnostics.master_clocks;
             performance.native_batches += diagnostics.native_gameplay_batches - previous_diagnostics.native_gameplay_batches;
             previous_diagnostics = diagnostics;
+            const auto native_rows=session.native_composition_counts();
+            performance.fast_ppu_rows+=native_rows[0]-previous_native_rows[0];
+            performance.canonical_ppu_rows+=native_rows[1]-previous_native_rows[1];
+            previous_native_rows=native_rows;
             session.take_audio_samples(audio_samples);
             if (audio)
                 audio->append(audio_samples);

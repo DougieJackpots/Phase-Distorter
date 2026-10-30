@@ -35,6 +35,9 @@ void SnesBus::prefetch_vram() {
 // paired writes, scroll and Mode 7 share write latches, and VRAM increments
 // after the configured low/high port. Do not replace these with flat stores.
 void SnesBus::write_ppu_register(uint16_t address, uint8_t value) {
+#ifdef EB_FAST_EVENT_SCHEDULER
+    hardware_event_cache_.invalidate();
+#endif
     const unsigned register_index = address & 0x3f;
     if (register_index >= 0x34)
         return;

@@ -4,7 +4,7 @@
 #include <stdexcept>
 namespace vita {
 struct PerformanceOptions {
-    bool enhanced_timing = true, replay_only = false, save_enabled = true, core_timing = true;
+    bool enhanced_timing = true, replay_only = false, save_enabled = true, core_timing = true, fast_memory = true, fast_scheduler = true, fast_composition = true;
     unsigned composition_stride = 1;
     unsigned long long frames = 0;
     std::string input_script;
@@ -20,12 +20,15 @@ struct PerformanceOptions {
             if (n < 1 || n > 3) throw std::invalid_argument("composition_stride must be 1, 2 or 3");
             composition_stride = unsigned(n);
         } else if (key == "frames") frames = n;
-        else if (key == "enhanced_timing" || key == "replay_only" || key == "save_enabled" || key == "core_timing") {
+        else if (key == "enhanced_timing" || key == "replay_only" || key == "save_enabled" || key == "core_timing" || key == "fast_memory" || key == "fast_scheduler" || key == "fast_composition") {
             if (n > 1) throw std::invalid_argument(key + " must be 0 or 1");
             if (key == "enhanced_timing") enhanced_timing = bool(n);
             else if (key == "replay_only") replay_only = bool(n);
             else if (key == "save_enabled") save_enabled = bool(n);
-            else core_timing = bool(n);
+            else if (key == "core_timing") core_timing = bool(n);
+            else if (key == "fast_memory") fast_memory = bool(n);
+            else if (key == "fast_scheduler") fast_scheduler = bool(n);
+            else fast_composition = bool(n);
         } else throw std::invalid_argument("Unknown performance option: " + key);
     }
     static std::string trim(std::string s) {

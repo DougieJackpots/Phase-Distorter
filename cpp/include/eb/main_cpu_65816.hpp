@@ -91,6 +91,7 @@ class MainCpu65816 {
     void write_byte(std::uint32_t address, std::uint8_t value);
 
   private:
+    void fetch_instruction_bytes(unsigned length);
     friend class game::runtime::Instruction;
     friend class game::runtime::NativeGameplay;
     friend class native_reference::OriginalObjectInstructions;

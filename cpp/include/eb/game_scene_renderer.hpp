@@ -120,6 +120,8 @@ class GameSceneRenderer {
     std::vector<std::uint64_t> host_sprite_generations() const;
     uint32_t compose_presentation_pixel(const SceneReadView &view, int x, unsigned y, const PpuPixel &object,
                                         bool margin);
+    std::array<std::uint64_t,2> native_composition_counts() const { return {fast_native_rows_,canonical_native_rows_}; }
+    void set_fast_native_composition(bool enabled) { fast_native_composition_=enabled; }
     void compose_native_scanline(const SceneReadView& view, unsigned y,
                                  std::span<const PpuPixel, 256> objects,
                                  std::span<std::uint32_t, 256> output);
@@ -145,6 +147,8 @@ class GameSceneRenderer {
     double presentation_frame_aspect_ = 0;
     std::vector<uint32_t> presentation_framebuffer_;
     bool presentation_effects_enabled_ = false;
+    bool fast_native_composition_ = true;
+    std::uint64_t fast_native_rows_=0,canonical_native_rows_=0;
     std::vector<uint8_t> presentation_effect_mask_;
     std::vector<uint32_t> presentation_effect_reference_;
     std::vector<uint8_t> presentation_unfiltered_mask_;

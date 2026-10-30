@@ -88,6 +88,10 @@ bool GameSession::session_unit_optimised() const noexcept {
 }
 bool GameSession::dsp_unit_optimised() const noexcept { return SnesAudioDsp::compiled_with_optimisation(); }
 
+void GameSession::set_core_fast_paths(bool memory,bool scheduler,bool composition) { state_->hardware.set_core_fast_paths(memory,scheduler,composition); }
+unsigned GameSession::compiled_core_fast_paths() const { return SnesBus::compiled_core_fast_paths(); }
+std::array<std::uint64_t,2> GameSession::native_composition_counts() const { return state_->hardware.native_composition_counts(); }
+
 void GameSession::set_composition_stride(unsigned stride) { state_->hardware.set_composition_stride(stride); }
 CompositionStats GameSession::composition_stats() const { return state_->hardware.composition_stats(); }
 

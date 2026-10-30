@@ -98,6 +98,19 @@ void MainCpu65816::write_byte(std::uint32_t address, std::uint8_t value) {
     else
         flat_test_memory_[address] = value;
 }
+void MainCpu65816::fetch_instruction_bytes(unsigned length) {
+    if(!hardware_)return;
+#ifdef EB_FAST_MEMORY_ACCESS
+    unsigned extra=0;
+    if(hardware_->try_fetch_rom_instruction(program_counter,length,extra)) {
+        memory_wait_master_clocks_+=extra;
+        return;
+    }
+#endif
+    for(unsigned i=0;i<length;++i)
+        read_byte((program_counter&0xff0000)|std::uint16_t(program_counter+i));
+}
+
 // Some addressing modes wrap the second byte within the current 64 KiB bank;
 // long addressing carries into the next bank. Keep byte order explicit because
 // an operand can straddle two I/O registers with different side effects.
@@ -392,9 +405,7 @@ void MainCpu65816::execute_opcode_semantics(std::uint8_t opcode, std::uint32_t o
                              hardware_, direct_page);
     // Preserve instruction-fetch bus reads/open-bus state. These bytes do not
     // select the operation: the generated source site fixes opcode/operand.
-    if (hardware_)
-        for (unsigned i = 0; i < length; ++i)
-            read_byte((instruction_address & 0xff0000) | std::uint16_t(instruction_address + i));
+    fetch_instruction_bytes(length);
     program_counter = (program_counter & 0xff0000) | std::uint16_t(program_counter + length);
     ++instruction_count;
     unsigned instruction_cycles = minimum_instruction_cycles[opcode];

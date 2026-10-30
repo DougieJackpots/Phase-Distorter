@@ -18,6 +18,7 @@ void SnesBus::snapshot_io(SnapshotArchive &archive) {
     bool effects = bool(native_sprite_effects_), stationary = native_stationary_sprites_enabled_;
     archive(host, native, effects, stationary);
     if (archive.loading()) {
+        hardware_event_cache_.invalidate();
         composition_policy_ = {}; // Host-only settings are never loaded from machine snapshots.
         if (effects != native || (stationary && !native))
             throw std::runtime_error("Invalid snapshot native sprite ownership");
@@ -295,6 +296,9 @@ uint8_t SnesBus::read_byte(uint32_t address) {
         value = save_ram[((bank & 0x1f) * 0x2000 + bank_offset - 0x6000) % save_ram.size()];
     else if ((bank & 0x40) != 0 || bank_offset >= 0x8000) {
         // SNES mirrors non-power-of-two ROMs by address-line folding.
+#ifdef EB_FAST_MEMORY_ACCESS
+        const auto offset=detail::rom_offset(address,cartridge_rom_.size(),fast_memory_access_);
+#else
         size_t index = address & 0x3fffff, size = cartridge_rom_.size(), base = 0, mask = 0x200000;
         while (index >= size && mask) {
             if (index & mask) {
@@ -307,6 +311,7 @@ uint8_t SnesBus::read_byte(uint32_t address) {
             mask >>= 1;
         }
         const unsigned offset = (base + index) % cartridge_rom_.size();
+#endif
         value = cartridge_rom_[offset];
         if (restore_threed_npcs_)
             value = restored_threed_npc_byte(threed_npc_table_offset(game_version_), offset, value);
@@ -319,6 +324,39 @@ uint8_t SnesBus::read_byte(uint32_t address) {
         observe_bus_access(false, address, value);
 #endif
     return value;
+}
+
+unsigned SnesBus::compiled_core_fast_paths() noexcept {
+    unsigned result=0;
+#ifdef EB_FAST_MEMORY_ACCESS
+    result|=1;
+#endif
+#ifdef EB_FAST_EVENT_SCHEDULER
+    result|=2;
+#endif
+#ifdef EB_FAST_NATIVE_COMPOSITION
+    result|=4;
+#endif
+    return result;
+}
+
+bool SnesBus::try_fetch_rom_instruction(std::uint32_t address,unsigned length,unsigned& extra) {
+#ifdef EB_FAST_MEMORY_ACCESS
+    if(!fast_memory_access_||debug_read_rom)return false;
+#ifdef EB_GAMEPLAY_AUDIT
+    if(observe_bus_access)return false;
+#endif
+    const auto plan=detail::rom_fetch_plan(address,length,cartridge_rom_.size(),cpu_io_registers_[13]&1);
+    if(!plan.accepted)return false;
+    auto value=cartridge_rom_[plan.last_offset];
+    if(restore_threed_npcs_)
+        value=restored_threed_npc_byte(threed_npc_table_offset(game_version_),plan.last_offset,value);
+    open_bus_=value;
+    extra=plan.extra_master_clocks;
+    return true;
+#else
+    (void)address;(void)length;(void)extra;return false;
+#endif
 }
 
 // ROM writes have no cartridge-storage effect, but still drive the CPU bus.
@@ -424,6 +462,9 @@ uint8_t SnesBus::read_io_register(uint16_t address) {
 // actions. Arithmetic results become visible only after their pending delay,
 // while a DMA start performs transfers and accumulates CPU stall clocks.
 void SnesBus::write_io_register(uint16_t address, uint8_t value) {
+#ifdef EB_FAST_EVENT_SCHEDULER
+    hardware_event_cache_.invalidate();
+#endif
     if (address >= 0x2100 && address <= 0x213f) {
         write_ppu_register(address, value);
         return;
@@ -721,6 +762,18 @@ void SnesBus::advance_master_clocks_with_refresh(unsigned clocks) {
 // CPU step cannot skip those events. All elapsed time, including refresh stalls,
 // is forwarded to the asynchronous APU exactly once at the end of this call.
 void SnesBus::advance_clocks(unsigned clocks, bool pause_for_refresh) {
+#ifdef EB_FAST_EVENT_SCHEDULER
+    if(fast_event_scheduler_&&hardware_event_cache_.admits(master_clocks_,completed_frames,clocks)) {
+        scanline_master_clock_+=clocks;
+        master_clocks_+=clocks;
+        if(autojoy_remaining_clocks_)autojoy_remaining_clocks_-=clocks;
+        // Forward exactly the same original instruction slice, at the same
+        // boundary. No APU work, interrupt, HDMA or refresh event is deferred.
+        if(advance_audio_master_clocks)advance_audio_master_clocks(clocks);
+        return;
+    }
+    hardware_event_cache_.invalidate();
+#endif
     unsigned elapsed = 0;
     while (clocks) {
         const unsigned old = scanline_master_clock_;
@@ -796,6 +849,10 @@ void SnesBus::advance_clocks(unsigned clocks, bool pause_for_refresh) {
     }
     if (advance_audio_master_clocks)
         advance_audio_master_clocks(elapsed);
+#ifdef EB_FAST_EVENT_SCHEDULER
+    if(fast_event_scheduler_)
+        hardware_event_cache_.reset(master_clocks_,completed_frames,next_hardware_event_clocks());
+#endif
 }
 
 } // namespace eb

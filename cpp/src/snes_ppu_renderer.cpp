@@ -522,6 +522,41 @@ uint32_t GameSceneRenderer::compose_presentation_pixel(const SceneReadView &view
 void GameSceneRenderer::compose_native_scanline(const SceneReadView& view, unsigned y,
                                                std::span<const PpuPixel, 256> objects,
                                                std::span<std::uint32_t, 256> output) {
+#ifdef EB_FAST_NATIVE_COMPOSITION
+    const auto& regs=view.ppu_registers;
+    const unsigned mode=regs[5]&7,enabled=regs[0x2c],math=regs[0x31];
+    const bool identity_math=!(math&0x3f) || (!(regs[0x30]&2)&&view.fixed_color==0&&!(math&0x40));
+    // A deliberately narrow native mode: no moved windows, reference effects,
+    // clipping or effective colour math. All other configurations retain the
+    // canonical compositor. VRAM/palette/mosaic/scroll sampling is unchanged.
+    if(fast_native_composition_&&!presentation_effects_enabled_&&mode<=1&&
+       !(enabled&regs[0x2e])&&!(regs[0x30]&0xf0)&&identity_math) {
+        ++fast_native_rows_;
+        const unsigned brightness=regs[0]&15;
+        if(!brightness) {std::fill(output.begin(),output.end(),0xff000000);return;}
+        std::array<std::uint16_t,256> colors;
+        std::array<std::int8_t,256> priorities;
+        colors.fill(view.palette(0));priorities.fill(-1);
+        for(unsigned layer=0;layer<4;++layer) {
+            if(!(enabled&(1u<<layer)))continue;
+            for(unsigned x=0;x<256;++x) {
+                const auto pixel=view.sample_background_pixel(layer,int(x),y+1);
+                if(pixel.priority>priorities[x]) {
+                    colors[x]=pixel.color;priorities[x]=std::int8_t(pixel.priority);
+                }
+            }
+        }
+        for(unsigned x=0;x<256;++x) {
+            const auto color=(enabled&16)&&objects[x].priority>priorities[x]?objects[x].color:colors[x];
+            output[x]=0xff000000 |
+                (unsigned(detail::brightness_component(brightness,color&31))<<16) |
+                (unsigned(detail::brightness_component(brightness,(color>>5)&31))<<8) |
+                 unsigned(detail::brightness_component(brightness,(color>>10)&31));
+        }
+        return;
+    }
+#endif
+    ++canonical_native_rows_;
     if (presentation_effects_enabled_) {
         for (unsigned x = 0; x < 256; ++x)
             output[x] = compose_pixel<true, false>(view, x, y, objects[x]).actual;

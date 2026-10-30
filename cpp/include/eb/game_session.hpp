@@ -7,6 +7,7 @@
 #include "eb/logical_clock_policy.hpp"
 #include "eb/presentation_frame.hpp"
 #include <cstdint>
+#include <array>
 #include <functional>
 #include <memory>
 #include <span>
@@ -58,6 +59,9 @@ class GameSession {
     // Optional sampled host timings, excluded from snapshots and game clocks.
     bool session_unit_optimised() const noexcept;
     bool dsp_unit_optimised() const noexcept;
+    void set_core_fast_paths(bool memory,bool scheduler,bool composition=true);
+    unsigned compiled_core_fast_paths() const;
+    std::array<std::uint64_t,2> native_composition_counts() const;
     void set_composition_stride(unsigned stride);
     CompositionStats composition_stats() const;
     void enable_runtime_timing(bool enabled);

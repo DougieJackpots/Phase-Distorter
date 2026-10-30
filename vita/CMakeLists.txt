@@ -16,6 +16,14 @@ set(EB_BUILD_TESTS OFF CACHE BOOL "Disable desktop verification targets" FORCE)
 set(EB_PREGENERATED_DIR "${CMAKE_CURRENT_LIST_DIR}/../generated" CACHE PATH "Use checked-in generated sources for Vita builds" FORCE)
 set(EB_BUILD_VITA ON CACHE BOOL "Build the Vita SDL frontend" FORCE)
 
+option(EB_VITA_FAST_NATIVE_COMPOSITION "Enable guarded native PPU composition on this experimental branch" ON)
+set(EB_FAST_NATIVE_COMPOSITION ${EB_VITA_FAST_NATIVE_COMPOSITION} CACHE BOOL "Vita native compositor" FORCE)
+
+option(EB_VITA_FAST_MEMORY_ACCESS "Enable guarded ROM/fetch fast paths on this experimental branch" ON)
+option(EB_VITA_FAST_EVENT_SCHEDULER "Enable event-free scheduling cache on this experimental branch" ON)
+set(EB_FAST_MEMORY_ACCESS ${EB_VITA_FAST_MEMORY_ACCESS} CACHE BOOL "Vita ROM/fetch fast paths" FORCE)
+set(EB_FAST_EVENT_SCHEDULER ${EB_VITA_FAST_EVENT_SCHEDULER} CACHE BOOL "Vita scheduler cache" FORCE)
+
 option(EB_VITA_COMPACT_SPC_DISPATCH "Use compact SPC source-site dispatch on this experimental branch" ON)
 set(EB_COMPACT_SPC_DISPATCH ${EB_VITA_COMPACT_SPC_DISPATCH} CACHE BOOL "Vita SPC dispatch selection" FORCE)
 

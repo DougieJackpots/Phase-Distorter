@@ -32,9 +32,7 @@ Instruction::Instruction(MainCpu65816 &cpu, std::uint8_t timing_opcode, std::uin
                                    cpu_.accumulator, cpu_.hardware_, cpu_.direct_page);
     // Fetches are observable even though they never decode the operation. Keep
     // their order and bank wrapping before any addressing or operand reads.
-    if (cpu_.hardware_)
-        for (unsigned i = 0; i < length; ++i)
-            cpu_.read_byte((instruction_address_ & 0xff0000) | std::uint16_t(instruction_address_ + i));
+    cpu_.fetch_instruction_bytes(length);
     cpu_.program_counter = (cpu_.program_counter & 0xff0000) | std::uint16_t(cpu_.program_counter + length);
     ++cpu_.instruction_count;
     operand_mask_ = byte_operand_ ? 0xff : 0xffff;

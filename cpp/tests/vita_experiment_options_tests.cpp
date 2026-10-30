@@ -6,10 +6,10 @@
 void require(bool v){if(!v)throw std::runtime_error("Experiment option/policy check failed");}
 int main(){try{
  vita::PerformanceOptions options;require(options.enhanced_timing&&options.composition_stride==1&&options.save_enabled);
- std::istringstream config("# example\nenhanced_timing=0\ncomposition_stride=2\ncore_timing=0\nreplay_only=1\ninput_script=route.txt\nframes=3600\n");
+ std::istringstream config("# example\nenhanced_timing=0\ncomposition_stride=2\nfast_memory=0\nfast_scheduler=0\nfast_composition=0\ncore_timing=0\nreplay_only=1\ninput_script=route.txt\nframes=3600\n");
  options.read(config);options.arguments(0,nullptr);
- require(!options.core_timing&&!options.enhanced_timing&&!options.save_enabled&&options.replay_only&&options.frames==3600&&options.composition_stride==2);
- for(const auto& text:{"composition_stride=0","composition_stride=4","enhanced_timing=2","frames=-1","frames=2junk","unknown=1"}){
+ require(!options.fast_memory&&!options.fast_scheduler&&!options.fast_composition&&!options.core_timing&&!options.enhanced_timing&&!options.save_enabled&&options.replay_only&&options.frames==3600&&options.composition_stride==2);
+ for(const auto& text:{"composition_stride=0","composition_stride=4","enhanced_timing=2","fast_memory=2","fast_scheduler=3","fast_composition=2","frames=-1","frames=2junk","unknown=1"}){
   bool rejected=false;try{vita::PerformanceOptions o;std::istringstream in(text);o.read(in);}catch(const std::exception&){rejected=true;}require(rejected);
  }
  for(unsigned stride:{1u,2u,3u}){

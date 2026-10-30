@@ -1,6 +1,7 @@
 #pragma once
 #include "eb/photosensitivity_filter.hpp"
 #include "eb/composition_policy.hpp"
+#include "eb/core_fastpaths.hpp"
 
 #include "eb/game_version.hpp"
 #include "eb/game_scene_renderer.hpp"
@@ -38,6 +39,15 @@ class SnesBus {
     // Reads and writes are observable hardware operations, not inspection APIs:
     // reads can acknowledge interrupts, advance ports, and update open bus.
     uint8_t read_byte(uint32_t address);
+    // Discarded, side-effect-free ROM fetches only. Declines observers, mirrors,
+    // I/O and bank-wrap cases so those retain individual bus reads.
+    void set_core_fast_paths(bool memory,bool scheduler,bool composition=true) {
+        fast_memory_access_=memory;fast_event_scheduler_=scheduler;hardware_event_cache_.invalidate();
+        scene_renderer_.set_fast_native_composition(composition);
+    }
+    static unsigned compiled_core_fast_paths() noexcept;
+    auto native_composition_counts() const { return scene_renderer_.native_composition_counts(); }
+    bool try_fetch_rom_instruction(std::uint32_t address,unsigned length,unsigned& extra_master_clocks);
     void write_byte(uint32_t address, uint8_t value);
 #ifdef EB_GAMEPLAY_AUDIT
     // Verification-only ordered CPU/DMA/HDMA bus accesses; never changes state.
@@ -253,6 +263,8 @@ class SnesBus {
     uint8_t sprite_status_ = 0;
     GameSceneRenderer scene_renderer_;
     CompositionPolicy composition_policy_;
+    detail::HardwareEventCache hardware_event_cache_;
+    bool fast_memory_access_=true,fast_event_scheduler_=true;
     SceneReadView scene_view() const;
     unsigned next_hardware_event_clocks() const;
 
