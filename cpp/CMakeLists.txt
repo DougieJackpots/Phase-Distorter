@@ -337,6 +337,8 @@ if(EB_BUILD_VITA)
             INTERFACE_INCLUDE_DIRECTORIES "${EB_VITA_SDL2_INCLUDE_DIR}")
     endif()
     add_executable(eb_vita ../vita/src/main.cpp src/audio_output.cpp)
+    target_compile_options(eb_vita PRIVATE -O3 -fomit-frame-pointer)
+    target_link_options(eb_vita PRIVATE -Wl,--gc-sections)
     target_include_directories(eb_vita PRIVATE include)
     target_compile_definitions(eb_vita PRIVATE SDL_MAIN_HANDLED)
     target_link_libraries(eb_vita PRIVATE
@@ -349,7 +351,9 @@ if(EB_BUILD_VITA)
     vita_create_self(eboot.bin eb_vita)
     vita_create_vpk(PhaseDistorter.vpk DPDJ00001 eboot.bin
         VERSION "01.00" NAME "Phase Distorter"
-        FILE "${CMAKE_CURRENT_SOURCE_DIR}/resources/phase-distorter.png" sce_sys/icon0.png)
+        FILE "${CMAKE_CURRENT_SOURCE_DIR}/../vita/assets/icon0.png" sce_sys/icon0.png
+        FILE "${CMAKE_CURRENT_SOURCE_DIR}/../vita/assets/bg.png" sce_sys/livearea/contents/bg.png
+        FILE "${CMAKE_CURRENT_SOURCE_DIR}/../vita/assets/template.xml" sce_sys/livearea/contents/template.xml)
 endif()
 
 # Register only synthetic, asset-free checks in default CTest. Optional route
