@@ -25,7 +25,7 @@ constexpr int game_width = 256;
 constexpr int game_height = 224;
 const std::filesystem::path data_dir{"ux0:data/PhaseDistorter"};
 const std::filesystem::path asset_file = data_dir / "game.ebpak";
-const std::filesystem::path save_file = data_dir / "game.srm";
+std::filesystem::path save_file;
 
 std::uint16_t read_buttons() {
     SceCtrlData pad{};
@@ -91,6 +91,8 @@ int main(int, char**) {
                 "game.ebpak file to ux0:data/PhaseDistorter/ on your Vita.");
 
         auto assets = eb::load_game_assets(asset_file, eb::asset_profiles());
+        save_file = data_dir / (assets.version == eb::GameVersion::US
+            ? "earthbound-us.srm" : "mother2-jp.srm");
         sceCtrlSetSamplingMode(SCE_CTRL_MODE_ANALOG);
 
         SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "0");
