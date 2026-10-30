@@ -1,49 +1,55 @@
 # Vita port status
 
-Last updated: initial `vita-port` branch setup.
+Last updated: initial SDL2 frontend implementation on `vita-port`.
 
-## Repository assessment
+## Repository and implementation progress
 
-- [x] Dedicated `vita-port` branch created from `main`.
+- [x] Dedicated `vita-port` branch created from `main`; desktop branch untouched.
 - [x] Existing C++20 core and desktop frontend boundaries identified.
 - [x] Existing SNES framebuffer dimensions identified: 256x224.
 - [x] Existing DSP output identified: 32 kHz signed 16-bit stereo.
-- [ ] VitaSDK core cross-build.
-- [ ] SDL2 Vita frontend.
-- [ ] vitaGL presentation.
-- [ ] Native Vita input mapping.
-- [ ] Vita audio verification.
-- [ ] Vita user-storage paths.
-- [ ] SELF/VPK packaging.
-- [ ] Physical Vita test.
+- [x] Optional `EB_BUILD_VITA` CMake target added; desktop frontend remains independently selectable.
+- [x] Dedicated VitaSDK CMake project and build script added.
+- [x] Initial SDL2 Vita frontend added: framebuffer presentation, Vita button mapping, audio queue, asset-pack loading, and SRAM persistence.
+- [x] Vita build and asset-transfer instructions documented.
+- [ ] VitaSDK cross-build and compiler/linker fixes.
+- [ ] Verify SDL2 Vita renderer and audio backend behavior.
+- [ ] Verify asset-pack and save-file filesystem behavior on device.
+- [ ] Verify VPK installation and launch on physical Vita.
+- [ ] Profile frame pacing, memory use, audio underruns, and suspend/resume on hardware.
 
-## Important implementation findings
+## Current architecture
 
-The desktop target is not just a thin SDL launcher. Its CMake target links
-desktop display/input, SDL audio, an ImGui SDL2/OpenGL2 settings/debug UI and
-OpenGL frame presentation. The current CMake frontend also calls
-`find_package(OpenGL REQUIRED)`. A Vita build therefore needs an explicit
-platform branch; simply changing the compiler target or renaming the desktop
-binary will not make a valid Vita port.
+The Vita frontend deliberately does **not** use the desktop OpenGL/ImGui
+frontend or vitaGL. It uses SDL2's 2D renderer to upload the existing 256x224
+ARGB framebuffer and preserve its 8:7 aspect ratio on the 960x544 display.
+Vita controller input is read through `SceCtrl`; the shared `GameSession`,
+asset validation, native sprite runtime, DSP, and audio queue are reused.
 
-The simulation is more portable: `eb_session`, `eb_core`, `eb_audio`,
-`eb_dsp`, `eb_assets`, and `eb_native_engine` are separate from the SDL
-window and desktop display classes. Reuse these libraries and isolate Vita
-platform services from them.
+The VPK contains the application only. It does not include a ROM or game data.
+A user-created `.ebpak` made by the desktop importer must be copied to
+`ux0:data/PhaseDistorter/game.ebpak`. SRAM is stored at
+`ux0:data/PhaseDistorter/game.srm`.
 
-The existing interactive startup uses `SDL_GetPrefPath` and standard
-filesystem operations for imported assets and saves. Verify the Vita SDL2
-port's preference-path behavior and filesystem support, then explicitly
-establish the application's `ux0:data/PhaseDistorter/` directory rather than
-assuming desktop paths are valid.
+## Build
 
-## Acceptance criteria for the first usable VPK
+With VitaSDK, its SDL2 port, CMake, Python 3, and cc65 (`ca65`/`ld65`)
+installed, set `VITASDK` and run:
+
+```sh
+bash vita/build.sh
+```
+
+The script has not yet been run in a VitaSDK environment. No ELF, SELF, or VPK
+has been produced or tested at this point.
+
+## Remaining acceptance criteria
 
 - VPK installs and launches on a physical PS Vita.
-- Missing assets produce a useful import/setup message.
-- A user-imported EarthBound or Mother 2 asset pack loads successfully.
-- The game renders without distortion at the Vita's 960x544 display size.
-- Vita controls operate the existing SNES input bit mask.
-- Game audio plays without underruns during normal gameplay.
-- SRAM persists across clean exit and relaunch.
+- Missing assets produce a useful setup message.
+- A supported user-imported asset pack loads correctly.
+- Rendering is stable and undistorted at the Vita display resolution.
+- All controls map correctly, including face buttons and shoulder buttons.
+- Audio plays without underruns or drift during normal gameplay.
+- SRAM survives clean exit and relaunch.
 - Desktop builds remain unaffected.
