@@ -54,6 +54,8 @@ class GameSession {
     void observe_completed_frames(FrameObserver observer);
 
     std::vector<std::int16_t> take_audio_samples();
+    // Recycle the caller's previous sample buffer instead of allocating per frame.
+    void take_audio_samples(std::vector<std::int16_t>& destination);
     std::span<std::uint8_t> save_memory();
     std::span<const std::uint8_t> save_memory() const;
     SessionDiagnostics diagnostics(bool include_registers = false) const;

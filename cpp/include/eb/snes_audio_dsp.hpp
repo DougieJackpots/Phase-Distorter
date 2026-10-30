@@ -27,6 +27,9 @@ public:
     // take_stereo_samples transfers all queued signed 16-bit L,R sample pairs.
     void advance_audio_clocks(unsigned audio_clocks);
     std::vector<std::int16_t> take_stereo_samples();
+    // Replace destination with pending samples, returning its old storage to
+    // the producer. Reserve destination before the first call for steady reuse.
+    void take_stereo_samples(std::vector<std::int16_t>& destination);
     std::uint64_t generated_stereo_frame_count() const { return generated_stereo_frames_; }
     void snapshot_io(SnapshotArchive &archive);
 

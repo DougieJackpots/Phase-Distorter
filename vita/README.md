@@ -108,3 +108,19 @@ frame-pacer tests, asset validation and whitespace checks. VitaSDK, VPK install,
 physical scanout and game performance still require validation on your Vita.
 If the LiveArea still errors, record its exact error code/message; valid image
 encoding alone does not establish the cause of a device-side failure.
+
+## Allocation optimisation follow-up
+
+The Vita audio handoff now swaps two preallocated sample buffers. It no longer
+moves the DSP queue away and allocates a replacement each frame. The original
+owning audio API remains available to desktop/export callers. Shared sprite
+snapshot assignments reuse vector capacity instead of constructing conditional
+vector temporaries. The bounded 30-actor ordering pass uses a fixed array and
+stable insertion sort, preserving priority/depth ties without heap scratch.
+
+Validation: 120 generated audio blocks match the existing API sample-for-sample
+with zero allocations measured in the recycled production/drain path; original
+DSP and audio playback tests pass. 100,000 host actor-order fixtures match the
+previous stable sort, including ties, empty lists and 30 actors. Changed renderer,
+session and Vita frontend pass host syntax checks (Vita APIs are declaration
+stubs). These checks do not measure physical Vita FPS or full-game parity.

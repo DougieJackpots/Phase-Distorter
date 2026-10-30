@@ -114,6 +114,11 @@ void SnesAudioDsp::advance_audio_clocks(unsigned audio_clocks) {
     }
 }
 
+void SnesAudioDsp::take_stereo_samples(std::vector<std::int16_t>& destination) {
+    destination.clear();
+    destination.swap(queued_stereo_samples_);
+}
+
 // Transfer queue ownership to the caller so device queuing or WAV export can
 // run without holding a reference into mutable synthesis storage. The running
 // total is intentionally unaffected by draining the pending sample vector.

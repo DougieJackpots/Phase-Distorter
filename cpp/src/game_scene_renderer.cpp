@@ -387,7 +387,8 @@ void GameSceneRenderer::prepare_presentation_objects(const SceneReadView &view) 
         unsigned slot, priority;
         int depth;
     };
-    std::vector<Entity> entities;
+    std::array<Entity, 30> entities{};
+    std::size_t entity_count = 0;
     std::array<bool, 30> visited{};
     for (unsigned slot = ram(source.wram_first_entity); slot < 60 && !(slot & 1) && !visited[slot / 2];
          slot = ram(source.wram_entity_next + slot)) {
@@ -409,15 +410,26 @@ void GameSceneRenderer::prepare_presentation_objects(const SceneReadView &view) 
         }
         if (priority > 3)
             continue;
-        entities.push_back({slot, priority, int16_t(ram(source.wram_entity_world_coordinates.y + slot))});
+        entities[entity_count++] = {slot, priority, int16_t(ram(source.wram_entity_world_coordinates.y + slot))};
     }
     // The source queues priorities 0..3, sorting ordinary world actors by
     // descending world Y within priority 1. No allocation or callback executes.
-    std::stable_sort(entities.begin(), entities.end(), [](const Entity &a, const Entity &b) {
+    const auto before = [](const Entity &a, const Entity &b) {
         return a.priority != b.priority ? a.priority < b.priority : a.priority == 1 && a.depth > b.depth;
-    });
-    for (const auto &entity : entities)
-        append_presentation_entity(view, entity.slot, presentation_objects_);
+    };
+    // At most 30 linked actors: stable insertion sort needs no heap scratch.
+    // Strict comparisons preserve traversal order for equal-priority/depth ties.
+    for (std::size_t i = 1; i < entity_count; ++i) {
+        const auto entity = entities[i];
+        auto j = i;
+        while (j && before(entity, entities[j - 1])) {
+            entities[j] = entities[j - 1];
+            --j;
+        }
+        entities[j] = entity;
+    }
+    for (std::size_t i = 0; i < entity_count; ++i)
+        append_presentation_entity(view, entities[i].slot, presentation_objects_);
 }
 
 std::optional<std::uint32_t> GameSceneRenderer::append_presentation_entity(
@@ -1247,7 +1259,10 @@ void GameSceneRenderer::render_presentation_margins(const SceneReadView &view, u
 void GameSceneRenderer::begin_scanline(const SceneReadView &view, unsigned y) {
     if (!y) {
         native_sprite_frame_ = view.native_sprites && native_uploaded_frame_;
-        native_sprite_objects_ = native_sprite_frame_ ? native_uploaded_objects_ : std::vector<PresentationObject>{};
+        if (native_sprite_frame_)
+            native_sprite_objects_ = native_uploaded_objects_;
+        else
+            native_sprite_objects_.clear();
         native_sprite_frame_number_ = view.completed_frames;
         // Latch the scene alongside its first visible row, before any pixel or
         // metadata is written. A transition can happen inside one CPU step, so
@@ -1957,7 +1972,10 @@ void GameSceneRenderer::capture_oam_upload(const SceneReadView &view, unsigned b
         // A source buffer whose build was not observed has unknown ownership.
         // Inferring it from current actors would reintroduce the age/alias bug.
         native_uploaded_frame_ = view.native_sprites && build.begun && build.native_frame;
-        native_uploaded_objects_ = native_uploaded_frame_ ? build.objects : std::vector<PresentationObject>{};
+        if (native_uploaded_frame_)
+            native_uploaded_objects_ = build.objects;
+        else
+            native_uploaded_objects_.clear();
         presentation_uploaded_objects_ = build.objects;
         presentation_uploaded_oam_ = build.oam;
         presentation_uploaded_oam_indexed_ = true;

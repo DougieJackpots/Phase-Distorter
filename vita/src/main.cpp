@@ -195,6 +195,10 @@ int main(int, char**) {
             std::cerr << "Audio disabled: " << error.what() << '\n';
         }
 
+        // Producer and consumer exchange their retained buffers each frame.
+        std::vector<std::int16_t> audio_samples;
+        audio_samples.reserve(2048);
+
         // Use one host clock and avoid unbounded presentation catch-up.
         eb::FramePacer pacer(eb::FramePacer::Clock::now());
         bool running = true;
@@ -212,12 +216,9 @@ int main(int, char**) {
             const auto frames = session.advance_frame(read_buttons());
             const auto audio_start = Clock::now();
             performance.simulation.add(milliseconds(simulation_start, audio_start));
-            if (audio) {
-                const auto samples = session.take_audio_samples();
-                audio->append(samples);
-            } else {
-                (void)session.take_audio_samples();
-            }
+            session.take_audio_samples(audio_samples);
+            if (audio)
+                audio->append(audio_samples);
 
             const auto upload_start = Clock::now();
             performance.audio.add(milliseconds(audio_start, upload_start));

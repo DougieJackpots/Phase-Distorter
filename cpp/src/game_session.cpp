@@ -126,6 +126,10 @@ void GameSession::observe_completed_frames(FrameObserver observer) {
     };
 }
 
+void GameSession::take_audio_samples(std::vector<std::int16_t>& destination) {
+    state_->audio_dsp.take_stereo_samples(destination);
+}
+
 std::vector<std::int16_t> GameSession::take_audio_samples() {
     return state_->audio_dsp.take_stereo_samples();
 }

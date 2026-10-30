@@ -9,6 +9,18 @@
 #include <iostream>
 #include <stdexcept>
 #include <vector>
+#include <cstdlib>
+#include <new>
+
+// Count real heap allocations around the steady-state audio producer/drain path.
+static std::size_t allocations = 0;
+void* operator new(std::size_t size) {
+    ++allocations;
+    if (auto* memory = std::malloc(size ? size : 1)) return memory;
+    throw std::bad_alloc();
+}
+void operator delete(void* memory) noexcept { std::free(memory); }
+void operator delete(void* memory, std::size_t) noexcept { std::free(memory); }
 
 namespace {
 void configure_looping_test_voice(std::array<std::uint8_t, 65536>& audio_ram, eb::SnesAudioDsp& audio_dsp) {
@@ -70,6 +82,28 @@ int main() {
         auto muted = audio_dsp.take_stereo_samples();
         require(std::all_of(muted.begin() + 4, muted.end(), [](auto sample) { return sample == 0; }),
                 "DSP mute register did not silence output");
+        std::array<std::uint8_t, 65536> reused_ram{}, reference_ram{};
+        eb::SnesAudioDsp reused(reused_ram), reference(reference_ram);
+        configure_looping_test_voice(reused_ram, reused);
+        configure_looping_test_voice(reference_ram, reference);
+        std::vector<std::int16_t> reusable;
+        reusable.reserve(2048);
+        for (unsigned frame = 0; frame < 120; ++frame) {
+            const auto count = allocations;
+            reused.advance_audio_clocks(32000);
+            reused.take_stereo_samples(reusable);
+            require(allocations == count, "Recycled audio buffers allocated during steady playback");
+            reference.advance_audio_clocks(32000);
+            require(reusable == reference.take_stereo_samples(),
+                    "Recycled audio changed samples, stereo order or drain behavior");
+        }
+        const auto count = allocations;
+        reused.take_stereo_samples(reusable);
+        require(reusable.empty() && allocations == count,
+                "Empty recycled drain retained old samples or allocated");
+        require(reused.generated_stereo_frame_count() == reference.generated_stereo_frame_count(),
+                "Buffer recycling changed DSP sample counts");
+        std::cout << "120 recycled audio blocks match owning API with zero steady-state allocations\n";
         std::cout << "DSP BRR synthesis, clock partitioning, stereo volume, queue drain, and mute passed\n";
     } catch (const std::exception& error) {
         std::cerr << error.what() << '\n';
