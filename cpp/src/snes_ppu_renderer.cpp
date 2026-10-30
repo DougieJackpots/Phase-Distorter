@@ -4,6 +4,7 @@
 
 #include "snes_ppu_constants.hpp"
 #include "planar_tile_row.hpp"
+#include "ppu_brightness.hpp"
 
 namespace eb {
 namespace {
@@ -288,6 +289,7 @@ uint8_t SceneReadView::sample_sprite_pixels(unsigned y, std::span<PpuPixel> resu
             row = height - 1 - row;
         const unsigned base = (ppu_registers[1] & 7) * 16384 +
                               ((attributes & 1) ? (((ppu_registers[1] >> 3) & 3) + 1) * 8192 : 0);
+        detail::PlanarTileRow sprite_row;
         for (unsigned col = 0; col < width; ++col) {
             const int px = x + int(col);
             if (!(col & 7) && px > -8 && px < 256 && ++tiles > 34) {
@@ -308,9 +310,7 @@ uint8_t SceneReadView::sample_sprite_pixels(unsigned y, std::span<PpuPixel> resu
                 const unsigned tile_index =
                     tile | ((object_attributes[object_address + 2] + sprite_pixel_x / 8) & 15);
                 const unsigned plane_address = base + tile_index * 32 + (row & 7) * 2;
-                for (unsigned plane = 0; plane < 4; ++plane)
-                    color |= ((video_ram[(plane_address + (plane / 2) * 16 + (plane & 1)) & 0xffff] >>
-                               (7 - (sprite_pixel_x & 7))) & 1) << plane;
+                color = sprite_row.sample(video_ram, plane_address, 4, sprite_pixel_x & 7);
             }
             // OAM order resolves overlap before BG priority comparison.
             if (color && result[output_x].priority < 0)
@@ -476,8 +476,7 @@ GameSceneRenderer::CompositePixel GameSceneRenderer::compose_pixel(
         }
         const unsigned brightness = view.ppu_registers[0] & 15;
         const auto component = [brightness](unsigned value) {
-            const auto scaled = (value * brightness + 7) / 15;
-            return (scaled << 3) | (scaled >> 2);
+            return unsigned(detail::brightness_component(brightness, value));
         };
         return 0xff000000 | (component(color & 31) << 16) | (component((color >> 5) & 31) << 8) |
                component((color >> 10) & 31);

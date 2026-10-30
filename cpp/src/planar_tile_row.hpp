@@ -20,4 +20,19 @@ inline std::uint64_t decode_planar_row(std::span<const std::uint8_t, 65536> vram
         decoded |= lanes[vram[std::uint16_t(address + (plane / 2) * 16 + (plane & 1))]] << plane;
     return decoded;
 }
+// Instantiate per sprite/scanline. It cannot survive a VRAM write or a new
+// borrowed raster view; no global invalidation or retained memory pointer.
+struct PlanarTileRow {
+    unsigned address = ~0u, depth = 0;
+    std::uint64_t pixels = 0;
+    unsigned sample(std::span<const std::uint8_t, 65536> vram, unsigned row_address,
+                    unsigned bitdepth, unsigned lane) {
+        if (address != row_address || depth != bitdepth) {
+            pixels = decode_planar_row(vram, row_address, bitdepth);
+            address = row_address;
+            depth = bitdepth;
+        }
+        return unsigned(pixels >> (lane * 8)) & 255;
+    }
+};
 } // namespace eb::detail
