@@ -46,7 +46,7 @@ The VPK does not contain a ROM or extracted game data.
 2. Copy the resulting user-created asset pack to
    `ux0:data/PhaseDistorter/game.ebpak` on the Vita.
 3. Launch the installed bubble. SRAM is written to
-   `ux0:data/PhaseDistorter/game.srm` periodically and on clean exit.
+   `ux0:data/PhaseDistorter/earthbound-us.srm` or\n   `ux0:data/PhaseDistorter/mother2-jp.srm` periodically and on clean exit.
 
 The original ROM is not packaged or modified.
 
