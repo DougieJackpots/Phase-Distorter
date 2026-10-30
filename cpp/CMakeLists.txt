@@ -340,7 +340,8 @@ if(EB_BUILD_VITA)
     target_compile_options(eb_vita PRIVATE -O3 -fomit-frame-pointer)
     target_link_options(eb_vita PRIVATE -Wl,--gc-sections)
     target_include_directories(eb_vita PRIVATE include)
-    target_compile_definitions(eb_vita PRIVATE SDL_MAIN_HANDLED EB_VITA_BUILD_TYPE=\"$<CONFIG>\")
+    target_compile_definitions(eb_vita PRIVATE SDL_MAIN_HANDLED
+        "EB_VITA_BUILD_TYPE=\"$<CONFIG>\"")
     target_link_libraries(eb_vita PRIVATE
         eb_session eb_assets eb_native_asset_profiles SDL2::SDL2
         SceAppMgr_stub SceAppUtil_stub SceAudio_stub SceAudioIn_stub
