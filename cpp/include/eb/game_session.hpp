@@ -2,6 +2,7 @@
 
 #include "eb/game_version.hpp"
 #include "eb/runtime_timing.hpp"
+#include "eb/composition_policy.hpp"
 #include "eb/session_diagnostics.hpp"
 #include "eb/logical_clock_policy.hpp"
 #include "eb/presentation_frame.hpp"
@@ -55,6 +56,10 @@ class GameSession {
     void observe_completed_frames(FrameObserver observer);
 
     // Optional sampled host timings, excluded from snapshots and game clocks.
+    bool session_unit_optimised() const noexcept;
+    bool dsp_unit_optimised() const noexcept;
+    void set_composition_stride(unsigned stride);
+    CompositionStats composition_stats() const;
     void enable_runtime_timing(bool enabled);
     RuntimeTiming last_runtime_timing() const;
     std::vector<std::int16_t> take_audio_samples();

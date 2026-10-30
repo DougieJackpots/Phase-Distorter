@@ -4,6 +4,9 @@
 #include "eb/audio_output.hpp"
 #include "eb/logical_clock_policy.hpp"
 #include "generated_assets.hpp"
+#include "eb/input_replay.hpp"
+#include "performance_options.hpp"
+#include <array>
 
 #include <SDL.h>
 #include <psp2/ctrl.h>
@@ -23,6 +26,9 @@
 #include <thread>
 #include <vector>
 
+#ifndef EB_VITA_BUILD_TYPE
+#define EB_VITA_BUILD_TYPE "unreported"
+#endif
 namespace {
 constexpr int game_width = 256;
 constexpr int game_height = 224;
@@ -43,7 +49,16 @@ struct Performance {
     Clock::time_point epoch = Clock::now();
     std::uint64_t updates = 0, frames = 0, late = 0, saves = 0;
     Timing simulation, audio, upload, present, sleep, save;
-    Timing cpu_hardware, ppu, dsp;
+    Timing cpu_hardware, ppu, dsp, ppu_state, ppu_compose;
+    std::array<double, 512> simulation_samples{};
+    std::size_t sample_count = 0;
+    std::uint64_t over_budget = 0, composed = 0, skipped = 0;
+    std::uint64_t main_instructions = 0, spc_instructions = 0, master_clocks = 0, native_batches = 0;
+    void add_simulation(double ms) {
+        simulation.add(ms);
+        if (sample_count < simulation_samples.size()) simulation_samples[sample_count++] = ms;
+        if (ms > 1000.0 / eb::FramePacer::frame_rate) ++over_budget;
+    }
     std::uint64_t core_samples = 0, ppu_calls = 0, dsp_calls = 0;
     void add_core(const eb::RuntimeTiming& timing) {
         if (!timing.sampled) return;
@@ -51,6 +66,8 @@ struct Performance {
         cpu_hardware.add(timing.cpu_hardware_ns / 1e6);
         ppu.add(timing.ppu_ns / 1e6);
         dsp.add(timing.dsp_ns / 1e6);
+        ppu_state.add(timing.ppu_state_ns / 1e6);
+        ppu_compose.add(timing.ppu_compose_ns / 1e6);
         ppu_calls += timing.ppu_calls;
         dsp_calls += timing.dsp_calls;
     }
@@ -69,13 +86,32 @@ struct Performance {
         write("sleep", sleep, updates); write("save", save, saves);
         write("cpu_hardware_sample", cpu_hardware, core_samples);
         write("ppu_sample", ppu, core_samples); write("dsp_sample", dsp, core_samples);
+        write("ppu_state_sample", ppu_state, core_samples);
+        write("ppu_compose_sample", ppu_compose, core_samples);
+        auto sorted = simulation_samples;
+        std::sort(sorted.begin(), sorted.begin() + sample_count);
+        if (sample_count)
+            output << " simulation_p50_ms=" << sorted[(sample_count * 50 + 99) / 100 - 1]
+                   << " simulation_p95_ms=" << sorted[(sample_count * 95 + 99) / 100 - 1];
+        output << " distribution_samples=" << sample_count << " over_budget_updates=" << over_budget
+               << " over_budget_fraction=" << double(over_budget) / updates
+               << " composed_frames=" << composed << " skipped_frames=" << skipped
+               << " composed_fps=" << composed / seconds;
+        output << " main_instructions_per_game_frame=" << double(main_instructions) / std::max<std::uint64_t>(frames, 1)
+               << " spc_instructions_per_game_frame=" << double(spc_instructions) / std::max<std::uint64_t>(frames, 1)
+               << " master_clocks_per_game_frame=" << double(master_clocks) / std::max<std::uint64_t>(frames, 1)
+               << " simulation_ns_per_main_instruction=" << simulation.total * 1e6 / std::max<std::uint64_t>(main_instructions, 1)
+               << " native_batches=" << native_batches;
         output << " core_samples=" << core_samples << " ppu_calls=" << ppu_calls
                << " dsp_calls=" << dsp_calls;
         output << " saves=" << saves << '\n';
         output.flush();
         updates = frames = late = saves = 0;
         simulation = audio = upload = present = sleep = save = {};
-        cpu_hardware = ppu = dsp = {};
+        cpu_hardware = ppu = dsp = ppu_state = ppu_compose = {};
+        sample_count = 0;
+        over_budget = composed = skipped = 0;
+        main_instructions = spc_instructions = master_clocks = native_batches = 0;
         core_samples = ppu_calls = dsp_calls = 0;
         epoch = Clock::now();
     }
@@ -138,7 +174,7 @@ void show_error(const std::string& message) {
 }
 } // namespace
 
-int main(int, char**) {
+int main(int argc, char** argv) {
     try {
         // Give the CPU-heavy game core the standard Vita performance clock.
         scePowerSetArmClockFrequency(444);
@@ -146,6 +182,13 @@ int main(int, char**) {
         if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_EVENTS) != 0)
             throw std::runtime_error(std::string("SDL initialization failed: ") + SDL_GetError());
         std::filesystem::create_directories(data_dir);
+        vita::PerformanceOptions options;
+        std::ifstream config(data_dir / "performance.cfg");
+        if (config) options.read(config);
+        options.arguments(argc, argv);
+        const auto script_path = options.input_script.empty() ? std::string{} :
+            (data_dir / options.input_script).string();
+        eb::InputReplay replay(eb::input_script(script_path));
         if (!std::filesystem::exists(asset_file))
             throw std::runtime_error(
                 "No game asset pack was found. On your PC, use the desktop version to "
@@ -160,7 +203,7 @@ int main(int, char**) {
         Performance performance;
         if (!performance.output)
             std::cerr << "Could not open performance.log; gameplay will continue.\n";
-        performance.output << "Vita performance diagnostics v3; sampled core timings include instrumentation overhead\n";
+        performance.output << "Vita performance diagnostics v4; sampled core timings include instrumentation overhead\n";
 #ifdef __OPTIMIZE__
         performance.output << "compiler_optimisation=enabled\n";
 #else
@@ -168,6 +211,10 @@ int main(int, char**) {
 #endif
         performance.output << "compiler=" << __VERSION__
                            << " arm_mhz=" << scePowerGetArmClockFrequency() << '\n';
+        performance.output << "enhanced_timing=" << options.enhanced_timing
+            << " composition_stride=" << options.composition_stride
+            << " core_timing_runtime=" << options.core_timing << " replay_only=" << options.replay_only << " save_enabled=" << options.save_enabled
+            << " input_script=" << options.input_script << " replay_frames=" << options.frames << '\n';
         SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "0");
         std::unique_ptr<SDL_Window, decltype(&SDL_DestroyWindow)> window(
             SDL_CreateWindow("Phase Distorter", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
@@ -204,12 +251,17 @@ int main(int, char**) {
             throw std::runtime_error(std::string("Could not create game framebuffer: ") + SDL_GetError());
         SDL_RenderSetLogicalSize(renderer.get(), game_width, game_height);
 
-        eb::GameSession session(assets.image, assets.version);
+        eb::GameSession session(assets.image, assets.version, options.enhanced_timing);
         session.set_logical_clock_policy(eb::LogicalClockPolicy::ActorFrames);
         session.enable_native_sprite_runtime();
         session.configure_presentation(game_width, false, false);
-        load_save(session);
-        session.enable_runtime_timing(true);
+        session.set_composition_stride(options.composition_stride);
+        if (options.save_enabled) load_save(session);
+        session.enable_runtime_timing(options.core_timing);
+        performance.output << "build_configuration=" << EB_VITA_BUILD_TYPE
+            << " session_unit_optimisation=" << session.session_unit_optimised()
+            << " dsp_unit_optimisation=" << session.dsp_unit_optimised() << '\n';
+        performance.output.flush();
 
         std::unique_ptr<eb::DeviceAudioQueue> audio;
         try {
@@ -226,20 +278,34 @@ int main(int, char**) {
         eb::FramePacer pacer(eb::FramePacer::Clock::now());
         bool running = true;
         auto last_save = std::chrono::steady_clock::now();
+        auto previous_composition = session.composition_stats();
+        auto previous_diagnostics = session.diagnostics();
         while (running) {
             SDL_Event event{};
             while (SDL_PollEvent(&event))
                 if (event.type == SDL_QUIT ||
                     (event.type == SDL_KEYDOWN && event.key.keysym.sym == SDLK_ESCAPE))
                     running = false;
-            if (!running)
+            if (!running || (options.frames && session.frames() >= options.frames))
                 break;
 
             const auto simulation_start = Clock::now();
-            const auto frames = session.advance_frame(read_buttons());
+            const auto scripted = replay.buttons_for_frame(session.frames());
+            const auto buttons = options.replay_only ? scripted : std::uint16_t(read_buttons() | scripted);
+            const auto frames = session.advance_frame(buttons);
             const auto audio_start = Clock::now();
-            performance.simulation.add(milliseconds(simulation_start, audio_start));
+            performance.add_simulation(milliseconds(simulation_start, audio_start));
             performance.add_core(session.last_runtime_timing());
+            const auto composition = session.composition_stats();
+            performance.composed += composition.composed - previous_composition.composed;
+            performance.skipped += composition.skipped - previous_composition.skipped;
+            previous_composition = composition;
+            const auto diagnostics = session.diagnostics();
+            performance.main_instructions += diagnostics.cpu_instructions - previous_diagnostics.cpu_instructions;
+            performance.spc_instructions += diagnostics.audio_cpu_instructions - previous_diagnostics.audio_cpu_instructions;
+            performance.master_clocks += diagnostics.master_clocks - previous_diagnostics.master_clocks;
+            performance.native_batches += diagnostics.native_gameplay_batches - previous_diagnostics.native_gameplay_batches;
+            previous_diagnostics = diagnostics;
             session.take_audio_samples(audio_samples);
             if (audio)
                 audio->append(audio_samples);
@@ -257,7 +323,7 @@ int main(int, char**) {
             SDL_RenderPresent(renderer.get());
             const auto save_start = Clock::now();
             performance.present.add(milliseconds(present_start, save_start));
-            if (save_start - last_save >= std::chrono::seconds(10)) {
+            if (options.save_enabled && save_start - last_save >= std::chrono::seconds(10)) {
                 if (write_save(session)) {
                     ++performance.saves;
                     performance.save.add(milliseconds(save_start, Clock::now()));
@@ -282,7 +348,7 @@ int main(int, char**) {
         }
         performance.report(Clock::now(), true);
 
-        write_save(session);
+        if (options.save_enabled) write_save(session);
         audio.reset();
         texture.reset();
         renderer.reset();

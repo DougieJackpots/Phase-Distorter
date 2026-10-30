@@ -8,9 +8,10 @@ struct RuntimeTiming {
     bool sampled = false;
     std::uint64_t cpu_hardware_ns = 0, ppu_ns = 0, dsp_ns = 0;
     std::uint64_t ppu_calls = 0, dsp_calls = 0;
+    std::uint64_t ppu_state_ns = 0, ppu_compose_ns = 0;
 };
 namespace runtime_timing {
-enum class Phase : unsigned { CpuHardware, Ppu, Dsp };
+enum class Phase : unsigned { CpuHardware, Ppu, Dsp, PpuState, PpuCompose };
 #ifdef EB_RUNTIME_TIMING
 struct Context {
     using Clock = std::chrono::steady_clock;
@@ -23,6 +24,8 @@ struct Context {
         case Phase::CpuHardware: result->cpu_hardware_ns += ns; break;
         case Phase::Ppu: result->ppu_ns += ns; break;
         case Phase::Dsp: result->dsp_ns += ns; break;
+        case Phase::PpuState: result->ppu_ns += ns; result->ppu_state_ns += ns; break;
+        case Phase::PpuCompose: result->ppu_ns += ns; result->ppu_compose_ns += ns; break;
         }
         last = now;
     }

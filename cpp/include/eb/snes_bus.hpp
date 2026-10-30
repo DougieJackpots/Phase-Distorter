@@ -1,5 +1,6 @@
 #pragma once
 #include "eb/photosensitivity_filter.hpp"
+#include "eb/composition_policy.hpp"
 
 #include "eb/game_version.hpp"
 #include "eb/game_scene_renderer.hpp"
@@ -124,11 +125,23 @@ class SnesBus {
     // temporarily uses 256; its first visible row restores the requested width
     // on exit. Authored map sector boundaries
     // constrain the displayed scenery; window/HUD layers remain centered.
+    void set_composition_stride(unsigned stride) {
+        if (stride > 1 && !scene_renderer_.supports_composition_stride())
+            throw std::invalid_argument("Composition skipping requires native width, effects off and direct rendering off");
+        composition_policy_.set_stride(stride);
+    }
+    CompositionStats composition_stats() const { return composition_policy_.stats(); }
     void set_presentation_width(unsigned width) {
+        if (composition_policy_.stride() > 1 && width != 256)
+            throw std::invalid_argument("Composition skipping requires width 256");
         scene_renderer_.set_presentation_width(scene_view(), width);
     }
     unsigned presentation_width() const { return scene_renderer_.presentation_width(); }
-    void set_direct_rendering_enabled(bool enabled) { scene_renderer_.enable_direct_rendering(enabled); }
+    void set_direct_rendering_enabled(bool enabled) {
+        if (enabled && composition_policy_.stride() > 1)
+            throw std::invalid_argument("Direct rendering requires composition stride 1");
+        scene_renderer_.enable_direct_rendering(enabled);
+    }
     std::shared_ptr<const DirectSceneFrame> direct_scene() const { return scene_renderer_.direct_scene(); }
     std::span<const uint32_t> presentation_pixels() const {
         return scene_renderer_.presentation_pixels(native_framebuffer);
@@ -146,6 +159,8 @@ class SnesBus {
     // Both spans match the presentation canvas, or are empty while disabled.
     // Consume them inside on_presentation_frame before another frame starts.
     void set_presentation_effects_enabled(bool enabled) {
+        if (enabled && composition_policy_.stride() > 1)
+            throw std::invalid_argument("Presentation effects require composition stride 1");
         scene_renderer_.set_presentation_effects_enabled(scene_view(), enabled);
     }
     std::span<const uint8_t> presentation_effect_mask() const {
@@ -237,6 +252,7 @@ class SnesBus {
     bool pending_divide_ = false;
     uint8_t sprite_status_ = 0;
     GameSceneRenderer scene_renderer_;
+    CompositionPolicy composition_policy_;
     SceneReadView scene_view() const;
     unsigned next_hardware_event_clocks() const;
 

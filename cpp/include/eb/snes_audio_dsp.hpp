@@ -14,6 +14,7 @@ class SnapshotArchive;
 class SnesAudioDsp {
 public:
     static constexpr int output_sample_rate = 32000;
+    static bool compiled_with_optimisation() noexcept;
     // The RAM owner must outlive SnesAudioDsp. The Spc700AudioCpu overload connects
     // register and clock callbacks and clears those callbacks on destruction.
     explicit SnesAudioDsp(std::span<std::uint8_t, 65536> audio_ram);

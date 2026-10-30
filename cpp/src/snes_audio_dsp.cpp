@@ -11,6 +11,14 @@
 #include <utility>
 
 namespace eb {
+bool SnesAudioDsp::compiled_with_optimisation() noexcept {
+#ifdef __OPTIMIZE__
+    return true;
+#else
+    return false;
+#endif
+}
+
 // The synthesis core advances the original DSP machinery (BRR decoding,
 // voices, envelopes, and echo). This wrapper only connects clocks, registers,
 // shared RAM, and the frontend's sample queue; it does not remix the output.

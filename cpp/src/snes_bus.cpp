@@ -18,6 +18,7 @@ void SnesBus::snapshot_io(SnapshotArchive &archive) {
     bool effects = bool(native_sprite_effects_), stationary = native_stationary_sprites_enabled_;
     archive(host, native, effects, stationary);
     if (archive.loading()) {
+        composition_policy_ = {}; // Host-only settings are never loaded from machine snapshots.
         if (effects != native || (stationary && !native))
             throw std::runtime_error("Invalid snapshot native sprite ownership");
         // Immutable content and service references come from this cartridge.
@@ -769,6 +770,7 @@ void SnesBus::advance_clocks(unsigned clocks, bool pause_for_refresh) {
             refresh_clock_ = unsigned(((master_clocks_ + 538) & ~uint64_t(7)) + 2 - master_clocks_);
             if (++scanline_index_ == 262) {
                 scanline_index_ = 0;
+                composition_policy_.completed(completed_frames);
                 ++completed_frames;
                 nmi_flag_ = false;
                 if (!(ppu_registers_[0] & 0x80))

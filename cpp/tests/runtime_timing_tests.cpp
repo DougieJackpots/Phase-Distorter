@@ -13,6 +13,8 @@ int main() {
             runtime_timing::Frame frame(result, true);
             for (unsigned i = 0; i < 224; ++i) {
                 runtime_timing::Scope ppu(runtime_timing::Phase::Ppu);
+                runtime_timing::Scope state(runtime_timing::Phase::PpuState);
+                runtime_timing::Scope compose(runtime_timing::Phase::PpuCompose);
                 runtime_timing::Scope dsp(runtime_timing::Phase::Dsp);
             }
         }
@@ -21,6 +23,8 @@ int main() {
                 "Nested scopes lost or duplicated phase calls");
         require(result.cpu_hardware_ns + result.ppu_ns + result.dsp_ns > 0,
                 "Sampled frame recorded no elapsed time");
+        require(result.ppu_ns >= result.ppu_state_ns + result.ppu_compose_ns,
+                "PPU subphase accounting exceeded total PPU time");
         require(runtime_timing::active == nullptr, "Frame leaked a timing context");
 #else
         require(!result.sampled && !result.ppu_calls && !result.dsp_calls,

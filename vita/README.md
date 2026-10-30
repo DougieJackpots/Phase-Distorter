@@ -152,3 +152,116 @@ Host validation covers enabled/disabled probes, nested phases, resets and
 exception cleanup. DSP regression fixtures also pass with profiling active,
 including sample equality and zero allocations in recycled audio handoff.
 Vita cross-build and device timings still need checking on your SDK/hardware.
+
+## Isolated timing/stride experiments
+
+These changes live on `vita-timing-stride-experiments`. Without a configuration
+file, behavior remains enhanced timing on, stride 1, physical input and SRAM on.
+No threshold, multiplier, toolchain ABI or DSP batching changes are included.
+
+The Vita frontend reads `ux0:data/PhaseDistorter/performance.cfg`. Four presets
+in `vita/experiments/` compare timing on/off crossed with composition stride 1/2.
+Copy one preset to that path and copy your replay as `route.txt` into the same
+directory. Script format matches the desktop: each non-comment line contains
+`<hardware-frame> <SNES-joymask>`; masks may be decimal or `0x` hexadecimal.
+Inputs remain held until the next listed change. Use a route that reaches the
+scene under test. A blank/boot-only route does not measure overworld or battle.
+
+Replay presets cold-start without loading or writing SRAM, ignore physical
+controller input, run 3600 hardware frames and exit. Save each `performance.log`
+under a different name before the next run. Replay-only always disables SRAM,
+even if a config requests saving. For manual testing use `replay_only=0`, remove
+`input_script`, set `frames=0`, and decide explicitly whether to enable SRAM.
+Removing performance.cfg restores defaults. Invalid keys/values cause a setup
+error rather than silently choosing a different experiment.
+
+The frontend also accepts `--input-script route.txt --replay-only --frames 3600`,
+`--enhanced-timing 0|1`, `--composition-stride 1|2|3`, and `--no-save` if your Vita
+launcher supplies arguments. CLI options override the file. These are Vita
+options; the desktop launch parser is unchanged.
+
+Diagnostics v4 adds per-update simulation p50/p95, over-budget count/fraction,
+composed/skipped hardware-frame counts and composed FPS. `displayed_fps` counts
+SDL presents, including repeated pictures; it is not the number of unique
+pictures at stride 2. Percentiles use actual simulation update times (up to 512
+updates per five-second report), not percentiles of window averages. Core phase
+samples remain one update in 61 and include measurement overhead.
+`ppu_state_sample_*` covers scanline setup and flags-only work on skipped rows;
+`ppu_compose_sample_*` includes sprite pixel sampling/overflow on composed rows,
+composition, and presentation capture. Sprite overflow on composed rows is not
+separately timed because that would require another OAM pass. Remaining PPU
+scope overhead stays in the total PPU counter.
+
+Stride 2 composes hardware frame indices 0,2,4,..., keeps scene preparation and
+OAM-upload handlers running, and retains range/time-over evaluation on skipped
+scanlines. HDMA, IRQs, CPU/SPC/DSP clocks and sample generation continue normally.
+The last complete picture is presented on skipped ticks. Skipping is rejected
+with widescreen, flash-reference effects or direct-scene rendering enabled.
+Fixed-stride output may miss alternating-frame visual effects; adaptive skipping
+is not implemented. Host composition settings/counters are excluded from machine
+snapshots and reset to stride 1 when loading a snapshot.
+
+Disabling enhanced timing removes the existing extra entity CPU allowance; it
+retains the Vita frontend's native sprite runtime and ActorFrames policy. It is
+not a promise of exact original-SNES gameplay. Timing modes can diverge in game
+state, so compare scene distributions rather than matching their frame hashes.
+
+### Correctness comparison before relying on stride 2
+
+The optional host target `composition_stride_differential` runs two cores from
+one asset pack with identical input and timing settings. It compares complete
+serialized machine states with only native framebuffer bytes normalized, PCM,
+and composed pictures at their original indices. It checks that skipped frames
+hold the previous picture. With `EB_GAMEPLAY_AUDIT=ON`, it additionally compares
+ordered CPU/DMA/HDMA bus access vectors. Without audit it reports that this check
+was not built; run both builds to cover the ordinary native-batching path too.
+
+Configure the host C++ project with frontend off, tests on, checked-in generated
+sources and (for the audit run) `-DEB_GAMEPLAY_AUDIT=ON`. Build and run:
+
+```sh
+cmake --build build-host --target composition_stride_differential
+build-host/composition_stride_differential --assets /path/game.ebpak \
+  --input-script /path/route.txt --replay-only --frames 3600 --stride 2 \
+  --enhanced-timing 1
+```
+
+Repeat with `--enhanced-timing 0`, both audit settings, and representative US/JP
+routes including battle swirls/PSI. `--native-sprites 0` additionally tests hardware
+OAM rendering. A mismatch is a blocker to trusting skipped composition.
+
+Validation available here is limited to host syntax checks, strict option and
+composition-policy tests, runtime timing tests, and 4096 randomized hardware-OAM
+fixtures comparing flags-only against composed overflow results. No user game
+asset pack or VitaSDK is available here, so the full replay differential, VPK
+cross-build and physical-Vita performance have NOT been run. This is an opt-in
+experiment, not an established 60-game-tick result.
+
+Diagnostics v4 also logs the CMake configuration and optimisation probes compiled
+inside the session and DSP translation units. The older `compiler_optimisation`
+field describes only the frontend and is insufficient to identify an optimised
+core build. The new probes likewise do not prove flags for every generated CPU
+translation unit; use verbose build commands for a complete flag audit.
+
+### Clean measurement before further optimisation
+
+All four replay presets set `core_timing=0`. This disables per-call timer reads
+while retaining whole-update simulation timing and instruction/clock counters.
+For the strongest comparison, compile with `EB_VITA_RUNTIME_TIMING=OFF` as well;
+that removes the per-call probe branches entirely. Re-enable runtime samples by
+setting `core_timing=1` only in a build with `EB_VITA_RUNTIME_TIMING=ON`.
+
+Logs include main and SPC instructions and master clocks per hardware frame,
+native batch counts, and `simulation_ns_per_main_instruction`. This last field
+is whole-simulation nanoseconds divided by main-CPU source instruction count. It
+includes SPC, DSP, PPU and scheduling; it is NOT a direct measurement of the
+cost of executing one CPU instruction and has no established tens-of-ns target.
+The counter represents source/translated instructions rather than host ARM
+instructions. Use timing-off/stride changes and comparable scene distributions
+to interpret it. Do not infer CPU instruction-cache misses from this ratio alone.
+
+The tile-row cache is scanline-local: HDMA scroll updates between scanlines do
+not invalidate cache hits within one scanline. Persistent multi-line caching
+would need correct VRAM/register invalidation. RGB565 would change the current
+32-bit presentation contract, and DSP batching must preserve shared RAM/echo and
+register ordering. Those structural changes are deliberately excluded here.

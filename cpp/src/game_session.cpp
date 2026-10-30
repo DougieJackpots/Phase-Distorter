@@ -79,6 +79,18 @@ std::uint64_t GameSession::advance_frame(std::uint16_t buttons, std::uint64_t st
     return state.hardware.completed_frames - previous_frame;
 }
 
+bool GameSession::session_unit_optimised() const noexcept {
+#ifdef __OPTIMIZE__
+    return true;
+#else
+    return false;
+#endif
+}
+bool GameSession::dsp_unit_optimised() const noexcept { return SnesAudioDsp::compiled_with_optimisation(); }
+
+void GameSession::set_composition_stride(unsigned stride) { state_->hardware.set_composition_stride(stride); }
+CompositionStats GameSession::composition_stats() const { return state_->hardware.composition_stats(); }
+
 void GameSession::enable_runtime_timing(bool enabled) {
     state_->runtime_timing_enabled = enabled;
     state_->timing_updates = 0;

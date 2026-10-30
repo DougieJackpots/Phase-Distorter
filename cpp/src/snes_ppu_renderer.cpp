@@ -1,4 +1,5 @@
 #include "eb/snes_bus.hpp"
+#include "eb/runtime_timing.hpp"
 
 #include <algorithm>
 
@@ -236,9 +237,9 @@ PpuPixel SceneReadView::sample_mode7_pixel(unsigned background_layer, int x, uns
 // signed nine-bit x, scanline wrap, and hardware object/tile limits are kept
 // separate from output clipping so the host viewport does not create sprites.
 uint8_t SceneReadView::sample_sprite_pixels(unsigned y, std::span<PpuPixel> result, int origin,
-                                           int world_shift) const {
+                                           int world_shift, bool compose) const {
     if (object_scene)
-        if (const auto status = object_scene->try_native_sprite_pixels(*this, y, result, origin + world_shift))
+        if (const auto status = object_scene->try_native_sprite_pixels(*this, y, compose ? result : std::span<PpuPixel>{}, origin + world_shift))
             return *status;
     constexpr unsigned sizes[8][2][2] = {{{8, 8}, {16, 16}},   {{8, 8}, {32, 32}},   {{8, 8}, {64, 64}},
                                          {{16, 16}, {32, 32}}, {{16, 16}, {64, 64}}, {{32, 32}, {64, 64}},
@@ -270,11 +271,11 @@ uint8_t SceneReadView::sample_sprite_pixels(unsigned y, std::span<PpuPixel> resu
         if ((origin || result.size() != 256) && (x + int(width) <= 0 || x >= 256))
             continue;
         const unsigned attributes = object_attributes[object_address + 3], level = (attributes >> 4) & 3;
-        const int object_origin = origin + (world_shift && object_scene &&
+        const int object_origin = origin + (compose && world_shift && object_scene &&
             object_scene->owns_presentation_oam_part(x, object_attributes[object_address + 1],
                 object_attributes[object_address + 2], attributes, bool(extra_attributes >> 1), object_index)
                 ? world_shift : 0);
-        const auto host = host_sprites && object_scene && width == 16 && height == 16
+        const auto host = compose && host_sprites && object_scene && width == 16 && height == 16
             ? object_scene->host_oam_part(x, object_attributes[object_address + 1],
                                           object_attributes[object_address + 2], attributes,
                                           bool(extra_attributes >> 1), object_index)
@@ -296,6 +297,7 @@ uint8_t SceneReadView::sample_sprite_pixels(unsigned y, std::span<PpuPixel> resu
                 status |= 0x80;
                 break;
             }
+            if (!compose) continue; // Keep range/time-over evaluation, omit only pixel decoding.
             const int output_x = px - object_origin;
             if (output_x < 0 || output_x >= int(result.size()))
                 continue;
@@ -535,7 +537,16 @@ void SnesBus::render_scanline(unsigned y) {
     BackgroundTileRows rows;
     auto view = scene_view();
     view.tile_rows = &rows;
+    runtime_timing::Scope state_timing(runtime_timing::Phase::PpuState);
     scene_renderer_.begin_scanline(view, y);
+    if (!composition_policy_.compose(completed_frames)) {
+        if (!(ppu_registers_[0] & 0x80) && ((ppu_registers_[0x2c] | ppu_registers_[0x2d]) & 16))
+            sprite_status_ |= view.sample_sprite_pixels(y, {}, 0, 0, false);
+        // begin_scanline still latches scene/ownership state. Native pixels hold
+        // the last composed picture. Wide/effect/direct modes are rejected.
+        return;
+    }
+    runtime_timing::Scope compose_timing(runtime_timing::Phase::PpuCompose);
     if (ppu_registers_[0] & 0x80) {
         std::fill_n(native_framebuffer.begin() + y * 256, 256, 0xff000000);
     } else {

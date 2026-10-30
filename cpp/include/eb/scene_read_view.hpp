@@ -90,7 +90,7 @@ struct SceneReadView {
     // Presentation moves captured world sprites separately from unmatched UI
     // indicators. The native hardware pass always uses the default zero shift.
     uint8_t sample_sprite_pixels(unsigned y, std::span<PpuPixel> result, int origin,
-                                 int world_shift = 0) const;
+                                 int world_shift = 0, bool compose = true) const;
 private:
     PpuPixel sample_background_pixel_miss(unsigned layer, int x, unsigned y,
                                          const GameSceneRenderer *scene) const;

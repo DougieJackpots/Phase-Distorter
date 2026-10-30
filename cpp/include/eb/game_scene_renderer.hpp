@@ -123,6 +123,9 @@ class GameSceneRenderer {
     void compose_native_scanline(const SceneReadView& view, unsigned y,
                                  std::span<const PpuPixel, 256> objects,
                                  std::span<std::uint32_t, 256> output);
+    bool supports_composition_stride() const {
+        return requested_presentation_width_ == 256 && !presentation_effects_enabled_ && !direct_capture_.enabled();
+    }
     void render_presentation_margins(const SceneReadView &view, unsigned y);
     void enable_direct_rendering(bool enabled) { direct_capture_.enable(enabled); }
     void capture_direct_scanline(const SceneReadView& view, unsigned y) { direct_capture_.scanline(view, *this, y); }

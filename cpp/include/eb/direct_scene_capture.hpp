@@ -12,6 +12,7 @@ class DirectSceneCapture {
   public:
     void snapshot_io(SnapshotArchive &archive);
     void enable(bool enabled);
+    bool enabled() const { return enabled_; }
     void scanline(const SceneReadView &view, GameSceneRenderer &renderer, unsigned y);
     std::shared_ptr<const DirectSceneFrame> frame() const { return published_; }
 

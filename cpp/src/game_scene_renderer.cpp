@@ -1720,6 +1720,7 @@ void GameSceneRenderer::capture_sprite_enqueue(const SceneReadView &view, std::u
 std::optional<std::uint8_t> GameSceneRenderer::try_native_sprite_pixels(
     const SceneReadView &view, unsigned y, std::span<PpuPixel> result, int origin) const {
     if (!view.native_sprites || !native_sprite_frame_) return {};
+    if (result.empty()) return 0; // Flags-only pass: native sprite ownership reports no hardware overflow.
     object_pixels(view, native_sprite_objects_, y, result, origin);
     return 0;
 }
