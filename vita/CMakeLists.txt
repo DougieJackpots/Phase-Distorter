@@ -16,4 +16,17 @@ set(EB_BUILD_TESTS OFF CACHE BOOL "Disable desktop verification targets" FORCE)
 set(EB_PREGENERATED_DIR "${CMAKE_CURRENT_LIST_DIR}/../generated" CACHE PATH "Use checked-in generated sources for Vita builds" FORCE)
 set(EB_BUILD_VITA ON CACHE BOOL "Build the Vita SDL frontend" FORCE)
 
+# Apply IPO to the shared core as well as the frontend. Fall back cleanly for
+# SDK/compiler versions whose linker cannot perform LTO.
+option(EB_VITA_LTO "Enable Release link-time optimisation across game libraries" ON)
+if(EB_VITA_LTO)
+    include(CheckIPOSupported)
+    check_ipo_supported(RESULT EB_VITA_IPO_SUPPORTED OUTPUT EB_VITA_IPO_ERROR LANGUAGES CXX)
+    if(EB_VITA_IPO_SUPPORTED)
+        set(CMAKE_INTERPROCEDURAL_OPTIMIZATION_RELEASE ON)
+    else()
+        message(WARNING "Vita LTO unavailable: ${EB_VITA_IPO_ERROR}")
+    endif()
+endif()
+
 add_subdirectory("${CMAKE_CURRENT_LIST_DIR}/../cpp" "${CMAKE_CURRENT_BINARY_DIR}/phase-distorter-core")

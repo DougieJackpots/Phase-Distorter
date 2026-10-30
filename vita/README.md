@@ -72,22 +72,39 @@ filesystem durability, performance, audio underruns, suspend/resume, and actual
 hardware input all need testing on a physical Vita. Do not treat the current
 source as a proven 60 FPS build.
 
-## Performance and LiveArea update
+## Performance diagnostics and LiveArea update
 
-The Vita frontend requests a 444 MHz ARM clock and uses the shared persistent
-NTSC frame pacer without SDL present-vsync. This avoids combining two pacing
-sources and prevents per-frame sleep jitter from permanently slowing the game.
-When behind, only framebuffer upload/presentation is omitted; simulation, input,
-and audio continue for every frame. Sustained core execution over 16.64 ms still
-requires profiling on hardware; this is not a measured 60 FPS guarantee.
+This update always displays each completed session update. It removes the
+catch-up rule that could hide many consecutive images on an overloaded Vita.
+A late update resets the host pacing backlog; it does not skip simulation or
+speed up the game. SDL present-vsync remains disabled, with one NTSC host clock.
+SRAM is compared with the last successfully saved contents; unchanged saves
+no longer rewrite the file every ten seconds. The ARM clock request is 444 MHz.
 
-The supplied VitaBound artwork is packaged from `vita/sce_sys`: a 128x128 bubble
-icon, an 840x500 checkerboard LiveArea background, and a 280x158 startup gate
-containing the icon at its original aspect ratio. The LiveArea template references
-both images. The title ID and save directory are unchanged.
+Release builds enable link-time optimisation across shared libraries and the
+frontend when the SDK passes CMake's IPO check. Unsupported SDKs fall back with
+a warning. To disable it for comparison, configure with `-DEB_VITA_LTO=OFF`.
+The normal build script already selects Release (including core optimisation).
 
-Validation for this update: existing host frame-pacer tests pass, including
-late-frame recovery and preservation of simulation/audio work. The update has
-not been cross-built here because VitaSDK is unavailable. Rebuild with
-`bash vita/build.sh`, then test overworld movement, battles, sound, and SRAM on
-a physical Vita.
+Each launch replaces `ux0:data/PhaseDistorter/performance.log`. It records the
+renderer name/flags and actual ARM clock, followed by five-second summaries:
+`game_fps`, `displayed_fps`, late updates, and average/maximum milliseconds in
+simulation, audio submission, texture upload, presentation, sleeping and saves.
+Simulation includes CPU execution, PPU rendering and DSP synthesis; audio_submit
+only measures copying samples into the playback queue. The log is diagnostic,
+not a claim of measured speed improvement. Play overworld and battle scenes for
+at least 30 seconds, exit, and copy this log back for bottleneck analysis.
+
+The supplied bubble icon is preserved byte-for-byte as a 128x128 indexed 8-bit
+PNG. The 840x500 LiveArea background and 280x158 startup gate are opaque indexed
+8-bit PNGs. Packaging includes both images and their template. Package version
+is now 01.01 and LiveArea content revision is 2. The build script validates PNG
+headers, dimensions, CRCs, decompression and template references before compiling.
+The title ID and save paths are unchanged. Install the rebuilt VPK as an update;
+do not delete the installed application to refresh its artwork.
+
+Validation here: host C++ syntax check with SDL/Vita API declarations, existing
+frame-pacer tests, asset validation and whitespace checks. VitaSDK, VPK install,
+physical scanout and game performance still require validation on your Vita.
+If the LiveArea still errors, record its exact error code/message; valid image
+encoding alone does not establish the cause of a device-side failure.

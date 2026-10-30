@@ -15,6 +15,7 @@ done
 
 root="$(cd "$(dirname "$0")/.." && pwd)"
 build_dir="${BUILD_DIR:-$root/build-vita}"
+python3 "$root/vita/validate_assets.py"
 cmake -S "$root/vita" -B "$build_dir" \
   -DCMAKE_TOOLCHAIN_FILE="$VITASDK/share/vita.toolchain.cmake" \
   -DCMAKE_BUILD_TYPE=Release

@@ -350,7 +350,7 @@ if(EB_BUILD_VITA)
     add_dependencies(eb_vita eb_generate)
     vita_create_self(eboot.bin eb_vita)
     vita_create_vpk(PhaseDistorter.vpk DPDJ00001 eboot.bin
-        VERSION "01.00" NAME "Phase Distorter"
+        VERSION "01.01" NAME "Phase Distorter"
         FILE "${CMAKE_CURRENT_SOURCE_DIR}/../vita/sce_sys/icon0.png" sce_sys/icon0.png
         FILE "${CMAKE_CURRENT_SOURCE_DIR}/../vita/sce_sys/livearea/contents/bg.png" sce_sys/livearea/contents/bg.png
         FILE "${CMAKE_CURRENT_SOURCE_DIR}/../vita/sce_sys/livearea/contents/startup.png" sce_sys/livearea/contents/startup.png
