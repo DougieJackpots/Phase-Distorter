@@ -141,6 +141,8 @@ int main(int, char**) {
         // vsync present with a per-iteration sleep can miss alternate refreshes.
         eb::FramePacer pacer(eb::FramePacer::Clock::now());
         bool running = true;
+        // Keep the frame clock phase stable even with variable per-frame work.
+        eb::FramePacer pacer(std::chrono::steady_clock::now(), 60.0);
         auto last_save = std::chrono::steady_clock::now();
         while (running) {
             SDL_Event event{};
@@ -159,18 +161,18 @@ int main(int, char**) {
                 (void)session.take_audio_samples();
             }
 
-            // Catch up by omitting only presentation; input, CPU and audio
-            // still run for every game frame. Deadlines do not accumulate jitter.
-            if (pacer.advance(eb::FramePacer::Clock::now(), frames)) {
-                const auto pixels = session.native_pixels();
-                if (SDL_UpdateTexture(texture.get(), nullptr, pixels.data(), game_width * sizeof(std::uint32_t)) != 0)
-                    throw std::runtime_error(std::string("Framebuffer upload failed: ") + SDL_GetError());
-                SDL_SetRenderDrawColor(renderer.get(), 0, 0, 0, 255);
-                SDL_RenderClear(renderer.get());
-                SDL_RenderCopy(renderer.get(), texture.get(), nullptr, nullptr);
-                SDL_RenderPresent(renderer.get());
-            }
-            std::this_thread::sleep_until(pacer.deadline());
+            const auto pixels = session.native_pixels();
+            if (SDL_UpdateTexture(texture.get(), nullptr, pixels.data(), game_width * sizeof(std::uint32_t)) != 0)
+                throw std::runtime_error(std::string("Framebuffer upload failed: ") + SDL_GetError());
+            SDL_SetRenderDrawColor(renderer.get(), 0, 0, 0, 255);
+            SDL_RenderClear(renderer.get());
+            SDL_RenderCopy(renderer.get(), texture.get(), nullptr, nullptr);
+            SDL_RenderPresent(renderer.get());
+            // A stable 60 Hz deadline prevents drift from per-frame jitter.
+            pacer.advance(std::chrono::steady_clock::now());
+            const auto deadline = pacer.deadline();
+            if (std::chrono::steady_clock::now() < deadline)
+                std::this_thread::sleep_until(deadline);
 
             const auto now = std::chrono::steady_clock::now();
             if (now - last_save >= std::chrono::seconds(10)) {
