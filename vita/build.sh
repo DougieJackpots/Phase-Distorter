@@ -5,6 +5,7 @@ if [[ -z "${VITASDK:-}" || ! -f "$VITASDK/share/vita.toolchain.cmake" ]]; then
   echo "VITASDK must point to an installed VitaSDK (expected share/vita.toolchain.cmake)." >&2
   exit 1
 fi
+export PATH="$VITASDK/bin:$PATH"
 for tool in cmake python3 ca65 ld65; do
   command -v "$tool" >/dev/null 2>&1 || {
     echo "Missing build prerequisite: $tool" >&2
