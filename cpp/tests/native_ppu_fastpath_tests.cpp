@@ -18,13 +18,15 @@ int main(){
  std::array<std::int16_t,6> affine{};std::array<std::int16_t,2> offsets{};
  std::array<std::uint32_t,256*224> native{};eb::SourceProfile profile{};
  std::uint32_t seed=42;const auto random=[&]{seed=seed*1664525+1013904223;return seed;};
- for(unsigned trial=0;trial<4096;++trial){
+ for(unsigned trial=0;trial<16384;++trial){
   for(auto& b:vram)b=random()>>24;
   for(auto& b:pal)b=random()>>24;
   for(auto& b:oam)b=random()>>24;
   for(auto& b:regs)b=random()>>24;
   for(auto& v:sx)v=std::uint16_t(random());
   for(auto& v:sy)v=std::uint16_t(random());
+  for(auto& v:affine)v=std::int16_t(int(random()%1024)-512);
+  for(auto& v:offsets)v=std::int16_t(int(random()%1024)-512);
   regs[1]=std::uint8_t((trial%8)*32 | (random()&31));regs[5]=trial%8;
   if(trial%3==0){regs[0x30]=0;regs[0x31]=0;regs[0x2e]=0;}
   else if(trial%3==1){regs[0x30]=trial&1;regs[0x31]&=0xbf;regs[0x2e]=0;}

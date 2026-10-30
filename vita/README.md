@@ -335,13 +335,15 @@ and the existing timing policy unless the user explicitly configures otherwise.
    decline it. Refresh, IRQ, HDMA, raster composition, frame callbacks and autojoy
    boundaries are never crossed by the fast path. No DSP or APU work is deferred.
 
-3. **Native PPU composition:** modes 0/1 with no main-screen window masking,
-   no colour-window policy, effects off and disabled/identity colour math use a
-   layer-major row compositor. It resolves BG priorities and OBJ winners into
-   small fixed arrays and expands brightness once for the winning colour. The
-   same background sampler handles VRAM, scrolling, mosaic and palettes. Other
-   configurations retain the canonical per-pixel compositor. No HDMA or sprite
-   overflow evaluation is omitted. This is CPU composition, not GPU offloading.
+3. **Native PPU composition:** the original simple mode-0/1 fast path stays
+   first. A second layer-major path handles the other native configurations,
+   including colour math, main/subscreen windows, and all background modes.
+   It resolves main/sub winners into compact arrays, computes the six window
+   layers from four shared interval regions, and uses a 4 KB channel table for
+   add/subtract/half saturation. Both paths retain the same background sampler.
+   Flash-reference effects still use the canonical compositor. Sprite overflow,
+   HDMA and emulated clocks are unchanged. This is CPU composition, not GXM
+   offloading. `fast_composition=0` selects the canonical compositor.
 
 Vita builds default these features on only on this experimental branch. General
 host builds default them off. Build controls are
@@ -402,3 +404,27 @@ Logs also count `fast_ppu_rows`, `canonical_ppu_rows` and `fast_ppu_fraction`.
 These refer to composed native scanlines, excluding forced-blank/skipped rows;
 they show whether the guarded compositor actually applies in the measured scene.
 The counters do not read a host clock and are excluded from machine snapshots.
+
+## Native compositor revision 2
+
+Branch: `vita-native-compositor`, based on `vita-core-fastpaths`. The stable
+parent branch is unchanged. Logs print `native_compositor_revision=2`; build and
+runtime fast-path switches are otherwise the same. Compare the same outdoor
+route with the parent and with `fast_composition=0`. Keep enhanced timing, stride,
+input and device/emulator unchanged. `fast_ppu_fraction` should now cover native
+window/colour-math rows that previously fell back, provided effects are off.
+
+The existing simple fast path is preserved ahead of the broader path. The old
+canonical colour-math compositor remains an independent comparison oracle.
+Tests cover 4,194,304 output pixels across all background modes with randomized
+scroll, mosaic, palettes, priorities, windows, colour math and moderate Mode 7
+matrices, using cached and uncached views. Every test row uses a fast path with
+effects off. The lightweight host run uses inactive scene-owner link stubs;
+the registered `native_ppu_fastpath_tests` target links the actual core.
+
+`native_color_math_tests` separately checks all 4096 channel arithmetic cases,
+393216 window cases (including reversed and single-point bounds), and one million
+full colour-policy cases against scalar arithmetic. Original simple-path pixel
+semantics are preserved; flash-reference/widescreen-specific paths remain on
+the canonical implementation. These checks are not full-game or physical-Vita
+benchmarks. No new FPS claim is made until the scene is measured.

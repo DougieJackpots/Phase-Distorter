@@ -6,6 +6,7 @@
 #include "snes_ppu_constants.hpp"
 #include "planar_tile_row.hpp"
 #include "ppu_brightness.hpp"
+#include "native_ppu_color.hpp"
 
 namespace eb {
 namespace {
@@ -553,6 +554,42 @@ void GameSceneRenderer::compose_native_scanline(const SceneReadView& view, unsig
                 (unsigned(detail::brightness_component(brightness,(color>>5)&31))<<8) |
                  unsigned(detail::brightness_component(brightness,(color>>10)&31));
         }
+        return;
+    }
+
+    // Broader native path for windowed and colour-math scenes.
+    if(fast_native_composition_&&!presentation_effects_enabled_) {
+        ++fast_native_rows_;
+        const unsigned brightness=regs[0]&15;
+        if(!brightness) {std::fill(output.begin(),output.end(),0xff000000);return;}
+        const auto regions=detail::native_window_regions(regs);
+        std::array<std::uint8_t,256> windows;
+        for(unsigned x=0;x<256;++x) {
+            const unsigned region=unsigned(x>=regs[0x26]&&x<=regs[0x27]) |
+                (unsigned(x>=regs[0x28]&&x<=regs[0x29])<<1);
+            windows[x]=regions[region];
+        }
+        std::array<detail::NativeColorPixel,256> main,sub;
+        main.fill({view.palette(0),-1,5,true});
+        sub.fill({view.fixed_color,-1,5,true});
+        for(unsigned layer=0;layer<5;++layer) {
+            const unsigned bit=1u<<layer;
+            const bool main_enabled=regs[0x2c]&bit,sub_enabled=regs[0x2d]&bit;
+            if(!main_enabled&&!sub_enabled)continue;
+            const bool main_masked=regs[0x2e]&bit,sub_masked=regs[0x2f]&bit;
+            for(unsigned x=0;x<256;++x) {
+                const auto pixel=layer==4?objects[x]:view.sample_background_pixel(layer,int(x),y+1);
+                if(pixel.priority<0)continue;
+                const bool masked=windows[x]&bit;
+                if(main_enabled&&!(main_masked&&masked)&&pixel.priority>main[x].priority)
+                    main[x]=detail::native_color_pixel(pixel);
+                if(sub_enabled&&!(sub_masked&&masked)&&pixel.priority>sub[x].priority)
+                    sub[x]=detail::native_color_pixel(pixel);
+            }
+        }
+        for(unsigned x=0;x<256;++x)
+            output[x]=detail::finish_native_color(main[x],sub[x],regs[0x30],regs[0x31],
+                                                 view.fixed_color,brightness,windows[x]&32);
         return;
     }
 #endif
