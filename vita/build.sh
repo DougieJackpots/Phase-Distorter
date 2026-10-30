@@ -17,5 +17,5 @@ build_dir="${BUILD_DIR:-$root/build-vita}"
 cmake -S "$root/vita" -B "$build_dir" \
   -DCMAKE_TOOLCHAIN_FILE="$VITASDK/share/vita.toolchain.cmake" \
   -DCMAKE_BUILD_TYPE=Release
-cmake --build "$build_dir" --target PhaseDistorter.vpk --parallel "${JOBS:-2}"
+cmake --build "$build_dir" --target PhaseDistorter.vpk-vpk --parallel "${JOBS:-2}"
 echo "VPK: $build_dir/phase-distorter-core/PhaseDistorter.vpk"
