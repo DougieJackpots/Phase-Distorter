@@ -338,7 +338,12 @@ if(EB_BUILD_VITA)
     endif()
     add_executable(eb_vita ../vita/src/main.cpp src/audio_output.cpp)
     target_include_directories(eb_vita PRIVATE include)
-    target_link_libraries(eb_vita PRIVATE eb_session eb_assets eb_native_asset_profiles SDL2::SDL2 SceCtrl_stub)
+    target_link_libraries(eb_vita PRIVATE
+        eb_session eb_assets eb_native_asset_profiles SDL2::SDL2
+        SceAppMgr_stub SceAppUtil_stub SceAudio_stub SceAudioIn_stub
+        SceCommonDialog_stub SceCtrl_stub SceDisplay_stub SceGxm_stub
+        SceHid_stub SceIofilemgr_stub SceMotion_stub ScePower_stub
+        SceProcessmgr_stub SceSysmodule_stub SceTouch_stub pthread m)
     add_dependencies(eb_vita eb_generate)
     vita_create_self(eboot.bin eb_vita)
     vita_create_vpk(PhaseDistorter.vpk DPDJ00001 eboot.bin
