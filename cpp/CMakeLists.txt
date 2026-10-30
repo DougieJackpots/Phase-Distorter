@@ -9,6 +9,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 # supplies EB_PREGENERATED_DIR, while the original development tree can regenerate
 # instruction sources. Only that latter path needs Python plus assembler tools.
 option(EB_BUILD_FRONTEND "Build the SDL2/OpenGL desktop executable" ON)
+option(EB_BUILD_VITA "Build the PlayStation Vita executable and VPK" OFF)
 option(EB_BUILD_TESTS "Build CPU and hardware verification programs" ON)
 option(EB_GAMEPLAY_AUDIT "Instrument ordered hardware accesses for runtime differential checks" OFF)
 set(EB_PREGENERATED_DIR "" CACHE PATH "Compile existing generated C++ without assembly source or assembler tools")
@@ -319,6 +320,30 @@ if(EB_BUILD_FRONTEND)
     install(TARGETS eb_cpp RUNTIME DESTINATION bin)
     install(FILES resources/phase-distorter.png resources/phase-distorter.ico
         DESTINATION share/eb_cpp/icons)
+endif()
+
+# The Vita frontend avoids the desktop OpenGL/ImGui stack. It presents the
+# existing 256x224 framebuffer through SDL_Renderer and reads Vita controls.
+if(EB_BUILD_VITA)
+    find_package(SDL2 CONFIG QUIET)
+    if(NOT TARGET SDL2::SDL2)
+        find_path(EB_VITA_SDL2_INCLUDE_DIR SDL.h
+            PATHS "$ENV{VITASDK}/arm-vita-eabi/include/SDL2" REQUIRED NO_DEFAULT_PATH)
+        find_library(EB_VITA_SDL2_LIBRARY NAMES SDL2
+            PATHS "$ENV{VITASDK}/arm-vita-eabi/lib" REQUIRED NO_DEFAULT_PATH)
+        add_library(SDL2::SDL2 UNKNOWN IMPORTED)
+        set_target_properties(SDL2::SDL2 PROPERTIES
+            IMPORTED_LOCATION "${EB_VITA_SDL2_LIBRARY}"
+            INTERFACE_INCLUDE_DIRECTORIES "${EB_VITA_SDL2_INCLUDE_DIR}")
+    endif()
+    add_executable(eb_vita ../vita/src/main.cpp src/audio_output.cpp)
+    target_include_directories(eb_vita PRIVATE include)
+    target_link_libraries(eb_vita PRIVATE eb_session eb_assets eb_native_asset_profiles SDL2::SDL2 SceCtrl_stub)
+    add_dependencies(eb_vita eb_generate)
+    vita_create_self(eboot.bin eb_vita)
+    vita_create_vpk(PhaseDistorter.vpk DPDJ00001 eboot.bin
+        VERSION "01.00" NAME "Phase Distorter"
+        FILE "${CMAKE_CURRENT_SOURCE_DIR}/resources/phase-distorter.png" sce_sys/icon0.png)
 endif()
 
 # Register only synthetic, asset-free checks in default CTest. Optional route
