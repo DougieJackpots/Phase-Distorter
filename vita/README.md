@@ -94,3 +94,17 @@ the command above can produce a Vita executable.
 - Do not claim a working VPK, 60 FPS, or hardware compatibility until those
   results have been measured and recorded.
 - Prefer small platform-specific changes over broad changes to the game core.
+
+
+## Implemented first frontend baseline
+
+The first SDL2 Vita frontend is now present in `vita/src/main.cpp`. It loads
+the shared validated `.ebpak` format, starts the existing `GameSession`,
+maps Vita face buttons and triggers to the SNES controller bits, displays the
+native framebuffer through an SDL streaming texture, queues the existing DSP
+audio output, and periodically persists SRAM. The dedicated CMake project
+builds a SELF and VPK without enabling the desktop OpenGL/ImGui frontend.
+
+Build using `bash vita/build.sh` from the repository checkout. This has not
+been run in a VitaSDK environment yet; therefore the target and package are
+implementation work in progress, not a tested Vita release.
