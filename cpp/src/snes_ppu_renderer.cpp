@@ -67,7 +67,7 @@ PpuPixel SceneReadView::sample_background_pixel_miss(unsigned background_layer, 
     // Offset-per-tile, mode 7 and mosaic retain the scalar sampler.
     // A fine-scrolled tile can cross x=0/256. The native half may be a VRAM
     // patch while its offscreen continuation comes from the source world map.
-    auto* row_cache = tile_rows && mode <= 1 &&
+    auto* row_cache = tile_rows && (mode <= 1 || mode == 3) &&
         (!(ppu_registers[6] & (1 << background_layer)) || mosaic == 1)
         ? &tile_rows->layers[background_layer] : nullptr;
     const int raw_x = x + int(background_scroll_x[background_layer]);
@@ -540,12 +540,11 @@ void GameSceneRenderer::compose_native_scanline(const SceneReadView& view, unsig
         colors.fill(view.palette(0));priorities.fill(-1);
         for(unsigned layer=0;layer<4;++layer) {
             if(!(enabled&(1u<<layer)))continue;
-            for(unsigned x=0;x<256;++x) {
-                const auto pixel=view.sample_background_pixel(layer,int(x),y+1);
+            view.for_each_native_background_pixel(layer,y+1,[&](unsigned x,const PpuPixel& pixel) {
                 if(pixel.priority>priorities[x]) {
                     colors[x]=pixel.color;priorities[x]=std::int8_t(pixel.priority);
                 }
-            }
+            });
         }
         for(unsigned x=0;x<256;++x) {
             const auto color=(enabled&16)&&objects[x].priority>priorities[x]?objects[x].color:colors[x];
@@ -577,15 +576,17 @@ void GameSceneRenderer::compose_native_scanline(const SceneReadView& view, unsig
             const bool main_enabled=regs[0x2c]&bit,sub_enabled=regs[0x2d]&bit;
             if(!main_enabled&&!sub_enabled)continue;
             const bool main_masked=regs[0x2e]&bit,sub_masked=regs[0x2f]&bit;
-            for(unsigned x=0;x<256;++x) {
-                const auto pixel=layer==4?objects[x]:view.sample_background_pixel(layer,int(x),y+1);
-                if(pixel.priority<0)continue;
+            const auto emit = [&](unsigned x,const PpuPixel& pixel) {
+                if(pixel.priority<0)return;
                 const bool masked=windows[x]&bit;
                 if(main_enabled&&!(main_masked&&masked)&&pixel.priority>main[x].priority)
                     main[x]=detail::native_color_pixel(pixel);
                 if(sub_enabled&&!(sub_masked&&masked)&&pixel.priority>sub[x].priority)
                     sub[x]=detail::native_color_pixel(pixel);
-            }
+            };
+            if(layer==4) {
+                for(unsigned x=0;x<256;++x)emit(x,objects[x]);
+            } else view.for_each_native_background_pixel(layer,y+1,emit);
         }
         for(unsigned x=0;x<256;++x)
             output[x]=detail::finish_native_color(main[x],sub[x],regs[0x30],regs[0x31],

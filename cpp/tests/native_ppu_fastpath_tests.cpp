@@ -27,7 +27,8 @@ int main(){
   for(auto& v:sy)v=std::uint16_t(random());
   for(auto& v:affine)v=std::int16_t(int(random()%1024)-512);
   for(auto& v:offsets)v=std::int16_t(int(random()%1024)-512);
-  regs[1]=std::uint8_t((trial%8)*32 | (random()&31));regs[5]=trial%8;
+  regs[1]=std::uint8_t((trial%8)*32 | (random()&31));regs[5]=std::uint8_t((random()&0xf8)|(trial%8));
+  if(trial%3)regs[6]=0;
   if(trial%3==0){regs[0x30]=0;regs[0x31]=0;regs[0x2e]=0;}
   else if(trial%3==1){regs[0x30]=trial&1;regs[0x31]&=0xbf;regs[0x2e]=0;}
   else if(trial%7==0){regs[0x30]=2;regs[0x31]=0;regs[0x2e]=0;}
@@ -38,11 +39,11 @@ int main(){
   std::array<std::uint32_t,256> output{};
   eb::GameSceneRenderer renderer;
   eb::BackgroundTileRows reference_rows,fast_rows;
-  if(trial&1)view.tile_rows=&reference_rows;
+  // The reference always decodes independently, without the row cache.
   renderer.set_fast_native_composition(false);
   renderer.compose_native_scanline(view,trial%224,pixels,output);
   std::array<std::uint32_t,256> accelerated{};
-  if(trial&1)view.tile_rows=&fast_rows;
+  if((trial/8)&1)view.tile_rows=&fast_rows;
   renderer.set_fast_native_composition(true);
   renderer.compose_native_scanline(view,trial%224,pixels,accelerated);
   if(output!=accelerated)throw std::runtime_error("Guarded PPU composition differs from canonical output");

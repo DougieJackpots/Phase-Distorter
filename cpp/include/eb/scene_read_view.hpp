@@ -84,6 +84,32 @@ struct SceneReadView {
         }
         return sample_background_pixel_miss(layer, x, y, scene);
     }
+    // Native rows have no presentation-map boundary inside [0,256). Decode
+    // once at each tile boundary, then consume the cached lanes directly.
+    // Raster-local storage never survives HDMA, VRAM or palette changes.
+    template<class Consumer>
+    void for_each_native_background_pixel(unsigned layer, unsigned y, Consumer&& consume) const {
+        const unsigned mode = ppu_registers[5] & 7;
+        const bool cacheable = tile_rows && (mode <= 1 || mode == 3) &&
+            (!(ppu_registers[6] & (1u << layer)) || !(ppu_registers[6] >> 4));
+        if (!cacheable) {
+            for (unsigned x = 0; x < 256; ++x)
+                consume(x, sample_background_pixel(layer, int(x), y));
+            return;
+        }
+        unsigned x = 0;
+        while (x < 256) {
+            // Also handles absent layers, which do not populate a cache row.
+            const auto first = sample_background_pixel(layer, int(x), y);
+            const auto& row = tile_rows->layers[layer];
+            if (!row.valid) { consume(x++, first); continue; }
+            const unsigned lane = (x + background_scroll_x[layer]) & 7;
+            const unsigned count = (8 - lane < 256 - x) ? 8 - lane : 256 - x;
+            for (unsigned i = 0; i < count; ++i)
+                consume(x + i, row.pixels[lane + i]);
+            x += count;
+        }
+    }
     PpuPixel sample_mode7_pixel(unsigned layer, int x, unsigned y) const;
     bool layer_window_contains(unsigned layer, unsigned x) const;
     // Returns overflow bits. Only the bus's native pass may commit them.

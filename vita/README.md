@@ -428,3 +428,27 @@ full colour-policy cases against scalar arithmetic. Original simple-path pixel
 semantics are preserved; flash-reference/widescreen-specific paths remain on
 the canonical implementation. These checks are not full-game or physical-Vita
 benchmarks. No new FPS claim is made until the scene is measured.
+
+### Native tile-run experiment (compositor revision 3)
+
+This branch extends scanline-local decoded-row caching to mode 3 (8bpp/4bpp),
+including direct colour. Native composition consumes cached lanes in runs up to
+8 pixels rather than checking tile coordinates and copying a PpuPixel for every
+pixel. Modes with offset-per-tile, affine sampling and active mosaic retain scalar
+sampling. Scroll, palette and VRAM changes between scanlines always use fresh
+scratch storage. No emulated frames, audio samples or composition frames are skipped.
+The original per-pixel compositor remains the test oracle; the differential test
+uses an uncached reference and covers cached/uncached native runs independently.
+
+For a hardware diagnostic build, explicitly override an old timing-disabled cache:
+
+```sh
+CORE_TIMING=ON JOBS=10 bash vita/build.sh
+```
+
+Keep `core_timing=1` in `performance.cfg`. The log must say
+`native_compositor_revision=3`, an enabled `core_timing` status
+and contain nonzero `core_samples` after gameplay. `core_timing_runtime=1` alone
+cannot enable instrumentation that was compiled out. Timing reads add overhead on
+sampled updates; benchmark the final build with `CORE_TIMING=OFF` separately.
+No Vita performance target is established by the host pixel-equivalence tests.

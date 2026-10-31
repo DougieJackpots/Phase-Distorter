@@ -15,9 +15,16 @@ done
 
 root="$(cd "$(dirname "$0")/.." && pwd)"
 build_dir="${BUILD_DIR:-$root/build-vita}"
+timing_args=()
+if [[ -n "${CORE_TIMING:-}" ]]; then
+  case "$CORE_TIMING" in
+    ON|OFF) timing_args+=("-DEB_VITA_RUNTIME_TIMING=$CORE_TIMING") ;;
+    *) echo "CORE_TIMING must be ON or OFF." >&2; exit 1 ;;
+  esac
+fi
 python3 "$root/vita/validate_assets.py"
 cmake -S "$root/vita" -B "$build_dir" \
   -DCMAKE_TOOLCHAIN_FILE="$VITASDK/share/vita.toolchain.cmake" \
-  -DCMAKE_BUILD_TYPE=Release
+  -DCMAKE_BUILD_TYPE=Release "${timing_args[@]}"
 cmake --build "$build_dir" --target PhaseDistorter.vpk-vpk --parallel "${JOBS:-2}"
 echo "VPK: $build_dir/phase-distorter-core/PhaseDistorter.vpk"
