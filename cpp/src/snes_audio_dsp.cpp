@@ -25,6 +25,7 @@ bool SnesAudioDsp::compiled_with_optimisation() noexcept {
 struct SnesAudioDsp::SynthesisState {
     SPC_DSP processor;
     std::array<SPC_DSP::sample_t, 128> sample_buffer{};
+    unsigned consumed_samples=0;
 };
 
 namespace {
@@ -64,6 +65,7 @@ void SnesAudioDsp::snapshot_io(SnapshotArchive &archive) {
         if (cursor != dsp_archive_end) throw std::runtime_error("DSP snapshot contains trailing data");
         synthesis_->processor.set_output(synthesis_->sample_buffer.data(),
                                          static_cast<int>(synthesis_->sample_buffer.size()));
+        synthesis_->consumed_samples=0;
     }
     dsp_archive_end = nullptr;
 }
@@ -71,6 +73,8 @@ void SnesAudioDsp::snapshot_io(SnapshotArchive &archive) {
 SnesAudioDsp::SnesAudioDsp(std::span<std::uint8_t, 65536> audio_ram) : synthesis_(std::make_unique<SynthesisState>()) {
     static_assert(sizeof(SPC_DSP::sample_t) == sizeof(std::int16_t));
     synthesis_->processor.init(audio_ram.data());
+    synthesis_->processor.set_output(synthesis_->sample_buffer.data(),
+                                     static_cast<int>(synthesis_->sample_buffer.size()));
     queued_stereo_samples_.reserve(2048);
 }
 
@@ -111,15 +115,27 @@ void SnesAudioDsp::write_register(std::uint8_t address, std::uint8_t value) {
 void SnesAudioDsp::advance_audio_clocks(unsigned audio_clocks) {
     runtime_timing::Scope timing(runtime_timing::Phase::Dsp);
     while (audio_clocks) {
-        // At most 64 samples plus a pending sample pair fit in the 128-entry buffer.
+        // Leave space for 64 samples plus a conservative pending pair.
         const auto chunk_clocks = std::min(audio_clocks, 1024u);
-        synthesis_->processor.set_output(synthesis_->sample_buffer.data(),
-                                         static_cast<int>(synthesis_->sample_buffer.size()));
         synthesis_->processor.run(static_cast<int>(chunk_clocks));
         const auto produced_sample_count = synthesis_->processor.sample_count();
-        queued_stereo_samples_.insert(queued_stereo_samples_.end(), synthesis_->sample_buffer.begin(),
-                                      synthesis_->sample_buffer.begin() + produced_sample_count);
-        generated_stereo_frames_ += produced_sample_count / 2;
+        if (unsigned(produced_sample_count) != synthesis_->consumed_samples) {
+            queued_stereo_samples_.insert(queued_stereo_samples_.end(),
+                synthesis_->sample_buffer.begin()+synthesis_->consumed_samples,
+                synthesis_->sample_buffer.begin()+produced_sample_count);
+            generated_stereo_frames_ += (produced_sample_count-synthesis_->consumed_samples)/2;
+            synthesis_->consumed_samples=unsigned(produced_sample_count);
+        }
+        // Before each run at most 60 entries are occupied. Even allowing 66
+        // new entries, the cursor remains below 128: the DSP switches to its
+        // internal overflow buffer when the external buffer is exactly full.
+        // Every new pair is already queued above: resetting this host cursor neither defers DSP work nor
+        // changes sample availability, register ordering or shared-RAM access.
+        if (synthesis_->consumed_samples>=62) {
+            synthesis_->processor.set_output(synthesis_->sample_buffer.data(),
+                                             static_cast<int>(synthesis_->sample_buffer.size()));
+            synthesis_->consumed_samples=0;
+        }
         audio_clocks -= chunk_clocks;
     }
 }

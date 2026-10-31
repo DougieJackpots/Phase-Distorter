@@ -513,3 +513,66 @@ enhanced timing and composition stride as revision 3. Use
 composition times in matching scenes. Sampled instrumentation adds overhead, so
 compare builds with the same timing setting. Confirm the final frame rate with
 `CORE_TIMING=OFF` after profiling.
+
+### Core overhead experiment (compositor revision 5, DSP output revision 2)
+
+This branch builds on `vita-native-row-kernels` revision 4. It targets the remaining
+CPU/SPC and colour-composition work while retaining the same enhanced timing,
+clock synchronization, audio samples and composition stride.
+
+* The DSP output buffer persists across SPC instruction callbacks. Only newly
+  produced samples are appended to the queue; calls producing no output do not
+  enter vector insertion. The host cursor resets infrequently, with conservative
+  capacity headroom below the DSP's external-buffer overflow boundary. DSP `run`
+  still executes at every original instruction boundary. RAM/echo/register timing
+  and immediate sample availability are preserved; this is not DSP batching.
+  Snapshot loading resets this host-only cursor without changing the save format.
+* SPC timers increment all three prescalers first, then take one early return when
+  no timer boundary was crossed. The existing target-counter/output rules still
+  run for every elapsed prescaler tick. DSP callbacks retain their original order.
+* Colour math uses three spaced five-bit channels in a 32-bit word rather than
+  three channel-table lookups. Guard bits isolate carries/borrows; subtraction
+  clamps at zero, and halving precedes upper saturation. Windows, sprite priority,
+  brightness and the independent canonical compositor remain the reference.
+
+Validation without a game pack:
+
+* 20,000 variable DSP clock slices compare exact PCM availability/values (132,484
+  samples), all DSP registers, shared BRR/echo RAM and full processor snapshots with
+  a reference using revision 4's output-drain strategy. Includes 64 restore round
+  trips with a partially consumed host buffer; address/UB checks also pass.
+* 262,144 SPC timer states compare all divider/counter/latch values with an
+  independent quotient/tick model. The real source-site SPC differential passes
+  2,163 instructions, including ordered writes, timers, clocks and DSP state.
+* 196,608 packed-colour triples, 4,096 scalar channel cases, 393,216 window cases
+  and one million full colour policies match scalar arithmetic. The 16,777,216
+  background-pixel and 4,194,304 final-pixel comparisons also pass.
+* The recycled audio-output test retains zero steady-state allocations and exact
+  PCM. No game pack replay, emulator run or Vita SDK build was available here.
+
+Host `-O3` microbenchmarks show about 18% less time in the isolated timer helper
+(5.13 to 4.23 ns per slice in one median-of-seven run). Packed arithmetic is faster
+than channel-table lookup in its isolated benchmark, but compiler vectorization
+and host architecture influence that result. Whole renderer differences were
+smaller and varied by scene/run; DSP wrapper gains were modest/variable. None of
+these measurements establish emulator FPS or a locked 60 FPS game result.
+
+The optional benchmark targets now include `spc_timer_benchmark`,
+`native_color_benchmark`, `dsp_output_benchmark` and
+`native_composition_benchmark`. Configure with `EB_BUILD_BENCHMARKS=ON` as above.
+The timer and colour benchmarks compare implementations inside one executable;
+the DSP/whole-renderer benchmark can be built at revision 4 and this branch for
+A/B checks with identical compiler flags and profiling disabled.
+
+For the fastest emulator build, restore `fast_composition=1` in
+`ux0:data/PhaseDistorter/performance.cfg`, then build:
+
+```sh
+CORE_TIMING=OFF JOBS=10 bash vita/build.sh
+```
+
+The header must show `native_compositor_revision=5`, `dsp_output_revision=2` and
+`core_timing=disabled`. Whole-frame average/p95/FPS counters remain available.
+For subsystem comparisons, build **both** revisions with `CORE_TIMING=ON` and
+compare identical scenes; do not attribute profiling-on/off differences to these
+code changes. The previously reported sprite appearance issue remains deferred.

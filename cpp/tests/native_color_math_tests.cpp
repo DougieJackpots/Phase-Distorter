@@ -42,6 +42,17 @@ int main(){try{
         if(op&2)expected/=2;
         require(eb::detail::native_math_channel(a,b,op)==unsigned(std::min(31,expected)));
     }
+    std::uint64_t packed_cases=0;
+    for(unsigned op=0;op<4;++op)for(unsigned a=0;a<32;++a)for(unsigned b=0;b<32;++b)
+        for(unsigned shift:{0u,5u,10u})for(unsigned other_a:{0u,32767u,0x421u,0x7bdeu})
+            for(unsigned other_b:{0u,32767u,0x421u,0x7bdeu}) {
+                const unsigned ca=(other_a&~(31u<<shift))|(a<<shift);
+                const unsigned cb=(other_b&~(31u<<shift))|(b<<shift);
+                const unsigned expected=eb::detail::native_math_channel(ca&31,cb&31,op)|
+                    (eb::detail::native_math_channel((ca>>5)&31,(cb>>5)&31,op)<<5)|
+                    (eb::detail::native_math_channel((ca>>10)&31,(cb>>10)&31,op)<<10);
+                require(eb::detail::native_mix_color(ca,cb,op)==expected);++packed_cases;
+            }
     std::uint64_t windows=0;
     for(unsigned layer=0;layer<6;++layer)for(unsigned selection=0;selection<16;++selection)
         for(unsigned logic=0;logic<4;++logic)for(auto bounds:{std::array<unsigned,4>{32,128,96,224},
@@ -64,5 +75,5 @@ int main(){try{
         const bool inside=random()&1;
         require(eb::detail::finish_native_color(main,sub,select,math,fixed,brightness,inside)==scalar(main,sub,select,math,fixed,brightness,inside));
     }
-    std::cout<<"4096 colour-math channels, "<<windows<<" window cases and 1000000 full colour policies match scalar arithmetic\n";
+    std::cout<<packed_cases<<" packed colour triples, 4096 colour-math channels, "<<windows<<" window cases and 1000000 full colour policies match scalar arithmetic\n";
 }catch(const std::exception& e){std::cerr<<e.what()<<'\n';return 1;}}

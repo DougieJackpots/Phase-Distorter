@@ -1,5 +1,6 @@
 #include "eb/spc700_audio_cpu.hpp"
 #include "eb/snapshot_archive.hpp"
+#include "spc_timer_step.hpp"
 
 #include <iomanip>
 #include <sstream>
@@ -176,19 +177,8 @@ void Spc700AudioCpu::advance_audio_cycles(unsigned elapsed_audio_cycles) {
     cycle_count += elapsed_audio_cycles;
     if (advance_dsp_clocks)
         advance_dsp_clocks(elapsed_audio_cycles);
-    for (unsigned timer_index = 0; timer_index < 3; ++timer_index) {
-        const unsigned divider_period = timer_index == 2 ? 16 : 128;
-        timer_clock_dividers_[timer_index] += elapsed_audio_cycles;
-        while (timer_clock_dividers_[timer_index] >= divider_period) {
-            timer_clock_dividers_[timer_index] -= divider_period;
-            if ((control_register_ & (1 << timer_index)) && (test_register_ & 8) && !(test_register_ & 1)) {
-                if (++timer_target_counters_[timer_index] == timer_target_values_[timer_index]) {
-                    timer_target_counters_[timer_index] = 0;
-                    timer_output_latches_[timer_index] = (timer_output_latches_[timer_index] + 1) & 15;
-                }
-            }
-        }
-    }
+    detail::advance_spc_timers(elapsed_audio_cycles,control_register_,test_register_,
+        timer_clock_dividers_,timer_target_counters_,timer_target_values_,timer_output_latches_);
 }
 void Spc700AudioCpu::advance_master_clocks(unsigned master_clocks) {
     // Preserve the fractional asynchronous 1.024 MHz clock without drift.

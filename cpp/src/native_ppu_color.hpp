@@ -58,6 +58,30 @@ inline unsigned native_math_channel(unsigned a,unsigned b,unsigned operation) {
     }();
     return table[operation][a][b];
 }
+// Six-bit lanes leave a carry/borrow guard between each five-bit channel.
+// Keep the arithmetic in 32-bit registers on ARMv7; halving still happens
+// before upper saturation, as in the scalar channel operation.
+inline unsigned native_mix_color(unsigned a,unsigned b,unsigned operation) {
+    constexpr unsigned guards=(1u<<5)|(1u<<11)|(1u<<17);
+    constexpr unsigned channels=31u|(31u<<6)|(31u<<12);
+    const auto spread=[](unsigned c) {return(c&31)|((c&0x3e0)<<1)|((c&0x7c00)<<2);};
+    unsigned value;
+    if(operation&1) {
+        value=(spread(a)|guards)-spread(b);
+        const unsigned valid=value&guards;
+        value &= valid-(valid>>5);
+        if(operation&2)value>>=1;
+    } else {
+        value=spread(a)+spread(b);
+        if(operation&2)value>>=1;
+        else {
+            const unsigned overflow=value&guards;
+            value |= overflow-(overflow>>5);
+        }
+    }
+    value &= channels;
+    return (value&31)|((value>>1)&0x3e0)|((value>>2)&0x7c00);
+}
 inline std::uint32_t finish_native_color(const NativeColorPixel& main,const NativeColorPixel& sub,
                                         unsigned cgwsel,unsigned cgadsub,unsigned fixed,
                                         unsigned brightness,bool inside) {
@@ -67,9 +91,7 @@ inline std::uint32_t finish_native_color(const NativeColorPixel& main,const Nati
         const unsigned other=(cgwsel&2)?sub.color:fixed;
         const bool half=(cgadsub&0x40)&&!clipped&&(!(cgwsel&2)||sub.priority>=0);
         const unsigned operation=unsigned(bool(cgadsub&0x80))|(unsigned(half)<<1);
-        color=native_math_channel(color&31,other&31,operation) |
-            (native_math_channel((color>>5)&31,(other>>5)&31,operation)<<5) |
-            (native_math_channel((color>>10)&31,(other>>10)&31,operation)<<10);
+        color=native_mix_color(color,other,operation);
     }
     return 0xff000000 | (unsigned(brightness_component(brightness,color&31))<<16) |
         (unsigned(brightness_component(brightness,(color>>5)&31))<<8) |
