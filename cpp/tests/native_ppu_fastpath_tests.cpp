@@ -1,6 +1,7 @@
 #include "eb/scene_read_view.hpp"
 #include "eb/game_scene_renderer.hpp"
 #include "generated_profile.hpp"
+#include "native_background_row.hpp"
 #include <array>
 #include <iostream>
 #include <stdexcept>
@@ -39,6 +40,19 @@ int main(){
   std::array<std::uint32_t,256> output{};
   eb::GameSceneRenderer renderer;
   eb::BackgroundTileRows reference_rows,fast_rows;
+  // Compare each emitted background independently, including pixels which
+  // another layer or OBJ would hide in the final composed picture.
+  for(unsigned layer=0;layer<4;++layer) {
+   std::array<eb::PpuPixel,256> sampled{};
+   eb::detail::emit_native_background_row(view,layer,trial%224+1,
+    [&](unsigned x,std::uint16_t color,int priority){sampled[x]={color,priority,layer,true,256};});
+   for(unsigned x=0;x<256;++x) {
+    const auto expected=view.sample_background_pixel(layer,int(x),trial%224+1);
+    if(sampled[x].priority!=expected.priority ||
+       (expected.priority>=0&&sampled[x].color!=expected.color))
+     throw std::runtime_error("Native background run differs from uncached scalar pixel");
+   }
+  }
   // The reference always decodes independently, without the row cache.
   renderer.set_fast_native_composition(false);
   renderer.compose_native_scanline(view,trial%224,pixels,output);
@@ -52,6 +66,7 @@ int main(){
   accelerated_rows+=counts[0];
   checked+=256;
  }
+ std::cout<<"16777216 emitted background pixels match uncached scalar sampling; ";
  if(!accelerated_rows)throw std::runtime_error("No accelerated rows exercised");
  std::cout<<"accelerated_rows="<<accelerated_rows<<" / ";
  std::cout<<checked<<" native PPU pixels match canonical composition across modes, math, windows, mosaic, scroll and priority\n";

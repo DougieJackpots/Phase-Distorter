@@ -39,6 +39,9 @@ int main() {
                                 scalar |= ((vram[std::uint16_t(base + offset + (plane / 2) * 16 + (plane & 1))]
                                             >> (7 - lane)) & 1) << plane;
                             require(row.sample(vram, base + offset, depth, lane) == scalar);
+                            const auto halves=eb::detail::decode_planar_row_halves(vram,base+offset,depth);
+                            const auto word=lane<4?halves.low:halves.high;
+                            require(((word>>((lane&3)*8))&255)==scalar);
                         }
         }
         std::cout << "All 524288 brightness colours and clipped/flipped/wrapped planar-row fixtures match scalar output\n";

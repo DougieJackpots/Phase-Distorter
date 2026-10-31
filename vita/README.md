@@ -452,3 +452,64 @@ and contain nonzero `core_samples` after gameplay. `core_timing_runtime=1` alone
 cannot enable instrumentation that was compiled out. Timing reads add overhead on
 sampled updates; benchmark the final build with `CORE_TIMING=OFF` separately.
 No Vita performance target is established by the host pixel-equivalence tests.
+
+### Native row kernels (compositor revision 4)
+
+This experiment replaces the revision 3 native row callback with direct opaque
+colour emission. Modes 0, 1 and 3 resolve map geometry, palette selection and
+priority once per tile run, without constructing eight full `PpuPixel` records.
+The planar decoder exposes two 32-bit words, avoiding variable 64-bit shifts in
+the ARMv7 pixel loop. Ordinary mosaic samples each repeated horizontal block
+once; mode 7 retains the existing affine semantics. Offset-per-tile modes retain
+the scalar address calculation. Every borrowed raster view reads current VRAM,
+CGRAM and registers; there is no retained texture cache to invalidate.
+
+The compositor also uses its simpler main-screen path for any mode with no
+window clipping or effective colour math. The general path avoids sub-screen
+sampling when colour math cannot consume it, and avoids window-mask construction
+when no active policy needs it. Sprite overflow evaluation, CPU/SPC/DSP scheduling,
+HDMA and the canonical effect-reference renderer are unchanged. No frame skipping
+or reduced simulation rate is introduced. `fast_composition=0` retains the
+canonical compositor for differential checks.
+
+Host validation compares 16,777,216 individual background pixels, including those
+hidden by other layers, and 4,194,304 final composed pixels with the uncached scalar
+reference. It covers all modes, 8/16-pixel tiles, flips, scroll, mosaic, direct
+colour, windows, priority ties and colour math. The planar-row tests compare both
+32-bit decoder halves with scalar bitplane sampling, including VRAM wrapping.
+
+Synthetic host renderer benchmark against revision 3 (`42d45fc`), GCC `-O3`, no
+LTO or per-call profiling, same procedural data and matching output checksums:
+
+| Case | Revision 3 ms/frame | Revision 4 ms/frame | Reduction |
+|------|--------------------|--------------------|-----------|
+| Mode 1 plain | 1.837 | 1.444 | 21% |
+| Mode 1 sub-screen math | 2.798 | 2.078 | 26% |
+| Mode 3 static-like math | 1.960 | 1.394 | 29% |
+| Mode 1 windows | 2.694 | 2.113 | 22% |
+| Mode 7 | 1.563 | 1.092 | 30% |
+| Mode 1 mosaic | 6.953 | 1.929 | 72% |
+| Mode 1 fixed-colour math | 2.971 | 2.026 | 32% |
+
+Values average the medians of two runs per revision, in A/B/B/A order; each run
+uses five batches of 40 synthetic frames per case. These are renderer-only host
+measurements, not emulator or Vita frame rates, and do not establish a 60 FPS game
+result. CPU, SPC and DSP remain outside this benchmark.
+
+To build the optional benchmark on a desktop toolchain:
+
+```sh
+cmake -S cpp -B build-bench -DCMAKE_BUILD_TYPE=Release \
+  -DEB_PREGENERATED_DIR="$PWD/generated" -DEB_BUILD_FRONTEND=OFF \
+  -DEB_BUILD_TESTS=OFF -DEB_BUILD_BENCHMARKS=ON -DEB_FAST_NATIVE_COMPOSITION=ON
+cmake --build build-bench --target native_composition_benchmark --parallel 10
+./build-bench/native_composition_benchmark
+```
+
+For the next **emulator** comparison, keep the same input route, emulator settings,
+enhanced timing and composition stride as revision 3. Use
+`CORE_TIMING=ON JOBS=10 bash vita/build.sh`; the header must report
+`native_compositor_revision=4`. Compare whole-update average/p95 and sampled PPU
+composition times in matching scenes. Sampled instrumentation adds overhead, so
+compare builds with the same timing setting. Confirm the final frame rate with
+`CORE_TIMING=OFF` after profiling.

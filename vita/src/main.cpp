@@ -211,7 +211,7 @@ int main(int argc, char** argv) {
         if (!performance.output)
             std::cerr << "Could not open performance.log; gameplay will continue.\n";
         performance.output << "Vita performance diagnostics v4; sampled core timings include instrumentation overhead\n";
-        performance.output << "native_compositor_revision=3\n";
+        performance.output << "native_compositor_revision=4\n";
 #ifdef __OPTIMIZE__
         performance.output << "compiler_optimisation=enabled\n";
 #else

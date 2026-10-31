@@ -7,6 +7,7 @@
 #include "planar_tile_row.hpp"
 #include "ppu_brightness.hpp"
 #include "native_ppu_color.hpp"
+#include "native_background_row.hpp"
 
 namespace eb {
 namespace {
@@ -525,12 +526,12 @@ void GameSceneRenderer::compose_native_scanline(const SceneReadView& view, unsig
                                                std::span<std::uint32_t, 256> output) {
 #ifdef EB_FAST_NATIVE_COMPOSITION
     const auto& regs=view.ppu_registers;
-    const unsigned mode=regs[5]&7,enabled=regs[0x2c],math=regs[0x31];
+    const unsigned enabled=regs[0x2c],math=regs[0x31];
     const bool identity_math=!(math&0x3f) || (!(regs[0x30]&2)&&view.fixed_color==0&&!(math&0x40));
-    // A deliberately narrow native mode: no moved windows, reference effects,
-    // clipping or effective colour math. All other configurations retain the
-    // canonical compositor. VRAM/palette/mosaic/scroll sampling is unchanged.
-    if(fast_native_composition_&&!presentation_effects_enabled_&&mode<=1&&
+    // No colour-window clipping or effective colour math: only the main
+    // screen contributes. All modes can use this simpler priority buffer;
+    // non-tiled modes keep the canonical sampler inside the row emitter.
+    if(fast_native_composition_&&!presentation_effects_enabled_&&
        !(enabled&regs[0x2e])&&!(regs[0x30]&0xf0)&&identity_math) {
         ++fast_native_rows_;
         const unsigned brightness=regs[0]&15;
@@ -540,9 +541,9 @@ void GameSceneRenderer::compose_native_scanline(const SceneReadView& view, unsig
         colors.fill(view.palette(0));priorities.fill(-1);
         for(unsigned layer=0;layer<4;++layer) {
             if(!(enabled&(1u<<layer)))continue;
-            view.for_each_native_background_pixel(layer,y+1,[&](unsigned x,const PpuPixel& pixel) {
-                if(pixel.priority>priorities[x]) {
-                    colors[x]=pixel.color;priorities[x]=std::int8_t(pixel.priority);
+            detail::emit_native_background_row(view,layer,y+1,[&](unsigned x,std::uint16_t color,int priority) {
+                if(priority>priorities[x]) {
+                    colors[x]=color;priorities[x]=std::int8_t(priority);
                 }
             });
         }
@@ -561,19 +562,25 @@ void GameSceneRenderer::compose_native_scanline(const SceneReadView& view, unsig
         ++fast_native_rows_;
         const unsigned brightness=regs[0]&15;
         if(!brightness) {std::fill(output.begin(),output.end(),0xff000000);return;}
-        const auto regions=detail::native_window_regions(regs);
-        std::array<std::uint8_t,256> windows;
-        for(unsigned x=0;x<256;++x) {
-            const unsigned region=unsigned(x>=regs[0x26]&&x<=regs[0x27]) |
-                (unsigned(x>=regs[0x28]&&x<=regs[0x29])<<1);
-            windows[x]=regions[region];
+        const bool need_sub=(regs[0x30]&2)&&(math&0x3f)&&((regs[0x30]>>4)&3)!=3;
+        const unsigned clip=regs[0x30]>>6,prevent=(regs[0x30]>>4)&3;
+        const bool needs_windows=(regs[0x2c]&regs[0x2e])||
+            (need_sub&&(regs[0x2d]&regs[0x2f]))||clip==1||clip==2||prevent==1||prevent==2;
+        std::array<std::uint8_t,256> windows{};
+        if(needs_windows) {
+            const auto regions=detail::native_window_regions(regs);
+            for(unsigned x=0;x<256;++x) {
+                const unsigned region=unsigned(x>=regs[0x26]&&x<=regs[0x27]) |
+                    (unsigned(x>=regs[0x28]&&x<=regs[0x29])<<1);
+                windows[x]=regions[region];
+            }
         }
         std::array<detail::NativeColorPixel,256> main,sub;
         main.fill({view.palette(0),-1,5,true});
         sub.fill({view.fixed_color,-1,5,true});
         for(unsigned layer=0;layer<5;++layer) {
             const unsigned bit=1u<<layer;
-            const bool main_enabled=regs[0x2c]&bit,sub_enabled=regs[0x2d]&bit;
+            const bool main_enabled=regs[0x2c]&bit,sub_enabled=need_sub&&(regs[0x2d]&bit);
             if(!main_enabled&&!sub_enabled)continue;
             const bool main_masked=regs[0x2e]&bit,sub_masked=regs[0x2f]&bit;
             const auto emit = [&](unsigned x,const PpuPixel& pixel) {
@@ -586,7 +593,9 @@ void GameSceneRenderer::compose_native_scanline(const SceneReadView& view, unsig
             };
             if(layer==4) {
                 for(unsigned x=0;x<256;++x)emit(x,objects[x]);
-            } else view.for_each_native_background_pixel(layer,y+1,emit);
+            } else detail::emit_native_background_row(view,layer,y+1,[&](unsigned x,std::uint16_t color,int priority) {
+                emit(x,PpuPixel{color,priority,layer,true,256});
+            });
         }
         for(unsigned x=0;x<256;++x)
             output[x]=detail::finish_native_color(main[x],sub[x],regs[0x30],regs[0x31],
