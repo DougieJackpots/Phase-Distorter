@@ -1,3 +1,4 @@
+#include "eb/native_hook_sites.hpp"
 #include "eb/overworld_sprite_runtime.hpp"
 #include "eb/actor_surface_service.hpp"
 #include "eb/actor_draw_order_service.hpp"
@@ -261,12 +262,19 @@ bool OverworldSpriteRuntime::try_execute(MainCpu65816 &cpu, SnesBus &bus) {
             state.unsupported("teleport arrival has no live party actor", pc);
         cpu.y_index = role;
     }
+#ifdef EB_FAST_HOOK_DISPATCH
+    if (native_hook_sites::dispatch_services(pc,
+        [&]{return state.surfaces.try_execute(cpu,bus);},
+        [&]{return try_native_actor_draw_order(cpu,bus);},
+        [&]{return try_native_map_strip(cpu,bus);}))return true;
+#else
     if (state.surfaces.try_execute(cpu, bus))
         return true;
     if (try_native_actor_draw_order(cpu, bus))
         return true;
     if (try_native_map_strip(cpu, bus))
         return true;
+#endif
     while (!state.creations.empty() && stack > state.creations.back().stack)
         state.creations.pop_back();
     while (!state.releases.empty() && stack > state.releases.back().stack)

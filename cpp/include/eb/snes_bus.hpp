@@ -46,6 +46,7 @@ class SnesBus {
         scene_renderer_.set_fast_native_composition(composition);
     }
     static unsigned compiled_core_fast_paths() noexcept;
+    static bool compiled_fast_hook_dispatch() noexcept;
     auto native_composition_counts() const { return scene_renderer_.native_composition_counts(); }
     bool try_fetch_rom_instruction(std::uint32_t address,unsigned length,unsigned& extra_master_clocks);
     void write_byte(uint32_t address, uint8_t value);

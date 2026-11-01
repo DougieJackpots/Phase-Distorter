@@ -1,3 +1,4 @@
+#include "eb/native_hook_sites.hpp"
 #include "eb/map_strip_service.hpp"
 #include "eb/main_cpu_65816.hpp"
 #include "eb/native/map_strip.hpp"
@@ -11,8 +12,8 @@ bool try_native_map_strip(MainCpu65816 &cpu, SnesBus &bus) {
     if (bank != 0x7e && bank != 0x7f && ((bank & 0x40) || (pc & 0x8000)))
         pc |= 0xc00000;
     const bool jp = cpu.game_version == GameVersion::JP;
-    const bool row = pc == (jp ? 0xc00f16u : 0xc00f04u);
-    if (!row && pc != (jp ? 0xc010ceu : 0xc010bcu))
+    const bool row = pc == (jp ? native_hook_sites::row_jp : native_hook_sites::row_us);
+    if (!row && pc != (jp ? native_hook_sites::column_jp : native_hook_sites::column_us))
         return false;
     if (cpu.game_version != bus.game_version() || cpu.emulation_mode || cpu.data_bank != 0x7e ||
         cpu.direct_page > 0x1fde ||

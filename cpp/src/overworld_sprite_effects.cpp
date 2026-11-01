@@ -1,3 +1,4 @@
+#include "eb/native_hook_sites.hpp"
 #include "eb/overworld_sprite_effects.hpp"
 #include "eb/main_cpu_65816.hpp"
 #include "eb/native/sprite_appearance.hpp"
@@ -15,11 +16,15 @@ struct Layout {
   unsigned seed_eight, seed_four, row, column, pixel, upload, clear, reset;
   unsigned records, count, graphics_low, graphics_high, direction, animation;
 };
-constexpr Layout us{0xc4283f, 0xc42884, 0xc428d1, 0xc428fc, 0xc42965,
-                    0xc429ae, 0xc4c8e9, 0xc4c8a4, 0xb4aa,   0xb4a6,
+constexpr Layout us{native_hook_sites::effects_us[0], native_hook_sites::effects_us[1],
+                    native_hook_sites::effects_us[2], native_hook_sites::effects_us[3],
+                    native_hook_sites::effects_us[4], native_hook_sites::effects_us[5],
+                    native_hook_sites::effects_us[6], native_hook_sites::effects_us[7], 0xb4aa,   0xb4a6,
                     0x29ca,   0x2a06,   0x2af6,   0x10f2};
-constexpr Layout jp{0xc4277d, 0xc427c2, 0xc4280f, 0xc4283a, 0xc428a3,
-                    0xc428ec, 0xc49bb9, 0xc49b74, 0xb67e,   0xb67a,
+constexpr Layout jp{native_hook_sites::effects_jp[0], native_hook_sites::effects_jp[1],
+                    native_hook_sites::effects_jp[2], native_hook_sites::effects_jp[3],
+                    native_hook_sites::effects_jp[4], native_hook_sites::effects_jp[5],
+                    native_hook_sites::effects_jp[6], native_hook_sites::effects_jp[7], 0xb67e,   0xb67a,
                     0x2dc8,   0x2e04,   0x2ef4,   0x10e8};
 unsigned word(std::span<const std::uint8_t> bytes, unsigned at) {
   if (at > bytes.size() || bytes.size() - at < 2)

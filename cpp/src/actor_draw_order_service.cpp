@@ -1,3 +1,4 @@
+#include "eb/native_hook_sites.hpp"
 #include "eb/actor_draw_order_service.hpp"
 #include "eb/main_cpu_65816.hpp"
 #include "eb/native/actor_draw_order.hpp"
@@ -13,7 +14,7 @@ bool try_native_actor_draw_order(MainCpu65816 &cpu, SnesBus &bus) {
     if (bank != 0x7e && bank != 0x7f && ((bank & 0x40) || (pc & 0x8000)))
         pc |= 0xc00000;
     const bool jp = cpu.game_version == GameVersion::JP;
-    if (pc != (jp ? 0xc0db4au : 0xc0db82u))
+    if (pc != (jp ? native_hook_sites::depth_jp : native_hook_sites::depth_us))
         return false;
     if (cpu.emulation_mode || cpu.data_bank != 0x7e ||
         (cpu.status_register & (MainCpu65816::Accumulator8Bit | MainCpu65816::Index8Bit)) ||

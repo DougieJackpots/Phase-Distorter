@@ -20,6 +20,9 @@ option(EB_VITA_FAST_NATIVE_COMPOSITION "Enable guarded native PPU composition on
 set(EB_FAST_NATIVE_COMPOSITION ${EB_VITA_FAST_NATIVE_COMPOSITION} CACHE BOOL "Vita native compositor" FORCE)
 
 option(EB_VITA_FAST_MEMORY_ACCESS "Enable guarded ROM/fetch fast paths on this experimental branch" ON)
+option(EB_VITA_FAST_HOOK_DISPATCH "Enable guarded native service entry dispatch" ON)
+set(EB_FAST_HOOK_DISPATCH ${EB_VITA_FAST_HOOK_DISPATCH} CACHE BOOL "Vita native hook guards" FORCE)
+
 option(EB_VITA_FAST_EVENT_SCHEDULER "Enable event-free scheduling cache on this experimental branch" ON)
 set(EB_FAST_MEMORY_ACCESS ${EB_VITA_FAST_MEMORY_ACCESS} CACHE BOOL "Vita ROM/fetch fast paths" FORCE)
 set(EB_FAST_EVENT_SCHEDULER ${EB_VITA_FAST_EVENT_SCHEDULER} CACHE BOOL "Vita scheduler cache" FORCE)

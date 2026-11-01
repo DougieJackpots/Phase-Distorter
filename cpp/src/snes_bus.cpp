@@ -1,3 +1,5 @@
+#include "eb/native_hook_sites.hpp"
+#include "eb/main_cpu_65816.hpp"
 #include "eb/snes_bus.hpp"
 #include "eb/runtime_timing.hpp"
 #include "eb/photosensitivity_filter.hpp"
@@ -165,14 +167,33 @@ bool SnesBus::try_execute_clock_operation(MainCpu65816 &cpu) {
            native_actor_fades_.try_execute(cpu, *this);
 }
 
+bool SnesBus::compiled_fast_hook_dispatch() noexcept {
+#ifdef EB_FAST_HOOK_DISPATCH
+    return true;
+#else
+    return false;
+#endif
+}
+
 bool SnesBus::try_execute_native_sprite_operation(MainCpu65816 &cpu) {
     if (!native_sprite_runtime_)
         return false;
+#ifdef EB_FAST_HOOK_DISPATCH
+    const auto pc=native_hook_sites::normalize(cpu.program_counter);
+    if (native_hook_sites::may_effect(pc)&&native_sprite_effects_->try_execute(cpu,*this,*native_sprite_runtime_))
+        return true;
+    // Do not gate this call by PC: transaction cleanup and regional
+    // validation also matter away from service entries.
+    if (native_sprite_runtime_->try_execute(cpu,*this))return true;
+    return native_hook_sites::may_draw(native_hook_sites::normalize(cpu.program_counter))&&
+        try_native_sprite_draw(cpu,*this,*native_sprite_runtime_,scene_renderer_);
+#else
     if (native_sprite_effects_->try_execute(cpu, *this, *native_sprite_runtime_))
         return true;
     if (native_sprite_runtime_->try_execute(cpu, *this))
         return true;
     return try_native_sprite_draw(cpu, *this, *native_sprite_runtime_, scene_renderer_);
+#endif
 }
 
 bool SnesBus::wait_for_native_actor_tick(std::uint32_t pc) {

@@ -1,3 +1,4 @@
+#include "eb/native_hook_sites.hpp"
 #include "eb/actor_surface_service.hpp"
 #include "eb/main_cpu_65816.hpp"
 #include "eb/snes_bus.hpp"
@@ -14,7 +15,7 @@ bool ActorSurfaceService::try_execute(MainCpu65816 &cpu, SnesBus &bus) const {
     if (bank != 0x7e && bank != 0x7f && ((bank & 0x40) || (pc & 0x8000)))
         pc |= 0xc00000;
     const bool jp = version_ == GameVersion::JP;
-    if (pc != (jp ? 0xc0c7bdu : 0xc0c7dbu))
+    if (pc != (jp ? native_hook_sites::surface_jp : native_hook_sites::surface_us))
         return false;
     if (cpu.game_version != version_ || bus.game_version() != version_)
         throw std::invalid_argument("Native actor surface query region mismatch");

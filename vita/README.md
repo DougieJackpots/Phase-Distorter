@@ -636,3 +636,62 @@ Other cases varied slightly between runs and do not establish further speedups.
 The fixed-colour loop is kept out of line on GCC to limit growth of the general
 compositor's hot code. Full emulator timing and a Vita SDK build remain unverified
 in this environment.
+
+### Native hook dispatch experiment
+
+This branch follows `vita-fixed-color-cache` and targets CPU work outside the
+pixel compositor. The compatibility CPU probes native sprite services before
+source instructions. Previously, even unrelated PCs entered the effect, surface,
+depth-order, map-strip and ordinary-draw handlers, which then normalized the PC
+and rejected it. The new guards reject those calls at their callers. Entry sites
+for both regions are shared with the original handler layouts; ROM aliases use
+the original mapping, including the WRAM/low-bank exclusions.
+
+The main sprite runtime is still called at all its original positions. Region
+validation, teleport handling and creation/release stack cleanup remain in place.
+Effect-reset callbacks that mutate native state and return false are retained.
+The draw guard checks the PC current after the runtime call. No instructions,
+clocks, DSP work, audio samples or composed frames are omitted.
+
+`EB_VITA_FAST_HOOK_DISPATCH` defaults to ON on this experimental branch and forces
+the corresponding core option. Configure it OFF to retain the prior call pattern:
+
+```sh
+cmake -S vita -B build-vita -DEB_VITA_FAST_HOOK_DISPATCH=OFF
+```
+
+The original function bodies remain behind the gates; their address constants
+now come from one shared definition. A disabled build keeps the prior dispatch
+sequence. The log's `fast_hook_dispatch` is reported by the compiled core, not
+inferred from the frontend configuration. `native_hook_dispatch_revision=1`
+identifies this implementation; compositor revision 6 and DSP output revision 2
+are unchanged.
+
+Validation: the isolated test checks all 16,777,216 PC values against revision 6's
+entry addresses and alias rules. It extracts the actual bus dispatcher from
+`snes_bus.cpp` and compares its observable handler order with the old pipeline
+using controlled handlers, including false-return effects, cleanup, disabled
+runtime, both regions, all return masks, and PC changes before draw dispatch.
+Address/UB checks pass. Changed production units pass host syntax checks with
+guards enabled; the bus/runtime also pass with guards disabled. These are admission
+and dispatch-contract checks, not a full asset-backed gameplay replay or a measured
+hardware speedup. A Vita SDK build and full game run were unavailable here.
+
+Each report line now has the same `run_id` as its header. This distinguishes a
+current session from stale trailing data if the emulator/filesystem retains an
+older tail. Analyse only windows whose ID matches the current header.
+
+For a **current hardware diagnostic** build:
+
+```sh
+CORE_TIMING=ON JOBS=10 bash vita/build.sh
+```
+
+Keep `core_timing=1` and `fast_composition=1` in `performance.cfg`. Confirm
+`fast_hook_dispatch=1` and `core_timing=enabled` in the header. Run the static,
+menu and outdoor sections for roughly 20–30 seconds each and collect the log.
+The earlier shared hardware log was compositor revision 2 with core timing
+compiled out, so it cannot establish the current subsystem split. Sampled timing
+includes measurement overhead; whole-update distributions include mostly
+uninstrumented frames. Compare guarded/unguarded builds using the same route
+and timing setting. Use `CORE_TIMING=OFF` for the final performance build.

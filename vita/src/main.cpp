@@ -50,6 +50,7 @@ struct Timing {
 struct Performance {
     std::ofstream output{data_dir / "performance.log", std::ios::trunc};
     Clock::time_point epoch = Clock::now();
+    const std::uint64_t run_id=static_cast<std::uint64_t>(std::chrono::system_clock::now().time_since_epoch().count());
     std::uint64_t updates = 0, frames = 0, late = 0, saves = 0;
     Timing simulation, audio, upload, present, sleep, save;
     Timing cpu_hardware, ppu, dsp, ppu_state, ppu_compose;
@@ -79,7 +80,7 @@ struct Performance {
         const double seconds = std::chrono::duration<double>(now - epoch).count();
         if (!updates || (!force && seconds < 5)) return;
         output << std::fixed << std::setprecision(3)
-               << "seconds=" << seconds << " game_fps=" << frames / seconds
+               << "seconds=" << seconds << " run_id=" << run_id << " game_fps=" << frames / seconds
                << " displayed_fps=" << updates / seconds << " late=" << late;
         const auto write = [&](const char* name, const Timing& timing, std::uint64_t count) {
             output << ' ' << name << "_avg_ms=" << timing.total / std::max<std::uint64_t>(count, 1)
@@ -211,7 +212,8 @@ int main(int argc, char** argv) {
         if (!performance.output)
             std::cerr << "Could not open performance.log; gameplay will continue.\n";
         performance.output << "Vita performance diagnostics v4; sampled core timings include instrumentation overhead\n";
-        performance.output << "native_compositor_revision=6\ndsp_output_revision=2\n";
+        performance.output << "run_id=" << performance.run_id << '\n';
+        performance.output << "native_compositor_revision=6\ndsp_output_revision=2\nnative_hook_dispatch_revision=1\n";
 #ifdef __OPTIMIZE__
         performance.output << "compiler_optimisation=enabled\n";
 #else
@@ -268,7 +270,7 @@ int main(int argc, char** argv) {
         if (options.save_enabled) load_save(session);
         session.enable_runtime_timing(options.core_timing);
         performance.output << "fast_core_compiled_mask=" << session.compiled_core_fast_paths()
-            << " fast_composition_requested=" << options.fast_composition << " fast_memory_requested=" << options.fast_memory << " fast_scheduler_requested=" << options.fast_scheduler << " compact_spc_dispatch=" << EB_VITA_COMPACT_SPC_DISPATCH << " build_configuration=" << EB_VITA_BUILD_TYPE
+            << " fast_hook_dispatch=" << session.compiled_fast_hook_dispatch() << " fast_composition_requested=" << options.fast_composition << " fast_memory_requested=" << options.fast_memory << " fast_scheduler_requested=" << options.fast_scheduler << " compact_spc_dispatch=" << EB_VITA_COMPACT_SPC_DISPATCH << " build_configuration=" << EB_VITA_BUILD_TYPE
             << " session_unit_optimisation=" << session.session_unit_optimised()
             << " dsp_unit_optimisation=" << session.dsp_unit_optimised() << '\n';
         performance.output.flush();

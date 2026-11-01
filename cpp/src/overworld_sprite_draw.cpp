@@ -1,3 +1,4 @@
+#include "eb/native_hook_sites.hpp"
 #include "eb/overworld_sprite_draw.hpp"
 #include "eb/game_scene_renderer.hpp"
 #include "eb/main_cpu_65816.hpp"
@@ -15,10 +16,10 @@ struct DrawLayout {
     unsigned entry, priority, flags;
     Overlay ripple, big_ripple, sweat, mushroom;
 };
-constexpr DrawLayout us{0xc0a3a4, 0x2400, 0x2e7a,
+constexpr DrawLayout us{native_hook_sites::draw_us, 0x2400, 0x2e7a,
     {0x301e,0x305a,0x3096}, {0x30d2,0x310e,0x314a},
     {0x2f6a,0x2fa6,0x2fe2}, {0x2eb6,0x2ef2,0x2f2e}};
-constexpr DrawLayout jp{0xc0a383, 0x2800, 0x3278,
+constexpr DrawLayout jp{native_hook_sites::draw_jp, 0x2800, 0x3278,
     {0x341c,0x3458,0x3494}, {0x34d0,0x350c,0x3548},
     {0x3368,0x33a4,0x33e0}, {0x32b4,0x32f0,0x332c}};
 unsigned normalize(unsigned pc) {
@@ -31,7 +32,7 @@ bool try_native_sprite_draw(MainCpu65816 &cpu, SnesBus &bus,
                             OverworldSpriteRuntime &runtime, GameSceneRenderer &renderer) {
     const auto &layout = cpu.game_version == GameVersion::JP ? jp : us;
     const auto pc = normalize(cpu.program_counter);
-    const bool custom = pc == (cpu.game_version == GameVersion::JP ? 0xc0a0d9u : 0xc0a0fau);
+    const bool custom = pc == (cpu.game_version == GameVersion::JP ? native_hook_sites::custom_jp : native_hook_sites::custom_us);
     if (pc != layout.entry && !custom)
         return false;
     if (cpu.emulation_mode || cpu.game_version != bus.game_version())
