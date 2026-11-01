@@ -526,7 +526,10 @@ void GameSceneRenderer::compose_native_scanline(const SceneReadView& view, unsig
                                                std::span<std::uint32_t, 256> output) {
 #ifdef EB_FAST_NATIVE_COMPOSITION
     const auto& regs=view.ppu_registers;
-    const unsigned enabled=regs[0x2c],math=regs[0x31];
+    const unsigned enabled=regs[0x2c];
+    // Only main-screen winners can enter colour math. Preserve backdrop and
+    // operation bits, but discard enables for unreachable background/OBJ layers.
+    const unsigned math=regs[0x31]&(enabled|0xe0);
     const bool identity_math=!(math&0x3f) || (!(regs[0x30]&2)&&view.fixed_color==0&&!(math&0x40));
     // No colour-window clipping or effective colour math: only the main
     // screen contributes. All modes can use this simpler priority buffer;
@@ -597,9 +600,14 @@ void GameSceneRenderer::compose_native_scanline(const SceneReadView& view, unsig
                 emit(x,PpuPixel{color,priority,layer,true,256});
             });
         }
-        for(unsigned x=0;x<256;++x)
-            output[x]=detail::finish_native_color(main[x],sub[x],regs[0x30],regs[0x31],
-                                                 view.fixed_color,brightness,windows[x]&32);
+        if(regs[0x30]&2) {
+            for(unsigned x=0;x<256;++x)
+                output[x]=detail::finish_native_color(main[x],sub[x],regs[0x30],math,
+                                                     view.fixed_color,brightness,windows[x]&32);
+        } else {
+            detail::finish_native_fixed_row(main,regs[0x30],math,view.fixed_color,brightness,
+                                            windows,output,native_fixed_colors_);
+        }
         return;
     }
 #endif

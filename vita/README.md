@@ -576,3 +576,63 @@ The header must show `native_compositor_revision=5`, `dsp_output_revision=2` and
 For subsystem comparisons, build **both** revisions with `CORE_TIMING=ON` and
 compare identical scenes; do not attribute profiling-on/off differences to these
 code changes. The previously reported sprite appearance issue remains deferred.
+
+### Fixed-colour row cache (compositor revision 6)
+
+This child of `vita-60fps-core-pass` narrows another composition optimization to
+fixed-colour scenes. Fixed-colour mixing and brightness use channel lookup tables
+owned by the renderer. The tables persist across scanlines and frames when their
+mathematical inputs are unchanged. Their complete key contains the 15-bit fixed
+colour, brightness, and both window regions' add/subtract/half operations. They
+retain no RAM, palette, VRAM, raster pointers or source pixels. Changing CGRAM or
+scrolling still supplies fresh input colours to those same mathematical tables.
+
+The cache is a value copied with its renderer. It is host scratch, excluded from
+emulated snapshots; its key makes reuse after loading safe without changing the
+save format. The scalar single-pixel colour function remains an independent
+reference. Sub-screen colour math keeps that calculation. An earlier prepared
+sub-screen policy experiment was rejected after a windowed benchmark slowed down.
+
+Main-screen colour-math enables are also intersected with the enabled main-screen
+layers. Backdrop enable and the arithmetic mode bits are preserved. Layers that
+cannot win on the main screen cannot require sub-screen sampling or force the
+more expensive colour-math path. Sprite sampling, game timing, audio and frame
+composition stride are unchanged.
+
+Validation adds 1,048,576 final row pixels against independent scalar arithmetic,
+including warm cache hits, changes to every key input, both colour-window regions,
+clipping, half suppression and brightness rounding. The all-mode background and
+composition differential remains in use (16,777,216 background pixels and
+4,194,304 final pixels). An adjacent-source-row reuse experiment was also rejected: its repeated-artwork
+saving came with regressions in other fixtures. Repeated-row fixtures remain in
+the tests to exercise palette/flip independence.
+
+The benchmark adds `mode1-unused-math` for enabled math
+bits on disabled main-screen layers, and `mode3-repeated` for adjacent repeated
+source tiles. Host benchmark times are renderer-only;
+no emulator FPS or locked 60 FPS result can be inferred from them.
+
+Build for the next emulator run with the same settings as revision 5:
+
+```sh
+CORE_TIMING=OFF JOBS=10 bash vita/build.sh
+```
+
+Keep `fast_composition=1`. The log must show `native_compositor_revision=6` and
+`dsp_output_revision=2`. Use matching scenes and the same profiling setting for
+comparisons. A clean whole-frame log can show whether the remaining over-budget
+updates decrease; subsystem sampling requires `CORE_TIMING=ON` on both builds.
+
+Final host `-O3` comparison (same procedural driver, production revision-5 headers
+for the baseline, A/B/B/A order; mean of two median-of-five runs per revision):
+
+| Targeted case | Revision 5 ms/frame | Revision 6 ms/frame |
+|---------------|--------------------|--------------------|
+| Fixed-colour math | 1.440 | 1.246 |
+| Math enabled only on disabled main layers | 1.002 | 0.289 |
+
+Output checksums match. These are synthetic renderer cases, not game-wide gains.
+Other cases varied slightly between runs and do not establish further speedups.
+The fixed-colour loop is kept out of line on GCC to limit growth of the general
+compositor's hot code. Full emulator timing and a Vita SDK build remain unverified
+in this environment.

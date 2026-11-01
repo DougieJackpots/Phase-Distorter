@@ -1,6 +1,7 @@
 #pragma once
 
 #include "eb/scene_read_view.hpp"
+#include "eb/native_color_cache.hpp"
 #include "eb/direct_scene_capture.hpp"
 #include "eb/native/sprite_resources.hpp"
 #include "eb/native/sprite_fragment.hpp"
@@ -148,6 +149,7 @@ class GameSceneRenderer {
     std::vector<uint32_t> presentation_framebuffer_;
     bool presentation_effects_enabled_ = false;
     bool fast_native_composition_ = true;
+    detail::NativeFixedColorCache native_fixed_colors_;
     std::uint64_t fast_native_rows_=0,canonical_native_rows_=0;
     std::vector<uint8_t> presentation_effect_mask_;
     std::vector<uint32_t> presentation_effect_reference_;

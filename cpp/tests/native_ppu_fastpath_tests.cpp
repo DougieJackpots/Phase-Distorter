@@ -33,6 +33,15 @@ int main(){
   if(trial%3==0){regs[0x30]=0;regs[0x31]=0;regs[0x2e]=0;}
   else if(trial%3==1){regs[0x30]=trial&1;regs[0x31]&=0xbf;regs[0x2e]=0;}
   else if(trial%7==0){regs[0x30]=2;regs[0x31]=0;regs[0x2e]=0;}
+  if((trial/8)%4==0) {
+   // Repeated physical rows with changing palette/mirror metadata must reuse
+   // only planar indices, never a previous tile's final colours or orientation.
+   regs[7]=0x71;
+   for(unsigned offset=0;offset<4096;offset+=2) {
+    const unsigned entry=(trial&1023)|(((offset/2)&7)<<10)|((offset&8)?0x4000:0);
+    vram[0xe000+offset]=std::uint8_t(entry);vram[0xe001+offset]=std::uint8_t(entry>>8);
+   }
+  }
   eb::SceneReadView view{ram,vram,pal,oam,{},regs,sx,sy,affine,offsets,native,profile,eb::GameVersion::US,0,0,std::uint16_t(random())};
   view.fixed_color=trial%5==0?std::uint16_t(random()&32767):0;
   std::array<eb::PpuPixel,256> pixels{};

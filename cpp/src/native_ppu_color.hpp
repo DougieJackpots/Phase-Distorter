@@ -1,6 +1,7 @@
 #pragma once
 #include "ppu_brightness.hpp"
 #include "eb/scene_read_view.hpp"
+#include "eb/native_color_cache.hpp"
 #include <algorithm>
 #include <array>
 #include <cstdint>
@@ -96,5 +97,51 @@ inline std::uint32_t finish_native_color(const NativeColorPixel& main,const Nati
     return 0xff000000 | (unsigned(brightness_component(brightness,color&31))<<16) |
         (unsigned(brightness_component(brightness,(color>>5)&31))<<8) |
          unsigned(brightness_component(brightness,(color>>10)&31));
+}
+// Sub-screen math retains the per-pixel implementation. Fixed-colour math
+// can fold mixing and brightness into small immutable channel tables.
+#if defined(__GNUC__)
+__attribute__((noinline))
+#endif
+inline void finish_native_fixed_row(std::span<const NativeColorPixel,256> main,
+                              unsigned select,unsigned math,unsigned fixed,unsigned brightness,
+                              std::span<const std::uint8_t,256> windows,
+                              std::span<std::uint32_t,256> output,
+                              NativeFixedColorCache& cache) {
+    struct Policy { bool clipped;unsigned layers,operation; };
+    std::array<Policy,2> policies;
+    const unsigned subtract=unsigned(bool(math&0x80));
+    for(unsigned inside=0;inside<2;++inside) {
+        const bool clipped=window_policy(select>>6,inside);
+        policies[inside]={clipped,window_policy((select>>4)&3,inside)?0u:math&0x3f,
+            subtract|unsigned(bool(math&0x40)&&!clipped)*2};
+    }
+    const bool different_operations=policies[0].operation!=policies[1].operation;
+    if(policies[0].layers||policies[1].layers) {
+        const unsigned key=(fixed&32767)|(brightness<<15)|
+            (policies[0].operation<<19)|(policies[1].operation<<21);
+        if(cache.key!=key) {
+            for(unsigned inside=0;inside<(different_operations?2u:1u);++inside)
+                for(unsigned channel=0;channel<3;++channel)
+                    for(unsigned value=0;value<32;++value) {
+                        const auto mixed=native_math_channel(value,(fixed>>(channel*5))&31,policies[inside].operation);
+                        cache.channels[inside][channel][value]=brightness_component(brightness,mixed);
+                    }
+            cache.key=key;
+        }
+    }
+    for(unsigned x=0;x<256;++x) {
+        const unsigned inside=bool(windows[x]&32);const auto& policy=policies[inside];
+        const unsigned color=policy.clipped?0:main[x].color;
+        if(main[x].math&&(policy.layers&(1u<<main[x].layer))) {
+            const auto& table=cache.channels[different_operations?inside:0];
+            output[x]=0xff000000 | (unsigned(table[0][color&31])<<16) |
+                (unsigned(table[1][(color>>5)&31])<<8) | unsigned(table[2][(color>>10)&31]);
+        } else {
+            output[x]=0xff000000 | (unsigned(brightness_component(brightness,color&31))<<16) |
+                (unsigned(brightness_component(brightness,(color>>5)&31))<<8) |
+                unsigned(brightness_component(brightness,(color>>10)&31));
+        }
+    }
 }
 } // namespace eb::detail

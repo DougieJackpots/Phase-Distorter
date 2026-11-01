@@ -75,5 +75,23 @@ int main(){try{
         const bool inside=random()&1;
         require(eb::detail::finish_native_color(main,sub,select,math,fixed,brightness,inside)==scalar(main,sub,select,math,fixed,brightness,inside));
     }
+    std::uint64_t row_pixels=0;
+    eb::detail::NativeFixedColorCache row_cache;
+    unsigned select=0,math=0,fixed=0,brightness=0;
+    for(unsigned row=0;row<4096;++row) {
+        std::array<NativeColorPixel,256> main{},sub{};
+        std::array<std::uint8_t,256> windows{};std::array<std::uint32_t,256> output{};
+        for(unsigned x=0;x<256;++x) {
+            main[x]={std::uint16_t(random()&32767),std::int8_t(int(random()%13)-1),std::uint8_t(random()%6),bool(random()&1)};
+            sub[x]={std::uint16_t(random()&32767),std::int8_t(int(random()%13)-1),std::uint8_t(random()%6),bool(random()&1)};
+            windows[x]=std::uint8_t(random());
+        }
+        if(row%4==0) {select=random()&253;math=random()&255;fixed=random()&32767;brightness=random()&15;}
+        eb::detail::finish_native_fixed_row(main,select,math,fixed,brightness,windows,output,row_cache);
+        for(unsigned x=0;x<256;++x) {
+            require(output[x]==scalar(main[x],sub[x],select,math,fixed,brightness,bool(windows[x]&32)));++row_pixels;
+        }
+    }
+    std::cout<<row_pixels<<" prepared-row pixels match scalar colour policies; ";
     std::cout<<packed_cases<<" packed colour triples, 4096 colour-math channels, "<<windows<<" window cases and 1000000 full colour policies match scalar arithmetic\n";
 }catch(const std::exception& e){std::cerr<<e.what()<<'\n';return 1;}}

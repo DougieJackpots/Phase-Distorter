@@ -36,7 +36,7 @@ int main(){
     for(auto& b:f.vram)b=random();
     for(auto& b:f.palette)b=random();
     for(unsigned x=0;x<256;++x)f.objects[x]={std::uint16_t((x*137)&32767),x%7? -1:10,4,true,128};
-    const std::array<std::string_view,7> names={"mode1-plain","mode1-math","mode3-static","mode1-window","mode7","mode1-mosaic","mode1-fixed"};
+    const std::array<std::string_view,9> names={"mode1-plain","mode1-math","mode3-static","mode1-window","mode7","mode1-mosaic","mode1-fixed","mode1-unused-math","mode3-repeated"};
     std::uint64_t checksum=0;
     for(unsigned scenario=0;scenario<names.size();++scenario){
         f.regs.fill(0);f.regs[0]=15;f.regs[5]=scenario==2?3:scenario==4?7:1;
@@ -46,6 +46,13 @@ int main(){
         if(scenario==3){f.regs[0x23]=0xaa;f.regs[0x24]=0xaa;f.regs[0x25]=0xaa;f.regs[0x26]=35;f.regs[0x27]=180;f.regs[0x28]=70;f.regs[0x29]=220;f.regs[0x2e]=7;f.regs[0x2f]=2;f.regs[0x30]=0x62;}
         if(scenario==5)f.regs[6]=0x37;
         if(scenario==6)f.regs[0x31]=0x43;
+        if(scenario==7){f.regs[0x2c]=0x14;f.regs[0x2d]=2;f.regs[0x30]=2;f.regs[0x31]=1;}
+        if(scenario==8){
+            f.regs[5]=3;f.regs[0x2c]=1;f.regs[0x2d]=2;f.regs[0x30]=2;f.regs[0x31]=0x43;
+            for(unsigned map:{0x71u,0x65u})for(unsigned offset=0;offset<4096;offset+=2){
+                const unsigned at=((map&0xfc)<<9)+offset;f.vram[at]=1;f.vram[at+1]=0;
+            }
+        }
         auto view=f.view();if(scenario==6)view.fixed_color=0x1a7c;
         eb::GameSceneRenderer renderer;renderer.set_fast_native_composition(true);
         std::array<double,5> timings{};
