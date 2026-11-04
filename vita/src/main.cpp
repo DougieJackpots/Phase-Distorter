@@ -213,7 +213,7 @@ int main(int argc, char** argv) {
             std::cerr << "Could not open performance.log; gameplay will continue.\n";
         performance.output << "Vita performance diagnostics v4; sampled core timings include instrumentation overhead\n";
         performance.output << "run_id=" << performance.run_id << '\n';
-        performance.output << "native_compositor_revision=6\ndsp_output_revision=2\nnative_hook_dispatch_revision=1\n";
+        performance.output << "native_compositor_revision=7\ndsp_output_revision=2\nnative_hook_dispatch_revision=1\n";
 #ifdef __OPTIMIZE__
         performance.output << "compiler_optimisation=enabled\n";
 #else

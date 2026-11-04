@@ -42,6 +42,14 @@ int main(){
     vram[0xe000+offset]=std::uint8_t(entry);vram[0xe001+offset]=std::uint8_t(entry>>8);
    }
   }
+  if (trial % 16 == 3) {
+   // Static scene registers with random brightness, fine scroll and mosaic.
+   regs[0x2c] = 1;
+   regs[0x2d] = 2;
+   regs[0x2e] = regs[0x2f] = 0;
+   regs[0x30] = 2 | ((trial >> 4) & 1);
+   regs[0x31] = 3;
+  }
   eb::SceneReadView view{ram,vram,pal,oam,{},regs,sx,sy,affine,offsets,native,profile,eb::GameVersion::US,0,0,std::uint16_t(random())};
   view.fixed_color=trial%5==0?std::uint16_t(random()&32767):0;
   std::array<eb::PpuPixel,256> pixels{};

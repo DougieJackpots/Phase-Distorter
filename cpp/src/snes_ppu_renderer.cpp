@@ -560,6 +560,39 @@ void GameSceneRenderer::compose_native_scanline(const SceneReadView& view, unsig
         return;
     }
 
+    // The gas-station static adds one tiled background to another.
+    // With a single layer per screen, neither screen needs a priority buffer.
+    if (fast_native_composition_ && !presentation_effects_enabled_ &&
+        (regs[5] & 7) == 3 && (enabled & 31) == 1 && (regs[0x2d] & 31) == 2 &&
+        (regs[0x30] & 0xf2) == 2 && math == 1 &&
+        !(regs[0x2e] & 1) && !(regs[0x2f] & 2)) {
+        ++fast_native_rows_;
+        const unsigned brightness = regs[0] & 15;
+        if (!brightness) {
+            std::fill(output.begin(), output.end(), 0xff000000);
+            return;
+        }
+
+        constexpr unsigned transparent = 0x8000;
+        std::array<std::uint16_t, 256> main, sub;
+        main.fill(transparent);
+        sub.fill(view.fixed_color);
+        detail::emit_native_background_row(view, 0, y + 1,
+            [&](unsigned x, std::uint16_t color, int) { main[x] = color; });
+        detail::emit_native_background_row(view, 1, y + 1,
+            [&](unsigned x, std::uint16_t color, int) { sub[x] = color; });
+        const unsigned backdrop = view.palette(0);
+        for (unsigned x = 0; x < 256; ++x) {
+            const unsigned color = main[x] == transparent
+                ? backdrop : detail::native_mix_color(main[x], sub[x], 0);
+            output[x] = 0xff000000 |
+                (unsigned(detail::brightness_component(brightness, color & 31)) << 16) |
+                (unsigned(detail::brightness_component(brightness, (color >> 5) & 31)) << 8) |
+                unsigned(detail::brightness_component(brightness, (color >> 10) & 31));
+        }
+        return;
+    }
+
     // Broader native path for windowed and colour-math scenes.
     if(fast_native_composition_&&!presentation_effects_enabled_) {
         ++fast_native_rows_;

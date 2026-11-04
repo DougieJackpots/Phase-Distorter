@@ -43,12 +43,13 @@ int main(){
         f.regs[7]=0x71;f.regs[8]=0x65;f.regs[9]=0x59;f.regs[11]=0x21;f.regs[12]=3;
         f.regs[0x2c]=scenario==2?1:scenario==4?0x11:0x17;
         if(scenario==1||scenario==2||scenario==3){f.regs[0x2d]=2;f.regs[0x30]=2;f.regs[0x31]=0x43;}
+        if(scenario==2)f.regs[0x31]=3;
         if(scenario==3){f.regs[0x23]=0xaa;f.regs[0x24]=0xaa;f.regs[0x25]=0xaa;f.regs[0x26]=35;f.regs[0x27]=180;f.regs[0x28]=70;f.regs[0x29]=220;f.regs[0x2e]=7;f.regs[0x2f]=2;f.regs[0x30]=0x62;}
         if(scenario==5)f.regs[6]=0x37;
         if(scenario==6)f.regs[0x31]=0x43;
         if(scenario==7){f.regs[0x2c]=0x14;f.regs[0x2d]=2;f.regs[0x30]=2;f.regs[0x31]=1;}
         if(scenario==8){
-            f.regs[5]=3;f.regs[0x2c]=1;f.regs[0x2d]=2;f.regs[0x30]=2;f.regs[0x31]=0x43;
+            f.regs[5]=3;f.regs[0x2c]=1;f.regs[0x2d]=2;f.regs[0x30]=2;f.regs[0x31]=3;
             for(unsigned map:{0x71u,0x65u})for(unsigned offset=0;offset<4096;offset+=2){
                 const unsigned at=((map&0xfc)<<9)+offset;f.vram[at]=1;f.vram[at+1]=0;
             }
