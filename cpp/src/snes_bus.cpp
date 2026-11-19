@@ -16,6 +16,10 @@ namespace {
 constexpr bool giygas_group(unsigned group) { return (group >= 476 && group <= 480) || group == 483; }
 }
 void SnesBus::snapshot_io(SnapshotArchive &archive) {
+    if (!archive.loading())
+        synchronize_audio();
+    else
+        apu_clock_batch_ = {};
     bool host = bool(host_sprites_), native = bool(native_sprite_runtime_);
     bool effects = bool(native_sprite_effects_), stationary = native_stationary_sprites_enabled_;
     archive(host, native, effects, stationary);
@@ -172,6 +176,48 @@ bool SnesBus::compiled_fast_hook_dispatch() noexcept {
     return true;
 #else
     return false;
+#endif
+}
+
+bool SnesBus::compiled_apu_batching() noexcept {
+#if defined(EB_BATCH_APU_CLOCKS) && !defined(EB_GAMEPLAY_AUDIT)
+    return true;
+#else
+    return false;
+#endif
+}
+
+void SnesBus::begin_audio_batch() {
+#if defined(EB_BATCH_APU_CLOCKS) && !defined(EB_GAMEPLAY_AUDIT)
+    if (advance_audio_master_clocks && !debug_read_wram && !debug_write_wram && !debug_read_rom)
+        apu_clock_batch_.begin(advance_audio_master_clocks);
+#endif
+}
+
+void SnesBus::end_audio_batch() {
+#ifdef EB_BATCH_APU_CLOCKS
+    apu_clock_batch_.end(advance_audio_master_clocks);
+#endif
+}
+
+void SnesBus::cancel_audio_batch() noexcept {
+#ifdef EB_BATCH_APU_CLOCKS
+    apu_clock_batch_.cancel();
+#endif
+}
+
+void SnesBus::synchronize_audio() {
+#ifdef EB_BATCH_APU_CLOCKS
+    apu_clock_batch_.synchronize(advance_audio_master_clocks);
+#endif
+}
+
+void SnesBus::advance_audio_time(unsigned clocks) {
+#ifdef EB_BATCH_APU_CLOCKS
+    apu_clock_batch_.advance(clocks, advance_audio_master_clocks);
+#else
+    if (advance_audio_master_clocks)
+        advance_audio_master_clocks(clocks);
 #endif
 }
 
@@ -407,8 +453,10 @@ void SnesBus::write_byte(uint32_t address, uint8_t value) {
 uint8_t SnesBus::read_io_register(uint16_t address) {
     if (address >= 0x2100 && address <= 0x213f)
         return read_ppu_register(address);
-    if (address >= 0x2140 && address <= 0x217f)
+    if (address >= 0x2140 && address <= 0x217f) {
+        synchronize_audio();
         return audio_to_main_ports[address & 3];
+    }
     if (address == 0x2180) {
         auto value = work_ram[wram_address_];
         if (debug_read_wram)
@@ -491,6 +539,7 @@ void SnesBus::write_io_register(uint16_t address, uint8_t value) {
         return;
     }
     if (address >= 0x2140 && address <= 0x217f) {
+        synchronize_audio();
         main_to_audio_ports[address & 3] = value;
         return;
     }
@@ -789,8 +838,13 @@ void SnesBus::advance_clocks(unsigned clocks, bool pause_for_refresh) {
         master_clocks_+=clocks;
         if(autojoy_remaining_clocks_)autojoy_remaining_clocks_-=clocks;
         // Forward exactly the same original instruction slice, at the same
-        // boundary. No APU work, interrupt, HDMA or refresh event is deferred.
+        // boundary. Optional APU batching coalesces these slices until a
+        // mailbox/observer barrier; interrupt, HDMA and refresh timing stays here.
+#ifdef EB_BATCH_APU_CLOCKS
+        advance_audio_time(clocks);
+#else
         if(advance_audio_master_clocks)advance_audio_master_clocks(clocks);
+#endif
         return;
     }
     hardware_event_cache_.invalidate();
@@ -852,8 +906,12 @@ void SnesBus::advance_clocks(unsigned clocks, bool pause_for_refresh) {
                 // The visible scanlines are complete before this frame boundary.
                 // Notify here, not after the CPU instruction: a DMA stall can
                 // cross several frames before control returns to the frontend.
-                if (on_presentation_frame)
+                if (on_presentation_frame) {
+#ifdef EB_BATCH_APU_CLOCKS
+                    synchronize_audio();
+#endif
                     on_presentation_frame(presentation_pixels(), presentation_width(), completed_frames);
+                }
             }
             if (scanline_index_ == 225) {
                 nmi_flag_ = true;
@@ -868,8 +926,12 @@ void SnesBus::advance_clocks(unsigned clocks, bool pause_for_refresh) {
                 irq_flag_ = true;
         }
     }
+#ifdef EB_BATCH_APU_CLOCKS
+    advance_audio_time(elapsed);
+#else
     if (advance_audio_master_clocks)
         advance_audio_master_clocks(elapsed);
+#endif
 #ifdef EB_FAST_EVENT_SCHEDULER
     if(fast_event_scheduler_)
         hardware_event_cache_.reset(master_clocks_,completed_frames,next_hardware_event_clocks());

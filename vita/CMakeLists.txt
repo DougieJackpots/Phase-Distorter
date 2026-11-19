@@ -20,6 +20,9 @@ option(EB_VITA_FAST_NATIVE_COMPOSITION "Enable guarded native PPU composition on
 set(EB_FAST_NATIVE_COMPOSITION ${EB_VITA_FAST_NATIVE_COMPOSITION} CACHE BOOL "Vita native compositor" FORCE)
 
 option(EB_VITA_FAST_MEMORY_ACCESS "Enable guarded ROM/fetch fast paths on this experimental branch" ON)
+option(EB_VITA_BATCH_APU_CLOCKS "Batch APU clock delivery between mailbox/session barriers" ON)
+set(EB_BATCH_APU_CLOCKS ${EB_VITA_BATCH_APU_CLOCKS} CACHE BOOL "Vita APU clock batching" FORCE)
+
 option(EB_VITA_FAST_HOOK_DISPATCH "Enable guarded native service entry dispatch" ON)
 set(EB_FAST_HOOK_DISPATCH ${EB_VITA_FAST_HOOK_DISPATCH} CACHE BOOL "Vita native hook guards" FORCE)
 

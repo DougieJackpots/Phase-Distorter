@@ -59,6 +59,7 @@ struct Performance {
     std::uint64_t over_budget = 0, composed = 0, skipped = 0;
     std::uint64_t main_instructions = 0, spc_instructions = 0, master_clocks = 0, native_batches = 0;
     std::uint64_t fast_ppu_rows=0,canonical_ppu_rows=0;
+    std::uint64_t apu_clock_callbacks=0,apu_batched_updates=0;
     void add_simulation(double ms) {
         simulation.add(ms);
         if (sample_count < simulation_samples.size()) simulation_samples[sample_count++] = ms;
@@ -109,6 +110,9 @@ struct Performance {
                << " master_clocks_per_game_frame=" << double(master_clocks) / std::max<std::uint64_t>(frames, 1)
                << " simulation_ns_per_main_instruction=" << simulation.total * 1e6 / std::max<std::uint64_t>(main_instructions, 1)
                << " native_batches=" << native_batches;
+        output << " apu_clock_callbacks=" << apu_clock_callbacks
+               << " apu_clock_callbacks_per_update=" << double(apu_clock_callbacks) / updates
+               << " apu_batched_updates=" << apu_batched_updates;
         output << " core_samples=" << core_samples << " ppu_calls=" << ppu_calls
                << " dsp_calls=" << dsp_calls;
         output << " saves=" << saves << '\n';
@@ -120,6 +124,7 @@ struct Performance {
         over_budget = composed = skipped = 0;
         main_instructions = spc_instructions = master_clocks = native_batches = 0;
         fast_ppu_rows=canonical_ppu_rows=0;
+        apu_clock_callbacks=apu_batched_updates=0;
         core_samples = ppu_calls = dsp_calls = 0;
         epoch = Clock::now();
     }
@@ -270,7 +275,7 @@ int main(int argc, char** argv) {
         if (options.save_enabled) load_save(session);
         session.enable_runtime_timing(options.core_timing);
         performance.output << "fast_core_compiled_mask=" << session.compiled_core_fast_paths()
-            << " fast_hook_dispatch=" << session.compiled_fast_hook_dispatch() << " fast_composition_requested=" << options.fast_composition << " fast_memory_requested=" << options.fast_memory << " fast_scheduler_requested=" << options.fast_scheduler << " compact_spc_dispatch=" << EB_VITA_COMPACT_SPC_DISPATCH << " build_configuration=" << EB_VITA_BUILD_TYPE
+            << " apu_clock_batching=" << session.compiled_apu_batching() << " fast_hook_dispatch=" << session.compiled_fast_hook_dispatch() << " fast_composition_requested=" << options.fast_composition << " fast_memory_requested=" << options.fast_memory << " fast_scheduler_requested=" << options.fast_scheduler << " compact_spc_dispatch=" << EB_VITA_COMPACT_SPC_DISPATCH << " build_configuration=" << EB_VITA_BUILD_TYPE
             << " session_unit_optimisation=" << session.session_unit_optimised()
             << " dsp_unit_optimisation=" << session.dsp_unit_optimised() << '\n';
         performance.output.flush();
@@ -318,6 +323,8 @@ int main(int argc, char** argv) {
             performance.spc_instructions += diagnostics.audio_cpu_instructions - previous_diagnostics.audio_cpu_instructions;
             performance.master_clocks += diagnostics.master_clocks - previous_diagnostics.master_clocks;
             performance.native_batches += diagnostics.native_gameplay_batches - previous_diagnostics.native_gameplay_batches;
+            performance.apu_clock_callbacks += diagnostics.apu_clock_callback_calls - previous_diagnostics.apu_clock_callback_calls;
+            performance.apu_batched_updates += diagnostics.apu_batched_updates - previous_diagnostics.apu_batched_updates;
             previous_diagnostics = diagnostics;
             const auto native_rows=session.native_composition_counts();
             performance.fast_ppu_rows+=native_rows[0]-previous_native_rows[0];

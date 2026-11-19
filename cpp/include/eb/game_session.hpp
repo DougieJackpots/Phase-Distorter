@@ -62,6 +62,7 @@ class GameSession {
     void set_core_fast_paths(bool memory,bool scheduler,bool composition=true);
     unsigned compiled_core_fast_paths() const;
     bool compiled_fast_hook_dispatch() const;
+    bool compiled_apu_batching() const;
     std::array<std::uint64_t,2> native_composition_counts() const;
     void set_composition_stride(unsigned stride);
     CompositionStats composition_stats() const;

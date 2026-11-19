@@ -6,6 +6,7 @@ struct SessionDiagnostics {
     std::uint64_t frames{}, steps{}, master_clocks{};
     std::uint64_t cpu_instructions{}, audio_cpu_instructions{}, audio_frames{};
     std::uint64_t native_gameplay_batches{};
+    std::uint64_t apu_clock_callback_calls{}, apu_batched_updates{};
     std::uint64_t native_encounters_started{}, native_encounters_completed{};
     std::uint16_t native_battle_mode{}, native_battle_mode_flag{};
     std::uint64_t native_world_menus_opened{}, native_world_menus_completed{};

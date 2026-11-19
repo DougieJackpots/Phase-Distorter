@@ -1,4 +1,5 @@
 #pragma once
+#include "eb/apu_clock_batch.hpp"
 #include "eb/photosensitivity_filter.hpp"
 #include "eb/composition_policy.hpp"
 #include "eb/core_fastpaths.hpp"
@@ -47,6 +48,14 @@ class SnesBus {
     }
     static unsigned compiled_core_fast_paths() noexcept;
     static bool compiled_fast_hook_dispatch() noexcept;
+    static bool compiled_apu_batching() noexcept;
+    void begin_audio_batch();
+    void end_audio_batch();
+    void cancel_audio_batch() noexcept;
+    void synchronize_audio();
+    std::uint64_t apu_clock_callback_calls() const { return apu_clock_batch_.callback_calls(); }
+    std::uint64_t apu_batched_updates() const { return apu_clock_batch_.batches_started(); }
+
     auto native_composition_counts() const { return scene_renderer_.native_composition_counts(); }
     bool try_fetch_rom_instruction(std::uint32_t address,unsigned length,unsigned& extra_master_clocks);
     void write_byte(uint32_t address, uint8_t value);
@@ -214,6 +223,8 @@ class SnesBus {
 
   private:
     friend struct RuntimeStateAudit;
+    void advance_audio_time(unsigned clocks);
+    ApuClockBatch apu_clock_batch_;
     const GameVersion game_version_;
     const bool restore_threed_npcs_;
     const SourceProfile *source_profile_;

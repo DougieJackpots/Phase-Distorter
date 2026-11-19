@@ -48,6 +48,7 @@ GameSession::~GameSession() = default;
 
 std::uint64_t GameSession::advance_frame(std::uint16_t buttons, std::uint64_t step_limit) {
     auto &state = *state_;
+    state.hardware.synchronize_audio();
     state.runtime_timing = {};
     if (step_limit && state.steps >= step_limit)
         return 0;
@@ -61,6 +62,7 @@ std::uint64_t GameSession::advance_frame(std::uint16_t buttons, std::uint64_t st
     // member store on every translated instruction adds avoidable aliasing and
     // memory traffic. Observers consume frame views without re-entering us.
     auto completed_steps = state.steps;
+    state.hardware.begin_audio_batch();
     try {
         do {
             if (state.main_cpu.is_stopped)
@@ -73,9 +75,11 @@ std::uint64_t GameSession::advance_frame(std::uint16_t buttons, std::uint64_t st
                  (!step_limit || completed_steps < step_limit));
     } catch (...) {
         state.steps = completed_steps; // Preserve partial progress for diagnostics.
+        state.hardware.cancel_audio_batch();
         throw;
     }
     state.steps = completed_steps;
+    state.hardware.end_audio_batch();
     return state.hardware.completed_frames - previous_frame;
 }
 
@@ -91,6 +95,7 @@ bool GameSession::dsp_unit_optimised() const noexcept { return SnesAudioDsp::com
 void GameSession::set_core_fast_paths(bool memory,bool scheduler,bool composition) { state_->hardware.set_core_fast_paths(memory,scheduler,composition); }
 unsigned GameSession::compiled_core_fast_paths() const { return SnesBus::compiled_core_fast_paths(); }
 bool GameSession::compiled_fast_hook_dispatch() const { return SnesBus::compiled_fast_hook_dispatch(); }
+bool GameSession::compiled_apu_batching() const { return SnesBus::compiled_apu_batching(); }
 std::array<std::uint64_t,2> GameSession::native_composition_counts() const { return state_->hardware.native_composition_counts(); }
 
 void GameSession::set_composition_stride(unsigned stride) { state_->hardware.set_composition_stride(stride); }
@@ -158,10 +163,12 @@ void GameSession::observe_completed_frames(FrameObserver observer) {
 }
 
 void GameSession::take_audio_samples(std::vector<std::int16_t>& destination) {
+    state_->hardware.synchronize_audio();
     state_->audio_dsp.take_stereo_samples(destination);
 }
 
 std::vector<std::int16_t> GameSession::take_audio_samples() {
+    state_->hardware.synchronize_audio();
     return state_->audio_dsp.take_stereo_samples();
 }
 std::span<std::uint8_t> GameSession::save_memory() {
@@ -172,7 +179,10 @@ std::span<const std::uint8_t> GameSession::save_memory() const {
 }
 
 SessionDiagnostics GameSession::diagnostics(bool include_registers) const {
+    state_->hardware.synchronize_audio();
     SessionDiagnostics snapshot;
+    snapshot.apu_clock_callback_calls = state_->hardware.apu_clock_callback_calls();
+    snapshot.apu_batched_updates = state_->hardware.apu_batched_updates();
     snapshot.frames = frames();
     snapshot.steps = steps();
     snapshot.source_width = state_->hardware.presentation_width();

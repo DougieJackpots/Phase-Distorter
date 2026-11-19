@@ -1,5 +1,29 @@
 # PlayStation Vita port
 
+## APU clock batching experiment
+
+The `vita-apu-clock-batching` branch coalesces main-CPU clock deliveries to the
+SPC between mailbox accesses and session barriers. It still runs the original
+SPC instructions and DSP, flushes before audio consumption and snapshot saves,
+and finishes all pending audio work before `advance_frame` returns. Pending
+requests are bounded to approximately 65,536 master clocks. No game frames or
+audio samples are deliberately skipped. Audit builds keep immediate scheduling.
+
+`EB_VITA_BATCH_APU_CLOCKS` defaults to `ON` on this experimental branch. For an
+otherwise identical comparison, configure with
+`cmake -S vita -B build-vita -DEB_VITA_BATCH_APU_CLOCKS=OFF`, then rebuild.
+The log records `apu_clock_batching`, `apu_clock_callbacks_per_update` and
+`apu_batched_updates`. Disable per-call timing with `CORE_TIMING=OFF` for FPS
+comparisons. Compare the same scene and settings on the same physical Vita.
+
+The asset-free `apu_clock_batch_tests` compares real SPC/DSP snapshots, ordered
+SPC writes, mailbox transfers and PCM at 2,285 barriers, including IPL upload,
+echo, timers, port aliases, cancellation and snapshot restore. Its source-driver
+test reduces 122,045 clock callbacks to 1,903. `apu_clock_batch_tests --benchmark`
+measures only the audio scheduling workload; a host result is not a whole-game
+or Vita FPS result. Full-game replay and physical-hardware validation remain
+necessary before treating this as a stable replacement.
+
 The `vita-port` branch contains an initial native Vita frontend. The existing
 desktop targets remain the reference implementation and are kept separate.
 
